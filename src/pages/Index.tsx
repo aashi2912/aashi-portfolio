@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Linkedin, Youtube, Instagram, BookOpen, Twitter } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { Linkedin, Youtube, Instagram, BookOpen, Twitter, ArrowDown } from "lucide-react";
+import heroIllustration from "@/assets/hero-illustration.png";
 
 const roles = ["Product Manager.", "YouTuber.", "Podcast Host.", "Writer.", "Lifelong Learner."];
 
@@ -61,6 +62,58 @@ function ScrambleText({ text }: { text: string }) {
   return <span className="font-mono text-sm text-muted-foreground">{displayed}</span>;
 }
 
+// Arjun-style animated text reveal
+function RevealText({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay, ease: [0.25, 0.4, 0.25, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// Jeevanshu-style staggered scroll animation
+function StaggerContainer({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-30px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={{
+        visible: { transition: { staggerChildren: 0.1 } },
+        hidden: {},
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function StaggerItem({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <motion.div
+      className={className}
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] } },
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 export default function Index() {
   const [roleIndex, setRoleIndex] = useState(0);
 
@@ -72,77 +125,174 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-24">
       {/* Clock */}
-      <div className="flex justify-end">
+      <motion.div
+        className="flex justify-end"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+      >
         <LiveClock />
-      </div>
+      </motion.div>
 
-      {/* Hero */}
-      <section className="grid gap-8 md:grid-cols-[1fr_auto]">
-        <div className="space-y-6">
-          <div>
-            <h1 className="text-5xl font-bold tracking-tight md:text-6xl">
-              John Doe
+      {/* Lokesh-style Bold Statement Hero */}
+      <section className="relative">
+        <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-7xl leading-[1.1]">
+              I bridge the gap between
+              <br />
+              <span className="text-muted-foreground">what teams imagine</span> and
+              <br />
+              what users{" "}
+              <span className="italic text-muted-foreground">fall in love with</span>
             </h1>
-            <div className="mt-3 h-10 text-2xl font-light text-muted-foreground md:text-3xl">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={roleIndex}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                  className="block"
-                >
-                  {roles[roleIndex]}
-                </motion.span>
-              </AnimatePresence>
-            </div>
-          </div>
+          </motion.div>
+
+          {/* Suhad-style warm intro */}
+          <motion.div
+            className="max-w-2xl space-y-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
+          >
+            <p className="text-lg leading-relaxed text-muted-foreground">
+              Hey there! I'm <span className="font-semibold text-foreground">John Doe</span>,
+              a product builder based in <span className="font-semibold text-foreground">Cairo</span> with
+              a passion for weaving <span className="font-semibold text-foreground">meaningful stories</span> through chaos.
+            </p>
+          </motion.div>
+
+          {/* Rotating roles - Omar style */}
+          <motion.div
+            className="h-10 text-2xl font-light text-muted-foreground md:text-3xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={roleIndex}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="block"
+              >
+                {roles[roleIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </motion.div>
 
           {/* Social Icons */}
-          <div className="flex gap-3">
+          <motion.div
+            className="flex gap-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+          >
             {socialLinks.map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-md p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                className="rounded-md p-2 text-muted-foreground transition-all duration-300 hover:bg-accent hover:text-foreground hover:scale-110"
                 aria-label={label}
               >
                 <Icon className="h-5 w-5" />
               </a>
             ))}
-          </div>
+          </motion.div>
 
           {/* Location */}
-          <div className="flex items-center gap-2">
-            <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+          <motion.div
+            className="flex items-center gap-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1 }}
+          >
+            <span className="inline-block h-2 w-2 rounded-full bg-primary animate-pulse" />
             <ScrambleText text="Cairo, Egypt · GMT+2" />
-          </div>
-        </div>
-
-        {/* Hero Photo Placeholder */}
-        <div className="flex items-start justify-center">
-          <div className="h-48 w-48 rounded-2xl bg-muted" />
+          </motion.div>
         </div>
       </section>
 
-      {/* Updates Timeline */}
+      {/* Lokesh-style Hero Illustration */}
+      <RevealText>
+        <section className="relative overflow-hidden rounded-2xl">
+          <motion.img
+            src={heroIllustration}
+            alt="Person leaping between cliffs — bridging imagination and reality"
+            className="w-full object-cover rounded-2xl"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.5 }}
+          />
+        </section>
+      </RevealText>
+
+      {/* Arjun-style "How I Think" Section */}
+      <section className="space-y-8">
+        <RevealText>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+            I blend my <span className="italic text-muted-foreground">engineering roots</span> with
+          </h2>
+        </RevealText>
+        <RevealText delay={0.1}>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+            product thinking to make experiences that
+          </h2>
+        </RevealText>
+        <RevealText delay={0.2}>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-muted-foreground">
+            just… <span className="text-foreground italic">make sense.</span>
+          </h2>
+        </RevealText>
+      </section>
+
+      {/* Updates Timeline - Omar style with Jeevanshu scroll animations */}
       <section className="space-y-6">
-        <h2 className="text-lg font-semibold">Recent Updates</h2>
-        <div className="space-y-4">
+        <RevealText>
+          <h2 className="text-lg font-semibold">Recent Updates</h2>
+        </RevealText>
+        <StaggerContainer className="space-y-4">
           {updates.map((update, i) => (
-            <div key={i} className="flex items-start gap-4 border-l-2 border-border pl-4">
-              <span className="min-w-[5rem] font-mono text-xs text-muted-foreground">{update.date}</span>
-              <p className="flex-1 text-sm">{update.text}</p>
-              <span className="rounded-full bg-accent px-2 py-0.5 text-xs text-muted-foreground">{update.tag}</span>
-            </div>
+            <StaggerItem key={i}>
+              <motion.div
+                className="flex items-start gap-4 border-l-2 border-border pl-4 py-2 transition-colors hover:border-foreground"
+                whileHover={{ x: 4 }}
+                transition={{ duration: 0.2 }}
+              >
+                <span className="min-w-[5rem] font-mono text-xs text-muted-foreground">{update.date}</span>
+                <p className="flex-1 text-sm">{update.text}</p>
+                <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">
+                  {update.tag}
+                </span>
+              </motion.div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </section>
+
+      {/* Scroll indicator */}
+      <motion.div
+        className="flex justify-center pb-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ArrowDown className="h-5 w-5 text-muted-foreground" />
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
