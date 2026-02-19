@@ -328,7 +328,7 @@ export default function Index() {
 
       {/* ── Work ── */}
       <ContentWrap className="py-24 scroll-mt-20" >
-        <section id="work">
+        <section id="work" className="scroll-mt-20">
           <RevealText>
             <div className="mb-12">
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Gyms & Badges</h2>
