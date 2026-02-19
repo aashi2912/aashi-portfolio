@@ -290,7 +290,7 @@ export default function Index() {
           <img
             src={heroIllustration}
             alt="I bridge the gap between ambition and execution"
-            className="w-full block object-cover"
+            className="w-full block object-cover dark:invert"
           />
         </motion.div>
 
