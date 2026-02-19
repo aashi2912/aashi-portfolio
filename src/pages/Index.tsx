@@ -1,16 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Linkedin, Youtube, Instagram, BookOpen, Twitter, Check } from "lucide-react";
+import { Linkedin, Github, Instagram, Check } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration.png";
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Lifelong Learner."];
 
 const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Youtube, href: "#", label: "YouTube" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: BookOpen, href: "#", label: "Medium" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/aashithakkar29/", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com/aashi2912", label: "GitHub" },
+  { icon: Instagram, href: "https://www.instagram.com/aashi_2912/", label: "Instagram" },
 ];
 
 const updates = [
@@ -314,7 +312,7 @@ export default function Index() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
             >
-              <ScrambleText text="CAIRO, EGYPT · 30.0444° N, 31.2357° E" />
+              <ScrambleText text="TORONTO, ONTARIO" />
             </motion.div>
           </motion.div>
 
