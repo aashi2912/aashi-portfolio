@@ -356,14 +356,8 @@ export default function Index() {
                 <h3 className="text-2xl font-bold">Aashi Thakkar</h3>
                 <p className="text-muted-foreground">Product Manager</p>
               </div>
-              <div className="flex gap-3">
-                <a href="#" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent">
-                  Résumé <ExternalLink className="h-3.5 w-3.5" />
-                </a>
-                <a href="https://www.linkedin.com/in/aashithakkar29/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent">
-                  LinkedIn <ExternalLink className="h-3.5 w-3.5" />
-                </a>
-              </div>
+
+
             </div>
           </RevealText>
 
