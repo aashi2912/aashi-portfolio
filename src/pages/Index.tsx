@@ -404,23 +404,8 @@ export default function Index() {
             </div>
           </RevealText>
 
-          {/* Projects Portfolio */}
-          <RevealText delay={0.25}>
-            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
-              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Projects</span>
-              </div>
-              <div className="flex-1 grid gap-4 sm:grid-cols-2">
-                {projects.map((project, i) => (
-                  <a key={i} href={project.link} className="group rounded-xl border border-border p-5 transition-colors hover:bg-accent/50">
-                    <div className="mb-3 h-10 w-10 rounded-lg bg-muted" />
-                    <h4 className="text-sm font-semibold group-hover:underline">{project.title}</h4>
-                    <p className="mt-1 text-xs text-muted-foreground">{project.description}</p>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </RevealText>
+
+
 
           {/* Skills */}
           <RevealText delay={0.3}>
@@ -466,67 +451,8 @@ export default function Index() {
             </div>
           </RevealText>
 
-          {/* Content Creation */}
-          <RevealText delay={0.4}>
-            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
-              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Content</span>
-              </div>
-              <div className="flex-1 grid gap-4 sm:grid-cols-2">
-                {contentCreation.map((item, i) => (
-                  <a key={i} href={item.link} target="_blank" rel="noopener noreferrer" className="group rounded-xl border border-border p-5 transition-colors hover:bg-accent/50">
-                    <div className="mb-3 h-10 w-10 rounded-lg bg-muted" />
-                    <h4 className="text-sm font-semibold group-hover:underline">{item.title}</h4>
-                    <p className="text-xs text-muted-foreground">{item.platform}</p>
-                    <p className="mt-1 text-xs text-muted-foreground">{item.period}</p>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </RevealText>
 
-          {/* Publications */}
-          <RevealText delay={0.45}>
-            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
-              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Publications</span>
-              </div>
-              <div className="flex-1 divide-y divide-border/40">
-                {publications.map((pub, i) => (
-                  <a key={i} href={pub.link} target="_blank" rel="noopener noreferrer" className="block py-5 group">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                      <h4 className="text-sm font-semibold group-hover:underline">{pub.title}</h4>
-                      <span className="font-mono text-xs text-muted-foreground">{pub.date}</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">{pub.subtitle}</p>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </RevealText>
 
-          {/* Volunteering */}
-          <RevealText delay={0.5}>
-            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
-              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Volunteering</span>
-              </div>
-              <div className="flex-1 divide-y divide-border/40">
-                {volunteering.map((vol, i) => (
-                  <div key={i} className="flex items-start gap-4 py-5">
-                    <div className="mt-1 h-10 w-10 shrink-0 rounded-lg bg-muted" />
-                    <div className="flex-1">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                        <h4 className="text-sm font-semibold">{vol.role}</h4>
-                        <span className="font-mono text-xs text-muted-foreground">{vol.period}</span>
-                      </div>
-                      <p className="text-sm text-muted-foreground">{vol.org}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </RevealText>
 
           {/* Contact */}
           <RevealText delay={0.55}>
