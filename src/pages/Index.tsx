@@ -285,7 +285,7 @@ export default function Index() {
 
         {/* Hero image — true full-bleed, zero padding */}
         <motion.div
-          className="bg-background flex items-center justify-center"
+          className="bg-background relative flex items-center justify-center"
           style={{ height: 'calc(100vh - 160px)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -296,6 +296,9 @@ export default function Index() {
             alt="Hero illustration of a person jumping between cliffs"
             className="w-full h-full object-cover"
           />
+          <h2 className="absolute inset-0 flex items-center justify-center text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
+            I bridge the gap between<br />ambition and execution!
+          </h2>
         </motion.div>
 
         {/* Updates feed */}
