@@ -287,15 +287,12 @@ export default function Index() {
                     <Icon className="h-4 w-4" />
                   </a>
                 ))}
-                <span className="ml-2">
-                  <ScrambleText text="TORONTO, ONTARIO" />
-                </span>
               </div>
             </div>
 
-            {/* Right: live clock */}
+            {/* Right: location */}
             <div className="self-start">
-              <LiveClock />
+              <ScrambleText text="TORONTO, ONTARIO" />
             </div>
           </motion.div>
 
