@@ -298,7 +298,7 @@ export default function Index() {
           />
           <div className="absolute inset-0 flex items-start justify-center pt-[6%]">
             <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-center leading-tight text-foreground">
-              I bridge the gap between<br />ambition and execution.
+              I bridge the gap between<br />ambition and execution!
             </h2>
           </div>
         </motion.div>
