@@ -242,11 +242,11 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="space-y-32">
+    <div className="space-y-24 sm:space-y-32">
 
       {/* ── Home ── */}
-      <Section id="home" className="space-y-8">
-        {/* Clock */}
+      <Section id="home" className="space-y-6">
+        {/* Clock top-right */}
         <motion.div
           className="flex justify-end"
           initial={{ opacity: 0 }}
@@ -256,108 +256,105 @@ export default function Index() {
           <LiveClock />
         </motion.div>
 
-        {/* Bold Statement Hero */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-7xl leading-[1.1]">
-            I bridge the gap between
-            <br />
-            <span className="text-muted-foreground">what teams imagine</span> and
-            <br />
-            what users{" "}
-            <span className="italic text-muted-foreground">fall in love with</span>
-          </h1>
-        </motion.div>
+        {/* Hero: text left, photo right — exactly like omareletr.com */}
+        <div className="flex flex-col-reverse gap-8 sm:flex-row sm:items-start sm:justify-between">
+          {/* Left column */}
+          <motion.div
+            className="flex flex-col gap-4 sm:max-w-[55%]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            {/* Name */}
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl leading-[1.05]">
+              John Doe
+            </h1>
 
-        <motion.div
-          className="max-w-2xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
-        >
-          <p className="text-lg leading-relaxed text-muted-foreground">
-            Hey there! I'm <span className="font-semibold text-foreground">John Doe</span>,
-            a product builder based in <span className="font-semibold text-foreground">Cairo</span> with
-            a passion for weaving <span className="font-semibold text-foreground">meaningful stories</span> through chaos.
-          </p>
-        </motion.div>
+            {/* Rotating role */}
+            <div className="h-8 text-xl font-normal text-foreground sm:text-2xl">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={roleIndex}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25 }}
+                  className="block"
+                >
+                  {roles[roleIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </div>
 
-        {/* Rotating roles */}
-        <motion.div
-          className="h-10 text-2xl font-light text-muted-foreground md:text-3xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-        >
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={roleIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="block"
+            {/* Social Icons */}
+            <motion.div
+              className="flex flex-wrap gap-1"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
             >
-              {roles[roleIndex]}
-            </motion.span>
-          </AnimatePresence>
-        </motion.div>
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-md p-2 text-muted-foreground transition-all hover:text-foreground"
+                  aria-label={label}
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
+            </motion.div>
 
-        {/* Social Icons */}
-        <motion.div className="flex gap-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}>
-          {socialLinks.map(({ icon: Icon, href, label }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-md p-2 text-muted-foreground transition-all duration-300 hover:bg-accent hover:text-foreground hover:scale-110"
-              aria-label={label}
+            {/* Location */}
+            <motion.div
+              className="flex items-center gap-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9 }}
             >
-              <Icon className="h-5 w-5" />
-            </a>
-          ))}
-        </motion.div>
+              <ScrambleText text="CAIRO, EGYPT · 30.0444° N, 31.2357° E" />
+            </motion.div>
+          </motion.div>
 
-        {/* Location */}
-        <motion.div className="flex items-center gap-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }}>
-          <span className="inline-block h-2 w-2 rounded-full bg-primary animate-pulse" />
-          <ScrambleText text="Cairo, Egypt · GMT+2" />
-        </motion.div>
-
-        {/* Hero Illustration */}
-        <RevealText>
-          <div className="relative overflow-hidden rounded-2xl">
-            <motion.img
+          {/* Right column — photo */}
+          <motion.div
+            className="w-full sm:w-[40%] sm:max-w-xs"
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <img
               src={heroIllustration}
-              alt="Person leaping between cliffs"
-              className="w-full object-cover rounded-2xl"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.5 }}
+              alt="John Doe"
+              className="w-full rounded-2xl object-cover aspect-[3/4] sm:aspect-auto"
             />
-          </div>
-        </RevealText>
+          </motion.div>
+        </div>
 
-        {/* Statement section */}
-        <div className="space-y-4 pt-4">
-          <RevealText>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              I blend my <span className="italic text-muted-foreground">engineering roots</span> with
-            </h2>
-          </RevealText>
-          <RevealText delay={0.1}>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              product thinking to make experiences that
-            </h2>
-          </RevealText>
-          <RevealText delay={0.2}>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-muted-foreground">
-              just… <span className="text-foreground italic">make sense.</span>
-            </h2>
-          </RevealText>
+        {/* Updates / feed section — right below hero like omareletr */}
+        <div className="pt-8 sm:pt-16">
+          <div className="flex flex-col sm:flex-row sm:gap-16">
+            <div className="mb-4 sm:mb-0 sm:w-24 shrink-0">
+              <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Updates</span>
+            </div>
+            <div className="flex-1 divide-y divide-border/40">
+              {updates.map((update, i) => (
+                <RevealText key={i} delay={i * 0.06}>
+                  <div className="flex flex-col sm:flex-row sm:gap-10 py-5 group">
+                    <span className="font-mono text-sm text-muted-foreground shrink-0 mb-1 sm:mb-0 sm:w-20">{update.date}</span>
+                    <div className="flex flex-col gap-2">
+                      <p className="text-sm leading-relaxed">{update.text}</p>
+                      <span className="self-start rounded border border-border px-2 py-0.5 text-[10px] font-mono tracking-wider text-muted-foreground uppercase">
+                        {update.tag}
+                      </span>
+                    </div>
+                  </div>
+                </RevealText>
+              ))}
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -525,30 +522,6 @@ export default function Index() {
                   ))}
                 </ul>
               </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-      </Section>
-
-      {/* Updates — floating at bottom between impossible list and footer */}
-      <Section id="updates" className="pb-24">
-        <RevealText>
-          <h2 className="mb-6 text-lg font-semibold">Recent Updates</h2>
-        </RevealText>
-        <StaggerContainer className="space-y-4">
-          {updates.map((update, i) => (
-            <StaggerItem key={i}>
-              <motion.div
-                className="flex items-start gap-4 border-l-2 border-border pl-4 py-2 transition-colors hover:border-foreground"
-                whileHover={{ x: 4 }}
-                transition={{ duration: 0.2 }}
-              >
-                <span className="min-w-[5rem] font-mono text-xs text-muted-foreground">{update.date}</span>
-                <p className="flex-1 text-sm">{update.text}</p>
-                <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">
-                  {update.tag}
-                </span>
-              </motion.div>
             </StaggerItem>
           ))}
         </StaggerContainer>
