@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Home, Briefcase, FolderOpen, Mic, User, Triangle } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "Home", id: "home", num: "1" },
-  { label: "Work", id: "work", num: "2" },
-  { label: "Projects", id: "projects", num: "3" },
-  { label: "Hobbies", id: "hobbies", num: "4" },
-  { label: "About", id: "about", num: "5" },
-  { label: "Impossible List", id: "impossible-list", num: "6" },
+  { label: "Home", id: "home", icon: Home },
+  { label: "Work", id: "work", icon: Briefcase },
+  { label: "Projects", id: "projects", icon: FolderOpen },
+  { label: "Hobbies", id: "hobbies", icon: Mic },
+  { label: "About", id: "about", icon: User },
+  { label: "Impossible List", id: "impossible-list", icon: Triangle },
 ];
 
 function scrollToSection(id: string) {
@@ -20,8 +20,8 @@ function scrollToSection(id: string) {
 }
 
 export function Navbar() {
-  const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
+  const [tooltip, setTooltip] = useState<string | null>(null);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -50,63 +50,49 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-sm">
-      <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-        {/* Desktop nav — omareletr style: label on top, number below */}
-        <div className="hidden items-end gap-6 md:flex">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className={cn(
-                "group flex flex-col items-start gap-0 transition-opacity",
-                active === item.id ? "opacity-100" : "opacity-40 hover:opacity-70"
+    <nav className="fixed left-0 top-0 z-50 flex h-screen w-14 flex-col items-center justify-between py-6 bg-background/90 backdrop-blur-sm border-r border-border/30">
+      {/* Nav icons */}
+      <div className="flex flex-col items-center gap-1">
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div key={item.id} className="relative">
+              <button
+                onClick={() => scrollToSection(item.id)}
+                onMouseEnter={() => setTooltip(item.id)}
+                onMouseLeave={() => setTooltip(null)}
+                className={cn(
+                  "flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-200",
+                  active === item.id
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+                aria-label={item.label}
+              >
+                <Icon
+                  className={cn(
+                    "h-5 w-5 transition-all duration-200",
+                    active === item.id
+                      ? "opacity-100"
+                      : "opacity-40 hover:opacity-80"
+                  )}
+                />
+              </button>
+
+              {/* Tooltip */}
+              {tooltip === item.id && (
+                <div className="pointer-events-none absolute left-12 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-foreground px-2 py-1 text-xs font-medium text-background shadow-md">
+                  {item.label}
+                  <div className="absolute left-[-4px] top-1/2 -translate-y-1/2 h-0 w-0 border-y-4 border-y-transparent border-r-4 border-r-foreground" />
+                </div>
               )}
-            >
-              <span className="text-sm font-medium leading-tight tracking-tight">
-                {item.label}
-              </span>
-              <span className="font-mono text-[10px] leading-tight text-muted-foreground">
-                {item.num}
-              </span>
-            </button>
-          ))}
-        </div>
+            </div>
+          );
+        })}
+      </div>
 
-        {/* Mobile hamburger */}
-        <div className="flex items-center gap-2 md:hidden">
-          <button onClick={() => setOpen(!open)} className="p-1">
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-
-        <ThemeToggle />
-      </nav>
-
-      {/* Mobile menu */}
-      {open && (
-        <div className="border-t border-border px-6 py-4 md:hidden">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => {
-                scrollToSection(item.id);
-                setOpen(false);
-              }}
-              className={cn(
-                "flex w-full items-center justify-between py-3 text-sm transition-opacity text-left border-b border-border/50 last:border-0",
-                active === item.id
-                  ? "opacity-100 font-medium"
-                  : "opacity-40"
-              )}
-            >
-              <span>{item.label}</span>
-              <span className="font-mono text-xs text-muted-foreground">{item.num}</span>
-            </button>
-          ))}
-        </div>
-      )}
-    </header>
+      {/* Theme toggle at bottom */}
+      <ThemeToggle />
+    </nav>
   );
 }
-
