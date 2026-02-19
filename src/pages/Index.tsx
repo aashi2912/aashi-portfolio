@@ -294,7 +294,7 @@ export default function Index() {
           <img
             src={heroImage}
             alt="Hero illustration of a person jumping between cliffs"
-            className="max-w-full max-h-full object-contain"
+            className="w-full h-full object-cover"
           />
         </motion.div>
 
