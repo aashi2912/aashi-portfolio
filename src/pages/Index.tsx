@@ -45,23 +45,58 @@ const experiences = [
   },
 ];
 
-const posts = [
-  { title: "The Art of Product Thinking", date: "Jan 15, 2026", excerpt: "How to think like a product manager in everyday life.", tag: "Product" },
-  { title: "Building in Public: A Year in Review", date: "Dec 28, 2025", excerpt: "Lessons learned from sharing my work openly.", tag: "Personal" },
-  { title: "Why I Read 50 Books a Year", date: "Nov 10, 2025", excerpt: "My reading system and how it changed my perspective.", tag: "Reads" },
+const projects = [
+  {
+    title: "Product Analytics Dashboard",
+    description: "Built an internal analytics tool that reduced reporting time by 60% for the PM team.",
+    tag: "Product",
+    link: "#",
+    year: "2025",
+  },
+  {
+    title: "Onboarding Flow Redesign",
+    description: "Redesigned the end-to-end onboarding experience, improving activation rate by 35%.",
+    tag: "UX",
+    link: "#",
+    year: "2024",
+  },
+  {
+    title: "Podcast Website",
+    description: "Designed and built a personal podcast website with episode archive and newsletter integration.",
+    tag: "Side Project",
+    link: "#",
+    year: "2024",
+  },
+  {
+    title: "PM Toolkit",
+    description: "A curated Notion template system used by 500+ product managers to run discovery and roadmaps.",
+    tag: "Templates",
+    link: "#",
+    year: "2023",
+  },
 ];
 
-const episodes = [
-  { title: "Ep. 12 — Finding Your Niche", description: "We discuss how to find your niche in a crowded market.", date: "Feb 1, 2026" },
-  { title: "Ep. 11 — The Power of Habits", description: "A deep dive into building habits that last.", date: "Jan 15, 2026" },
-  { title: "Ep. 10 — From Side Project to Startup", description: "How to turn your side project into a real business.", date: "Dec 20, 2025" },
-];
-
-const books = [
-  { title: "Atomic Habits", author: "James Clear", review: "A practical guide to building good habits and breaking bad ones." },
-  { title: "The Mom Test", author: "Rob Fitzpatrick", review: "Essential reading for anyone building products. Changed how I do user research." },
-  { title: "Sapiens", author: "Yuval Noah Harari", review: "A sweeping history of humankind that puts everything in perspective." },
-  { title: "Deep Work", author: "Cal Newport", review: "Convinced me to restructure my entire work day around focused blocks." },
+const hobbies = [
+  {
+    emoji: "📚",
+    title: "Reading",
+    description: "I read ~50 books a year across product, philosophy, and fiction. Current stack: Sapiens, The Mom Test.",
+  },
+  {
+    emoji: "🎙️",
+    title: "Podcasting",
+    description: "I host a podcast about product thinking, career pivots, and building with intention.",
+  },
+  {
+    emoji: "✍️",
+    title: "Writing",
+    description: "I write essays about product management, mental models, and learning in public on Medium.",
+  },
+  {
+    emoji: "🏃",
+    title: "Running",
+    description: "Completed my first marathon in 2024. Currently training for a triathlon.",
+  },
 ];
 
 const impossibleCategories = [
@@ -360,78 +395,56 @@ export default function Index() {
         </div>
       </Section>
 
-      {/* ── Blog ── */}
-      <Section id="blog">
+      {/* ── Projects ── */}
+      <Section id="projects">
         <RevealText>
           <div className="mb-12">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Blog</h2>
-            <p className="mt-2 text-muted-foreground">Thoughts on product, life, and everything in between.</p>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Projects</h2>
+            <p className="mt-2 text-muted-foreground">Things I've built, shipped, or experimented with.</p>
           </div>
         </RevealText>
 
         <StaggerContainer className="space-y-6">
-          {posts.map((post, i) => (
+          {projects.map((project, i) => (
             <StaggerItem key={i}>
-              <motion.article
+              <motion.div
                 className="group cursor-pointer rounded-lg border border-border p-5 transition-colors hover:bg-accent/50"
                 whileHover={{ x: 4 }}
                 transition={{ duration: 0.2 }}
               >
                 <div className="flex items-center justify-between">
-                  <span className="rounded-full bg-accent px-2 py-0.5 text-xs text-muted-foreground">{post.tag}</span>
-                  <span className="font-mono text-xs text-muted-foreground">{post.date}</span>
+                  <span className="rounded-full bg-accent px-2 py-0.5 text-xs text-muted-foreground">{project.tag}</span>
+                  <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
                 </div>
-                <h3 className="mt-3 text-lg font-semibold group-hover:underline">{post.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{post.excerpt}</p>
-              </motion.article>
+                <h3 className="mt-3 text-lg font-semibold group-hover:underline">{project.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
+              </motion.div>
             </StaggerItem>
           ))}
         </StaggerContainer>
       </Section>
 
-      {/* ── Podcast ── */}
-      <Section id="podcast">
+      {/* ── Hobbies ── */}
+      <Section id="hobbies">
         <RevealText>
           <div className="mb-12">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Podcast</h2>
-            <p className="mt-2 text-muted-foreground">Conversations with interesting people.</p>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Hobbies</h2>
+            <p className="mt-2 text-muted-foreground">What I do when I'm not building products.</p>
           </div>
         </RevealText>
 
-        <StaggerContainer className="space-y-6">
-          {episodes.map((ep, i) => (
+        <StaggerContainer className="grid gap-6 sm:grid-cols-2">
+          {hobbies.map((hobby, i) => (
             <StaggerItem key={i}>
-              <div className="rounded-lg border border-border p-5">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold">{ep.title}</h3>
-                  <span className="font-mono text-xs text-muted-foreground">{ep.date}</span>
-                </div>
-                <p className="mt-2 text-sm text-muted-foreground">{ep.description}</p>
-                <div className="mt-3 h-10 rounded-md bg-muted" />
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-      </Section>
-
-      {/* ── Reads ── */}
-      <Section id="reads">
-        <RevealText>
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Reads</h2>
-            <p className="mt-2 text-muted-foreground">Books that shaped my thinking.</p>
-          </div>
-        </RevealText>
-
-        <StaggerContainer className="grid gap-4 sm:grid-cols-2">
-          {books.map((book, i) => (
-            <StaggerItem key={i}>
-              <div className="rounded-lg border border-border p-5 h-full">
-                <div className="mb-3 h-32 rounded-md bg-muted" />
-                <h3 className="font-semibold">{book.title}</h3>
-                <p className="text-sm text-muted-foreground">{book.author}</p>
-                <p className="mt-2 text-sm leading-relaxed">{book.review}</p>
-              </div>
+              <motion.div
+                className="rounded-lg border border-border p-6 h-full"
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+              >
+                <span className="text-3xl">{hobby.emoji}</span>
+                <h3 className="mt-3 text-lg font-semibold">{hobby.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{hobby.description}</p>
+              </motion.div>
             </StaggerItem>
           ))}
         </StaggerContainer>
@@ -501,7 +514,7 @@ export default function Index() {
                   {cat.items.map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm">
                       {item.done ? (
-                        <Check className="h-4 w-4 shrink-0 text-emerald-500" />
+                        <Check className="h-4 w-4 shrink-0 text-primary" />
                       ) : (
                         <span className="h-4 w-4 shrink-0 rounded-full border border-border" />
                       )}
