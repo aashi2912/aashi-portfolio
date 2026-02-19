@@ -285,18 +285,17 @@ export default function Index() {
 
         {/* Hero image — true full-bleed, zero padding */}
         <motion.div
-          className="bg-background"
+          className="bg-background flex items-center justify-center"
+          style={{ height: 'calc(100vh - 160px)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}
         >
-          <div className="max-h-[45vh] overflow-hidden flex items-center justify-center">
-            <img
-              src={heroImage}
-              alt="Hero illustration of a person jumping between cliffs"
-              className="w-full block object-contain max-h-[45vh]"
-            />
-          </div>
+          <img
+            src={heroImage}
+            alt="Hero illustration of a person jumping between cliffs"
+            className="max-w-full max-h-full object-contain"
+          />
         </motion.div>
 
         {/* Updates feed */}
