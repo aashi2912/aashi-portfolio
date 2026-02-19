@@ -301,29 +301,8 @@ export default function Index() {
           </h2>
         </motion.div>
 
-        {/* Updates feed */}
-        <ContentWrap className="pt-16 pb-8">
-          <div className="flex flex-col sm:flex-row sm:gap-16">
-            <div className="mb-4 sm:mb-0 sm:w-24 shrink-0">
-              <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Updates</span>
-            </div>
-            <div className="flex-1 divide-y divide-border/40">
-              {updates.map((update, i) => (
-                <RevealText key={i} delay={i * 0.06}>
-                  <div className="flex flex-col sm:flex-row sm:gap-10 py-5 group">
-                    <span className="font-mono text-sm text-muted-foreground shrink-0 mb-1 sm:mb-0 sm:w-20">{update.date}</span>
-                    <div className="flex flex-col gap-2">
-                      <p className="text-sm leading-relaxed">{update.text}</p>
-                      <span className="self-start rounded border border-border px-2 py-0.5 text-[10px] font-mono tracking-wider text-muted-foreground uppercase">
-                        {update.tag}
-                      </span>
-                    </div>
-                  </div>
-                </RevealText>
-              ))}
-            </div>
-          </div>
-        </ContentWrap>
+
+
       </section>
 
       {/* ── Work ── */}
