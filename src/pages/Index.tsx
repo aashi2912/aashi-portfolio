@@ -243,96 +243,91 @@ export default function Index() {
     <div className="space-y-24 sm:space-y-32">
 
       {/* ── Home ── */}
-      <Section id="home" className="space-y-6">
-        {/* Clock top-right */}
-        <motion.div
-          className="flex justify-end"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          <LiveClock />
-        </motion.div>
+      <Section id="home" className="space-y-0 -mt-8 -mx-4 sm:-mx-6">
 
-        {/* Hero: text left, photo right — exactly like omareletr.com */}
-        <div className="flex flex-col-reverse gap-8 sm:flex-row sm:items-start sm:justify-between">
-          {/* Left column */}
+        {/* Full-width hero block */}
+        <div className="relative min-h-screen flex flex-col px-4 sm:px-6">
+
+          {/* Top row: name/roles/links/location + clock */}
           <motion.div
-            className="flex flex-col gap-4 sm:max-w-[55%]"
-            initial={{ opacity: 0, y: 20 }}
+            className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 pt-4"
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {/* Name */}
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl leading-[1.05]">
-              Aashi Thakkar
-            </h1>
-
-            {/* Rotating role */}
-            <div className="h-8 text-xl font-normal text-foreground sm:text-2xl">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={roleIndex}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.25 }}
-                  className="block"
-                >
-                  {roles[roleIndex]}
-                </motion.span>
-              </AnimatePresence>
+            {/* Left: name + roles + social + location */}
+            <div className="flex flex-col gap-2">
+              <h1 className="text-2xl font-bold tracking-tight sm:text-3xl leading-tight">
+                Aashi Thakkar
+              </h1>
+              <div className="h-6 text-sm font-normal text-muted-foreground sm:text-base">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={roleIndex}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.22 }}
+                    className="block"
+                  >
+                    {roles[roleIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+              <div className="flex items-center gap-1">
+                {socialLinks.map(({ icon: Icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-md p-1.5 text-muted-foreground transition-all hover:text-foreground"
+                    aria-label={label}
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
+                <span className="ml-2">
+                  <ScrambleText text="TORONTO, ONTARIO" />
+                </span>
+              </div>
             </div>
 
-            {/* Social Icons */}
-            <motion.div
-              className="flex flex-wrap gap-1"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-            >
-              {socialLinks.map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md p-2 text-muted-foreground transition-all hover:text-foreground"
-                  aria-label={label}
-                >
-                  <Icon className="h-5 w-5" />
-                </a>
-              ))}
-            </motion.div>
-
-            {/* Location */}
-            <motion.div
-              className="flex items-center gap-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.9 }}
-            >
-              <ScrambleText text="TORONTO, ONTARIO" />
-            </motion.div>
+            {/* Right: live clock */}
+            <div className="self-start">
+              <LiveClock />
+            </div>
           </motion.div>
 
-          {/* Right column — photo */}
+          {/* Center tagline */}
           <motion.div
-            className="w-full sm:w-[40%] sm:max-w-xs"
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-1 items-center justify-center py-8 sm:py-12"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <h2 className="text-center text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl max-w-3xl">
+              I bridge the gap between ambition and execution!
+            </h2>
+          </motion.div>
+
+          {/* Full-width hero image pinned to bottom */}
+          <motion.div
+            className="w-full"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.6 }}
           >
             <img
               src={heroIllustration}
-              alt="John Doe"
-              className="w-full rounded-2xl object-cover aspect-[3/4] sm:aspect-auto"
+              alt="Aashi Thakkar"
+              className="w-full object-cover object-top max-h-[55vh]"
             />
           </motion.div>
         </div>
 
-        {/* Updates / feed section — right below hero like omareletr */}
-        <div className="pt-8 sm:pt-16">
+        {/* Updates / feed section */}
+        <div className="pt-16 px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row sm:gap-16">
             <div className="mb-4 sm:mb-0 sm:w-24 shrink-0">
               <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Updates</span>
