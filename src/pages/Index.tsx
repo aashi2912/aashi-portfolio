@@ -296,38 +296,18 @@ export default function Index() {
             </div>
           </motion.div>
 
-          {/* Tagline — large bold text above the image */}
+          {/* Hero image — contains tagline text */}
           <motion.div
-            className="flex flex-1 items-center justify-center py-6 sm:py-8"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <h2
-              className="text-center font-black tracking-tight text-foreground"
-              style={{
-                fontSize: "clamp(3rem, 9vw, 7.5rem)",
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: 900,
-                lineHeight: 1.0,
-              }}
-            >
-              I bridge the gap<br />between ambition<br />and execution!
-            </h2>
-          </motion.div>
-
-          {/* Hero image below tagline */}
-          <motion.div
-            className="w-full"
+            className="flex flex-1 w-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.6 }}
+            transition={{ duration: 0.9, delay: 0.4 }}
           >
             <img
               src={heroIllustration}
-              alt="Aashi Thakkar"
-              className="w-full object-cover object-top mix-blend-multiply dark:mix-blend-screen dark:brightness-90"
-              style={{ maxHeight: "50vh" }}
+              alt="I bridge the gap between ambition and execution"
+              className="w-full object-contain dark:invert dark:brightness-90"
+              style={{ maxHeight: "70vh" }}
             />
           </motion.div>
         </div>
