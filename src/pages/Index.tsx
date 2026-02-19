@@ -1,7 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Linkedin, Github, Instagram, Check } from "lucide-react";
-import heroIllustration from "@/assets/hero-illustration.png";
+import { useTheme } from "next-themes";
+import heroLight from "@/assets/hero-illustration-light.png";
+import heroDark from "@/assets/hero-illustration-dark.png";
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Lifelong Learner."];
 
@@ -217,6 +219,7 @@ function ContentWrap({ children, className = "" }: { children: React.ReactNode; 
 
 export default function Index() {
   const [roleIndex, setRoleIndex] = useState(0);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -288,9 +291,9 @@ export default function Index() {
           transition={{ duration: 0.9, delay: 0.4 }}
         >
           <img
-            src={heroIllustration}
+            src={resolvedTheme === "dark" ? heroDark : heroLight}
             alt="I bridge the gap between ambition and execution"
-            className="w-full block object-cover dark:invert"
+            className="w-full block object-cover"
           />
         </motion.div>
 
