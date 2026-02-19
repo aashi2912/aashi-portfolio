@@ -352,7 +352,7 @@ export default function Index() {
           {/* Profile Card */}
           <RevealText delay={0.1}>
             <div className="mt-12 flex flex-col items-center text-center gap-4">
-              <img src={profilePhoto} alt="Aashi Thakkar" className="h-56 w-56 rounded-2xl object-cover" />
+              <img src={profilePhoto} alt="Aashi Thakkar" className="w-64 h-80 rounded-2xl object-cover" />
               <div>
                 <h3 className="text-2xl font-bold">Aashi Thakkar</h3>
                 <p className="text-muted-foreground">Product Manager</p>
