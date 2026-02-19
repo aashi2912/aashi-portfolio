@@ -286,15 +286,15 @@ export default function Index() {
 
         {/* Hero image — true full-bleed, zero padding */}
         <motion.div
-          className="relative"
+          className="relative bg-background"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}
         >
           <img
-            src={resolvedTheme === "dark" ? heroDark : heroLight}
+            src={heroLight}
             alt="Hero illustration of a person jumping between cliffs"
-            className="w-full block object-cover"
+            className="w-full block object-cover dark:invert dark:brightness-90"
           />
           <div className="absolute inset-0 flex items-start justify-center pt-[6%]">
             <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-center leading-tight text-foreground">
