@@ -326,7 +326,7 @@ export default function Index() {
             <img
               src={heroIllustration}
               alt="Aashi Thakkar"
-              className="w-full object-cover object-top"
+              className="w-full object-cover object-top mix-blend-multiply dark:mix-blend-screen dark:brightness-90"
               style={{ maxHeight: "50vh" }}
             />
           </motion.div>
