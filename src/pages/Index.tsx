@@ -3,6 +3,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Linkedin, Github, Instagram, Check, ExternalLink } from "lucide-react";
 
 import heroImage from "@/assets/hero-transparent.png";
+import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Lifelong Learner."];
 
@@ -351,7 +352,7 @@ export default function Index() {
           {/* Profile Card */}
           <RevealText delay={0.1}>
             <div className="mt-12 flex flex-col items-center text-center gap-4">
-              <div className="h-48 w-48 rounded-2xl bg-muted" />
+              <img src={profilePhoto} alt="Aashi Thakkar" className="h-48 w-48 rounded-2xl object-cover" />
               <div>
                 <h3 className="text-2xl font-bold">Aashi Thakkar</h3>
                 <p className="text-muted-foreground">Product Manager</p>
