@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Linkedin, Github, Instagram, Check } from "lucide-react";
+import { Linkedin, Github, Instagram, Check, ExternalLink } from "lucide-react";
 
 import heroImage from "@/assets/hero-transparent.png";
 
@@ -24,24 +24,59 @@ const experiences = [
   {
     role: "Senior Product Manager",
     company: "Tech Corp",
-    period: "2024 – Present",
-    description: "Leading product strategy for the core platform, driving 40% growth in user engagement.",
-    badge: "🏆",
+    period: "Nov 2024 — Present",
   },
   {
     role: "Product Manager",
     company: "StartupXYZ",
-    period: "2022 – 2024",
-    description: "Built and launched 3 major product features from 0 to 1, growing ARR by $2M.",
-    badge: "🚀",
+    period: "2022 — 2024",
   },
   {
     role: "Associate Product Manager",
     company: "BigCo Inc.",
-    period: "2020 – 2022",
-    description: "Managed the onboarding experience, improving activation rates by 25%.",
-    badge: "⚡",
+    period: "2020 — 2022",
   },
+];
+
+const skillCategories = [
+  {
+    name: "Product Management",
+    items: ["Communication", "Stakeholder Management", "Critical Thinking", "User Research", "UX Design", "Wireframing", "Product Strategy", "Prioritization", "Roadmapping", "Data Analysis", "A/B Testing"],
+  },
+  {
+    name: "Tools",
+    items: ["Notion", "JIRA", "Figma", "Amplitude", "Google Analytics", "Firebase"],
+  },
+  {
+    name: "Programming",
+    items: ["SQL", "HTML", "CSS", "Python", "JavaScript"],
+  },
+  {
+    name: "Languages",
+    items: ["English", "Hindi 🇮🇳", "Gujarati"],
+  },
+];
+
+const education = [
+  {
+    degree: "Bachelor of Arts, Computer Science",
+    school: "University Name",
+    period: "Aug 2015 — May 2019",
+  },
+];
+
+const contentCreation = [
+  { title: "Podcast Host", platform: "@MyPodcast", period: "Jan 2023 — Present", link: "#" },
+  { title: "Medium Author", platform: "Medium", period: "Oct 2018 — Present", link: "#" },
+];
+
+const publications = [
+  { title: "Research Paper Title", subtitle: "Published at Conference 2019", date: "May 2019", link: "#" },
+];
+
+const volunteering = [
+  { role: "Product Expert", org: "Organization Name", period: "May 2020 — Present" },
+  { role: "Mentor", org: "EducationUSA", period: "Aug 2015 — Present" },
 ];
 
 const projects = [
@@ -306,38 +341,206 @@ export default function Index() {
       </section>
 
       {/* ── Work ── */}
-      <ContentWrap className="py-24 scroll-mt-20" >
+      <ContentWrap className="py-24 scroll-mt-20">
         <section id="work" className="scroll-mt-20">
           <RevealText>
-            <div className="mb-12">
-              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Gyms & Badges</h2>
-              <p className="mt-2 text-muted-foreground">
-                My professional journey — each role a new gym, each milestone a badge earned.
-              </p>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Work</h2>
+            <p className="mt-1 text-muted-foreground">an overview of my career</p>
+          </RevealText>
+
+          {/* Profile Card */}
+          <RevealText delay={0.1}>
+            <div className="mt-12 flex flex-col items-center text-center gap-4">
+              <div className="h-48 w-48 rounded-2xl bg-muted" />
+              <div>
+                <h3 className="text-2xl font-bold">Aashi Thakkar</h3>
+                <p className="text-muted-foreground">Product Manager</p>
+              </div>
+              <div className="flex gap-3">
+                <a href="#" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent">
+                  Résumé <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+                <a href="https://www.linkedin.com/in/aashithakkar29/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent">
+                  LinkedIn <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
             </div>
           </RevealText>
 
-          <div className="space-y-12">
-            {experiences.map((exp, i) => (
-              <RevealText key={i} delay={i * 0.1}>
-                <motion.div
-                  className="group relative border-l-2 border-border pl-8 transition-colors hover:border-foreground"
-                  whileHover={{ x: 4 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="absolute -left-4 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-accent text-base">
-                    {exp.badge}
+          {/* Bio */}
+          <RevealText delay={0.15}>
+            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Bio</span>
+              </div>
+              <div className="flex-1 space-y-4 text-sm leading-relaxed">
+                <p>I'm a Product Manager based in Toronto, and I currently work at Tech Corp leading product strategy for the core platform.</p>
+                <p className="text-muted-foreground">After discovering HCI during my studies, I realized I could combine two of my greatest passions: tech and psychology. This led me on a clear path towards product management.</p>
+                <p className="text-muted-foreground">With a background in Computer Science, I've honed my skills through years of experience as a Product Manager at various tech companies. I firmly believe that products should be user-centric.</p>
+              </div>
+            </div>
+          </RevealText>
+
+          {/* Experience */}
+          <RevealText delay={0.2}>
+            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Experience</span>
+              </div>
+              <div className="flex-1 divide-y divide-border/40">
+                {experiences.map((exp, i) => (
+                  <div key={i} className="flex items-start gap-4 py-5">
+                    <div className="mt-1 h-10 w-10 shrink-0 rounded-lg bg-muted" />
+                    <div className="flex-1">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <h4 className="text-sm font-semibold">{exp.role}</h4>
+                        <span className="font-mono text-xs text-muted-foreground">{exp.period}</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">{exp.company}</p>
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                    <h3 className="text-lg font-semibold">{exp.role}</h3>
-                    <span className="font-mono text-xs text-muted-foreground">{exp.period}</span>
+                ))}
+              </div>
+            </div>
+          </RevealText>
+
+          {/* Projects Portfolio */}
+          <RevealText delay={0.25}>
+            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Projects</span>
+              </div>
+              <div className="flex-1 grid gap-4 sm:grid-cols-2">
+                {projects.map((project, i) => (
+                  <a key={i} href={project.link} className="group rounded-xl border border-border p-5 transition-colors hover:bg-accent/50">
+                    <div className="mb-3 h-10 w-10 rounded-lg bg-muted" />
+                    <h4 className="text-sm font-semibold group-hover:underline">{project.title}</h4>
+                    <p className="mt-1 text-xs text-muted-foreground">{project.description}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </RevealText>
+
+          {/* Skills */}
+          <RevealText delay={0.3}>
+            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Skills</span>
+              </div>
+              <div className="flex-1 space-y-6">
+                {skillCategories.map((cat) => (
+                  <div key={cat.name}>
+                    <h4 className="mb-2 text-xs font-mono tracking-wider text-muted-foreground uppercase">{cat.name}</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {cat.items.map((skill) => (
+                        <span key={skill} className="rounded-full border border-border px-3 py-1 text-xs">{skill}</span>
+                      ))}
+                    </div>
                   </div>
-                  <p className="text-sm font-medium text-muted-foreground">{exp.company}</p>
-                  <p className="mt-3 text-sm leading-relaxed">{exp.description}</p>
-                </motion.div>
-              </RevealText>
-            ))}
-          </div>
+                ))}
+              </div>
+            </div>
+          </RevealText>
+
+          {/* Education */}
+          <RevealText delay={0.35}>
+            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Education</span>
+              </div>
+              <div className="flex-1 divide-y divide-border/40">
+                {education.map((edu, i) => (
+                  <div key={i} className="flex items-start gap-4 py-5">
+                    <div className="mt-1 h-10 w-10 shrink-0 rounded-lg bg-muted" />
+                    <div className="flex-1">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <h4 className="text-sm font-semibold">{edu.degree}</h4>
+                        <span className="font-mono text-xs text-muted-foreground">{edu.period}</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">{edu.school}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </RevealText>
+
+          {/* Content Creation */}
+          <RevealText delay={0.4}>
+            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Content</span>
+              </div>
+              <div className="flex-1 grid gap-4 sm:grid-cols-2">
+                {contentCreation.map((item, i) => (
+                  <a key={i} href={item.link} target="_blank" rel="noopener noreferrer" className="group rounded-xl border border-border p-5 transition-colors hover:bg-accent/50">
+                    <div className="mb-3 h-10 w-10 rounded-lg bg-muted" />
+                    <h4 className="text-sm font-semibold group-hover:underline">{item.title}</h4>
+                    <p className="text-xs text-muted-foreground">{item.platform}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">{item.period}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </RevealText>
+
+          {/* Publications */}
+          <RevealText delay={0.45}>
+            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Publications</span>
+              </div>
+              <div className="flex-1 divide-y divide-border/40">
+                {publications.map((pub, i) => (
+                  <a key={i} href={pub.link} target="_blank" rel="noopener noreferrer" className="block py-5 group">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                      <h4 className="text-sm font-semibold group-hover:underline">{pub.title}</h4>
+                      <span className="font-mono text-xs text-muted-foreground">{pub.date}</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">{pub.subtitle}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </RevealText>
+
+          {/* Volunteering */}
+          <RevealText delay={0.5}>
+            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Volunteering</span>
+              </div>
+              <div className="flex-1 divide-y divide-border/40">
+                {volunteering.map((vol, i) => (
+                  <div key={i} className="flex items-start gap-4 py-5">
+                    <div className="mt-1 h-10 w-10 shrink-0 rounded-lg bg-muted" />
+                    <div className="flex-1">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <h4 className="text-sm font-semibold">{vol.role}</h4>
+                        <span className="font-mono text-xs text-muted-foreground">{vol.period}</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">{vol.org}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </RevealText>
+
+          {/* Contact */}
+          <RevealText delay={0.55}>
+            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Contact</span>
+              </div>
+              <div className="flex-1 flex flex-wrap gap-3">
+                <a href="https://www.linkedin.com/in/aashithakkar29/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent">Hire Me</a>
+                <a href="#" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent">Coffee Chat</a>
+                <a href="#" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent">1:1 Mentorship</a>
+              </div>
+            </div>
+          </RevealText>
         </section>
       </ContentWrap>
 
