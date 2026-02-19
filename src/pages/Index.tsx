@@ -1,10 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Linkedin, Github, Instagram, Check } from "lucide-react";
-import { useTheme } from "next-themes";
 
-import heroLight from "@/assets/hero-transparent.png";
-import heroDark from "@/assets/hero-dark.png";
+import heroImage from "@/assets/hero-transparent.png";
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Lifelong Learner."];
 
@@ -220,8 +218,7 @@ function ContentWrap({ children, className = "" }: { children: React.ReactNode; 
 
 export default function Index() {
   const [roleIndex, setRoleIndex] = useState(0);
-  const { resolvedTheme } = useTheme();
-  const heroImage = resolvedTheme === "dark" ? heroDark : heroLight;
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
