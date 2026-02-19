@@ -296,8 +296,8 @@ export default function Index() {
             alt="Hero illustration of a person jumping between cliffs"
             className="w-full h-full object-cover"
           />
-          <h2 className="absolute inset-0 flex items-center justify-center text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
-            I bridge the gap between<br />ambition and execution!
+          <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
+            I <span className="italic">bridge</span> the gap between<br />ambition and execution!
           </h2>
         </motion.div>
 
