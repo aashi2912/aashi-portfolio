@@ -3,7 +3,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Linkedin, Youtube, Instagram, BookOpen, Twitter, Check } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration.png";
 
-const roles = ["Product Manager.", "YouTuber.", "Podcast Host.", "Writer.", "Lifelong Learner."];
+const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Lifelong Learner."];
 
 const socialLinks = [
   { icon: Linkedin, href: "#", label: "LinkedIn" },
@@ -267,7 +267,7 @@ export default function Index() {
           >
             {/* Name */}
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl leading-[1.05]">
-              John Doe
+              Aashi Thakkar
             </h1>
 
             {/* Rotating role */}
