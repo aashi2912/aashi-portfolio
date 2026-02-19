@@ -1,9 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Linkedin, Github, Instagram, Check } from "lucide-react";
-import { useTheme } from "next-themes";
-import heroLight from "@/assets/hero-illustration-light.png";
-import heroDark from "@/assets/hero-illustration-dark.png";
+
+import heroImage from "@/assets/hero-transparent.png";
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Lifelong Learner."];
 
@@ -219,7 +218,7 @@ function ContentWrap({ children, className = "" }: { children: React.ReactNode; 
 
 export default function Index() {
   const [roleIndex, setRoleIndex] = useState(0);
-  const { resolvedTheme } = useTheme();
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -291,13 +290,11 @@ export default function Index() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}
         >
-          <div className="bg-background">
-            <img
-              src={resolvedTheme === "dark" ? heroDark : heroLight}
-              alt="Hero illustration of a person jumping between cliffs"
-              className="w-full block object-cover dark:mix-blend-lighten"
-            />
-          </div>
+          <img
+            src={heroImage}
+            alt="Hero illustration of a person jumping between cliffs"
+            className="w-full block object-cover"
+          />
           <div className="absolute inset-0 flex items-start justify-center pt-[6%]">
             <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-center leading-tight text-foreground">
               I bridge the gap between<br />ambition and execution!
