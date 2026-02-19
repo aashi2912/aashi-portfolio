@@ -4,12 +4,12 @@ import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "Home", id: "home" },
-  { label: "Work", id: "work" },
-  { label: "Projects", id: "projects" },
-  { label: "Hobbies", id: "hobbies" },
-  { label: "About", id: "about" },
-  { label: "Impossible List", id: "impossible-list" },
+  { label: "Home", id: "home", num: "1" },
+  { label: "Work", id: "work", num: "2" },
+  { label: "Projects", id: "projects", num: "3" },
+  { label: "Hobbies", id: "hobbies", num: "4" },
+  { label: "About", id: "about", num: "5" },
+  { label: "Impossible List", id: "impossible-list", num: "6" },
 ];
 
 function scrollToSection(id: string) {
@@ -50,22 +50,25 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
-      <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-3">
-        {/* Desktop nav */}
-        <div className="hidden items-center gap-1 md:flex">
+    <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-sm">
+      <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+        {/* Desktop nav — omareletr style: label on top, number below */}
+        <div className="hidden items-end gap-6 md:flex">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={cn(
-                "rounded-md px-3 py-1.5 text-sm transition-colors hover:bg-accent",
-                active === item.id
-                  ? "font-medium text-foreground"
-                  : "text-muted-foreground"
+                "group flex flex-col items-start gap-0 transition-opacity",
+                active === item.id ? "opacity-100" : "opacity-40 hover:opacity-70"
               )}
             >
-              {item.label}
+              <span className="text-sm font-medium leading-tight tracking-tight">
+                {item.label}
+              </span>
+              <span className="font-mono text-[10px] leading-tight text-muted-foreground">
+                {item.num}
+              </span>
             </button>
           ))}
         </div>
@@ -91,13 +94,14 @@ export function Navbar() {
                 setOpen(false);
               }}
               className={cn(
-                "flex w-full items-center py-2 text-sm transition-colors text-left",
+                "flex w-full items-center justify-between py-3 text-sm transition-opacity text-left border-b border-border/50 last:border-0",
                 active === item.id
-                  ? "font-medium text-foreground"
-                  : "text-muted-foreground"
+                  ? "opacity-100 font-medium"
+                  : "opacity-40"
               )}
             >
-              {item.label}
+              <span>{item.label}</span>
+              <span className="font-mono text-xs text-muted-foreground">{item.num}</span>
             </button>
           ))}
         </div>
@@ -105,3 +109,4 @@ export function Navbar() {
     </header>
   );
 }
+
