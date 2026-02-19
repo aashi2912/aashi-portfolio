@@ -306,7 +306,7 @@ export default function Index() {
             <img
               src={heroIllustration}
               alt="I bridge the gap between ambition and execution"
-              className="w-full object-contain dark:invert dark:brightness-90"
+              className="w-full object-contain"
               style={{ maxHeight: "70vh" }}
             />
           </motion.div>
