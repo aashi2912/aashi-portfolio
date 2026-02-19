@@ -138,19 +138,6 @@ const impossibleCategories = [
 
 // ─── Utilities ───────────────────────────────────────────────────────────────
 
-function LiveClock() {
-  const [time, setTime] = useState(new Date());
-  useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(interval);
-  }, []);
-  return (
-    <span className="font-mono text-sm text-muted-foreground">
-      {time.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true })}
-    </span>
-  );
-}
-
 function ScrambleText({ text }: { text: string }) {
   const [displayed, setDisplayed] = useState("");
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -217,13 +204,12 @@ function StaggerItem({ children, className }: { children: React.ReactNode; class
   );
 }
 
-// ─── Section wrapper with id for scroll-spy ───────────────────────────────────
-
-function Section({ id, children, className = "" }: { id: string; children: React.ReactNode; className?: string }) {
+// Constrained content wrapper used by all non-hero sections
+function ContentWrap({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <section id={id} className={`scroll-mt-20 ${className}`}>
+    <div className={`mx-auto max-w-4xl px-4 sm:px-6 ${className}`}>
       {children}
-    </section>
+    </div>
   );
 }
 
@@ -240,22 +226,20 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="space-y-24 sm:space-y-32">
+    <div>
 
       {/* ── Home ── */}
-      <Section id="home" className="space-y-0 -mt-8 -mx-4 sm:-mx-6">
+      <section id="home" className="scroll-mt-20">
 
-        {/* Full-width hero block */}
-        <div className="relative min-h-screen flex flex-col px-4 sm:px-6">
-
-          {/* Top row: name/roles/links/location + clock */}
+        {/* Top header: name / roles / social / location */}
+        <ContentWrap className="pt-6">
           <motion.div
-            className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 pt-4"
+            className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {/* Left: name + roles + social + location */}
+            {/* Left: name + roles + social */}
             <div className="flex flex-col gap-2">
               <h1 className="text-2xl font-bold tracking-tight sm:text-3xl leading-tight">
                 Aashi Thakkar
@@ -295,12 +279,10 @@ export default function Index() {
               <ScrambleText text="TORONTO, ONTARIO" />
             </div>
           </motion.div>
+        </ContentWrap>
 
-        </div>
-
-        {/* Hero image — full bleed, no padding */}
+        {/* Hero image — true full-bleed, zero padding */}
         <motion.div
-          className="w-full"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}
@@ -308,12 +290,12 @@ export default function Index() {
           <img
             src={heroIllustration}
             alt="I bridge the gap between ambition and execution"
-            className="w-full object-contain block"
+            className="w-full block object-cover"
           />
         </motion.div>
 
-        {/* Updates / feed section */}
-        <div className="pt-16 px-4 sm:px-6">
+        {/* Updates feed */}
+        <ContentWrap className="pt-16 pb-8">
           <div className="flex flex-col sm:flex-row sm:gap-16">
             <div className="mb-4 sm:mb-0 sm:w-24 shrink-0">
               <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Updates</span>
@@ -334,177 +316,187 @@ export default function Index() {
               ))}
             </div>
           </div>
-        </div>
-      </Section>
+        </ContentWrap>
+      </section>
 
       {/* ── Work ── */}
-      <Section id="work">
-        <RevealText>
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Gyms & Badges</h2>
-            <p className="mt-2 text-muted-foreground">
-              My professional journey — each role a new gym, each milestone a badge earned.
-            </p>
-          </div>
-        </RevealText>
-
-        <div className="space-y-12">
-          {experiences.map((exp, i) => (
-            <RevealText key={i} delay={i * 0.1}>
-              <motion.div
-                className="group relative border-l-2 border-border pl-8 transition-colors hover:border-foreground"
-                whileHover={{ x: 4 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="absolute -left-4 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-accent text-base">
-                  {exp.badge}
-                </div>
-                <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                  <h3 className="text-lg font-semibold">{exp.role}</h3>
-                  <span className="font-mono text-xs text-muted-foreground">{exp.period}</span>
-                </div>
-                <p className="text-sm font-medium text-muted-foreground">{exp.company}</p>
-                <p className="mt-3 text-sm leading-relaxed">{exp.description}</p>
-              </motion.div>
-            </RevealText>
-          ))}
-        </div>
-      </Section>
-
-      {/* ── Projects ── */}
-      <Section id="projects">
-        <RevealText>
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Projects</h2>
-            <p className="mt-2 text-muted-foreground">Things I've built, shipped, or experimented with.</p>
-          </div>
-        </RevealText>
-
-        <StaggerContainer className="space-y-6">
-          {projects.map((project, i) => (
-            <StaggerItem key={i}>
-              <motion.div
-                className="group cursor-pointer rounded-lg border border-border p-5 transition-colors hover:bg-accent/50"
-                whileHover={{ x: 4 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="rounded-full bg-accent px-2 py-0.5 text-xs text-muted-foreground">{project.tag}</span>
-                  <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
-                </div>
-                <h3 className="mt-3 text-lg font-semibold group-hover:underline">{project.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
-              </motion.div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-      </Section>
-
-      {/* ── Hobbies ── */}
-      <Section id="hobbies">
-        <RevealText>
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Hobbies</h2>
-            <p className="mt-2 text-muted-foreground">What I do when I'm not building products.</p>
-          </div>
-        </RevealText>
-
-        <StaggerContainer className="grid gap-6 sm:grid-cols-2">
-          {hobbies.map((hobby, i) => (
-            <StaggerItem key={i}>
-              <motion.div
-                className="rounded-lg border border-border p-6 h-full"
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.2 }}
-              >
-                <span className="text-3xl">{hobby.emoji}</span>
-                <h3 className="mt-3 text-lg font-semibold">{hobby.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{hobby.description}</p>
-              </motion.div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-      </Section>
-
-      {/* ── About ── */}
-      <Section id="about">
-        <RevealText>
-          <div className="mb-12">
-            <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-              Jack of all trades,
-            </h2>
-            <h3 className="text-4xl font-bold tracking-tight md:text-5xl text-muted-foreground">
-              Master of <span className="italic text-foreground">some.</span>
-            </h3>
-          </div>
-        </RevealText>
-
-        <div className="grid gap-12 md:grid-cols-[auto_1fr]">
-          <RevealText delay={0.1}>
-            <div className="h-64 w-64 rounded-2xl bg-muted" />
+      <ContentWrap className="py-24 scroll-mt-20" >
+        <section id="work">
+          <RevealText>
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Gyms & Badges</h2>
+              <p className="mt-2 text-muted-foreground">
+                My professional journey — each role a new gym, each milestone a badge earned.
+              </p>
+            </div>
           </RevealText>
 
-          <div className="space-y-6">
-            <RevealText delay={0.2}>
-              <p className="text-base leading-relaxed">
-                Hey there! I'm <span className="font-semibold">John Doe</span> — a product
-                builder based in <span className="font-semibold">Cairo, Egypt</span> with a
-                passion for turning ambiguous problems into elegant solutions.
-              </p>
-            </RevealText>
-            <RevealText delay={0.3}>
-              <p className="text-base leading-relaxed text-muted-foreground">
-                I started my career in software engineering before transitioning to product management.
-                This technical background helps me bridge the gap between engineering and business — and
-                I love the challenge of making complex systems feel effortless to use.
-              </p>
-            </RevealText>
-            <RevealText delay={0.4}>
-              <p className="text-base leading-relaxed text-muted-foreground">
-                When I'm not obsessing over product strategy, you'll find me recording podcast episodes,
-                writing blog posts, or buried in a good book. I believe in{" "}
-                <span className="font-semibold text-foreground">learning in public</span> and sharing everything I discover.
-              </p>
-            </RevealText>
+          <div className="space-y-12">
+            {experiences.map((exp, i) => (
+              <RevealText key={i} delay={i * 0.1}>
+                <motion.div
+                  className="group relative border-l-2 border-border pl-8 transition-colors hover:border-foreground"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="absolute -left-4 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-accent text-base">
+                    {exp.badge}
+                  </div>
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                    <h3 className="text-lg font-semibold">{exp.role}</h3>
+                    <span className="font-mono text-xs text-muted-foreground">{exp.period}</span>
+                  </div>
+                  <p className="text-sm font-medium text-muted-foreground">{exp.company}</p>
+                  <p className="mt-3 text-sm leading-relaxed">{exp.description}</p>
+                </motion.div>
+              </RevealText>
+            ))}
           </div>
-        </div>
-      </Section>
+        </section>
+      </ContentWrap>
+
+      {/* ── Projects ── */}
+      <ContentWrap className="py-24 scroll-mt-20">
+        <section id="projects">
+          <RevealText>
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Projects</h2>
+              <p className="mt-2 text-muted-foreground">Things I've built, shipped, or experimented with.</p>
+            </div>
+          </RevealText>
+
+          <StaggerContainer className="space-y-6">
+            {projects.map((project, i) => (
+              <StaggerItem key={i}>
+                <motion.div
+                  className="group cursor-pointer rounded-lg border border-border p-5 transition-colors hover:bg-accent/50"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="rounded-full bg-accent px-2 py-0.5 text-xs text-muted-foreground">{project.tag}</span>
+                    <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
+                  </div>
+                  <h3 className="mt-3 text-lg font-semibold group-hover:underline">{project.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </section>
+      </ContentWrap>
+
+      {/* ── Hobbies ── */}
+      <ContentWrap className="py-24 scroll-mt-20">
+        <section id="hobbies">
+          <RevealText>
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Hobbies</h2>
+              <p className="mt-2 text-muted-foreground">What I do when I'm not building products.</p>
+            </div>
+          </RevealText>
+
+          <StaggerContainer className="grid gap-6 sm:grid-cols-2">
+            {hobbies.map((hobby, i) => (
+              <StaggerItem key={i}>
+                <motion.div
+                  className="rounded-lg border border-border p-6 h-full"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <span className="text-3xl">{hobby.emoji}</span>
+                  <h3 className="mt-3 text-lg font-semibold">{hobby.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{hobby.description}</p>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </section>
+      </ContentWrap>
+
+      {/* ── About ── */}
+      <ContentWrap className="py-24 scroll-mt-20">
+        <section id="about">
+          <RevealText>
+            <div className="mb-12">
+              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+                Jack of all trades,
+              </h2>
+              <h3 className="text-4xl font-bold tracking-tight md:text-5xl text-muted-foreground">
+                Master of <span className="italic text-foreground">some.</span>
+              </h3>
+            </div>
+          </RevealText>
+
+          <div className="grid gap-12 md:grid-cols-[auto_1fr]">
+            <RevealText delay={0.1}>
+              <div className="h-64 w-64 rounded-2xl bg-muted" />
+            </RevealText>
+
+            <div className="space-y-6">
+              <RevealText delay={0.2}>
+                <p className="text-base leading-relaxed">
+                  Hey there! I'm <span className="font-semibold">Aashi Thakkar</span> — a product
+                  builder based in <span className="font-semibold">Toronto, Ontario</span> with a
+                  passion for turning ambiguous problems into elegant solutions.
+                </p>
+              </RevealText>
+              <RevealText delay={0.3}>
+                <p className="text-base leading-relaxed text-muted-foreground">
+                  I started my career in software engineering before transitioning to product management.
+                  This technical background helps me bridge the gap between engineering and business — and
+                  I love the challenge of making complex systems feel effortless to use.
+                </p>
+              </RevealText>
+              <RevealText delay={0.4}>
+                <p className="text-base leading-relaxed text-muted-foreground">
+                  When I'm not obsessing over product strategy, you'll find me recording podcast episodes,
+                  writing blog posts, or buried in a good book. I believe in{" "}
+                  <span className="font-semibold text-foreground">learning in public</span> and sharing everything I discover.
+                </p>
+              </RevealText>
+            </div>
+          </div>
+        </section>
+      </ContentWrap>
 
       {/* ── Impossible List ── */}
-      <Section id="impossible-list" className="pb-24">
-        <RevealText>
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Impossible List</h2>
-            <p className="mt-2 text-muted-foreground">
-              Not a bucket list — it's an evolving list of goals that push my limits.
-            </p>
-          </div>
-        </RevealText>
+      <ContentWrap className="py-24 pb-32 scroll-mt-20">
+        <section id="impossible-list">
+          <RevealText>
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Impossible List</h2>
+              <p className="mt-2 text-muted-foreground">
+                Not a bucket list — it's an evolving list of goals that push my limits.
+              </p>
+            </div>
+          </RevealText>
 
-        <StaggerContainer className="grid gap-8 sm:grid-cols-2">
-          {impossibleCategories.map((cat) => (
-            <StaggerItem key={cat.name}>
-              <div>
-                <h3 className="mb-4 text-lg font-semibold">{cat.name}</h3>
-                <ul className="space-y-2">
-                  {cat.items.map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm">
-                      {item.done ? (
-                        <Check className="h-4 w-4 shrink-0 text-primary" />
-                      ) : (
-                        <span className="h-4 w-4 shrink-0 rounded-full border border-border" />
-                      )}
-                      <span className={item.done ? "line-through text-muted-foreground" : ""}>
-                        {item.text}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-      </Section>
+          <StaggerContainer className="grid gap-8 sm:grid-cols-2">
+            {impossibleCategories.map((cat) => (
+              <StaggerItem key={cat.name}>
+                <div>
+                  <h3 className="mb-4 text-lg font-semibold">{cat.name}</h3>
+                  <ul className="space-y-2">
+                    {cat.items.map((item, i) => (
+                      <li key={i} className="flex items-center gap-3 text-sm">
+                        {item.done ? (
+                          <Check className="h-4 w-4 shrink-0 text-primary" />
+                        ) : (
+                          <span className="h-4 w-4 shrink-0 rounded-full border border-border" />
+                        )}
+                        <span className={item.done ? "line-through text-muted-foreground" : ""}>
+                          {item.text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </section>
+      </ContentWrap>
 
     </div>
   );
