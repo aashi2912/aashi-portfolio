@@ -346,13 +346,13 @@ export default function Index() {
         <section id="work" className="scroll-mt-20">
           <RevealText>
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Work</h2>
-            <p className="mt-1 text-muted-foreground">an overview of my career</p>
+            <p className="mt-1 text-muted-foreground">My journey so far...</p>
           </RevealText>
 
           {/* Profile Card */}
           <RevealText delay={0.1}>
             <div className="mt-12 flex flex-col items-center text-center gap-4">
-              <img src={profilePhoto} alt="Aashi Thakkar" className="h-48 w-48 rounded-2xl object-cover" />
+              <img src={profilePhoto} alt="Aashi Thakkar" className="h-56 w-56 rounded-2xl object-cover" />
               <div>
                 <h3 className="text-2xl font-bold">Aashi Thakkar</h3>
                 <p className="text-muted-foreground">Product Manager</p>
