@@ -290,11 +290,13 @@ export default function Index() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}
         >
-          <img
-            src={heroImage}
-            alt="Hero illustration of a person jumping between cliffs"
-            className="w-full block object-cover"
-          />
+          <div className="max-h-[45vh] overflow-hidden flex items-center justify-center">
+            <img
+              src={heroImage}
+              alt="Hero illustration of a person jumping between cliffs"
+              className="w-full block object-contain max-h-[45vh]"
+            />
+          </div>
         </motion.div>
 
         {/* Updates feed */}
