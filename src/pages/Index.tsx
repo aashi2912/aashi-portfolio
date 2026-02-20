@@ -60,19 +60,35 @@ const experiences = [
 
 const skillCategories = [
   {
-    name: "Product Management",
-    items: ["Communication", "Stakeholder Management", "Critical Thinking", "User Research", "UX Design", "Wireframing", "Product Strategy", "Prioritization", "Roadmapping", "Data Analysis", "A/B Testing"],
+    name: "Languages",
+    items: ["Python", "SQL", "JavaScript", "TypeScript", "C", "HTML/CSS"],
+  },
+  {
+    name: "Technologies/Frameworks",
+    items: ["React", "Bootstrap", "MUI", "Next.js", "Node.js", "Django", "Git"],
   },
   {
     name: "Tools",
-    items: ["Notion", "JIRA", "Figma", "Amplitude", "Google Analytics", "Firebase"],
+    items: ["VS Code", "JIRA", "Power BI", "Tableau", "Microsoft Visio", "Excel", "Postman", "GitHub", "Confluence"],
   },
   {
-    name: "Programming",
-    items: ["SQL", "HTML", "CSS", "Python", "JavaScript"],
+    name: "Database",
+    items: ["MySQL", "MongoDB"],
   },
   {
-    name: "Languages",
+    name: "Business Analysis",
+    items: ["PRDs", "BRDs", "Functional Specifications", "Data Flow Diagrams", "Process Modeling (BPM)", "UAT"],
+  },
+  {
+    name: "Product Management",
+    items: ["Product Strategy", "Product Vision", "Roadmap Planning", "Feature Prioritization", "Product Lifecycle Management", "Product Launch Execution"],
+  },
+  {
+    name: "Product Execution",
+    items: ["Agile/Scrum", "Backlog Grooming", "User Stories", "Acceptance Criteria", "Stakeholder Management", "Cross-functional Collaboration"],
+  },
+  {
+    name: "Spoken Languages",
     items: ["English", "Hindi 🇮🇳", "Gujarati"],
   },
 ];
