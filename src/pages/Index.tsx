@@ -69,7 +69,7 @@ const skillCategories = [
   },
   {
     name: "Technologies/Frameworks",
-    items: ["React", "Bootstrap", "MUI", "Next.js", "Node.js", "Django", "Git"],
+    items: ["React", "Bootstrap", "MUI", "Next.js", "Node.js", "Git"],
   },
   {
     name: "Tools",
