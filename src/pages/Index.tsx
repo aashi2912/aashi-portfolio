@@ -73,7 +73,7 @@ const skillCategories = [
   },
   {
     name: "Tools",
-    items: ["VS Code", "JIRA", "Power BI", "Tableau", "Microsoft Visio", "Excel", "Postman", "GitHub", "Confluence"],
+    items: ["Notion", "Figma", "VS Code", "JIRA", "Power BI", "Tableau", "Microsoft Visio", "Excel", "Postman", "GitHub", "Confluence"],
   },
   {
     name: "Database",
