@@ -537,16 +537,16 @@ export default function Index() {
           {/* Headline */}
           <RevealText>
             <div className="mb-4">
-              <h2 className="text-3xl font-bold tracking-tight md:text-[42px] md:leading-[1.15]">
+              <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] whitespace-nowrap">
                 When I'm not obsessing over product strategy,
               </h2>
-              <h3 className="mt-2 text-3xl font-bold tracking-tight md:text-[42px] md:leading-[1.15] text-muted-foreground">
+              <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground whitespace-nowrap">
                 I'm probably doing <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">all of this.</span>
               </h3>
             </div>
           </RevealText>
           <RevealText delay={0.1}>
-            <p className="mb-14 text-[17px] text-muted-foreground max-w-xl">
+            <p className="mb-14 text-[17px] text-muted-foreground whitespace-nowrap">
               Indulging in the many hobbies I try to juggle outside the 9-to-5. Here's a peek 👀
             </p>
           </RevealText>
