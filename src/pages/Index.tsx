@@ -8,6 +8,8 @@ import logoRbc from "@/assets/logo-rbc.svg";
 import logoCognizant from "@/assets/logo-cognizant.png";
 import logoGirlscript from "@/assets/logo-girlscript.png";
 import logoLt from "@/assets/logo-lt.png";
+import logoUwindsor from "@/assets/logo-uwindsor.png";
+import logoGtu from "@/assets/logo-gtu.png";
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Lifelong Learner."];
 
@@ -90,11 +92,13 @@ const education = [
     degree: "Masters of Engineering, Applied Computing",
     school: "University of Windsor",
     period: "Sept 2022 — April 2024",
+    logo: logoUwindsor,
   },
   {
     degree: "Bachelors of Engineering, Computer Science",
     school: "Gujarat Technological University",
     period: "Aug 2016 — Aug 2020",
+    logo: logoGtu,
   },
 ];
 
@@ -470,7 +474,7 @@ export default function Index() {
               <div className="flex-1 divide-y divide-border/40">
                 {education.map((edu, i) => (
                   <div key={i} className="flex items-start gap-4 py-5">
-                    <div className="mt-1 h-10 w-10 shrink-0 rounded-lg bg-muted" />
+                    <img src={edu.logo} alt={edu.school} className="mt-1 h-10 w-10 shrink-0 rounded-lg object-contain" />
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                         <h4 className="text-[17px] font-semibold">{edu.degree}</h4>
