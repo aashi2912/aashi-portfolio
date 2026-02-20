@@ -534,45 +534,63 @@ export default function Index() {
       {/* ── About ── */}
       <ContentWrap className="py-24 scroll-mt-20">
         <section id="about">
+          {/* Headline */}
           <RevealText>
-            <div className="mb-12">
-              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-                Jack of all trades,
+            <div className="mb-4">
+              <h2 className="text-3xl font-bold tracking-tight md:text-[42px] md:leading-[1.15]">
+                When I'm not shipping products,
               </h2>
-              <h3 className="text-4xl font-bold tracking-tight md:text-5xl text-muted-foreground">
-                Master of <span className="italic text-foreground">some.</span>
+              <h3 className="mt-2 text-3xl font-bold tracking-tight md:text-[42px] md:leading-[1.15] text-muted-foreground">
+                I'm probably doing <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">all of this.</span>
               </h3>
             </div>
           </RevealText>
+          <RevealText delay={0.1}>
+            <p className="mb-14 text-[17px] text-muted-foreground max-w-xl">
+              indulging in the many passions I try to juggle outside the 9-to-5. Here's a peek 👀
+            </p>
+          </RevealText>
 
-          <div className="grid gap-12 md:grid-cols-[auto_1fr]">
-            <RevealText delay={0.1}>
-              <div className="h-64 w-64 rounded-2xl bg-muted" />
-            </RevealText>
-
-            <div className="space-y-6">
-              <RevealText delay={0.2}>
-                <p className="text-base leading-relaxed">
-                  Hey there! I'm <span className="font-semibold">Aashi Thakkar</span> — a product
-                  builder based in <span className="font-semibold">Toronto, Ontario</span> with a
-                  passion for turning ambiguous problems into elegant solutions.
-                </p>
-              </RevealText>
-              <RevealText delay={0.3}>
-                <p className="text-base leading-relaxed text-muted-foreground">
-                  I started my career in software engineering before transitioning to product management.
-                  This technical background helps me bridge the gap between engineering and business — and
-                  I love the challenge of making complex systems feel effortless to use.
-                </p>
-              </RevealText>
-              <RevealText delay={0.4}>
-                <p className="text-base leading-relaxed text-muted-foreground">
-                  When I'm not obsessing over product strategy, you'll find me recording podcast episodes,
-                  writing blog posts, or buried in a good book. I believe in{" "}
-                  <span className="font-semibold text-foreground">learning in public</span> and sharing everything I discover.
-                </p>
-              </RevealText>
-            </div>
+          {/* Hobby Cards - Polaroid scattered layout */}
+          <div className="relative min-h-[520px] sm:min-h-[480px]">
+            {[
+              { emoji: "📚", title: "Devouring books", caption: "~50 a year across product, philosophy & fiction", rotate: "-3deg", pos: "top-0 left-0 sm:left-[2%]", delay: 0.15 },
+              { emoji: "🎙️", title: "Recording podcasts", caption: "Conversations on product thinking & career pivots", rotate: "2.5deg", pos: "top-0 right-0 sm:right-[5%] sm:top-4", delay: 0.25 },
+              { emoji: "✍️", title: "Writing essays", caption: "Mental models, learning in public & product craft", rotate: "-1.5deg", pos: "top-[200px] left-[5%] sm:top-[220px] sm:left-[18%]", delay: 0.35 },
+              { emoji: "🏃‍♀️", title: "Chasing finish lines", caption: "Marathon done ✅ — triathlon training next", rotate: "3deg", pos: "top-[200px] right-[2%] sm:top-[210px] sm:right-[12%]", delay: 0.45 },
+              { emoji: "🌍", title: "Exploring new places", caption: "Always planning the next adventure", rotate: "-2deg", pos: "top-[400px] left-[10%] sm:top-[380px] sm:left-[35%]", delay: 0.55 },
+            ].map((hobby, i) => (
+              <motion.div
+                key={i}
+                className={`absolute ${hobby.pos} w-[46%] sm:w-[240px]`}
+                initial={{ opacity: 0, y: 40, rotate: 0 }}
+                whileInView={{ opacity: 1, y: 0, rotate: hobby.rotate }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: hobby.delay, ease: [0.25, 0.4, 0.25, 1] }}
+              >
+                <motion.div
+                  className="rounded-lg border border-border bg-card p-4 shadow-lg dark:shadow-[0_8px_30px_-12px_hsl(200,100%,50%,0.1)] cursor-grab"
+                  whileHover={{ scale: 1.06, rotate: "0deg", zIndex: 10, boxShadow: "0 20px 40px -15px hsl(200 100% 50% / 0.15)" }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  {/* Polaroid "photo" area */}
+                  <div className="aspect-[4/3] rounded-md bg-gradient-to-br from-secondary to-muted flex items-center justify-center mb-3">
+                    <motion.span
+                      className="text-5xl"
+                      whileHover={{ scale: 1.3, rotate: [0, -10, 10, 0] }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      {hobby.emoji}
+                    </motion.span>
+                  </div>
+                  {/* Caption */}
+                  <h4 className="text-[15px] font-bold leading-snug">{hobby.title}</h4>
+                  <p className="mt-1 text-[12px] leading-relaxed text-muted-foreground">{hobby.caption}</p>
+                  {/* Pin dot */}
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 h-4 w-4 rounded-full bg-[hsl(200,50%,35%)] dark:bg-[hsl(200,40%,75%)] shadow-md" />
+                </motion.div>
+              </motion.div>
+            ))}
           </div>
         </section>
       </ContentWrap>
