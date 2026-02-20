@@ -493,11 +493,11 @@ export default function Index() {
           {/* Education Photos */}
           <RevealText delay={0.4}>
             <div className="mt-10 grid grid-cols-2 gap-4">
-              <div className="aspect-square overflow-hidden rounded-2xl">
-                <img src={eduPhoto1} alt="At Assumption College" className="w-full h-full object-cover object-top" />
+              <div className="aspect-[4/3] overflow-hidden rounded-2xl">
+                <img src={eduPhoto1} alt="At Assumption College" className="w-full h-full object-cover object-center" />
               </div>
-              <div className="aspect-square overflow-hidden rounded-2xl">
-                <img src={eduPhoto2} alt="Graduation" className="w-full h-full object-cover object-top" />
+              <div className="aspect-[4/3] overflow-hidden rounded-2xl">
+                <img src={eduPhoto2} alt="Graduation" className="w-full h-full object-cover object-center" />
               </div>
             </div>
           </RevealText>
