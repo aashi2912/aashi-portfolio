@@ -514,7 +514,7 @@ export default function Index() {
                 <div className="flex flex-wrap gap-3">
                   <a href="/Aashi_Thakkar_Resume.pdf" target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">Hire Me <FileText size={16} /></a>
                   <a href="mailto:aashithakkar29@gmail.com" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">Coffee Chat <Coffee size={16} /></a>
-                  <a href="#" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">1:1 Mentorship <Link size={16} /></a>
+                  <a href="https://topmate.io/aashi_thakkar" target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">1:1 Mentorship <Link size={16} /></a>
                 </div>
 
                 {/* Divider with "or" */}
