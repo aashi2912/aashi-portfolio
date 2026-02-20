@@ -10,6 +10,8 @@ import logoGirlscript from "@/assets/logo-girlscript.png";
 import logoLt from "@/assets/logo-lt.png";
 import logoUwindsor from "@/assets/logo-uwindsor.svg";
 import logoGtu from "@/assets/logo-gtu.png";
+import eduPhoto1 from "@/assets/edu-photo-1.jpeg";
+import eduPhoto2 from "@/assets/edu-photo-2.jpeg";
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Lifelong Learner."];
 
@@ -488,7 +490,13 @@ export default function Index() {
             </div>
           </RevealText>
 
-
+          {/* Education Photos */}
+          <RevealText delay={0.4}>
+            <div className="mt-10 grid grid-cols-2 gap-4">
+              <img src={eduPhoto1} alt="At Assumption College" className="w-full h-80 object-cover rounded-2xl" />
+              <img src={eduPhoto2} alt="Graduation" className="w-full h-80 object-cover rounded-2xl" />
+            </div>
+          </RevealText>
 
 
           {/* Contact */}
