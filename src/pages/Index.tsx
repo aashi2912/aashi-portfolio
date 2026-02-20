@@ -507,12 +507,32 @@ export default function Index() {
           <RevealText delay={0.55}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Contact</span>
+                <span className="text-[13px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Contact</span>
               </div>
-              <div className="flex-1 flex flex-wrap gap-3">
-                <a href="https://www.linkedin.com/in/aashithakkar29/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent">Hire Me</a>
-                <a href="#" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent">Coffee Chat</a>
-                <a href="#" className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent">1:1 Mentorship</a>
+              <div className="flex-1">
+                {/* Action buttons */}
+                <div className="flex flex-wrap gap-3">
+                  <a href="https://www.linkedin.com/in/aashithakkar29/" target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">Hire Me 📄</a>
+                  <a href="mailto:aashithakkar29@gmail.com" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">Coffee Chat ☕</a>
+                  <a href="#" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">1:1 Mentorship 🔗</a>
+                </div>
+
+                {/* Divider with "or" */}
+                <div className="my-6 flex items-center gap-4">
+                  <div className="flex-1 h-px bg-border" />
+                  <span className="text-sm text-muted-foreground">or</span>
+                  <div className="flex-1 h-px bg-border" />
+                </div>
+
+                {/* Contact form */}
+                <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input type="text" placeholder="Your name" className="rounded-lg border border-border bg-card px-4 py-3 text-[15px] placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 focus:ring-ring" />
+                    <input type="email" placeholder="Your email" className="rounded-lg border border-border bg-card px-4 py-3 text-[15px] placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 focus:ring-ring" />
+                  </div>
+                  <textarea placeholder="I actually look at these. Please feel free to type your message here and I'll get back to you asap :)" rows={5} className="w-full rounded-lg border border-border bg-card px-4 py-3 text-[15px] placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 focus:ring-ring resize-none" />
+                  <button type="submit" className="w-full rounded-lg bg-foreground text-background py-3 text-[15px] font-medium transition-colors hover:bg-foreground/90">Send</button>
+                </form>
               </div>
             </div>
           </RevealText>
