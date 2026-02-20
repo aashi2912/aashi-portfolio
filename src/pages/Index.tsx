@@ -317,10 +317,10 @@ export default function Index() {
           >
             {/* Left: name + roles + social */}
             <div className="flex flex-col gap-2">
-              <h1 className="text-2xl font-bold tracking-tight sm:text-3xl leading-tight">
+              <h1 className="text-[26px] font-bold tracking-tight sm:text-[32px] leading-tight">
                 Aashi Thakkar
               </h1>
-              <div className="h-6 text-sm font-normal text-muted-foreground sm:text-base">
+              <div className="h-6 text-[16px] font-normal text-muted-foreground sm:text-[18px]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={roleIndex}
@@ -344,7 +344,7 @@ export default function Index() {
                     className="rounded-md p-1.5 text-muted-foreground transition-all hover:text-foreground"
                     aria-label={label}
                   >
-                    <Icon className="h-4 w-4" />
+                    <Icon className="h-5 w-5" />
                   </a>
                 ))}
               </div>
