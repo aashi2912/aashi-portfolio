@@ -547,7 +547,7 @@ export default function Index() {
           </RevealText>
           <RevealText delay={0.1}>
             <p className="mb-14 text-[17px] text-muted-foreground max-w-xl">
-              indulging in the many hobbies I try to juggle outside the 9-to-5. Here's a peek 👀
+              Indulging in the many hobbies I try to juggle outside the 9-to-5. Here's a peek 👀
             </p>
           </RevealText>
 
