@@ -603,27 +603,6 @@ export default function Index() {
               </motion.div>
             ))}
 
-            {/* Floating decorative stickers */}
-            {[
-              { emoji: "📌", top: "8%", left: "40%", size: "text-2xl", rot: 12 },
-              { emoji: "✨", top: "38%", left: "15%", size: "text-3xl", rot: -8 },
-              { emoji: "🎵", top: "55%", left: "82%", size: "text-2xl", rot: 20 },
-              { emoji: "🌸", top: "80%", left: "8%", size: "text-xl", rot: -15 },
-              { emoji: "⭐", top: "15%", left: "88%", size: "text-2xl", rot: 5 },
-              { emoji: "🦋", top: "90%", left: "50%", size: "text-2xl", rot: -10 },
-            ].map((s, i) => (
-              <motion.span
-                key={`sticker-${i}`}
-                className={`absolute ${s.size} select-none pointer-events-none`}
-                style={{ top: s.top, left: s.left }}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 0.5, scale: 1, rotate: `${s.rot}deg` }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.15, type: "spring" }}
-              >
-                {s.emoji}
-              </motion.span>
-            ))}
           </div>
 
           {/* In the Queue section */}
