@@ -60,6 +60,10 @@ const experiences = [
 
 const skillCategories = [
   {
+    name: "Product Management",
+    items: ["Product Strategy", "Product Vision", "Roadmap Planning", "Feature Prioritization", "Product Lifecycle Management", "Product Launch Execution", "Agile/Scrum", "Backlog Grooming", "User Stories", "Acceptance Criteria", "Stakeholder Management", "Cross-functional Collaboration"],
+  },
+  {
     name: "Languages",
     items: ["Python", "SQL", "JavaScript", "TypeScript", "C", "HTML/CSS"],
   },
@@ -78,14 +82,6 @@ const skillCategories = [
   {
     name: "Business Analysis",
     items: ["PRDs", "BRDs", "Functional Specifications", "Data Flow Diagrams", "Process Modeling (BPM)", "UAT"],
-  },
-  {
-    name: "Product Management",
-    items: ["Product Strategy", "Product Vision", "Roadmap Planning", "Feature Prioritization", "Product Lifecycle Management", "Product Launch Execution"],
-  },
-  {
-    name: "Product Execution",
-    items: ["Agile/Scrum", "Backlog Grooming", "User Stories", "Acceptance Criteria", "Stakeholder Management", "Cross-functional Collaboration"],
   },
   {
     name: "Spoken Languages",
