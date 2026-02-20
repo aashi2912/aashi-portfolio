@@ -4,7 +4,7 @@ import { Linkedin, Github, Instagram, Check, ExternalLink } from "lucide-react";
 
 import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
-import logoRbc from "@/assets/logo-rbc.png";
+import logoRbc from "@/assets/logo-rbc.svg";
 import logoCognizant from "@/assets/logo-cognizant.png";
 import logoGirlscript from "@/assets/logo-girlscript.png";
 import logoLt from "@/assets/logo-lt.png";
