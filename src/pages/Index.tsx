@@ -458,7 +458,7 @@ export default function Index() {
                     <h4 className="mb-4 text-[20px] font-bold">{cat.name}</h4>
                     <div className="flex flex-wrap gap-2.5">
                       {cat.items.map((skill) => (
-                        <span key={skill} className="rounded-full border border-border/60 bg-secondary/80 px-4 py-2.5 text-[14px] text-foreground/80 dark:border-[hsl(195,50%,22%)] dark:bg-[hsl(195,35%,13%)] dark:text-[hsl(195,25%,72%)]">{skill}</span>
+                        <span key={skill} className="rounded-full border border-border/60 bg-secondary/80 px-3 py-2 text-[12px] text-foreground/80 dark:border-[hsl(200,100%,50%,0.15)] dark:bg-[hsl(200,100%,50%,0.13)] dark:text-[hsl(200,40%,75%)]">{skill}</span>
                       ))}
                     </div>
                   </div>
