@@ -4,6 +4,10 @@ import { Linkedin, Github, Instagram, Check, ExternalLink } from "lucide-react";
 
 import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
+import logoRbc from "@/assets/logo-rbc.png";
+import logoCognizant from "@/assets/logo-cognizant.png";
+import logoGirlscript from "@/assets/logo-girlscript.png";
+import logoLt from "@/assets/logo-lt.png";
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Lifelong Learner."];
 
@@ -26,26 +30,31 @@ const experiences = [
     role: "Product Manager",
     company: "RBC Capital Markets",
     period: "Jan 2025 — Present",
+    logo: logoRbc,
   },
   {
     role: "Software Developer",
     company: "RBC Capital Markets",
     period: "Sep 2023 — Dec 2024",
+    logo: logoRbc,
   },
   {
     role: "Programmer Analyst",
     company: "Cognizant Technology Solutions",
     period: "Mar 2021 — Jun 2022",
+    logo: logoCognizant,
   },
   {
     role: "Open Source Contributor",
     company: "GirlScript Summer of Code",
     period: "Mar 2021 — May 2021",
+    logo: logoGirlscript,
   },
   {
     role: "Software Developer Intern",
     company: "Larsen & Toubro",
     period: "May 2019 — Jun 2019",
+    logo: logoLt,
   },
 ];
 
@@ -401,7 +410,7 @@ export default function Index() {
               <div className="flex-1 divide-y divide-border/40">
                 {experiences.map((exp, i) => (
                   <div key={i} className="flex items-start gap-4 py-5">
-                    <div className="mt-1 h-10 w-10 shrink-0 rounded-lg bg-muted" />
+                    <img src={exp.logo} alt={exp.company} className="mt-1 h-10 w-10 shrink-0 rounded-lg bg-muted object-contain p-1" />
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                         <h4 className="text-sm font-semibold">{exp.role}</h4>
