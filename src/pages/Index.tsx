@@ -401,9 +401,9 @@ export default function Index() {
           <RevealText delay={0.15}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-[11px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Bio</span>
+                <span className="text-[13px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Bio</span>
               </div>
-              <div className="flex-1 space-y-4 text-[15px] leading-[1.7]">
+              <div className="flex-1 space-y-4 text-[17px] leading-[1.75]">
                 <p>I am a Product Manager based in Toronto, currently leading Alternative Data, Gen AI, and Research Technology products at Royal Bank of Canada – Capital Markets.</p>
                 <p>I started my career in software development. After 3 years of building systems and writing code, I realized I was more curious about how technology actually fits into people's workflows. I was always more interested in the "why" behind things — what we were shipping, why we were building them, who they were for, and whether they truly made an impact.</p>
                 <p>That's when I found my passion for UX and Product. And guess what? I was actually better at it — even while performing those responsibilities in my role as a developer. 💡</p>
@@ -421,7 +421,7 @@ export default function Index() {
           <RevealText delay={0.2}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-[11px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Experience</span>
+                <span className="text-[13px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Experience</span>
               </div>
               <div className="flex-1 divide-y divide-border/40">
                 {experiences.map((exp, i) => (
@@ -429,10 +429,10 @@ export default function Index() {
                     <img src={exp.logo} alt={exp.company} className="mt-1 h-10 w-10 shrink-0 rounded-lg object-contain" />
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                        <h4 className="text-[15px] font-semibold">{exp.role}</h4>
-                        <span className="font-mono text-[11px] text-muted-foreground">{exp.period}</span>
+                        <h4 className="text-[17px] font-semibold">{exp.role}</h4>
+                        <span className="font-mono text-[13px] text-muted-foreground">{exp.period}</span>
                       </div>
-                      <p className="text-[14px] text-muted-foreground">{exp.company}</p>
+                      <p className="text-[15px] text-muted-foreground">{exp.company}</p>
                     </div>
                   </div>
                 ))}
@@ -447,7 +447,7 @@ export default function Index() {
           <RevealText delay={0.3}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-[11px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Skills</span>
+                <span className="text-[13px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Skills</span>
               </div>
               <div className="flex-1 space-y-8">
                 {skillCategories.map((cat) => (
@@ -455,7 +455,7 @@ export default function Index() {
                     <h4 className="mb-3 text-lg font-bold">{cat.name}</h4>
                     <div className="flex flex-wrap gap-2.5">
                       {cat.items.map((skill) => (
-                        <span key={skill} className="rounded-full border border-border/60 bg-secondary/80 px-4 py-2 text-[13px]">{skill}</span>
+                        <span key={skill} className="rounded-full border border-border/60 bg-secondary/80 px-4 py-2 text-[15px]">{skill}</span>
                       ))}
                     </div>
                   </div>
@@ -468,7 +468,7 @@ export default function Index() {
           <RevealText delay={0.35}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-[11px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Education</span>
+                <span className="text-[13px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Education</span>
               </div>
               <div className="flex-1 divide-y divide-border/40">
                 {education.map((edu, i) => (
@@ -476,10 +476,10 @@ export default function Index() {
                     <div className="mt-1 h-10 w-10 shrink-0 rounded-lg bg-muted" />
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                        <h4 className="text-sm font-semibold">{edu.degree}</h4>
-                        <span className="font-mono text-xs text-muted-foreground">{edu.period}</span>
+                        <h4 className="text-[17px] font-semibold">{edu.degree}</h4>
+                        <span className="font-mono text-[13px] text-muted-foreground">{edu.period}</span>
                       </div>
-                      <p className="text-sm text-muted-foreground">{edu.school}</p>
+                      <p className="text-[15px] text-muted-foreground">{edu.school}</p>
                     </div>
                   </div>
                 ))}
