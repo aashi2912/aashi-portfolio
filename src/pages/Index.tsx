@@ -370,14 +370,14 @@ export default function Index() {
               </div>
               <div className="flex-1 space-y-4 text-sm leading-relaxed">
                 <p>I am a Product Manager based in Toronto, currently leading Alternative Data, Gen AI, and Research Technology products at Royal Bank of Canada – Capital Markets.</p>
-                <p className="text-muted-foreground">I started my career in software development. After 3 years of building systems and writing code, I realized I was more curious about how technology actually fits into people's workflows. I was always more interested in the "why" behind things — what we were shipping, why we were building them, who they were for, and whether they truly made an impact.</p>
-                <p className="text-muted-foreground">That's when I found my passion for UX and Product. And guess what? I was actually better at it — even while performing those responsibilities in my role as a developer. 💡</p>
-                <p className="text-muted-foreground">I don't just enjoy building systems — I enjoy deciding what should be built, why, and for whom. 🎯</p>
-                <p className="text-muted-foreground">What I've come to love most is how Product Managers think and operate — owning the problem, shaping the solution, and driving impact through clarity and collaboration. 🚀 Ultimately, that led me to a clear path toward product management.</p>
-                <p className="text-muted-foreground">Today, I work at the intersection of tech and business, translating complex, ambiguous problems into clear product direction. I build solutions that are not only technically sound, but genuinely useful. ⚙️</p>
-                <p className="text-muted-foreground">I strongly believe great products are user-centered and grounded in real needs — and that lens guides everything I build. ✨</p>
-                <p className="text-muted-foreground">If you're curious about AI, data-driven products, or thoughtful product strategy, let's connect. 🤝</p>
-                <p className="text-muted-foreground">And if you want to see what I'm up to outside of work — check out my <a href="/about" className="underline underline-offset-4 hover:text-foreground transition-colors">About</a>!</p>
+                <p>I started my career in software development. After 3 years of building systems and writing code, I realized I was more curious about how technology actually fits into people's workflows. I was always more interested in the "why" behind things — what we were shipping, why we were building them, who they were for, and whether they truly made an impact.</p>
+                <p>That's when I found my passion for UX and Product. And guess what? I was actually better at it — even while performing those responsibilities in my role as a developer. 💡</p>
+                <p>I don't just enjoy building systems — I enjoy deciding what should be built, why, and for whom. 🎯</p>
+                <p>What I've come to love most is how Product Managers think and operate — owning the problem, shaping the solution, and driving impact through clarity and collaboration. 🚀 Ultimately, that led me to a clear path toward product management.</p>
+                <p>Today, I work at the intersection of tech and business, translating complex, ambiguous problems into clear product direction. I build solutions that are not only technically sound, but genuinely useful. ⚙️</p>
+                <p>I strongly believe great products are user-centered and grounded in real needs — and that lens guides everything I build. ✨</p>
+                <p>If you're curious about AI, data-driven products, or thoughtful product strategy, let's connect. 🤝</p>
+                <p>And if you want to see what I'm up to outside of work — check out my <a href="/about" className="hover:opacity-70 transition-opacity">About</a>!</p>
               </div>
             </div>
           </RevealText>
