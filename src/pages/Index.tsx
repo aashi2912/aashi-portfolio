@@ -8,7 +8,7 @@ import logoRbc from "@/assets/logo-rbc.svg";
 import logoCognizant from "@/assets/logo-cognizant.png";
 import logoGirlscript from "@/assets/logo-girlscript.png";
 import logoLt from "@/assets/logo-lt.png";
-import logoUwindsor from "@/assets/logo-uwindsor.png";
+import logoUwindsor from "@/assets/logo-uwindsor.svg";
 import logoGtu from "@/assets/logo-gtu.png";
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Lifelong Learner."];
