@@ -551,25 +551,27 @@ export default function Index() {
             </p>
           </RevealText>
 
-          {/* Hobby Cards - Polaroid scattered layout */}
-          <div className="relative min-h-[520px] sm:min-h-[480px]">
+          {/* Current Hobbies - Polaroid scattered layout */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
             {[
-              { emoji: "📚", title: "Devouring books", caption: "~50 a year across product, philosophy & fiction", rotate: "-3deg", pos: "top-0 left-0 sm:left-[2%]", delay: 0.15 },
-              { emoji: "🎙️", title: "Recording podcasts", caption: "Conversations on product thinking & career pivots", rotate: "2.5deg", pos: "top-0 right-0 sm:right-[5%] sm:top-4", delay: 0.25 },
-              { emoji: "✍️", title: "Writing essays", caption: "Mental models, learning in public & product craft", rotate: "-1.5deg", pos: "top-[200px] left-[5%] sm:top-[220px] sm:left-[18%]", delay: 0.35 },
-              { emoji: "🏃‍♀️", title: "Chasing finish lines", caption: "Marathon done ✅ — triathlon training next", rotate: "3deg", pos: "top-[200px] right-[2%] sm:top-[210px] sm:right-[12%]", delay: 0.45 },
-              { emoji: "🌍", title: "Exploring new places", caption: "Always planning the next adventure", rotate: "-2deg", pos: "top-[400px] left-[10%] sm:top-[380px] sm:left-[35%]", delay: 0.55 },
+              { emoji: "🎨", title: "Painting", caption: "Bringing colors to life on canvas", rotate: "-2deg", delay: 0.1 },
+              { emoji: "🌍", title: "Exploring new places", caption: "Always planning the next adventure", rotate: "1.5deg", delay: 0.15 },
+              { emoji: "🤿", title: "Snorkelling", caption: "Discovering the world beneath the waves", rotate: "-1deg", delay: 0.2 },
+              { emoji: "📚", title: "Reading", caption: "Getting lost in stories & ideas", rotate: "2.5deg", delay: 0.25 },
+              { emoji: "🏺", title: "Pottery", caption: "Moulding clay into something beautiful", rotate: "-3deg", delay: 0.3 },
+              { emoji: "🥾", title: "Hiking", caption: "Chasing trails & mountain views", rotate: "1deg", delay: 0.35 },
+              { emoji: "💃", title: "Kathak", caption: "Indian classical dance — rhythm & expression", rotate: "-2.5deg", delay: 0.4 },
+              { emoji: "🏊‍♀️", title: "Swimming", caption: "My kind of meditation", rotate: "2deg", delay: 0.45 },
             ].map((hobby, i) => (
               <motion.div
                 key={i}
-                className={`absolute ${hobby.pos} w-[46%] sm:w-[240px]`}
                 initial={{ opacity: 0, y: 40, rotate: 0 }}
                 whileInView={{ opacity: 1, y: 0, rotate: hobby.rotate }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: hobby.delay, ease: [0.25, 0.4, 0.25, 1] }}
               >
                 <motion.div
-                  className="rounded-lg border border-border bg-card p-4 shadow-lg dark:shadow-[0_8px_30px_-12px_hsl(200,100%,50%,0.1)] cursor-grab"
+                  className="relative rounded-lg border border-border bg-card p-4 shadow-lg dark:shadow-[0_8px_30px_-12px_hsl(200,100%,50%,0.1)] cursor-grab"
                   whileHover={{ scale: 1.06, rotate: "0deg", zIndex: 10, boxShadow: "0 20px 40px -15px hsl(200 100% 50% / 0.15)" }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
@@ -592,6 +594,59 @@ export default function Index() {
               </motion.div>
             ))}
           </div>
+
+          {/* In the Queue section */}
+          <RevealText delay={0.2}>
+            <div className="mt-20 mb-6">
+              <h3 className="text-xl font-bold tracking-tight md:text-2xl">
+                In the Queue 🎯
+              </h3>
+              <p className="mt-1 text-sm text-muted-foreground italic">
+                Gonna try these soon — the list never stops growing
+              </p>
+            </div>
+          </RevealText>
+
+          <StaggerContainer className="flex flex-wrap gap-2.5">
+            {[
+              { label: "⛷️ Ski", delay: 0.05 },
+              { label: "⛸️ Skate", delay: 0.08 },
+              { label: "🤿 Scuba Diving", delay: 0.11 },
+              { label: "🪂 Sky Diving", delay: 0.14 },
+              { label: "🎸 Learn Guitar", delay: 0.17 },
+              { label: "🖥️ Digital Art", delay: 0.2 },
+              { label: "🎨 Graphic Design", delay: 0.23 },
+              { label: "🧶 Knitting", delay: 0.26 },
+              { label: "💃 Salsa", delay: 0.29 },
+              { label: "🏓 Table Tennis", delay: 0.32 },
+              { label: "🪡 Embroidery", delay: 0.35 },
+              { label: "🏄‍♀️ Surf", delay: 0.38 },
+            ].map((item, i) => (
+              <StaggerItem key={i}>
+                <motion.span
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card px-4 py-2 text-sm font-medium shadow-sm hover:shadow-md transition-shadow cursor-default"
+                  whileHover={{ scale: 1.08, y: -2 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                >
+                  {item.label}
+                </motion.span>
+              </StaggerItem>
+            ))}
+            <StaggerItem>
+              <motion.span
+                className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-muted-foreground/30 bg-transparent px-4 py-2 text-sm text-muted-foreground italic cursor-default"
+                whileHover={{ scale: 1.05 }}
+              >
+                ...and so many more ✨
+              </motion.span>
+            </StaggerItem>
+          </StaggerContainer>
+
+          <RevealText delay={0.3}>
+            <p className="mt-10 text-center text-sm text-muted-foreground font-mono tracking-wide">
+              Jack of all trades, master of none? <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">But oftentimes better than a master of one.</span>
+            </p>
+          </RevealText>
         </section>
       </ContentWrap>
 
