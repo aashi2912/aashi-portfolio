@@ -383,8 +383,8 @@ export default function Index() {
       <ContentWrap className="py-24 scroll-mt-20">
         <section id="work" className="scroll-mt-20">
           <RevealText>
-            <h2 className="text-[26px] font-bold tracking-tight">Work</h2>
-            <p className="mt-1 text-[16px] text-muted-foreground">an overview of my career</p>
+            <h2 className="text-[28px] font-bold tracking-tight">Work</h2>
+            <p className="mt-1 text-[18px] text-muted-foreground">an overview of my career</p>
           </RevealText>
 
           {/* Profile Card */}
