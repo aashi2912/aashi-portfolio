@@ -538,7 +538,7 @@ export default function Index() {
           <RevealText>
             <div className="mb-4">
               <h2 className="text-3xl font-bold tracking-tight md:text-[42px] md:leading-[1.15]">
-                When I'm not shipping products,
+                When I'm not obsessing over product strategy,
               </h2>
               <h3 className="mt-2 text-3xl font-bold tracking-tight md:text-[42px] md:leading-[1.15] text-muted-foreground">
                 I'm probably doing <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">all of this.</span>
