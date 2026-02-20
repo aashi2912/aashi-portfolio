@@ -410,7 +410,7 @@ export default function Index() {
               <div className="flex-1 divide-y divide-border/40">
                 {experiences.map((exp, i) => (
                   <div key={i} className="flex items-start gap-4 py-5">
-                    <img src={exp.logo} alt={exp.company} className="mt-1 h-10 w-10 shrink-0 rounded-lg bg-muted object-contain p-1" />
+                    <img src={exp.logo} alt={exp.company} className="mt-1 h-10 w-10 shrink-0 rounded-lg object-contain" />
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                         <h4 className="text-sm font-semibold">{exp.role}</h4>
