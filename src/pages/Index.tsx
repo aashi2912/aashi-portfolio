@@ -552,16 +552,16 @@ export default function Index() {
           </RevealText>
 
           {/* Current Hobbies - Scattered polaroid mood board */}
-          <div className="relative w-full" style={{ minHeight: "900px" }}>
+          <div className="relative w-full" style={{ minHeight: "1100px" }}>
             {[
-              { emoji: "🎨", title: "Painting", caption: "Bringing colors to life on canvas", rotate: "-5deg", top: "0%", left: "2%", width: "220px", delay: 0.1, pin: "hsl(0,70%,55%)" },
-              { emoji: "🌍", title: "Exploring new places", caption: "Always planning the next adventure", rotate: "3deg", top: "2%", left: "55%", width: "240px", delay: 0.18, pin: "hsl(35,80%,50%)" },
-              { emoji: "🤿", title: "Snorkelling", caption: "Discovering the world beneath the waves", rotate: "-2deg", top: "28%", left: "30%", width: "210px", delay: 0.26, pin: "hsl(200,70%,50%)" },
-              { emoji: "📚", title: "Reading", caption: "Getting lost in stories & ideas", rotate: "4.5deg", top: "22%", left: "72%", width: "200px", delay: 0.34, pin: "hsl(120,50%,45%)" },
-              { emoji: "🏺", title: "Pottery", caption: "Moulding clay into something beautiful", rotate: "-4deg", top: "50%", left: "5%", width: "230px", delay: 0.42, pin: "hsl(280,60%,55%)" },
-              { emoji: "🥾", title: "Hiking", caption: "Chasing trails & mountain views", rotate: "2.5deg", top: "48%", left: "48%", width: "215px", delay: 0.5, pin: "hsl(25,80%,50%)" },
-              { emoji: "💃", title: "Kathak", caption: "Indian classical dance — rhythm & expression", rotate: "-3.5deg", top: "72%", left: "20%", width: "225px", delay: 0.58, pin: "hsl(340,70%,55%)" },
-              { emoji: "🏊‍♀️", title: "Swimming", caption: "My kind of meditation", rotate: "5deg", top: "70%", left: "62%", width: "210px", delay: 0.66, pin: "hsl(190,70%,45%)" },
+              { emoji: "🎨", title: "Painting", caption: "Bringing colors to life on canvas", rotate: "-5deg", top: "0px", left: "2%", width: "220px", delay: 0.1, pin: "hsl(0,70%,55%)" },
+              { emoji: "🌍", title: "Exploring new places", caption: "Always planning the next adventure", rotate: "3deg", top: "20px", left: "52%", width: "230px", delay: 0.18, pin: "hsl(35,80%,50%)" },
+              { emoji: "🤿", title: "Snorkelling", caption: "Discovering the world beneath the waves", rotate: "-2deg", top: "280px", left: "25%", width: "210px", delay: 0.26, pin: "hsl(200,70%,50%)" },
+              { emoji: "📚", title: "Reading", caption: "Getting lost in stories & ideas", rotate: "4.5deg", top: "300px", left: "68%", width: "200px", delay: 0.34, pin: "hsl(120,50%,45%)" },
+              { emoji: "🏺", title: "Pottery", caption: "Moulding clay into something beautiful", rotate: "-4deg", top: "540px", left: "3%", width: "220px", delay: 0.42, pin: "hsl(280,60%,55%)" },
+              { emoji: "🥾", title: "Hiking", caption: "Chasing trails & mountain views", rotate: "2.5deg", top: "560px", left: "48%", width: "215px", delay: 0.5, pin: "hsl(25,80%,50%)" },
+              { emoji: "💃", title: "Kathak", caption: "Indian classical dance — rhythm & expression", rotate: "-3.5deg", top: "820px", left: "15%", width: "225px", delay: 0.58, pin: "hsl(340,70%,55%)" },
+              { emoji: "🏊‍♀️", title: "Swimming", caption: "My kind of meditation", rotate: "5deg", top: "840px", left: "58%", width: "210px", delay: 0.66, pin: "hsl(190,70%,45%)" },
             ].map((hobby, i) => (
               <motion.div
                 key={i}
