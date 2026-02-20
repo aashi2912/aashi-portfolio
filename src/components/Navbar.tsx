@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Home, Briefcase, FolderOpen, Heart, User, ListChecks, Menu, X } from "lucide-react";
+import { Home, Briefcase, FolderOpen, User, ListChecks, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 
@@ -7,9 +7,8 @@ const navItems = [
   { label: "Home", id: "home", icon: Home, num: "1" },
   { label: "Work", id: "work", icon: Briefcase, num: "2" },
   { label: "Projects", id: "projects", icon: FolderOpen, num: "3" },
-  { label: "Hobbies", id: "hobbies", icon: Heart, num: "4" },
-  { label: "About", id: "about", icon: User, num: "5" },
-  { label: "Impossible List", id: "impossible-list", icon: ListChecks, num: "6" },
+  { label: "About", id: "about", icon: User, num: "4" },
+  { label: "Impossible List", id: "impossible-list", icon: ListChecks, num: "5" },
 ];
 
 function scrollToSection(id: string) {

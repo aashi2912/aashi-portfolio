@@ -149,29 +149,6 @@ const projects = [
   },
 ];
 
-const hobbies = [
-  {
-    emoji: "📚",
-    title: "Reading",
-    description: "I read ~50 books a year across product, philosophy, and fiction. Current stack: Sapiens, The Mom Test.",
-  },
-  {
-    emoji: "🎙️",
-    title: "Podcasting",
-    description: "I host a podcast about product thinking, career pivots, and building with intention.",
-  },
-  {
-    emoji: "✍️",
-    title: "Writing",
-    description: "I write essays about product management, mental models, and learning in public on Medium.",
-  },
-  {
-    emoji: "🏃",
-    title: "Running",
-    description: "Completed my first marathon in 2024. Currently training for a triathlon.",
-  },
-];
-
 const impossibleCategories = [
   {
     name: "Fitness",
@@ -547,34 +524,6 @@ export default function Index() {
                   </div>
                   <h3 className="mt-3 text-lg font-semibold group-hover:underline">{project.title}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </section>
-      </ContentWrap>
-
-      {/* ── Hobbies ── */}
-      <ContentWrap className="py-24 scroll-mt-20">
-        <section id="hobbies">
-          <RevealText>
-            <div className="mb-12">
-              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Hobbies</h2>
-              <p className="mt-2 text-muted-foreground">What I do when I'm not building products.</p>
-            </div>
-          </RevealText>
-
-          <StaggerContainer className="grid gap-6 sm:grid-cols-2">
-            {hobbies.map((hobby, i) => (
-              <StaggerItem key={i}>
-                <motion.div
-                  className="rounded-lg border border-border p-6 h-full"
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <span className="text-3xl">{hobby.emoji}</span>
-                  <h3 className="mt-3 text-lg font-semibold">{hobby.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{hobby.description}</p>
                 </motion.div>
               </StaggerItem>
             ))}
