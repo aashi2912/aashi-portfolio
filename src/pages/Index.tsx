@@ -404,7 +404,7 @@ export default function Index() {
           <RevealText delay={0.15}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-[13px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Bio</span>
+                <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Bio</span>
               </div>
               <div className="flex-1 space-y-4 text-[17px] leading-[1.75]">
                 <p>I am a Product Manager based in Toronto, currently leading Alternative Data, Gen AI, and Research Technology products at Royal Bank of Canada – Capital Markets.</p>
@@ -424,7 +424,7 @@ export default function Index() {
           <RevealText delay={0.2}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-[13px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Experience</span>
+                <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Experience</span>
               </div>
               <div className="flex-1 divide-y divide-border/40">
                 {experiences.map((exp, i) => (
@@ -450,15 +450,15 @@ export default function Index() {
           <RevealText delay={0.3}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-[13px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Skills</span>
+                <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Skills</span>
               </div>
               <div className="flex-1 space-y-8">
                 {skillCategories.map((cat) => (
                   <div key={cat.name}>
-                    <h4 className="mb-4 text-[20px] font-bold">{cat.name}</h4>
+                    <h4 className="mb-4 text-[22px] font-bold">{cat.name}</h4>
                     <div className="flex flex-wrap gap-2.5">
                       {cat.items.map((skill) => (
-                        <span key={skill} className="rounded-full border border-border/60 bg-secondary/80 px-3 py-2 text-[12px] text-foreground/80 dark:border-[hsl(200,100%,50%,0.15)] dark:bg-[hsl(200,100%,50%,0.13)] dark:text-[hsl(200,40%,75%)]">{skill}</span>
+                        <span key={skill} className="rounded-full border border-border/60 bg-secondary/80 px-3 py-2 text-[14px] text-foreground/80 dark:border-[hsl(200,100%,50%,0.15)] dark:bg-[hsl(200,100%,50%,0.13)] dark:text-[hsl(200,40%,75%)]">{skill}</span>
                       ))}
                     </div>
                   </div>
@@ -471,7 +471,7 @@ export default function Index() {
           <RevealText delay={0.35}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-[13px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Education</span>
+                <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Education</span>
               </div>
               <div className="flex-1 divide-y divide-border/40">
                 {education.map((edu, i) => (
@@ -507,7 +507,7 @@ export default function Index() {
           <RevealText delay={0.55}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-[13px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Contact</span>
+                <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Contact</span>
               </div>
               <div className="flex-1">
                 {/* Action buttons */}
