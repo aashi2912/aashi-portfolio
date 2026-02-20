@@ -23,19 +23,29 @@ const updates = [
 
 const experiences = [
   {
-    role: "Senior Product Manager",
-    company: "Tech Corp",
-    period: "Nov 2024 — Present",
-  },
-  {
     role: "Product Manager",
-    company: "StartupXYZ",
-    period: "2022 — 2024",
+    company: "RBC Capital Markets",
+    period: "Jan 2025 — Present",
   },
   {
-    role: "Associate Product Manager",
-    company: "BigCo Inc.",
-    period: "2020 — 2022",
+    role: "Software Developer",
+    company: "RBC Capital Markets",
+    period: "Sep 2023 — Dec 2024",
+  },
+  {
+    role: "Programmer Analyst",
+    company: "Cognizant Technology Solutions",
+    period: "Mar 2021 — Jun 2022",
+  },
+  {
+    role: "Open Source Contributor",
+    company: "GirlScript Summer of Code",
+    period: "Mar 2021 — May 2021",
+  },
+  {
+    role: "Software Developer Intern",
+    company: "Larsen & Toubro",
+    period: "May 2019 — Jun 2019",
   },
 ];
 
