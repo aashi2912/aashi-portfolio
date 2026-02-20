@@ -517,22 +517,6 @@ export default function Index() {
                   <a href="https://topmate.io/aashi_thakkar" target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">1:1 Mentorship <Link size={16} /></a>
                 </div>
 
-                {/* Divider with "or" */}
-                <div className="my-6 flex items-center gap-4">
-                  <div className="flex-1 h-px bg-border" />
-                  <span className="text-sm text-muted-foreground">or</span>
-                  <div className="flex-1 h-px bg-border" />
-                </div>
-
-                {/* Contact form */}
-                <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input type="text" placeholder="Your name" className="rounded-lg border border-border bg-card px-4 py-3 text-[15px] placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 focus:ring-ring" />
-                    <input type="email" placeholder="Your email" className="rounded-lg border border-border bg-card px-4 py-3 text-[15px] placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 focus:ring-ring" />
-                  </div>
-                  <textarea placeholder="I actually look at these. Please feel free to type your message here and I'll get back to you asap :)" rows={5} className="w-full rounded-lg border border-border bg-card px-4 py-3 text-[15px] placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 focus:ring-ring resize-none" />
-                  <button type="submit" className="w-full rounded-lg bg-foreground text-background py-3 text-[15px] font-medium transition-colors hover:bg-foreground/90">Send</button>
-                </form>
               </div>
             </div>
           </RevealText>
