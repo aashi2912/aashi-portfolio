@@ -383,8 +383,8 @@ export default function Index() {
       <ContentWrap className="py-24 scroll-mt-20">
         <section id="work" className="scroll-mt-20">
           <RevealText>
-            <h2 className="text-2xl font-bold tracking-tight">Work</h2>
-            <p className="mt-1 text-sm text-muted-foreground">an overview of my career</p>
+            <h2 className="text-[26px] font-bold tracking-tight">Work</h2>
+            <p className="mt-1 text-[16px] text-muted-foreground">an overview of my career</p>
           </RevealText>
 
           {/* Profile Card */}
@@ -392,8 +392,8 @@ export default function Index() {
             <div className="mt-12 flex flex-col items-center text-center gap-4">
               <img src={profilePhoto} alt="Aashi Thakkar" className="w-80 h-[28rem] rounded-2xl object-cover object-top" />
               <div>
-                <h3 className="text-2xl font-bold">Aashi Thakkar</h3>
-                <p className="text-muted-foreground">Product Manager</p>
+                <h3 className="text-[26px] font-bold">Aashi Thakkar</h3>
+                <p className="text-[18px] text-muted-foreground">Product Manager</p>
               </div>
 
 
