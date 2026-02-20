@@ -87,9 +87,14 @@ const skillCategories = [
 
 const education = [
   {
-    degree: "Bachelor of Arts, Computer Science",
-    school: "University Name",
-    period: "Aug 2015 — May 2019",
+    degree: "Master of Applied Computing",
+    school: "University of Windsor",
+    period: "Sept 2022 — April 2024",
+  },
+  {
+    degree: "Bachelor of Engineering, Computer Engineering",
+    school: "",
+    period: "Aug 2016 — Aug 2020",
   },
 ];
 
