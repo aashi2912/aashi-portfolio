@@ -346,7 +346,7 @@ export default function Index() {
         <section id="work" className="scroll-mt-20">
           <RevealText>
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Work</h2>
-            <p className="mt-1 text-muted-foreground">An overview of my professional journey</p>
+            <p className="mt-1 text-muted-foreground">An overview of my professional journey!</p>
           </RevealText>
 
           {/* Profile Card */}
