@@ -474,7 +474,7 @@ export default function Index() {
               <div className="flex-1 divide-y divide-border/40">
                 {education.map((edu, i) => (
                   <div key={i} className="flex items-start gap-4 py-5">
-                    <img src={edu.logo} alt={edu.school} className="mt-1 h-10 w-10 shrink-0 rounded-lg object-contain mix-blend-lighten dark:mix-blend-lighten" />
+                    <img src={edu.logo} alt={edu.school} className="mt-1 h-10 w-10 shrink-0 rounded-lg object-contain dark:mix-blend-lighten" />
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                         <h4 className="text-[17px] font-semibold">{edu.degree}</h4>
