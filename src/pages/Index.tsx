@@ -392,7 +392,7 @@ export default function Index() {
                 <p>Today, I work at the intersection of tech and business, translating complex, ambiguous problems into clear product direction. I build solutions that are not only technically sound, but genuinely useful. ⚙️</p>
                 <p>I strongly believe great products are user-centered and grounded in real needs — and that lens guides everything I build. ✨</p>
                 <p>If you're curious about AI, data-driven products, or thoughtful product strategy, let's connect. 🤝</p>
-                <p>And if you want to see what I'm up to outside of work — check out my <a href="/about" className="hover:opacity-70 transition-opacity">About</a>!</p>
+                <p>And if you want to see what I'm up to outside of work — check out my <a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)] underline underline-offset-4 decoration-[hsl(200,50%,35%,0.4)] dark:decoration-[hsl(200,40%,75%,0.4)] hover:opacity-80 transition-opacity font-medium">About</a>!</p>
               </div>
             </div>
           </RevealText>
