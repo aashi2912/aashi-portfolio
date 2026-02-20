@@ -497,7 +497,7 @@ export default function Index() {
                 <img src={eduPhoto1} alt="At Assumption College" className="w-full h-full object-cover object-center" />
               </div>
               <div className="aspect-[4/3] overflow-hidden rounded-2xl">
-                <img src={eduPhoto2} alt="Graduation" className="w-full h-full object-cover object-top" />
+                <img src={eduPhoto2} alt="Graduation" className="w-full h-full object-cover object-[center_25%]" />
               </div>
             </div>
           </RevealText>
