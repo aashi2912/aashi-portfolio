@@ -449,13 +449,13 @@ export default function Index() {
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
                 <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">Skills</span>
               </div>
-              <div className="flex-1 space-y-6">
+              <div className="flex-1 space-y-8">
                 {skillCategories.map((cat) => (
                   <div key={cat.name}>
-                    <h4 className="mb-2 text-xs font-mono tracking-wider text-muted-foreground uppercase">{cat.name}</h4>
+                    <h4 className="mb-3 text-base font-semibold">{cat.name}</h4>
                     <div className="flex flex-wrap gap-2">
                       {cat.items.map((skill) => (
-                        <span key={skill} className="rounded-full border border-border px-3 py-1 text-xs">{skill}</span>
+                        <span key={skill} className="rounded-full border border-border bg-muted/50 px-4 py-1.5 text-sm">{skill}</span>
                       ))}
                     </div>
                   </div>
