@@ -6,7 +6,7 @@ import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
 import logoCognizant from "@/assets/logo-cognizant.png";
-import logoGirlscript from "@/assets/logo-girlscript.svg";
+import logoGirlscript from "@/assets/logo-girlscript.png";
 import logoLt from "@/assets/logo-lt.png";
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Lifelong Learner."];
