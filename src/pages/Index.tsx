@@ -87,13 +87,13 @@ const skillCategories = [
 
 const education = [
   {
-    degree: "Master of Applied Computing",
+    degree: "Masters of Engineering, Applied Computing",
     school: "University of Windsor",
     period: "Sept 2022 — April 2024",
   },
   {
-    degree: "Bachelor of Engineering, Computer Engineering",
-    school: "",
+    degree: "Bachelors of Engineering, Computer Science",
+    school: "Gujarat Technological University",
     period: "Aug 2016 — Aug 2020",
   },
 ];
