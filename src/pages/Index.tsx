@@ -640,6 +640,10 @@ export default function Index() {
               { label: "🏓 Table Tennis", delay: 0.32 },
               { label: "🪡 Embroidery", delay: 0.35 },
               { label: "🏄‍♀️ Surf", delay: 0.38 },
+              { label: "🥊 Kick Boxing", delay: 0.41 },
+              { label: "🥋 Martial Arts", delay: 0.44 },
+              { label: "🏸 Badminton", delay: 0.47 },
+              { label: "✈️ Fly a Plane", delay: 0.5 },
             ].map((item, i) => (
               <StaggerItem key={i}>
                 <motion.span
