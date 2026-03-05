@@ -13,7 +13,7 @@ import logoGtu from "@/assets/logo-gtu.png";
 import eduPhoto1 from "@/assets/edu-photo-1.jpeg";
 import eduPhoto2 from "@/assets/edu-photo-2.jpeg";
 
-const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Lifelong Learner."];
+const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Data Analyst.", "Lifelong Learner."];
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/aashithakkar29/", label: "LinkedIn" },
