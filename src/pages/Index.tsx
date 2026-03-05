@@ -653,9 +653,14 @@ export default function Index() {
           </StaggerContainer>
 
           <RevealText delay={0.3}>
-            <p className="mt-10 text-center text-sm text-muted-foreground font-mono tracking-wide">
-              Jack of all trades, master of none? <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">But oftentimes better than a master of one.</span>
-            </p>
+            <div className="mt-14 text-center">
+              <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
+                Jack of all trades, master of none?
+              </h2>
+              <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
+                But oftentimes better than <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">a master of one.</span>
+              </h3>
+            </div>
           </RevealText>
         </section>
       </ContentWrap>
