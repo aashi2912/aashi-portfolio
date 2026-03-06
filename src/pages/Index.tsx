@@ -154,9 +154,23 @@ const projects = [
   },
 ];
 
-const impossibleCategories = [
+type ImpossibleItem = {
+  text: string;
+  done?: boolean;
+  date?: string;
+  link?: { label: string; url: string };
+  sub?: ImpossibleItem[];
+};
+
+type ImpossibleCategory = {
+  name: string;
+  description?: string;
+  items: ImpossibleItem[];
+};
+
+const impossibleCategories: ImpossibleCategory[] = [
   {
-    name: "Fitness",
+    name: "FITNESS",
     items: [
       { text: "Run a marathon", done: true },
       { text: "Complete a triathlon", done: false },
@@ -165,7 +179,7 @@ const impossibleCategories = [
     ],
   },
   {
-    name: "Professional",
+    name: "PROFESSIONAL",
     items: [
       { text: "Get promoted to Senior PM", done: true },
       { text: "Launch a product used by 1M+ people", done: false },
@@ -174,7 +188,7 @@ const impossibleCategories = [
     ],
   },
   {
-    name: "Creative",
+    name: "CREATIVE",
     items: [
       { text: "Start a podcast", done: true },
       { text: "Write a book", done: false },
@@ -183,7 +197,7 @@ const impossibleCategories = [
     ],
   },
   {
-    name: "Travel",
+    name: "TRAVEL",
     items: [
       { text: "Visit Japan", done: true },
       { text: "See the Northern Lights", done: false },
@@ -260,8 +274,34 @@ function StaggerItem({ children, className }: { children: React.ReactNode; class
     </motion.div>
   );
 }
+function ImpossibleListItem({ item, depth = 0 }: { item: ImpossibleItem; depth?: number }) {
+  return (
+    <>
+      <div className={`flex items-start gap-3 py-1 ${depth > 0 ? "pl-6" : ""}`}>
+        <span
+          className={`text-[15px] leading-relaxed ${
+            item.done ? "line-through text-muted-foreground" : "text-foreground"
+          }`}
+        >
+          {item.text}
+        </span>
+        {item.date && (
+          <span className="text-xs text-muted-foreground italic whitespace-nowrap mt-0.5">{item.date}</span>
+        )}
+        {item.link && (
+          <a href={item.link.url} target="_blank" rel="noopener noreferrer" className="text-xs text-primary underline underline-offset-4 hover:text-primary/80 whitespace-nowrap mt-0.5">
+            {item.link.label}
+          </a>
+        )}
+      </div>
+      {item.sub?.map((subItem, i) => (
+        <ImpossibleListItem key={i} item={subItem} depth={depth + 1} />
+      ))}
+    </>
+  );
+}
 
-// Constrained content wrapper used by all non-hero sections
+
 function ContentWrap({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={`mx-auto max-w-4xl px-4 sm:px-6 ${className}`}>
@@ -681,38 +721,68 @@ export default function Index() {
       {/* ── Impossible List ── */}
       <ContentWrap className="py-24 pb-32 scroll-mt-20">
         <section id="impossible-list">
+          {/* Header */}
           <RevealText>
-            <div className="mb-12">
-              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Impossible List</h2>
-              <p className="mt-2 text-muted-foreground">
-                Not a bucket list — it's an evolving list of goals that push my limits.
+            <div className="mb-4">
+              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">Impossible List</h2>
+              <p className="mt-2 text-lg text-muted-foreground">a bucket list, except better</p>
+            </div>
+          </RevealText>
+
+          {/* Hero image placeholder */}
+          <RevealText delay={0.1}>
+            <div className="w-full aspect-[2/1] rounded-xl bg-secondary/50 overflow-hidden flex items-center justify-center my-10">
+              <span className="text-muted-foreground text-sm">Hero image</span>
+            </div>
+          </RevealText>
+
+          {/* Explanation */}
+          <RevealText delay={0.15}>
+            <div className="space-y-5 mb-16 max-w-2xl">
+              <h3 className="text-2xl md:text-3xl font-bold tracking-tight">Impossible what?</h3>
+              <p className="text-[15px] leading-relaxed text-foreground/90">
+                The Impossible List is like a bucket list on steroids.{" "}
+                <a href="https://impossiblehq.com/impossible-list/" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 hover:text-primary/80">The first Impossible List</a>{" "}
+                was created by Joel Runyon, and I learned about it by watching one of{" "}
+                <a href="https://www.youtube.com/watch?v=6apcEae2U4w" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 hover:text-primary/80">Thomas Frank's videos</a>.
+              </p>
+              <p className="text-[15px] leading-relaxed text-foreground/90">I liked the idea, so I borrowed it from them.</p>
+              <p className="text-[15px] leading-relaxed text-foreground/90">
+                My impossible list contains goals that would push <strong>my personal limits.</strong> Although personal, I still would love to share my list with the world to feel more accountable to get stuff on it done!
+              </p>
+              <p className="text-[15px] leading-relaxed text-foreground/90">
+                I might never get to cross off all or even most of the items below, but that's not the point. My goal is to enjoy the process of pursuing all of these aspirational goals!
               </p>
             </div>
           </RevealText>
 
-          <StaggerContainer className="grid gap-8 sm:grid-cols-2">
-            {impossibleCategories.map((cat) => (
-              <StaggerItem key={cat.name}>
-                <div>
-                  <h3 className="mb-4 text-lg font-semibold">{cat.name}</h3>
-                  <ul className="space-y-2">
-                    {cat.items.map((item, i) => (
-                      <li key={i} className="flex items-center gap-3 text-sm">
-                        {item.done ? (
-                          <Check className="h-4 w-4 shrink-0 text-primary" />
-                        ) : (
-                          <span className="h-4 w-4 shrink-0 rounded-full border border-border" />
-                        )}
-                        <span className={item.done ? "line-through text-muted-foreground" : ""}>
-                          {item.text}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+          {/* Categories */}
+          <div className="space-y-0">
+            {impossibleCategories.map((cat, catIndex) => (
+              <RevealText key={cat.name} delay={0.05 * catIndex}>
+                <div className={`flex flex-col md:flex-row gap-4 md:gap-12 py-10 ${catIndex < impossibleCategories.length - 1 ? "border-b border-border" : ""}`}>
+                  {/* Category label */}
+                  <div className="md:w-40 shrink-0">
+                    <span className="text-xs font-semibold tracking-[0.15em] text-muted-foreground">
+                      {cat.name}
+                    </span>
+                  </div>
+
+                  {/* Items */}
+                  <div className="flex-1">
+                    {cat.description && (
+                      <p className="text-[15px] leading-relaxed text-foreground/90 mb-4">{cat.description}</p>
+                    )}
+                    <div className="space-y-2">
+                      {cat.items.map((item, i) => (
+                        <ImpossibleListItem key={i} item={item} />
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </StaggerItem>
+              </RevealText>
             ))}
-          </StaggerContainer>
+          </div>
         </section>
       </ContentWrap>
 
