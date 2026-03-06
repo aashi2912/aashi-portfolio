@@ -154,9 +154,23 @@ const projects = [
   },
 ];
 
-const impossibleCategories = [
+type ImpossibleItem = {
+  text: string;
+  done?: boolean;
+  date?: string;
+  link?: { label: string; url: string };
+  sub?: ImpossibleItem[];
+};
+
+type ImpossibleCategory = {
+  name: string;
+  description?: string;
+  items: ImpossibleItem[];
+};
+
+const impossibleCategories: ImpossibleCategory[] = [
   {
-    name: "Fitness",
+    name: "FITNESS",
     items: [
       { text: "Run a marathon", done: true },
       { text: "Complete a triathlon", done: false },
@@ -165,7 +179,7 @@ const impossibleCategories = [
     ],
   },
   {
-    name: "Professional",
+    name: "PROFESSIONAL",
     items: [
       { text: "Get promoted to Senior PM", done: true },
       { text: "Launch a product used by 1M+ people", done: false },
@@ -174,7 +188,7 @@ const impossibleCategories = [
     ],
   },
   {
-    name: "Creative",
+    name: "CREATIVE",
     items: [
       { text: "Start a podcast", done: true },
       { text: "Write a book", done: false },
@@ -183,7 +197,7 @@ const impossibleCategories = [
     ],
   },
   {
-    name: "Travel",
+    name: "TRAVEL",
     items: [
       { text: "Visit Japan", done: true },
       { text: "See the Northern Lights", done: false },
