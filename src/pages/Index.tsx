@@ -274,8 +274,34 @@ function StaggerItem({ children, className }: { children: React.ReactNode; class
     </motion.div>
   );
 }
+function ImpossibleListItem({ item, depth = 0 }: { item: ImpossibleItem; depth?: number }) {
+  return (
+    <>
+      <div className={`flex items-start gap-3 py-1 ${depth > 0 ? "pl-6" : ""}`}>
+        <span
+          className={`text-[15px] leading-relaxed ${
+            item.done ? "line-through text-muted-foreground" : "text-foreground"
+          }`}
+        >
+          {item.text}
+        </span>
+        {item.date && (
+          <span className="text-xs text-muted-foreground italic whitespace-nowrap mt-0.5">{item.date}</span>
+        )}
+        {item.link && (
+          <a href={item.link.url} target="_blank" rel="noopener noreferrer" className="text-xs text-primary underline underline-offset-4 hover:text-primary/80 whitespace-nowrap mt-0.5">
+            {item.link.label}
+          </a>
+        )}
+      </div>
+      {item.sub?.map((subItem, i) => (
+        <ImpossibleListItem key={i} item={subItem} depth={depth + 1} />
+      ))}
+    </>
+  );
+}
 
-// Constrained content wrapper used by all non-hero sections
+
 function ContentWrap({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={`mx-auto max-w-4xl px-4 sm:px-6 ${className}`}>
