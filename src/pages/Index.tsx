@@ -277,21 +277,32 @@ function StaggerItem({ children, className }: { children: React.ReactNode; class
 function ImpossibleListItem({ item, depth = 0 }: { item: ImpossibleItem; depth?: number }) {
   return (
     <>
-      <div className={`flex items-start gap-3 py-1 ${depth > 0 ? "pl-6" : ""}`}>
-        <span
-          className={`text-[15px] leading-relaxed ${
-            item.done ? "line-through text-muted-foreground" : "text-foreground"
-          }`}
-        >
+      <div className={`flex items-center gap-3 py-2.5 ${depth > 0 ? "pl-8" : ""} ${item.done ? "bg-muted/30 rounded-md px-3 -mx-3" : ""}`}>
+        {/* Circle checkbox */}
+        <div className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+          item.done
+            ? "bg-emerald-500 border-emerald-500"
+            : "border-muted-foreground/40"
+        }`}>
+          {item.done && (
+            <Check className="w-3 h-3 text-white" strokeWidth={3} />
+          )}
+        </div>
+        {/* Text */}
+        <span className={`text-[15px] leading-relaxed flex-1 ${
+          item.done ? "text-muted-foreground" : "text-foreground"
+        }`}>
           {item.text}
         </span>
-        {item.date && (
-          <span className="text-xs text-muted-foreground italic whitespace-nowrap mt-0.5">{item.date}</span>
-        )}
+        {/* Link */}
         {item.link && (
-          <a href={item.link.url} target="_blank" rel="noopener noreferrer" className="text-xs text-primary underline underline-offset-4 hover:text-primary/80 whitespace-nowrap mt-0.5">
+          <a href={item.link.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary underline underline-offset-4 hover:text-primary/80 whitespace-nowrap">
             {item.link.label}
           </a>
+        )}
+        {/* Date */}
+        {item.date && (
+          <span className="text-sm text-muted-foreground whitespace-nowrap">{item.date}</span>
         )}
       </div>
       {item.sub?.map((subItem, i) => (
