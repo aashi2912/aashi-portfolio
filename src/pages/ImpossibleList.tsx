@@ -125,7 +125,7 @@ export default function ImpossibleList() {
         <div className="space-y-5">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Impossible what?</h2>
           <p className="text-[15px] leading-relaxed text-foreground/90">
-            The Impossible List is like a bucket list—only more ambitious. The idea was originally created by Joel Runyon, and I first came across it through one of Thomas Frank's videos.
+            The Impossible List is like a bucket list - only more ambitious. The idea was originally created by Joel Runyon, and I first came across it through one of Thomas Frank's videos.
           </p>
           <p className="text-[15px] leading-relaxed text-foreground/90">
             The concept immediately resonated with me, so I decided to create my own.
