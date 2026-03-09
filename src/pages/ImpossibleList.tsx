@@ -134,7 +134,7 @@ export default function ImpossibleList() {
             This list contains goals that challenge me to push beyond my current limits. While these ambitions are personal, sharing them publicly helps keep me accountable and committed to pursuing them.
           </p>
           <p className="text-[15px] leading-relaxed text-foreground/90">
-            I may never complete every item on this list—and that's perfectly fine. The real purpose isn't finishing the list, but embracing the journey and the growth that comes from chasing ambitious goals.
+            I may never complete every item on this list - and that's perfectly fine. The real purpose isn't finishing the list, but embracing the journey and the growth that comes from chasing ambitious goals.
           </p>
         </div>
       </FadeIn>
