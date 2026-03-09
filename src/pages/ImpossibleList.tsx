@@ -125,37 +125,16 @@ export default function ImpossibleList() {
         <div className="space-y-5">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Impossible what?</h2>
           <p className="text-[15px] leading-relaxed text-foreground/90">
-            The Impossible List is like a bucket list on steroids.{" "}
-            <a
-              href="https://impossiblehq.com/impossible-list/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline"
-            >
-              The first Impossible List
-            </a>{" "}
-            was created by Joel Runyon, and I learned about it by watching one of{" "}
-            <a
-              href="https://www.youtube.com/watch?v=6apcEae2U4w&feature=emb_title"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline"
-            >
-              Thomas Frank's videos
-            </a>
-            .
+            The Impossible List is like a bucket list—only more ambitious. The idea was originally created by Joel Runyon, and I first came across it through one of Thomas Frank's videos.
           </p>
           <p className="text-[15px] leading-relaxed text-foreground/90">
-            I liked the idea, so I borrowed it from them.
+            The concept immediately resonated with me, so I decided to create my own.
           </p>
           <p className="text-[15px] leading-relaxed text-foreground/90">
-            My impossible list contains goals that would push{" "}
-            <strong>my personal limits.</strong> Although personal, I still would love to share
-            my list with the world to feel more accountable to get stuff on it done!
+            This list contains goals that challenge me to push beyond my current limits. While these ambitions are personal, sharing them publicly helps keep me accountable and committed to pursuing them.
           </p>
           <p className="text-[15px] leading-relaxed text-foreground/90">
-            I might never get to cross off all or even most of the items below, but that's not the
-            point. My goal is to enjoy the process of pursuing all of these aspirational goals!
+            I may never complete every item on this list—and that's perfectly fine. The real purpose isn't finishing the list, but embracing the journey and the growth that comes from chasing ambitious goals.
           </p>
         </div>
       </FadeIn>
