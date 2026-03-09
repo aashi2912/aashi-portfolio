@@ -616,7 +616,7 @@ export default function Index() {
             { emoji: "🎨", title: "Painting", caption: "Follow my art journey @aashiarts_", rotate: "-5deg", top: "0px", left: "2%", width: "220px", delay: 0.1, pin: "hsl(0,70%,55%)", image: true },
             { emoji: "🌍", title: "Exploring new places", caption: "Always planning the next adventure", rotate: "3deg", top: "20px", left: "52%", width: "230px", delay: 0.18, pin: "hsl(35,80%,50%)", image: hobbyExploring, imagePos: "center 80%" },
             { emoji: "🤿", title: "Snorkelling", caption: "Discovering the world beneath the waves", rotate: "-2deg", top: "280px", left: "25%", width: "210px", delay: 0.26, pin: "hsl(200,70%,50%)", image: hobbySnorkelling },
-            { emoji: "📚", title: "Reading", caption: "Getting lost in stories & ideas", rotate: "4.5deg", top: "300px", left: "68%", width: "200px", delay: 0.34, pin: "hsl(120,50%,45%)", image: hobbyReading, imagePos: "center top" },
+            { emoji: "📚", title: "Reading", caption: "Getting lost in stories & ideas", rotate: "4.5deg", top: "300px", left: "68%", width: "200px", delay: 0.34, pin: "hsl(120,50%,45%)", image: hobbyReading, imagePos: "center top", link: "https://morning-tile-b61.notion.site/Books-c3bda9122c404b4aaaaf28d3a4ffebd9" },
             { emoji: "🏺", title: "Pottery", caption: "Moulding clay into something beautiful", rotate: "-4deg", top: "540px", left: "3%", width: "220px", delay: 0.42, pin: "hsl(280,60%,55%)", image: hobbyPottery, imagePos: "center 80%" },
             { emoji: "🥾", title: "Hiking", caption: "Chasing trails & mountain views", rotate: "2.5deg", top: "560px", left: "48%", width: "215px", delay: 0.5, pin: "hsl(25,80%,50%)", image: hobbyHiking },
             { emoji: "💃", title: "Kathak", caption: "Indian classical dance — rhythm & expression", rotate: "-3.5deg", top: "820px", left: "15%", width: "225px", delay: 0.58, pin: "hsl(340,70%,55%)", image: hobbyKathak, imagePos: "center 30%" },
@@ -631,38 +631,44 @@ export default function Index() {
               viewport={{ once: true, margin: "-30px" }}
               transition={{ duration: 0.7, delay: hobby.delay, ease: [0.22, 0.68, 0.36, 1] }}>
               
-                <motion.div
-                className="relative bg-card rounded-sm p-3 pb-4 shadow-[4px_8px_24px_-6px_rgba(0,0,0,0.15)] dark:shadow-[4px_8px_30px_-6px_hsl(200,100%,50%,0.12)] cursor-grab"
-                style={{ border: "1px solid hsl(var(--border))" }}
-                whileHover={{ scale: 1.08, rotate: "0deg", zIndex: 20, boxShadow: "0 24px 50px -12px hsl(200 80% 50% / 0.2)" }}
-                transition={{ type: "spring", stiffness: 280, damping: 18 }}>
-                
-                  {/* Polaroid photo area */}
-                  <div className="aspect-[4/3] rounded-sm bg-gradient-to-br from-secondary via-muted to-accent flex items-center justify-center mb-3 overflow-hidden">
-                    {(hobby as any).image ?
-                  <img src={(hobby as any).image === true ? hobbyPainting : (hobby as any).image} alt={hobby.title} className="w-full h-full object-cover" style={{ objectPosition: (hobby as any).imagePos || "center" }} /> :
-
-                  <motion.span
-                    className="text-5xl sm:text-6xl select-none"
-                    animate={{ y: [0, -4, 0] }}
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}>
+                {(() => {
+                  const cardContent = (
+                    <motion.div
+                    className={`relative bg-card rounded-sm p-3 pb-4 shadow-[4px_8px_24px_-6px_rgba(0,0,0,0.15)] dark:shadow-[4px_8px_30px_-6px_hsl(200,100%,50%,0.12)] ${(hobby as any).link ? 'cursor-pointer' : 'cursor-grab'}`}
+                    style={{ border: "1px solid hsl(var(--border))" }}
+                    whileHover={{ scale: 1.08, rotate: "0deg", zIndex: 20, boxShadow: "0 24px 50px -12px hsl(200 80% 50% / 0.2)" }}
+                    transition={{ type: "spring", stiffness: 280, damping: 18 }}>
                     
-                        {hobby.emoji}
-                      </motion.span>
-                  }
-                  </div>
-                  <h4 className="text-[14px] font-bold leading-snug text-center">{hobby.title}</h4>
-                  <p className="mt-0.5 text-[11px] leading-relaxed text-muted-foreground text-center">{hobby.caption}</p>
-                  {/* Colored pushpin */}
-                  <div
-                  className="absolute -top-2.5 left-1/2 -translate-x-1/2 h-5 w-5 rounded-full shadow-lg z-10"
-                  style={{ background: hobby.pin, boxShadow: `0 2px 8px ${hobby.pin}` }} />
-                
-                  {/* Tape decoration on some cards */}
-                  {i % 3 === 0 &&
-                <div className="absolute -top-3 -right-2 w-12 h-5 bg-[hsl(50,80%,85%)] dark:bg-[hsl(50,30%,30%)] opacity-70 rotate-[15deg] rounded-sm" />
-                }
-                </motion.div>
+                      {/* Polaroid photo area */}
+                      <div className="aspect-[4/3] rounded-sm bg-gradient-to-br from-secondary via-muted to-accent flex items-center justify-center mb-3 overflow-hidden">
+                        {(hobby as any).image ?
+                      <img src={(hobby as any).image === true ? hobbyPainting : (hobby as any).image} alt={hobby.title} className="w-full h-full object-cover" style={{ objectPosition: (hobby as any).imagePos || "center" }} /> :
+                      <motion.span
+                        className="text-5xl sm:text-6xl select-none"
+                        animate={{ y: [0, -4, 0] }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}>
+                            {hobby.emoji}
+                          </motion.span>
+                      }
+                      </div>
+                      <h4 className="text-[14px] font-bold leading-snug text-center">{hobby.title}</h4>
+                      <p className="mt-0.5 text-[11px] leading-relaxed text-muted-foreground text-center">{hobby.caption}</p>
+                      {(hobby as any).link && <div className="flex items-center justify-center gap-1 mt-1"><ExternalLink className="w-3 h-3 text-muted-foreground" /><span className="text-[10px] text-muted-foreground">View Bookshelf</span></div>}
+                      {/* Colored pushpin */}
+                      <div
+                      className="absolute -top-2.5 left-1/2 -translate-x-1/2 h-5 w-5 rounded-full shadow-lg z-10"
+                      style={{ background: hobby.pin, boxShadow: `0 2px 8px ${hobby.pin}` }} />
+                    
+                      {/* Tape decoration on some cards */}
+                      {i % 3 === 0 &&
+                    <div className="absolute -top-3 -right-2 w-12 h-5 bg-[hsl(50,80%,85%)] dark:bg-[hsl(50,30%,30%)] opacity-70 rotate-[15deg] rounded-sm" />
+                    }
+                    </motion.div>
+                  );
+                  return (hobby as any).link ? (
+                    <a href={(hobby as any).link} target="_blank" rel="noopener noreferrer" className="block no-underline">{cardContent}</a>
+                  ) : cardContent;
+                })()}
               </motion.div>
             )}
 
