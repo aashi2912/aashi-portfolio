@@ -640,7 +640,7 @@ export default function Index() {
                   {/* Polaroid photo area */}
                   <div className="aspect-[4/3] rounded-sm bg-gradient-to-br from-secondary via-muted to-accent flex items-center justify-center mb-3 overflow-hidden">
                     {(hobby as any).image ? (
-                      <img src={(hobby as any).image === true ? hobbyPainting : (hobby as any).image} alt={hobby.title} className="w-full h-full object-cover" style={{ objectPosition: (hobby as any).imagePos || "center" }} />
+                      <img src={(hobby as any).image === true ? hobbyPainting : (hobby as any).image} alt={hobby.title} className={`w-full h-full ${(hobby as any).imageFit === "contain" ? "object-contain" : "object-cover"}`} style={{ objectPosition: (hobby as any).imagePos || "center" }} />
                     ) : (
                       <motion.span
                         className="text-5xl sm:text-6xl select-none"
