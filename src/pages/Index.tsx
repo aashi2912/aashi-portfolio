@@ -17,6 +17,9 @@ import hobbyPottery from "@/assets/hobby-pottery.jpeg";
 import hobbySnorkelling from "@/assets/hobby-snorkelling.jpeg";
 import hobbyExploring from "@/assets/hobby-exploring.jpeg";
 import hobbyHiking from "@/assets/hobby-hiking.jpeg";
+import hobbySwimming from "@/assets/hobby-swimming.jpeg";
+import hobbyKathak from "@/assets/hobby-kathak.jpeg";
+import hobbyReading from "@/assets/hobby-reading.jpeg";
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Data Analyst.", "Lifelong Learner."];
 
