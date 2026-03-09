@@ -159,7 +159,7 @@ export default function Work() {
       <ContentWrap className="pt-12 pb-10">
         <RevealSection>
           <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Work</h1>
-          <p className="mt-1 text-muted-foreground">an overview of my career</p>
+          <p className="mt-1 text-muted-foreground">An overview of my career.</p>
         </RevealSection>
       </ContentWrap>
 
