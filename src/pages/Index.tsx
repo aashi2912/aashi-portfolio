@@ -619,8 +619,8 @@ export default function Index() {
               { emoji: "📚", title: "Reading", caption: "Getting lost in stories & ideas", rotate: "4.5deg", top: "300px", left: "68%", width: "200px", delay: 0.34, pin: "hsl(120,50%,45%)", image: hobbyReading },
               { emoji: "🏺", title: "Pottery", caption: "Moulding clay into something beautiful", rotate: "-4deg", top: "540px", left: "3%", width: "220px", delay: 0.42, pin: "hsl(280,60%,55%)", image: hobbyPottery, imagePos: "center 80%" },
               { emoji: "🥾", title: "Hiking", caption: "Chasing trails & mountain views", rotate: "2.5deg", top: "560px", left: "48%", width: "215px", delay: 0.5, pin: "hsl(25,80%,50%)", image: hobbyHiking },
-              { emoji: "💃", title: "Kathak", caption: "Indian classical dance — rhythm & expression", rotate: "-3.5deg", top: "820px", left: "15%", width: "225px", delay: 0.58, pin: "hsl(340,70%,55%)" },
-              { emoji: "🏊‍♀️", title: "Swimming", caption: "My kind of meditation", rotate: "5deg", top: "840px", left: "58%", width: "210px", delay: 0.66, pin: "hsl(190,70%,45%)" },
+              { emoji: "💃", title: "Kathak", caption: "Indian classical dance — rhythm & expression", rotate: "-3.5deg", top: "820px", left: "15%", width: "225px", delay: 0.58, pin: "hsl(340,70%,55%)", image: hobbyKathak },
+              { emoji: "🏊‍♀️", title: "Swimming", caption: "My kind of meditation", rotate: "5deg", top: "840px", left: "58%", width: "210px", delay: 0.66, pin: "hsl(190,70%,45%)", image: hobbySwimming },
             ].map((hobby, i) => (
               <motion.div
                 key={i}
