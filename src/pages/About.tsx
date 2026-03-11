@@ -38,39 +38,45 @@ export default function About() {
         </RevealSection>
 
         <div className="space-y-6">
-          {/* Suhad-style personal storytelling with bold keywords */}
           <RevealSection delay={0.2}>
             <p className="text-base leading-relaxed">
-              Hey there! I'm <span className="font-semibold">John Doe</span> — a product
-              builder based in <span className="font-semibold">Cairo, Egypt</span> with a
-              passion for turning ambiguous problems into elegant solutions. I do a lot of
-              things, but the heart of it would be weaving{" "}
-              <span className="font-semibold">meaningful stories</span> through chaos.
+              I'm a Product Manager based in Toronto 🇨🇦, currently leading Alternative Data, Gen AI, and Research Technology products at Royal Bank of Canada – Capital Markets 🏦.
             </p>
           </RevealSection>
 
           <RevealSection delay={0.3}>
             <p className="text-base leading-relaxed text-muted-foreground">
-              I started my career in software engineering before transitioning to product management.
-              This technical background helps me bridge the gap between engineering and business — and
-              I love the challenge of making complex systems feel effortless to use.
+              I started out as a software developer 👨‍💻. Three years in, I noticed something: I was spending more time thinking about why we were building things than actually building them. Who was this for? Does it actually solve their problem? Does it matter? 🤔 Turns out, those were the questions I cared about most.
             </p>
           </RevealSection>
 
           <RevealSection delay={0.4}>
             <p className="text-base leading-relaxed text-muted-foreground">
-              When I'm not obsessing over product strategy, you'll find me recording podcast episodes,
-              writing blog posts, or buried in a good book. I believe in{" "}
-              <span className="font-semibold text-foreground">learning in public</span> and sharing
-              everything I discover along the way.
+              That curiosity pulled me toward UX and Product 🎨 — and honestly, it clicked in a way that writing code never quite did. I found I was good at it, even before I had the title to match 💡✨.
             </p>
           </RevealSection>
 
           <RevealSection delay={0.5}>
             <p className="text-base leading-relaxed text-muted-foreground">
-              Outside of work, I'm working through my{" "}
-              <span className="font-semibold text-foreground">impossible list</span> — a living document
-              of goals and challenges that push me beyond what I thought possible.
+              What drew me to product management wasn't just the craft — it was the mindset 🧠. Owning a problem end-to-end, bringing clarity to messy situations, and working with people across disciplines to build something that genuinely makes a difference 🎯. That's the work I find most meaningful 🚀.
+            </p>
+          </RevealSection>
+
+          <RevealSection delay={0.6}>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              These days, I sit at the intersection of technology and business 💼⚙️. My job is to make sense of complex, ambiguous problems and turn them into something a team can actually build — and that users actually want to use 🙌.
+            </p>
+          </RevealSection>
+
+          <RevealSection delay={0.7}>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              The thing I keep coming back to is this: the best products aren't just technically solid, they're built around real human needs ❤️. That belief shapes how I approach every decision 🔍.
+            </p>
+          </RevealSection>
+
+          <RevealSection delay={0.8}>
+            <p className="text-base leading-relaxed">
+              If you're into AI 🤖, data products 📊, or product strategy — I'd love to connect 🤝.
             </p>
           </RevealSection>
         </div>
