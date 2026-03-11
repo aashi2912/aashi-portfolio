@@ -50,9 +50,15 @@ const skillCategories = [
     items: [
       "Communication", "Stakeholder Management", "Critical Thinking",
       "User Research", "UX Design", "Wireframing", "Product Strategy",
-      "Prioritization", "Roadmapping", "Project Management",
-      "Market Research", "Competitive Analysis", "Data Analysis",
-      "A/B Testing", "Data Visualization",
+      "Project Management", "Market Research", "Competitive Analysis",
+      "Data Analysis", "A/B Testing", "Data Visualization",
+    ],
+  },
+  {
+    name: "AI/ML",
+    items: [
+      "LLMs", "Retrieval-Augmented Generation (RAG)", "Prompt Engineering",
+      "NLP", "Embeddings", "Vector Search", "AI Agents", "Model Evaluation Metrics",
     ],
   },
   {
