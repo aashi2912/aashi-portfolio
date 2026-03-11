@@ -443,14 +443,13 @@ export default function Index() {
                 <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Bio</span>
               </div>
               <div className="flex-1 space-y-4 text-[17px] leading-[1.75]">
-                <p>I am a Product Manager based in Toronto, currently leading Alternative Data, Gen AI, and Research Technology products at Royal Bank of Canada – Capital Markets.</p>
-                <p>I started my career in software development. After 3 years of building systems and writing code, I realized I was more curious about how technology actually fits into people's workflows. I was always more interested in the "why" behind things — what we were shipping, why we were building them, who they were for, and whether they truly made an impact.</p>
-                <p>That's when I found my passion for UX and Product. And guess what? I was actually better at it — even while performing those responsibilities in my role as a developer. 💡</p>
-                <p>I don't just enjoy building systems — I enjoy deciding what should be built, why, and for whom. 🎯</p>
-                <p>What I've come to love most is how Product Managers think and operate — owning the problem, shaping the solution, and driving impact through clarity and collaboration. 🚀 Ultimately, that led me to a clear path toward product management.</p>
-                <p>Today, I work at the intersection of tech and business, translating complex, ambiguous problems into clear product direction. I build solutions that are not only technically sound, but genuinely useful. ⚙️</p>
-                <p>I strongly believe great products are user-centered and grounded in real needs — and that lens guides everything I build. ✨</p>
-                <p>If you're curious about AI, data-driven products, or thoughtful product strategy, let's connect. 🤝</p>
+                <p>I'm a Product Manager based in Toronto 🇨🇦, currently leading Alternative Data, Gen AI, and Research Technology products at Royal Bank of Canada – Capital Markets 🏦.</p>
+                <p>I started out as a software developer 👨‍💻. Three years in, I noticed something: I was spending more time thinking about why we were building things than actually building them. Who was this for? Does it actually solve their problem? Does it matter? 🤔 Turns out, those were the questions I cared about most.</p>
+                <p>That curiosity pulled me toward UX and Product 🎨 — and honestly, it clicked in a way that writing code never quite did. I found I was good at it, even before I had the title to match 💡✨.</p>
+                <p>What drew me to product management wasn't just the craft — it was the mindset 🧠. Owning a problem end-to-end, bringing clarity to messy situations, and working with people across disciplines to build something that genuinely makes a difference 🎯. That's the work I find most meaningful 🚀.</p>
+                <p>These days, I sit at the intersection of technology and business 💼⚙️. My job is to make sense of complex, ambiguous problems and turn them into something a team can actually build — and that users actually want to use 🙌.</p>
+                <p>The thing I keep coming back to is this: the best products aren't just technically solid, they're built around real human needs ❤️. That belief shapes how I approach every decision 🔍.</p>
+                <p>If you're into AI 🤖, data products 📊, or product strategy — I'd love to connect 🤝.</p>
                 <p>And if you want to see what I'm up to outside of work — check out my <a href="#about" onClick={(e) => {e.preventDefault();document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });}} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)] underline underline-offset-4 decoration-[hsl(200,50%,35%,0.4)] dark:decoration-[hsl(200,40%,75%,0.4)] hover:opacity-80 transition-opacity font-medium">About</a>!</p>
               </div>
             </div>
