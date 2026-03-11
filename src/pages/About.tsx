@@ -24,10 +24,10 @@ export default function About() {
       <RevealSection>
         <div>
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-            Jack of all trades,
+            Building products at the intersection
           </h1>
           <h2 className="text-4xl font-bold tracking-tight md:text-5xl text-muted-foreground">
-            Master of <span className="italic text-foreground">some.</span>
+            of <span className="italic text-foreground">technology</span> & <span className="italic text-foreground">people</span>.
           </h2>
         </div>
       </RevealSection>
