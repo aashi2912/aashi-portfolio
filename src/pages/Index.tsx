@@ -21,6 +21,22 @@ import hobbySwimming from "@/assets/hobby-swimming.jpeg";
 import hobbyKathak from "@/assets/hobby-kathak.jpeg";
 import hobbyReading from "@/assets/hobby-reading.jpeg";
 
+import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
+import galleryLego from "@/assets/gallery-lego.jpeg";
+import galleryDinner from "@/assets/gallery-dinner.jpeg";
+import galleryFarm from "@/assets/gallery-farm.jpeg";
+import galleryBoostSmall from "@/assets/gallery-boost-small.jpeg";
+import galleryFormal from "@/assets/gallery-formal.jpeg";
+import galleryBoostGroup from "@/assets/gallery-boost-group.jpeg";
+import galleryAxe from "@/assets/gallery-axe.jpeg";
+import galleryOutdoor from "@/assets/gallery-outdoor.jpeg";
+import galleryBoostTrio from "@/assets/gallery-boost-trio.jpeg";
+
+const galleryImages = [
+  gallerySpeaking, galleryLego, galleryDinner, galleryFarm, galleryBoostSmall,
+  galleryFormal, galleryBoostGroup, galleryAxe, galleryOutdoor, galleryBoostTrio,
+];
+
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Data Analyst.", "Lifelong Learner."];
 
 const socialLinks = [
