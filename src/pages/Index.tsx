@@ -757,22 +757,54 @@ export default function Index() {
 
           {/* Team & Culture Gallery */}
           <RevealText delay={0.3}>
-            <div className="mt-20 mb-6">
-              <h3 className="text-xl font-bold tracking-tight md:text-2xl">
+            <div className="mt-20 mb-4">
+              <h3 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
                 The People Person Behind the Product 🤝
               </h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground max-w-2xl">
-                Great products aren't built in isolation — they're built by teams that genuinely enjoy working together. 
-                I believe the best collaboration happens when you invest in relationships beyond the meeting room. 
-                Whether it's axe throwing with the squad, team dinners, or building something ridiculous out of Lego — 
-                these moments are where trust is built, ideas flow freely, and the real magic happens.
-              </p>
+              <h4 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
+                Product management is about <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">people</span> before it's about <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">products.</span>
+              </h4>
             </div>
           </RevealText>
 
+          <div className="space-y-5 text-[17px] leading-[1.75] max-w-2xl">
+            <RevealText delay={0.35}>
+              <p className="text-muted-foreground">
+                Outside meeting rooms, sprint boards, and roadmaps, you'll usually find me doing something a little more social 🎉 — joining team events, exploring new activities, or organizing spontaneous outings with colleagues. Whether it's group adventures 🏔️, company events 🎊, or just moments of shared laughter 😄, these experiences matter to me.
+              </p>
+            </RevealText>
+
+            <RevealText delay={0.4}>
+              <p>
+                Why? Because great products come from <span className="font-semibold">strong human connections</span> 💡.
+              </p>
+            </RevealText>
+
+            <RevealText delay={0.45}>
+              <p className="text-muted-foreground">
+                As a Product Manager, I spend a lot of time bringing people together — engineers, designers, stakeholders, and users 🧩. The same curiosity and energy that pushes me to participate in team activities is what helps me build trust 🤝, understand different perspectives 🌍, and create environments where collaboration thrives 🌱.
+              </p>
+            </RevealText>
+
+            <RevealText delay={0.5}>
+              <p className="text-muted-foreground">
+                This gallery captures some of those moments — the conversations 💬, the adventures 🚀, the team bonding 🫂, and the fun along the way.
+              </p>
+            </RevealText>
+
+            <RevealText delay={0.55}>
+              <p className="text-muted-foreground">
+                They're small snapshots of something bigger:
+              </p>
+              <p className="mt-2 text-[19px] font-semibold">
+                my belief that the best teams — and the best products — are built when people genuinely enjoy working together ❤️✨.
+              </p>
+            </RevealText>
+          </div>
+
           {/* Auto-scrolling gallery */}
-          <RevealText delay={0.35}>
-            <div className="relative overflow-hidden rounded-2xl py-4">
+          <RevealText delay={0.6}>
+            <div className="relative overflow-hidden rounded-2xl py-6 mt-10">
               <div className="flex gap-4 animate-[scroll-left_35s_linear_infinite]" style={{ width: "max-content" }}>
                 {[...galleryImages, ...galleryImages].map((img, i) => (
                   <div key={i} className="h-48 w-72 shrink-0 overflow-hidden rounded-xl">
