@@ -786,7 +786,7 @@ export default function Index() {
             </div>
           </RevealText>
 
-
+          <RevealText delay={0.35}>
             <div className="mt-14 text-center">
               <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
                 Jack of all trades, master of none?
