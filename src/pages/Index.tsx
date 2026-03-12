@@ -447,14 +447,14 @@ export default function Index() {
                 <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Bio</span>
               </div>
               <div className="flex-1 space-y-4 text-[17px] leading-[1.75]">
-                <p>I'm a Product Manager based in Toronto 🇨🇦, currently leading Alternative Data, Gen AI, and Research Technology products at Royal Bank of Canada – Capital Markets 🏦.</p>
+                <p>I'm a Product Manager based in Toronto 🇨🇦, currently leading Alternative Data, Gen AI, and Research Technology products at Royal Bank of Canada - Capital Markets 🏦.</p>
                 <p>I started out as a software developer 👨‍💻. Three years in, I noticed something: I was spending more time thinking about why we were building things than actually building them. Who was this for? Does it actually solve their problem? Does it matter? 🤔 Turns out, those were the questions I cared about most.</p>
-                <p>That curiosity pulled me toward UX and Product 🎨 — and honestly, it clicked in a way that writing code never quite did. I found I was good at it, even before I had the title to match 💡✨.</p>
-                <p>What drew me to product management wasn't just the craft — it was the mindset 🧠. Owning a problem end-to-end, bringing clarity to messy situations, and working with people across disciplines to build something that genuinely makes a difference 🎯. That's the work I find most meaningful 🚀.</p>
-                <p>These days, I sit at the intersection of technology and business 💼⚙️. My job is to make sense of complex, ambiguous problems and turn them into something a team can actually build — and that users actually want to use 🙌.</p>
+                <p>That curiosity pulled me toward UX and Product 🎨 - and honestly, it clicked in a way that writing code never quite did. I found I was good at it, even before I had the title to match 💡✨.</p>
+                <p>What drew me to product management wasn't just the craft - it was the mindset 🧠. Owning a problem end-to-end, bringing clarity to messy situations, and working with people across disciplines to build something that genuinely makes a difference 🎯. That's the work I find most meaningful 🚀.</p>
+                <p>These days, I sit at the intersection of technology and business 💼⚙️. My job is to make sense of complex, ambiguous problems and turn them into something a team can actually build - and that users actually want to use 🙌.</p>
                 <p>The thing I keep coming back to is this: the best products aren't just technically solid, they're built around real human needs ❤️. That belief shapes how I approach every decision 🔍.</p>
-                <p>If you're into AI 🤖, data products 📊, or product strategy — I'd love to connect 🤝.</p>
-                <p>And if you want to see what I'm up to outside of work — check out my <a href="#about" onClick={(e) => {e.preventDefault();document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });}} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)] underline underline-offset-4 decoration-[hsl(200,50%,35%,0.4)] dark:decoration-[hsl(200,40%,75%,0.4)] hover:opacity-80 transition-opacity font-medium">About</a>!</p>
+                <p>If you're into AI 🤖, data products 📊, or product strategy - I'd love to connect 🤝.</p>
+                <p>And if you want to see what I'm up to outside of work - check out my About!<a href="#about" onClick={(e) => {e.preventDefault();document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });}} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)] underline underline-offset-4 decoration-[hsl(200,50%,35%,0.4)] dark:decoration-[hsl(200,40%,75%,0.4)] hover:opacity-80 transition-opacity font-medium">About</a>!</p>
               </div>
             </div>
           </RevealText>
@@ -635,43 +635,43 @@ export default function Index() {
               transition={{ duration: 0.7, delay: hobby.delay, ease: [0.22, 0.68, 0.36, 1] }}>
               
                 {(() => {
-                  const cardContent = (
-                    <motion.div
-                    className={`relative bg-card rounded-sm p-3 pb-4 shadow-[4px_8px_24px_-6px_rgba(0,0,0,0.15)] dark:shadow-[4px_8px_30px_-6px_hsl(200,100%,50%,0.12)] ${(hobby as any).link ? 'cursor-pointer' : 'cursor-grab'}`}
-                    style={{ border: "1px solid hsl(var(--border))" }}
-                    whileHover={{ scale: 1.08, rotate: "0deg", zIndex: 20, boxShadow: "0 24px 50px -12px hsl(200 80% 50% / 0.2)" }}
-                    transition={{ type: "spring", stiffness: 280, damping: 18 }}>
+                const cardContent =
+                <motion.div
+                  className={`relative bg-card rounded-sm p-3 pb-4 shadow-[4px_8px_24px_-6px_rgba(0,0,0,0.15)] dark:shadow-[4px_8px_30px_-6px_hsl(200,100%,50%,0.12)] ${(hobby as any).link ? 'cursor-pointer' : 'cursor-grab'}`}
+                  style={{ border: "1px solid hsl(var(--border))" }}
+                  whileHover={{ scale: 1.08, rotate: "0deg", zIndex: 20, boxShadow: "0 24px 50px -12px hsl(200 80% 50% / 0.2)" }}
+                  transition={{ type: "spring", stiffness: 280, damping: 18 }}>
                     
                       {/* Polaroid photo area */}
                       <div className="aspect-[4/3] rounded-sm bg-gradient-to-br from-secondary via-muted to-accent flex items-center justify-center mb-3 overflow-hidden">
                         {(hobby as any).image ?
-                      <img src={(hobby as any).image === true ? hobbyPainting : (hobby as any).image} alt={hobby.title} className="w-full h-full object-cover" style={{ objectPosition: (hobby as any).imagePos || "center" }} /> :
-                      <motion.span
-                        className="text-5xl sm:text-6xl select-none"
-                        animate={{ y: [0, -4, 0] }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}>
+                    <img src={(hobby as any).image === true ? hobbyPainting : (hobby as any).image} alt={hobby.title} className="w-full h-full object-cover" style={{ objectPosition: (hobby as any).imagePos || "center" }} /> :
+                    <motion.span
+                      className="text-5xl sm:text-6xl select-none"
+                      animate={{ y: [0, -4, 0] }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}>
                             {hobby.emoji}
                           </motion.span>
-                      }
+                    }
                       </div>
                       <h4 className="text-[14px] font-bold leading-snug text-center">{hobby.title}</h4>
                       <p className="mt-0.5 text-[11px] leading-relaxed text-muted-foreground text-center">{hobby.caption}</p>
                       {(hobby as any).link && <div className="flex items-center justify-center gap-1 mt-1"><ExternalLink className="w-3 h-3 text-muted-foreground" /><span className="text-[10px] text-muted-foreground">View Bookshelf</span></div>}
                       {/* Colored pushpin */}
                       <div
-                      className="absolute -top-2.5 left-1/2 -translate-x-1/2 h-5 w-5 rounded-full shadow-lg z-10"
-                      style={{ background: hobby.pin, boxShadow: `0 2px 8px ${hobby.pin}` }} />
+                    className="absolute -top-2.5 left-1/2 -translate-x-1/2 h-5 w-5 rounded-full shadow-lg z-10"
+                    style={{ background: hobby.pin, boxShadow: `0 2px 8px ${hobby.pin}` }} />
                     
                       {/* Tape decoration on some cards */}
                       {i % 3 === 0 &&
-                    <div className="absolute -top-3 -right-2 w-12 h-5 bg-[hsl(50,80%,85%)] dark:bg-[hsl(50,30%,30%)] opacity-70 rotate-[15deg] rounded-sm" />
-                    }
-                    </motion.div>
-                  );
-                  return (hobby as any).link ? (
-                    <a href={(hobby as any).link} target="_blank" rel="noopener noreferrer" className="block no-underline">{cardContent}</a>
-                  ) : cardContent;
-                })()}
+                  <div className="absolute -top-3 -right-2 w-12 h-5 bg-[hsl(50,80%,85%)] dark:bg-[hsl(50,30%,30%)] opacity-70 rotate-[15deg] rounded-sm" />
+                  }
+                    </motion.div>;
+
+                return (hobby as any).link ?
+                <a href={(hobby as any).link} target="_blank" rel="noopener noreferrer" className="block no-underline">{cardContent}</a> :
+                cardContent;
+              })()}
               </motion.div>
             )}
 
