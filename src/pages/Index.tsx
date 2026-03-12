@@ -21,6 +21,22 @@ import hobbySwimming from "@/assets/hobby-swimming.jpeg";
 import hobbyKathak from "@/assets/hobby-kathak.jpeg";
 import hobbyReading from "@/assets/hobby-reading.jpeg";
 
+import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
+import galleryLego from "@/assets/gallery-lego.jpeg";
+import galleryDinner from "@/assets/gallery-dinner.jpeg";
+import galleryFarm from "@/assets/gallery-farm.jpeg";
+import galleryBoostSmall from "@/assets/gallery-boost-small.jpeg";
+import galleryFormal from "@/assets/gallery-formal.jpeg";
+import galleryBoostGroup from "@/assets/gallery-boost-group.jpeg";
+import galleryAxe from "@/assets/gallery-axe.jpeg";
+import galleryOutdoor from "@/assets/gallery-outdoor.jpeg";
+import galleryBoostTrio from "@/assets/gallery-boost-trio.jpeg";
+
+const galleryImages = [
+  gallerySpeaking, galleryLego, galleryDinner, galleryFarm, galleryBoostSmall,
+  galleryFormal, galleryBoostGroup, galleryAxe, galleryOutdoor, galleryBoostTrio,
+];
+
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Data Analyst.", "Lifelong Learner."];
 
 const socialLinks = [
@@ -728,7 +744,49 @@ export default function Index() {
             </StaggerItem>
           </StaggerContainer>
 
+          {/* Team & Culture Gallery */}
+          <RevealText delay={0.25}>
+            <div className="mt-20 mb-6">
+              <h3 className="text-xl font-bold tracking-tight md:text-2xl">
+                The People Person Behind the Product 🤝
+              </h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground max-w-2xl">
+                Great products aren't built in isolation — they're built by teams that genuinely enjoy working together. 
+                I believe the best collaboration happens when you invest in relationships beyond the meeting room. 
+                Whether it's axe throwing with the squad, team dinners, or building something ridiculous out of Lego — 
+                these moments are where trust is built, ideas flow freely, and the real magic happens.
+              </p>
+            </div>
+          </RevealText>
+
+          {/* Auto-scrolling gallery */}
           <RevealText delay={0.3}>
+            <div className="relative overflow-hidden rounded-2xl py-4">
+              {/* Gradient overlays */}
+              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-background to-transparent" />
+              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-background to-transparent" />
+              
+              {/* Row 1 - scrolls left */}
+              <div className="mb-4 flex gap-4 animate-[scroll-left_35s_linear_infinite]" style={{ width: "max-content" }}>
+                {[...galleryImages, ...galleryImages].map((img, i) => (
+                  <div key={i} className="h-48 w-72 shrink-0 overflow-hidden rounded-xl">
+                    <img src={img} alt="Team activity" className="h-full w-full object-cover transition-transform duration-500 hover:scale-110" />
+                  </div>
+                ))}
+              </div>
+              
+              {/* Row 2 - scrolls right */}
+              <div className="flex gap-4 animate-[scroll-right_40s_linear_infinite]" style={{ width: "max-content" }}>
+                {[...galleryImages.slice().reverse(), ...galleryImages.slice().reverse()].map((img, i) => (
+                  <div key={i} className="h-48 w-72 shrink-0 overflow-hidden rounded-xl">
+                    <img src={img} alt="Team activity" className="h-full w-full object-cover transition-transform duration-500 hover:scale-110" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </RevealText>
+
+          <RevealText delay={0.35}>
             <div className="mt-14 text-center">
               <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
                 Jack of all trades, master of none?
