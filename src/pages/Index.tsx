@@ -762,22 +762,8 @@ export default function Index() {
           {/* Auto-scrolling gallery */}
           <RevealText delay={0.3}>
             <div className="relative overflow-hidden rounded-2xl py-4">
-              {/* Gradient overlays */}
-              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-background to-transparent" />
-              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-background to-transparent" />
-              
-              {/* Row 1 - scrolls left */}
-              <div className="mb-4 flex gap-4 animate-[scroll-left_35s_linear_infinite]" style={{ width: "max-content" }}>
+              <div className="flex gap-4 animate-[scroll-left_35s_linear_infinite]" style={{ width: "max-content" }}>
                 {[...galleryImages, ...galleryImages].map((img, i) => (
-                  <div key={i} className="h-48 w-72 shrink-0 overflow-hidden rounded-xl">
-                    <img src={img} alt="Team activity" className="h-full w-full object-cover transition-transform duration-500 hover:scale-110" />
-                  </div>
-                ))}
-              </div>
-              
-              {/* Row 2 - scrolls right */}
-              <div className="flex gap-4 animate-[scroll-right_40s_linear_infinite]" style={{ width: "max-content" }}>
-                {[...galleryImages.slice().reverse(), ...galleryImages.slice().reverse()].map((img, i) => (
                   <div key={i} className="h-48 w-72 shrink-0 overflow-hidden rounded-xl">
                     <img src={img} alt="Team activity" className="h-full w-full object-cover transition-transform duration-500 hover:scale-110" />
                   </div>
