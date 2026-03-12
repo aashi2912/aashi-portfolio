@@ -744,8 +744,19 @@ export default function Index() {
             </StaggerItem>
           </StaggerContainer>
 
-          {/* Team & Culture Gallery */}
           <RevealText delay={0.25}>
+            <div className="mt-14 text-center">
+              <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
+                Jack of all trades, master of none?
+              </h2>
+              <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
+                But oftentimes better than <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">a master of one.</span>
+              </h3>
+            </div>
+          </RevealText>
+
+          {/* Team & Culture Gallery */}
+          <RevealText delay={0.3}>
             <div className="mt-20 mb-6">
               <h3 className="text-xl font-bold tracking-tight md:text-2xl">
                 The People Person Behind the Product 🤝
@@ -760,7 +771,7 @@ export default function Index() {
           </RevealText>
 
           {/* Auto-scrolling gallery */}
-          <RevealText delay={0.3}>
+          <RevealText delay={0.35}>
             <div className="relative overflow-hidden rounded-2xl py-4">
               <div className="flex gap-4 animate-[scroll-left_35s_linear_infinite]" style={{ width: "max-content" }}>
                 {[...galleryImages, ...galleryImages].map((img, i) => (
@@ -769,17 +780,6 @@ export default function Index() {
                   </div>
                 ))}
               </div>
-            </div>
-          </RevealText>
-
-          <RevealText delay={0.35}>
-            <div className="mt-14 text-center">
-              <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
-                Jack of all trades, master of none?
-              </h2>
-              <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
-                But oftentimes better than <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">a master of one.</span>
-              </h3>
             </div>
           </RevealText>
         </section>
