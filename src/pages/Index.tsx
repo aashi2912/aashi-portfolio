@@ -777,16 +777,17 @@ export default function Index() {
             </div>
           </RevealText>
 
+          <div className="mt-12 flex flex-col items-center">
           {/* Product management is about people section - AFTER the gallery */}
           <RevealText delay={0.4}>
-            <div className="mt-12 mb-4">
+            <div className="mb-4 text-center">
               <h4 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
                 Product management is about <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">people</span> before it's about <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">products.</span>
               </h4>
             </div>
           </RevealText>
 
-          <div className="space-y-5 text-[17px] leading-[1.75] max-w-2xl mx-auto text-center">
+          <div className="space-y-5 text-[17px] leading-[1.75] max-w-2xl text-center">
             <RevealText delay={0.45}>
               <p className="text-muted-foreground">Outside meeting rooms, sprint boards, and roadmaps, you'll usually find me doing something a little more social 🎉 - joining team events, exploring new activities, or organizing spontaneous outings with colleagues. Whether it's group adventures 🏔️, company events 🎊, or just moments of shared laughter 😄, these experiences matter to me.
 
