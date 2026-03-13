@@ -759,7 +759,7 @@ export default function Index() {
           <RevealText delay={0.3}>
             <div className="mt-16 mb-2">
               <h3 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
-                The People Person <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">Behind the Product</span>
+<span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]"></span>
               </h3>
             </div>
           </RevealText>
