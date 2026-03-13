@@ -821,6 +821,7 @@ export default function Index() {
               </p>
             </RevealText>
           </div>
+          </div>
         </section>
       </ContentWrap>
 
