@@ -33,9 +33,9 @@ import galleryOutdoor from "@/assets/gallery-outdoor.jpeg";
 import galleryBoostTrio from "@/assets/gallery-boost-trio.jpeg";
 
 const galleryImages = [
-  gallerySpeaking, galleryLego, galleryDinner, galleryFarm, galleryBoostSmall,
-  galleryFormal, galleryBoostGroup, galleryAxe, galleryOutdoor, galleryBoostTrio,
-];
+gallerySpeaking, galleryLego, galleryDinner, galleryFarm, galleryBoostSmall,
+galleryFormal, galleryBoostGroup, galleryAxe, galleryOutdoor, galleryBoostTrio];
+
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Data Analyst.", "Lifelong Learner."];
 
@@ -699,8 +699,8 @@ export default function Index() {
               <h3 className="text-xl font-bold tracking-tight md:text-2xl">
                 In the Queue 🎯
               </h3>
-              <p className="mt-1 text-sm text-muted-foreground italic">
-                Gonna try these soon — the list never stops growing
+              <p className="mt-1 text-sm text-muted-foreground italic">Gonna try these soon - the list never stops growing
+
               </p>
             </div>
           </RevealText>
@@ -759,7 +759,7 @@ export default function Index() {
           <RevealText delay={0.3}>
             <div className="mt-20 mb-4">
               <h3 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
-                The People Person Behind the Product 🤝
+
               </h3>
               <h4 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
                 Product management is about <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">people</span> before it's about <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">products.</span>
@@ -769,8 +769,8 @@ export default function Index() {
 
           <div className="space-y-5 text-[17px] leading-[1.75] max-w-2xl">
             <RevealText delay={0.35}>
-              <p className="text-muted-foreground">
-                Outside meeting rooms, sprint boards, and roadmaps, you'll usually find me doing something a little more social 🎉 — joining team events, exploring new activities, or organizing spontaneous outings with colleagues. Whether it's group adventures 🏔️, company events 🎊, or just moments of shared laughter 😄, these experiences matter to me.
+              <p className="text-muted-foreground">Outside meeting rooms, sprint boards, and roadmaps, you'll usually find me doing something a little more social 🎉 - joining team events, exploring new activities, or organizing spontaneous outings with colleagues. Whether it's group adventures 🏔️, company events 🎊, or just moments of shared laughter 😄, these experiences matter to me.
+
               </p>
             </RevealText>
 
@@ -781,14 +781,14 @@ export default function Index() {
             </RevealText>
 
             <RevealText delay={0.45}>
-              <p className="text-muted-foreground">
-                As a Product Manager, I spend a lot of time bringing people together — engineers, designers, stakeholders, and users 🧩. The same curiosity and energy that pushes me to participate in team activities is what helps me build trust 🤝, understand different perspectives 🌍, and create environments where collaboration thrives 🌱.
+              <p className="text-muted-foreground">As a Product Manager, I spend a lot of time bringing people together - engineers, designers, stakeholders, and users 🧩. The same curiosity and energy that pushes me to participate in team activities is what helps me build trust 🤝, understand different perspectives 🌍, and create environments where collaboration thrives 🌱.
+
               </p>
             </RevealText>
 
             <RevealText delay={0.5}>
-              <p className="text-muted-foreground">
-                This gallery captures some of those moments — the conversations 💬, the adventures 🚀, the team bonding 🫂, and the fun along the way.
+              <p className="text-muted-foreground">This gallery captures some of those moments - the conversations 💬, the adventures 🚀, the team bonding 🫂, and the fun along the way.
+
               </p>
             </RevealText>
 
@@ -796,8 +796,8 @@ export default function Index() {
               <p className="text-muted-foreground">
                 They're small snapshots of something bigger:
               </p>
-              <p className="mt-2 text-[19px] font-semibold">
-                my belief that the best teams — and the best products — are built when people genuinely enjoy working together ❤️✨.
+              <p className="mt-2 text-[19px] font-semibold">My belief that the best teams and the best products are built when people genuinely enjoy working together ❤️✨.
+
               </p>
             </RevealText>
           </div>
@@ -806,11 +806,11 @@ export default function Index() {
           <RevealText delay={0.6}>
             <div className="relative overflow-hidden rounded-2xl py-6 mt-10">
               <div className="flex gap-4 animate-[scroll-left_35s_linear_infinite]" style={{ width: "max-content" }}>
-                {[...galleryImages, ...galleryImages].map((img, i) => (
-                  <div key={i} className="h-48 w-72 shrink-0 overflow-hidden rounded-xl">
+                {[...galleryImages, ...galleryImages].map((img, i) =>
+                <div key={i} className="h-48 w-72 shrink-0 overflow-hidden rounded-xl">
                     <img src={img} alt="Team activity" className="h-full w-full object-cover transition-transform duration-500 hover:scale-110" />
                   </div>
-                ))}
+                )}
               </div>
             </div>
           </RevealText>
