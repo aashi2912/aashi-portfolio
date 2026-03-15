@@ -633,22 +633,25 @@ export default function Index() {
           </RevealText>
 
           {/* Current Hobbies - Scattered polaroid mood board */}
-          <div className="relative w-full" style={{ minHeight: "1400px" }}>
+          <div className="relative w-full" style={{ minHeight: "900px" }}>
             {[
-            { emoji: "🎨", title: "Painting", caption: "Follow my art journey @aashiarts_", rotate: "-5deg", top: "0px", left: "2%", width: "220px", delay: 0.1, pin: "hsl(0,70%,55%)", image: true },
-            { emoji: "🌍", title: "Exploring new places", caption: "Always planning the next adventure", rotate: "3deg", top: "20px", left: "52%", width: "230px", delay: 0.18, pin: "hsl(35,80%,50%)", image: hobbyExploring, imagePos: "center 80%" },
-            { emoji: "🤿", title: "Snorkelling", caption: "Discovering the world beneath the waves", rotate: "-2deg", top: "280px", left: "25%", width: "210px", delay: 0.26, pin: "hsl(200,70%,50%)", image: hobbySnorkelling },
-            { emoji: "📚", title: "Reading", caption: "Getting lost in stories & ideas", rotate: "4.5deg", top: "300px", left: "68%", width: "200px", delay: 0.34, pin: "hsl(120,50%,45%)", image: hobbyReading, imagePos: "center top", link: "https://morning-tile-b61.notion.site/Books-c3bda9122c404b4aaaaf28d3a4ffebd9" },
-            { emoji: "🏺", title: "Pottery", caption: "Moulding clay into something beautiful", rotate: "-4deg", top: "540px", left: "3%", width: "220px", delay: 0.42, pin: "hsl(280,60%,55%)", image: hobbyPottery, imagePos: "center 80%" },
-            { emoji: "🥾", title: "Hiking", caption: "Chasing trails & mountain views", rotate: "2.5deg", top: "560px", left: "48%", width: "215px", delay: 0.5, pin: "hsl(25,80%,50%)", image: hobbyHiking },
-            { emoji: "💃", title: "Kathak", caption: "Indian classical dance — rhythm & expression", rotate: "-3.5deg", top: "820px", left: "15%", width: "225px", delay: 0.58, pin: "hsl(340,70%,55%)", image: hobbyKathak, imagePos: "center 30%" },
-            { emoji: "🏊‍♀️", title: "Swimming", caption: "My kind of meditation", rotate: "5deg", top: "840px", left: "58%", width: "210px", delay: 0.66, pin: "hsl(190,70%,45%)", image: hobbySwimming, imagePos: "center 75%" },
-            { emoji: "🏸", title: "Badminton", caption: "Smashing my way through weekends", rotate: "-3deg", top: "1100px", left: "30%", width: "210px", delay: 0.74, pin: "hsl(45,90%,55%)" }].
+            /* Row 1 */
+            { emoji: "🎨", title: "Painting", caption: "Follow my art journey @aashiarts_", rotate: "-5deg", top: "0px", left: "2%", width: "200px", delay: 0.1, pin: "hsl(0,70%,55%)", image: true },
+            { emoji: "🌍", title: "Exploring new places", caption: "Always planning the next adventure", rotate: "3deg", top: "25px", left: "35%", width: "200px", delay: 0.18, pin: "hsl(35,80%,50%)", image: hobbyExploring, imagePos: "center 80%" },
+            { emoji: "🤿", title: "Snorkelling", caption: "Discovering the world beneath the waves", rotate: "-2.5deg", top: "10px", left: "68%", width: "195px", delay: 0.26, pin: "hsl(200,70%,50%)", image: hobbySnorkelling },
+            /* Row 2 */
+            { emoji: "📚", title: "Reading", caption: "Getting lost in stories & ideas", rotate: "4deg", top: "280px", left: "4%", width: "195px", delay: 0.34, pin: "hsl(120,50%,45%)", image: hobbyReading, imagePos: "center top", link: "https://morning-tile-b61.notion.site/Books-c3bda9122c404b4aaaaf28d3a4ffebd9" },
+            { emoji: "🏺", title: "Pottery", caption: "Moulding clay into something beautiful", rotate: "-4deg", top: "300px", left: "36%", width: "200px", delay: 0.42, pin: "hsl(280,60%,55%)", image: hobbyPottery, imagePos: "center 80%" },
+            { emoji: "🥾", title: "Hiking", caption: "Chasing trails & mountain views", rotate: "2.5deg", top: "270px", left: "69%", width: "195px", delay: 0.5, pin: "hsl(25,80%,50%)", image: hobbyHiking },
+            /* Row 3 */
+            { emoji: "💃", title: "Kathak", caption: "Indian classical dance — rhythm & expression", rotate: "-3.5deg", top: "560px", left: "3%", width: "200px", delay: 0.58, pin: "hsl(340,70%,55%)", image: hobbyKathak, imagePos: "center 30%" },
+            { emoji: "🏊‍♀️", title: "Swimming", caption: "My kind of meditation", rotate: "5deg", top: "580px", left: "35%", width: "195px", delay: 0.66, pin: "hsl(190,70%,45%)", image: hobbySwimming, imagePos: "center 75%" },
+            { emoji: "🏸", title: "Badminton", caption: "Smashing my way through weekends", rotate: "-3deg", top: "555px", left: "67%", width: "200px", delay: 0.74, pin: "hsl(45,90%,55%)" }].
             map((hobby, i) =>
             <motion.div
               key={i}
               className="absolute"
-              style={{ top: hobby.top, left: hobby.left, width: hobby.width, maxWidth: "45%" }}
+              style={{ top: hobby.top, left: hobby.left, width: hobby.width, maxWidth: "32%" }}
               initial={{ opacity: 0, y: 60, rotate: 0, scale: 0.85 }}
               whileInView={{ opacity: 1, y: 0, rotate: hobby.rotate, scale: 1 }}
               viewport={{ once: true, margin: "-30px" }}
