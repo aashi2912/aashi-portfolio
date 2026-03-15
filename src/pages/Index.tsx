@@ -31,10 +31,13 @@ import galleryBoostGroup from "@/assets/gallery-boost-group.jpeg";
 import galleryAxe from "@/assets/gallery-axe.jpeg";
 import galleryOutdoor from "@/assets/gallery-outdoor.jpeg";
 import galleryBoostTrio from "@/assets/gallery-boost-trio.jpeg";
+import galleryClimbingGroup from "@/assets/gallery-climbing-group.jpeg";
+import galleryClimbing from "@/assets/gallery-climbing.jpeg";
 
 const galleryImages = [
 gallerySpeaking, galleryLego, galleryDinner, galleryFarm, galleryBoostSmall,
-galleryFormal, galleryBoostGroup, galleryAxe, galleryOutdoor, galleryBoostTrio];
+galleryFormal, galleryBoostGroup, galleryAxe, galleryOutdoor, galleryBoostTrio,
+galleryClimbingGroup, galleryClimbing];
 
 
 const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Data Analyst.", "Lifelong Learner."];
