@@ -707,7 +707,7 @@ export default function Index() {
 
           <StaggerContainer className="flex flex-wrap gap-2.5">
             {[
-            { label: "⛷️ Ski", delay: 0.05 },
+{ label: "⛷️ Ski", delay: 0.05 },
             { label: "⛸️ Skate", delay: 0.08 },
             { label: "🤿 Scuba Diving", delay: 0.11 },
             { label: "🪂 Sky Diving", delay: 0.14 },
@@ -721,7 +721,7 @@ export default function Index() {
             { label: "🏄‍♀️ Surf", delay: 0.38 },
             { label: "🥊 Kick Boxing", delay: 0.41 },
             { label: "🥋 Martial Arts", delay: 0.44 },
-            { label: "🏸 Badminton", delay: 0.47 },
+            { label: "🧗‍♀️ Rock Climbing", delay: 0.47 },
             { label: "✈️ Fly a Plane", delay: 0.5 }].
             map((item, i) =>
             <StaggerItem key={i}>
