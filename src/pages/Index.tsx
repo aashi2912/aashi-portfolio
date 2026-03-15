@@ -636,6 +636,7 @@ export default function Index() {
             { emoji: "🌍", title: "Exploring new places", caption: "Always planning the next adventure", rotate: "3deg", top: "20px", left: "52%", width: "230px", delay: 0.18, pin: "hsl(35,80%,50%)", image: hobbyExploring, imagePos: "center 80%" },
             { emoji: "🤿", title: "Snorkelling", caption: "Discovering the world beneath the waves", rotate: "-2deg", top: "280px", left: "25%", width: "210px", delay: 0.26, pin: "hsl(200,70%,50%)", image: hobbySnorkelling },
             { emoji: "📚", title: "Reading", caption: "Getting lost in stories & ideas", rotate: "4.5deg", top: "300px", left: "68%", width: "200px", delay: 0.34, pin: "hsl(120,50%,45%)", image: hobbyReading, imagePos: "center top", link: "https://morning-tile-b61.notion.site/Books-c3bda9122c404b4aaaaf28d3a4ffebd9" },
+            { emoji: "🏸", title: "Badminton", caption: "Smashing my way through weekends", rotate: "6deg", top: "420px", left: "78%", width: "200px", delay: 0.38, pin: "hsl(45,90%,55%)" },
             { emoji: "🏺", title: "Pottery", caption: "Moulding clay into something beautiful", rotate: "-4deg", top: "540px", left: "3%", width: "220px", delay: 0.42, pin: "hsl(280,60%,55%)", image: hobbyPottery, imagePos: "center 80%" },
             { emoji: "🥾", title: "Hiking", caption: "Chasing trails & mountain views", rotate: "2.5deg", top: "560px", left: "48%", width: "215px", delay: 0.5, pin: "hsl(25,80%,50%)", image: hobbyHiking },
             { emoji: "💃", title: "Kathak", caption: "Indian classical dance — rhythm & expression", rotate: "-3.5deg", top: "820px", left: "15%", width: "225px", delay: 0.58, pin: "hsl(340,70%,55%)", image: hobbyKathak, imagePos: "center 30%" },
@@ -707,7 +708,7 @@ export default function Index() {
 
           <StaggerContainer className="flex flex-wrap gap-2.5">
             {[
-            { label: "⛷️ Ski", delay: 0.05 },
+{ label: "⛷️ Ski", delay: 0.05 },
             { label: "⛸️ Skate", delay: 0.08 },
             { label: "🤿 Scuba Diving", delay: 0.11 },
             { label: "🪂 Sky Diving", delay: 0.14 },
@@ -721,7 +722,7 @@ export default function Index() {
             { label: "🏄‍♀️ Surf", delay: 0.38 },
             { label: "🥊 Kick Boxing", delay: 0.41 },
             { label: "🥋 Martial Arts", delay: 0.44 },
-            { label: "🏸 Badminton", delay: 0.47 },
+            { label: "🧗‍♀️ Rock Climbing", delay: 0.47 },
             { label: "✈️ Fly a Plane", delay: 0.5 }].
             map((item, i) =>
             <StaggerItem key={i}>
