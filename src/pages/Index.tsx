@@ -633,7 +633,7 @@ export default function Index() {
           </RevealText>
 
           {/* Current Hobbies - Scattered polaroid mood board */}
-          <div className="relative w-full" style={{ minHeight: "1050px" }}>
+          <div className="relative w-full" style={{ minHeight: "850px" }}>
             {[
 { emoji: "🎨", title: "Painting", caption: "Follow my art journey @aashiarts_", rotate: "-5deg", top: "0px", left: "2%", width: "200px", delay: 0.1, pin: "hsl(0,70%,55%)", image: true },
 { emoji: "🌍", title: "Exploring new places", caption: "Always planning the next adventure", rotate: "3deg", top: "60px", left: "35%", width: "200px", delay: 0.18, pin: "hsl(35,80%,50%)", image: hobbyExploring, imagePos: "center 80%" },
