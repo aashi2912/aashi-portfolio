@@ -699,7 +699,7 @@ export default function Index() {
 
           {/* In the Queue section */}
           <RevealText delay={0.2}>
-            <div className="mt-20 mb-6">
+            <div className="mt-10 mb-6">
               <h3 className="text-xl font-bold tracking-tight md:text-2xl">
                 In the Queue 🎯
               </h3>
