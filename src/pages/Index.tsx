@@ -613,7 +613,7 @@ export default function Index() {
       </ContentWrap>
 
       {/* ── About ── */}
-      <ContentWrap className="py-24 scroll-mt-20">
+      <ContentWrap className="py-24 pb-16 scroll-mt-20">
         <section id="about">
           {/* Headline */}
           <RevealText>
