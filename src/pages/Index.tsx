@@ -637,7 +637,7 @@ export default function Index() {
             {[
             { emoji: "🎨", title: "Painting", caption: "Follow my art journey @aashiarts_", rotate: "-5deg", top: "0px", left: "2%", width: "200px", delay: 0.1, pin: "hsl(0,70%,55%)", image: true },
             { emoji: "🌍", title: "Exploring new places", caption: "Always planning the next adventure", rotate: "3deg", top: "60px", left: "35%", width: "200px", delay: 0.18, pin: "hsl(35,80%,50%)", image: hobbyExploring, imagePos: "center 80%" },
-            { emoji: "🤿", title: "Snorkelling", caption: "Discovering the world beneath the waves", rotate: "-2.5deg", top: "100px", left: "68%", width: "195px", delay: 0.26, pin: "hsl(200,70%,50%)", image: hobbySnorkelling },
+            { emoji: "🤿", title: "Snorkelling", caption: "Discovering the world beneath the waves", rotate: "-2.5deg", top: "80px", left: "68%", width: "195px", delay: 0.26, pin: "hsl(200,70%,50%)", image: hobbySnorkelling },
             { emoji: "📚", title: "Reading", caption: "Getting lost in stories & ideas", rotate: "4deg", top: "290px", left: "4%", width: "195px", delay: 0.34, pin: "hsl(120,50%,45%)", image: hobbyReading, imagePos: "center top", link: "https://morning-tile-b61.notion.site/Books-c3bda9122c404b4aaaaf28d3a4ffebd9" },
             { emoji: "🏺", title: "Pottery", caption: "Moulding clay into something beautiful", rotate: "-4deg", top: "370px", left: "36%", width: "200px", delay: 0.42, pin: "hsl(280,60%,55%)", image: hobbyPottery, imagePos: "center 80%" },
             { emoji: "🥾", title: "Hiking", caption: "Chasing trails & mountain views", rotate: "2.5deg", top: "290px", left: "69%", width: "195px", delay: 0.5, pin: "hsl(25,80%,50%)", image: hobbyHiking },
