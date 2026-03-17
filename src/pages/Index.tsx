@@ -792,7 +792,7 @@ export default function Index() {
             </div>
           </RevealText>
 
-          <div className="space-y-5 text-[17px] leading-[1.75] max-w-2xl text-justify">
+          <div className="space-y-5 text-[17px] leading-[1.75] max-w-2xl text-left">
             <RevealText delay={0.45}>
               <p className="text-muted-foreground">Outside meeting rooms, sprint boards, and roadmaps, you'll usually find me doing something a little more social 🎉 - joining team events, exploring new activities, or organizing spontaneous outings with colleagues. Whether it's group adventures 🏔️, company events 🎊, or just moments of shared laughter 😄, these experiences matter to me.
 
