@@ -644,7 +644,7 @@ export default function Index() {
             { emoji: "🥾", title: "Hiking", caption: "Chasing trails & mountain views", rotate: "2.5deg", top: "290px", left: "69%", width: "195px", delay: 0.5, pin: "hsl(25,80%,50%)", image: hobbyHiking },
             { emoji: "💃", title: "Kathak", caption: "Indian classical dance — rhythm & expression", rotate: "-3.5deg", top: "580px", left: "3%", width: "200px", delay: 0.58, pin: "hsl(340,70%,55%)", image: hobbyKathak, imagePos: "center 30%" },
             { emoji: "🏊‍♀️", title: "Swimming", caption: "My kind of meditation", rotate: "5deg", top: "660px", left: "35%", width: "195px", delay: 0.66, pin: "hsl(190,70%,45%)", image: hobbySwimming, imagePos: "center 75%" },
-            { emoji: "🏸", title: "Badminton", caption: "Smashing my way through weekends", rotate: "-3deg", top: "560px", left: "67%", width: "200px", delay: 0.74, pin: "hsl(45,90%,55%)" }].
+            { emoji: "🏸", title: "Badminton", caption: "Smashing my way through weekends", rotate: "-3deg", top: "560px", left: "67%", width: "200px", delay: 0.74, pin: "hsl(45,90%,55%)", image: hobbyBadminton }].
             map((hobby, i) =>
             <motion.div
               key={i}
