@@ -200,11 +200,15 @@ const impossibleCategories: ImpossibleCategory[] = [
 {
   name: "FITNESS",
   items: [
-  { text: "Run a marathon", done: true },
-  { text: "Complete a triathlon", done: false },
-  { text: "Do 100 push-ups in a row", done: true },
-  { text: "Hold a 5-minute plank", done: false }]
-
+    { text: "Run a marathon", done: false },
+    { text: "Complete a triathlon", done: false },
+    { text: "Hold a 5-minute plank", done: false },
+    { text: "Train like an athlete", done: false },
+    { text: "Learn rock-climbing", done: false },
+    { text: "Learn to ski", done: false },
+    { text: "Learn Kick Boxing and Muay Thai", done: false },
+    { text: "Learn new sports", done: false },
+  ],
 },
 {
   name: "PROFESSIONAL",
