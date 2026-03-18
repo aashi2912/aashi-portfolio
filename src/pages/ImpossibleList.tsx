@@ -19,9 +19,8 @@ const categories: Category[] = [
   {
     name: "FITNESS",
     items: [
-      { text: "Run a marathon", done: true },
+      { text: "Run a marathon", done: false },
       { text: "Complete a triathlon", done: false },
-      { text: "Do 100 push-ups in a row", done: true },
       { text: "Hold a 5-minute plank", done: false },
     ],
   },
