@@ -116,8 +116,8 @@ export default function ImpossibleList() {
 
       {/* Hero Image Placeholder */}
       <FadeIn delay={0.1}>
-        <div className="w-full aspect-[2/1] rounded-xl bg-secondary/50 overflow-hidden flex items-center justify-center">
-          <span className="text-muted-foreground text-sm">Hero image</span>
+        <div className="w-full aspect-[2/1] rounded-xl overflow-hidden">
+          <img src={impossibleListHero} alt="Impossible List hero" className="w-full h-full object-cover" />
         </div>
       </FadeIn>
 
