@@ -21,6 +21,7 @@ import hobbySwimming from "@/assets/hobby-swimming.jpeg";
 import hobbyKathak from "@/assets/hobby-kathak.jpeg";
 import hobbyReading from "@/assets/hobby-reading.jpeg";
 import hobbyBadminton from "@/assets/hobby-badminton.jpeg";
+import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 
 import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
 import galleryLego from "@/assets/gallery-lego.jpeg";
