@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 
 type ListItem = {
   text: string;
