@@ -21,6 +21,7 @@ import hobbySwimming from "@/assets/hobby-swimming.jpeg";
 import hobbyKathak from "@/assets/hobby-kathak.jpeg";
 import hobbyReading from "@/assets/hobby-reading.jpeg";
 import hobbyBadminton from "@/assets/hobby-badminton.jpeg";
+import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 
 import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
 import galleryLego from "@/assets/gallery-lego.jpeg";
@@ -841,10 +842,10 @@ export default function Index() {
             </div>
           </RevealText>
 
-          {/* Hero image placeholder */}
+          {/* Hero image */}
           <RevealText delay={0.1}>
-            <div className="w-full aspect-[2/1] rounded-xl bg-secondary/50 overflow-hidden flex items-center justify-center my-10">
-              <span className="text-muted-foreground text-sm">Hero image</span>
+            <div className="w-full aspect-[2/1] rounded-xl overflow-hidden my-10">
+              <img src={impossibleListHero} alt="Impossible List hero" className="w-full h-full object-cover" />
             </div>
           </RevealText>
 
