@@ -42,10 +42,13 @@ const categories: Category[] = [
   {
     name: "CREATIVE",
     items: [
-      { text: "Start a podcast", done: true },
-      { text: "Write a book", done: false },
-      { text: "Publish 100 blog posts", done: false },
-      { text: "Reach 10K YouTube subscribers", done: false },
+      { text: "Start a business", done: false },
+      { text: "Write and publish a book", done: false },
+      { text: "Learn to play guitar", done: false },
+      { text: "Learn Pottery", done: false },
+      { text: "Learn Kathak", done: false },
+      { text: "Learn Salsa", done: false },
+      { text: "Learn Knitting/Crochet", done: false },
     ],
   },
   {
