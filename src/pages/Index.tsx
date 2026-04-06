@@ -260,10 +260,17 @@ const impossibleCategories: ImpossibleCategory[] = [
 {
   name: "TRAVEL",
   items: [
-  { text: "Visit Japan", done: true },
   { text: "See the Northern Lights", done: false },
   { text: "Travel to all 7 continents", done: false },
   { text: "Road trip across the US", done: false }]
+},
+{
+  name: "READING",
+  items: [
+  { text: "Read a total of 50 books", done: false },
+  { text: "Read a total of 100 books", done: false },
+  { text: "Read a total of 250 books", done: false },
+  { text: "Read a total of 500 books", done: false }]
 }];
 
 
