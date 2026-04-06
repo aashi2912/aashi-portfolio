@@ -207,7 +207,7 @@ const impossibleCategories: ImpossibleCategory[] = [
     { text: "Learn rock-climbing", done: false },
     { text: "Learn to ski", done: false },
     { text: "Learn Kick Boxing and Muay Thai", done: false },
-    { text: "Learn new sports", done: false },
+    { text: "Learn badminton and swimming", done: true },
   ],
 },
 {
