@@ -32,10 +32,11 @@ const categories: Category[] = [
   {
     name: "PROFESSIONAL",
     items: [
-      { text: "Get promoted to Senior PM", done: true },
+      { text: "Get promoted to Senior PM", done: false },
       { text: "Launch a product used by 1M+ people", done: false },
-      { text: "Speak at a major conference", done: true },
-      { text: "Mentor 10 aspiring PMs", done: false },
+      { text: "Speak at a major conference", done: false },
+      { text: "Mentor 10 People", done: false },
+      { text: "Work for Google", done: false },
     ],
   },
   {
