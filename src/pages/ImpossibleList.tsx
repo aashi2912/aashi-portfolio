@@ -44,11 +44,39 @@ const categories: Category[] = [
     items: [
       { text: "Start a business", done: false },
       { text: "Write and publish a book", done: false },
-      { text: "Learn to play guitar", done: false },
+      { text: "Make full-time living online", done: false },
+      { text: "Learn to play the piano", done: false },
+      { text: "Learn to play the guitar", done: false },
       { text: "Learn Pottery", done: true },
       { text: "Learn Kathak", done: true },
       { text: "Learn Salsa", done: false },
       { text: "Learn Knitting/Crochet", done: false },
+    ],
+  },
+  {
+    name: "PERSONAL",
+    items: [
+      { text: "Open a NGO", done: false },
+      { text: "Own a lake house", done: false },
+      { text: "Study and settle abroad", done: false },
+    ],
+  },
+  {
+    name: "ADRENALINE",
+    items: [
+      { text: "Learn to ride motorcycle", done: false },
+      { text: "Own a boat", done: false },
+      { text: "Become a licensed pilot", done: false },
+      { text: "Go skydiving", done: false },
+      { text: "Go parasailing", done: false },
+      { text: "Go scuba diving", done: false, sub: [
+        { text: "Get my PADI Open Water License (18m / 60ft)", done: false },
+        { text: "Get my PADI Advanced Open Water License (30m / 100ft)", done: false },
+        { text: "Get my PADI Deep Diver Specialty (40m / 130ft)", done: false },
+      ]},
+      { text: "Go windsurfing", done: false },
+      { text: "Go bungee jumping", done: false },
+      { text: "Hike (and survive) the most dangerous trail in the US", done: false },
     ],
   },
   {
