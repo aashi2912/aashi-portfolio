@@ -309,7 +309,7 @@ function StaggerItem({ children, className }: {children: React.ReactNode;classNa
 function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: number;}) {
   return (
     <>
-      <div className={`flex items-center gap-3 rounded-md border border-border/50 bg-muted/20 px-4 py-3 ${depth > 0 ? "ml-8" : ""}`}>
+      <div className={`flex items-center gap-3 rounded-md border border-border/50 bg-muted/20 px-3 py-1.5 ${depth > 0 ? "ml-8" : ""}`}>
         {/* Circle checkbox */}
         <div className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
         item.done ?

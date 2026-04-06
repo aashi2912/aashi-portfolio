@@ -72,7 +72,7 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 function ListItemRow({ item, depth = 0 }: { item: ListItem; depth?: number }) {
   return (
     <>
-      <div className={`flex items-start gap-3 py-1.5 ${depth > 0 ? "pl-6" : ""}`}>
+      <div className={`flex items-start gap-3 py-1 ${depth > 0 ? "pl-6" : ""}`}>
         <div className="flex-1">
           <span
             className={`text-[15px] leading-relaxed ${
