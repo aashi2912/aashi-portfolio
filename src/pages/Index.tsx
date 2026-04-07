@@ -870,6 +870,74 @@ export default function Index() {
         </section>
       </ContentWrap>
 
+      {/* ── References ── */}
+      <ContentWrap className="py-24 scroll-mt-20">
+        <section id="references">
+          <RevealText>
+            <div className="mb-4">
+              <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
+                But the real story comes from the
+              </h2>
+              <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
+                <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">people I've worked with.</span>
+              </h3>
+            </div>
+          </RevealText>
+
+          <StaggerContainer className="mt-12 space-y-6">
+            {[
+              {
+                name: "Jane Smith",
+                role: "Engineering Manager at TechCorp",
+                text: "Aashi is one of the most thoughtful product managers I've worked with. She has a rare ability to translate complex technical constraints into clear product decisions that everyone can rally behind.",
+              },
+              {
+                name: "Alex Johnson",
+                role: "Senior Designer at DesignStudio",
+                text: "Working with Aashi was a masterclass in collaboration. She deeply understands user needs and always pushes for the best possible experience without losing sight of business goals.",
+              },
+              {
+                name: "Priya Patel",
+                role: "Data Scientist at DataCo",
+                text: "Aashi bridges the gap between data and product like no one else. She asks the right questions, digs into the numbers, and turns insights into actionable product improvements.",
+              },
+              {
+                name: "Michael Chen",
+                role: "VP of Product at StartupXYZ",
+                text: "Aashi consistently demonstrated strong product instincts and an incredible work ethic. She's the kind of PM who makes everyone around her better.",
+              },
+              {
+                name: "Sarah Williams",
+                role: "Software Developer at InnovateTech",
+                text: "As a developer, I really appreciated how Aashi wrote crystal-clear requirements and was always available to unblock the team. She genuinely cares about building the right thing.",
+              },
+              {
+                name: "David Kim",
+                role: "Product Lead at GlobalFinance",
+                text: "Aashi has a natural talent for stakeholder management. She navigates complex organizational dynamics with grace and always keeps the user at the center of every decision.",
+              },
+            ].map((ref, i) => (
+              <StaggerItem key={i}>
+                <div className="rounded-lg border border-border p-6 transition-colors hover:bg-accent/30">
+                  <p className="text-[15px] leading-relaxed text-foreground/90 italic">
+                    "{ref.text}"
+                  </p>
+                  <div className="mt-4 flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-sm">
+                      {ref.name.split(" ").map(n => n[0]).join("")}
+                    </div>
+                    <div>
+                      <p className="text-[15px] font-semibold">{ref.name}</p>
+                      <p className="text-[13px] text-muted-foreground">{ref.role}</p>
+                    </div>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </section>
+      </ContentWrap>
+
       {/* ── Impossible List ── */}
       <ContentWrap className="py-24 pb-32 scroll-mt-20">
         <section id="impossible-list">
