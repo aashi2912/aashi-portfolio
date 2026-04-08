@@ -7,8 +7,8 @@ const navItems = [
   { label: "Home", id: "home", icon: Home, num: "1" },
   { label: "Work", id: "work", icon: Briefcase, num: "2" },
   { label: "Projects", id: "projects", icon: FolderOpen, num: "3" },
-  { label: "About", id: "about", icon: User, num: "4" },
-  { label: "References", id: "references", icon: Quote, num: "5" },
+  { label: "References", id: "references", icon: Quote, num: "4" },
+  { label: "About", id: "about", icon: User, num: "5" },
   { label: "Impossible List", id: "impossible-list", icon: ListChecks, num: "6" },
 ];
 
