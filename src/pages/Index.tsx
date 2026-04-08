@@ -654,6 +654,13 @@ export default function Index() {
         </section>
       </ContentWrap>
 
+      {/* ── References ── */}
+      <ContentWrap className="py-24 scroll-mt-20">
+        <section id="references">
+          <ReferencesSection />
+        </section>
+      </ContentWrap>
+
       {/* ── About ── */}
       <ContentWrap className="py-24 pb-16 scroll-mt-20">
         <section id="about">
@@ -868,13 +875,6 @@ export default function Index() {
             </RevealText>
           </div>
           </div>
-        </section>
-      </ContentWrap>
-
-      {/* ── References ── */}
-      <ContentWrap className="py-24 scroll-mt-20">
-        <section id="references">
-          <ReferencesSection />
         </section>
       </ContentWrap>
 
