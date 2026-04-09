@@ -626,8 +626,39 @@ export default function Index() {
       {/* ── Projects ── */}
       <ContentWrap className="py-24 scroll-mt-20">
         <section id="projects">
+          {/* Tagline */}
           <RevealText>
-            <div className="mb-12">
+            <div className="mb-4">
+              <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
+                I blend my engineering roots with
+              </h2>
+              <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
+                product strategy and thinking to build products
+              </h3>
+              <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
+                that just...{" "}
+                <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">makes sense</span>{" "}
+                <motion.span
+                  className="inline-block"
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6, type: "spring" }}
+                >
+                  👀
+                </motion.span>
+              </h3>
+            </div>
+          </RevealText>
+          <RevealText delay={0.1}>
+            <p className="text-[17px] text-muted-foreground italic">
+              Okay so... how do I do that? Here's how 👇
+            </p>
+          </RevealText>
+
+          {/* Projects heading */}
+          <RevealText delay={0.2}>
+            <div className="mt-14 mb-12">
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Projects</h2>
               <p className="mt-2 text-muted-foreground">Things I've built, shipped, or experimented with.</p>
             </div>
