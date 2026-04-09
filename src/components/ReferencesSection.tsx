@@ -1,7 +1,123 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart } from "lucide-react";
+import { Heart, FileText, Mail, MessageCircle } from "lucide-react";
 
+/* ── Section 1: Hero Tagline ── */
+function HeroTagline() {
+  return (
+    <motion.div
+      className="flex flex-col items-center text-center py-16 md:py-24"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.p
+        className="text-sm italic text-muted-foreground mb-6"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3 }}
+      >
+        Hi, I'm Aashi
+      </motion.p>
+
+      <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight max-w-4xl text-foreground">
+        I blend my product thinking with
+        <br className="hidden md:block" />{" "}
+        business strategy to build experiences
+        <br className="hidden md:block" />{" "}
+        that just...{" "}
+        <span className="relative inline-block">
+          <span className="relative z-10">make sense</span>
+          <motion.span
+            className="absolute inset-0 -inset-x-3 -inset-y-1 rounded-full bg-primary/20"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            style={{ originX: 0 }}
+          />
+        </span>{" "}
+        <motion.span
+          className="inline-block text-primary"
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 1.2, type: "spring" }}
+        >
+          💬
+        </motion.span>
+      </h2>
+
+      {/* Thought bubble transition */}
+      <motion.div
+        className="mt-16 flex flex-col items-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.6 }}
+      >
+        <motion.p
+          className="text-sm italic text-muted-foreground mb-4"
+          animate={{ y: [0, -4, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          Okay so... how do I do that?
+        </motion.p>
+
+        {/* Radiating lines */}
+        <div className="relative w-20 h-20 flex items-center justify-center">
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+            <motion.div
+              key={deg}
+              className="absolute w-0.5 h-6 bg-muted-foreground/30 rounded-full"
+              style={{
+                transform: `rotate(${deg}deg) translateY(-20px)`,
+                transformOrigin: "center center",
+              }}
+              initial={{ scaleY: 0, opacity: 0 }}
+              whileInView={{ scaleY: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 1 + deg * 0.001, duration: 0.4 }}
+            />
+          ))}
+          {/* Center dot */}
+          <motion.div
+            className="w-3 h-3 rounded-full bg-muted-foreground/40"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1.3, type: "spring" }}
+          />
+        </div>
+
+        <motion.h3
+          className="mt-4 text-2xl md:text-4xl font-extrabold tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 1.4, duration: 0.6 }}
+        >
+          Here's{" "}
+          <span className="relative inline-block">
+            <span className="relative z-10">how</span>
+            <motion.span
+              className="absolute bottom-0 left-0 right-0 h-1 bg-primary rounded-full"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 1.8, duration: 0.4 }}
+              style={{ originX: 0 }}
+            />
+          </span>
+        </motion.h3>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+/* ── Section 2: Testimonials ── */
 const references = [
   {
     name: "Jane Smith",
@@ -53,7 +169,7 @@ const references = [
   },
 ];
 
-export function ReferencesSection() {
+function TestimonialsBlock() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [liked, setLiked] = useState<Set<number>>(new Set());
   const active = references[activeIndex];
@@ -68,22 +184,21 @@ export function ReferencesSection() {
   };
 
   return (
-    <div>
+    <div className="py-16 md:py-24">
       {/* Heading */}
       <motion.div
+        className="text-center"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.7 }}
       >
-        <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
           But{" "}
           <span className="relative inline-block">
-            <span className="relative z-10 italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">
-              the real story
-            </span>
+            <span className="relative z-10 px-4 py-1">the real story</span>
             <motion.span
-              className="absolute inset-0 -inset-x-2 -inset-y-1 rounded-full bg-[hsl(200,80%,50%,0.12)] dark:bg-[hsl(200,80%,50%,0.15)]"
+              className="absolute inset-0 rounded-full bg-primary/15 dark:bg-primary/20"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
@@ -93,12 +208,12 @@ export function ReferencesSection() {
           </span>{" "}
           comes from the
         </h2>
-        <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
-          people I've worked with.
-        </h3>
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-muted-foreground mt-1">
+          people I've worked with
+        </h2>
       </motion.div>
 
-      {/* Chat Bubble Testimonial */}
+      {/* Chat Bubble */}
       <motion.div
         className="mt-14 flex flex-col items-center"
         initial={{ opacity: 0, y: 40 }}
@@ -106,7 +221,7 @@ export function ReferencesSection() {
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.7, delay: 0.2 }}
       >
-        {/* Name label above bubble */}
+        {/* Name label */}
         <AnimatePresence mode="wait">
           <motion.p
             key={`name-${activeIndex}`}
@@ -120,69 +235,68 @@ export function ReferencesSection() {
           </motion.p>
         </AnimatePresence>
 
-        {/* Chat bubble */}
+        {/* Bubble + like */}
         <div className="relative w-full max-w-2xl">
+          {/* Tap to like - positioned outside bubble */}
+          <motion.button
+            onClick={toggleLike}
+            className="absolute -right-2 top-2 md:right-[-80px] flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors z-10"
+            whileTap={{ scale: 0.9 }}
+          >
+            <motion.span
+              className="text-[11px] italic hidden md:inline"
+              initial={false}
+              animate={{ opacity: liked.has(activeIndex) ? 0 : 0.7 }}
+            >
+              tap to like
+            </motion.span>
+            <motion.div
+              initial={false}
+              animate={{
+                scale: liked.has(activeIndex) ? [1, 1.4, 1] : 1,
+                color: liked.has(activeIndex) ? "hsl(0,80%,55%)" : "currentColor",
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              <Heart
+                className="w-5 h-5"
+                fill={liked.has(activeIndex) ? "hsl(0,80%,55%)" : "none"}
+              />
+            </motion.div>
+          </motion.button>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={`bubble-${activeIndex}`}
-              className="relative rounded-2xl bg-card border border-border/60 px-7 py-6 shadow-lg dark:shadow-[0_8px_30px_-10px_hsl(200,100%,50%,0.1)]"
+              className="relative rounded-2xl bg-muted/60 dark:bg-muted/40 px-7 py-6 shadow-sm"
               initial={{ opacity: 0, scale: 0.95, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -16 }}
               transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <p className="text-[16px] md:text-[17px] leading-[1.75] text-foreground/90">
+              <p className="text-[16px] md:text-[18px] leading-[1.75] text-foreground/90">
                 {active.text}
               </p>
-              <div className="mt-4 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div
-                    className="flex h-6 w-6 items-center justify-center rounded-full text-white text-[10px] font-bold"
-                    style={{ background: active.color }}
-                  >
-                    {active.initials}
-                  </div>
-                  <span className="text-xs text-muted-foreground">
-                    {active.company}
-                  </span>
-                </div>
-                {/* Like button */}
-                <motion.button
-                  onClick={toggleLike}
-                  className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
-                  whileTap={{ scale: 0.9 }}
+              <div className="mt-4 flex items-center gap-2">
+                <div
+                  className="flex h-6 w-6 items-center justify-center rounded-full text-white text-[10px] font-bold"
+                  style={{ background: active.color }}
                 >
-                  <motion.span
-                    className="text-[11px] italic"
-                    initial={false}
-                    animate={{ opacity: liked.has(activeIndex) ? 0 : 1 }}
-                  >
-                    tap to like
-                  </motion.span>
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      scale: liked.has(activeIndex) ? [1, 1.4, 1] : 1,
-                      color: liked.has(activeIndex) ? "hsl(0,80%,55%)" : "currentColor",
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Heart
-                      className="w-4 h-4"
-                      fill={liked.has(activeIndex) ? "hsl(0,80%,55%)" : "none"}
-                    />
-                  </motion.div>
-                </motion.button>
+                  {active.initials}
+                </div>
+                <span className="text-xs text-muted-foreground">
+                  {active.company}
+                </span>
               </div>
 
               {/* Bubble tail */}
-              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 bg-card border-r border-b border-border/60" />
+              <div className="absolute -bottom-2 left-10 w-4 h-4 rotate-45 bg-muted/60 dark:bg-muted/40" />
             </motion.div>
           </AnimatePresence>
         </div>
 
         {/* Avatar Row */}
-        <div className="mt-10 flex items-end justify-center gap-2 sm:gap-4">
+        <div className="mt-10 flex items-end justify-center gap-3 sm:gap-5">
           {references.map((ref, i) => {
             const isActive = i === activeIndex;
             return (
@@ -193,14 +307,13 @@ export function ReferencesSection() {
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 400, damping: 15 }}
               >
-                {/* Avatar circle */}
                 <motion.div
                   className="relative flex items-center justify-center rounded-full text-white font-bold shadow-md transition-all duration-300"
                   style={{
                     background: ref.color,
-                    width: isActive ? 64 : 48,
-                    height: isActive ? 64 : 48,
-                    fontSize: isActive ? 18 : 14,
+                    width: isActive ? 72 : 56,
+                    height: isActive ? 72 : 56,
+                    fontSize: isActive ? 20 : 16,
                   }}
                   animate={{
                     scale: isActive ? 1 : 0.85,
@@ -210,7 +323,6 @@ export function ReferencesSection() {
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   {ref.initials}
-                  {/* Active ring */}
                   {isActive && (
                     <motion.div
                       className="absolute inset-0 rounded-full border-2"
@@ -222,34 +334,28 @@ export function ReferencesSection() {
                   )}
                 </motion.div>
 
-                {/* Name + Role below avatar */}
-                <AnimatePresence>
-                  {isActive ? (
-                    <motion.div
-                      className="text-center"
-                      initial={{ opacity: 0, y: 4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 4 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <p className="text-[13px] font-semibold leading-tight">
-                        {ref.name.split(" ")[0]}
-                      </p>
-                      <p className="text-[10px] text-muted-foreground leading-tight italic">
+                <div className="text-center">
+                  <p
+                    className={`text-[13px] font-semibold leading-tight transition-opacity ${
+                      isActive ? "opacity-100" : "opacity-50 group-hover:opacity-100"
+                    }`}
+                  >
+                    {ref.name.split(" ")[0]}
+                  </p>
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.p
+                        className="text-[10px] text-muted-foreground leading-tight italic"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
                         {ref.role}
-                      </p>
-                    </motion.div>
-                  ) : (
-                    <motion.p
-                      className="text-[11px] text-muted-foreground group-hover:text-foreground transition-colors"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 0.5 }}
-                      whileHover={{ opacity: 1 }}
-                    >
-                      {ref.name.split(" ")[0]}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </div>
               </motion.button>
             );
           })}
@@ -267,7 +373,7 @@ export function ReferencesSection() {
                 height: 8,
                 background:
                   i === activeIndex
-                    ? "hsl(200,70%,50%)"
+                    ? "hsl(var(--primary))"
                     : "hsl(var(--muted-foreground) / 0.25)",
               }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
@@ -275,6 +381,140 @@ export function ReferencesSection() {
           ))}
         </div>
       </motion.div>
+    </div>
+  );
+}
+
+/* ── Section 3: Philosophy + Contact ── */
+function PhilosophyBlock() {
+  return (
+    <motion.div
+      className="py-16 md:py-24"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.8 }}
+    >
+      <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+        {/* Left: Philosophy Text */}
+        <div>
+          <motion.p
+            className="text-sm italic text-muted-foreground mb-4 font-handwriting"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            My Philosophy
+          </motion.p>
+
+          <motion.div
+            className="space-y-5"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            <p className="text-[16px] md:text-[18px] leading-[1.8] text-foreground/90">
+              In short, I'm someone who{" "}
+              <span className="bg-primary/20 px-1 rounded font-medium">
+                enjoys working in messy, complex spaces
+              </span>{" "}
+              and making them clearer and more human.
+            </p>
+
+            <p className="text-[16px] md:text-[18px] leading-[1.8] text-foreground/90">
+              I do that by{" "}
+              <span className="bg-primary/20 px-1 rounded font-medium">
+                experimenting to learn, shaping clear stories that help people
+                align, and designing systems with care
+              </span>{" "}
+              for the small details that quietly shape how something feels.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Right: Contact CTAs */}
+        <motion.div
+          className="flex flex-col items-center md:items-end gap-6"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.7 }}
+        >
+          {/* Chat bubble CTA */}
+          <motion.div
+            className="relative"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 400 }}
+          >
+            <div className="bg-primary text-primary-foreground px-6 py-3 rounded-2xl rounded-br-sm text-[15px] font-medium shadow-lg">
+              <MessageCircle className="w-4 h-4 inline mr-2" />
+              If this made sense, let's chat!
+            </div>
+          </motion.div>
+
+          {/* Arrows */}
+          <div className="flex gap-2 text-muted-foreground/40">
+            <motion.span
+              animate={{ y: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
+            >
+              ↓
+            </motion.span>
+            <motion.span
+              animate={{ y: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
+            >
+              ↓
+            </motion.span>
+            <motion.span
+              animate={{ y: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
+            >
+              ↓
+            </motion.span>
+          </div>
+
+          {/* Email */}
+          <motion.a
+            href="mailto:aashi@example.com"
+            className="group flex flex-col items-center"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <div className="border-2 border-foreground/20 rounded-full px-6 py-2.5 flex items-center gap-2 group-hover:border-foreground/50 transition-colors">
+              <Mail className="w-4 h-4" />
+              <span className="text-[15px] font-medium">aashi@example.com</span>
+            </div>
+            <span className="text-[11px] text-muted-foreground mt-1 italic">
+              tap to copy
+            </span>
+          </motion.a>
+
+          {/* Resume */}
+          <motion.a
+            href="#"
+            className="flex items-center gap-2 border-2 border-foreground/20 rounded-full px-6 py-2.5 hover:border-foreground/50 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FileText className="w-4 h-4" />
+            <span className="text-[15px] font-medium">My Resume</span>
+          </motion.a>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ── Main Export ── */
+export function ReferencesSection() {
+  return (
+    <div className="space-y-0">
+      <HeroTagline />
+      <TestimonialsBlock />
+      <PhilosophyBlock />
     </div>
   );
 }
