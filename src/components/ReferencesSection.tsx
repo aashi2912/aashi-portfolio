@@ -397,7 +397,6 @@ function PhilosophyBlock() {
 export function ReferencesSection() {
   return (
     <div className="space-y-0">
-      <HeroTagline />
       <TestimonialsBlock />
       <PhilosophyBlock />
     </div>
