@@ -655,7 +655,7 @@ export default function Index() {
       </ContentWrap>
 
       {/* ── References ── */}
-      <ContentWrap className="py-24 scroll-mt-20">
+      <ContentWrap className="pt-8 pb-24 scroll-mt-20">
         <section id="references">
           <ReferencesSection />
         </section>

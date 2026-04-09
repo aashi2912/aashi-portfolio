@@ -12,24 +12,16 @@ function HeroTagline() {
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.8 }}
     >
-      <motion.p
-        className="text-sm italic text-muted-foreground mb-6"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3 }}
-      >
-        Hi, I'm Aashi
-      </motion.p>
-
-      <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight max-w-4xl text-foreground">
-        I blend my product thinking with
-        <br className="hidden md:block" />{" "}
-        business strategy to build experiences
-        <br className="hidden md:block" />{" "}
+      <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
+        I blend my engineering roots with
+      </h2>
+      <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
+        product strategy and thinking to build products
+      </h3>
+      <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
         that just...{" "}
         <span className="relative inline-block">
-          <span className="relative z-10">make sense</span>
+          <span className="relative z-10 italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">makes sense</span>
           <motion.span
             className="absolute inset-0 -inset-x-3 -inset-y-1 rounded-full bg-primary/20"
             initial={{ scaleX: 0 }}
@@ -40,15 +32,15 @@ function HeroTagline() {
           />
         </span>{" "}
         <motion.span
-          className="inline-block text-primary"
+          className="inline-block"
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 1.2, type: "spring" }}
         >
-          💬
+          👀
         </motion.span>
-      </h2>
+      </h3>
 
       {/* Thought bubble transition */}
       <motion.div
