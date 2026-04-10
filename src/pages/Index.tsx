@@ -658,19 +658,13 @@ export default function Index() {
 
           {/* Contact */}
           <RevealText delay={0.55}>
-            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
-              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase"></span>
-              </div>
-              <div className="flex-1">
+            <div className="mt-16">
                 {/* Action buttons */}
-                <div className="flex flex-wrap gap-3">
-                  <a href="/Aashi_Thakkar_Resume.pdf" target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">Hire Me <FileText size={16} /></a>
-                  <a href="https://www.linkedin.com/in/aashithakkar29/" target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">Coffee Chat <Coffee size={16} /></a>
-                  <a href="https://topmate.io/aashi_thakkar" target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">1:1 Mentorship <Link size={16} /></a>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <a href="/Aashi_Thakkar_Resume.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">Hire Me <FileText size={16} /></a>
+                  <a href="https://www.linkedin.com/in/aashithakkar29/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">Coffee Chat <Coffee size={16} /></a>
+                  <a href="https://topmate.io/aashi_thakkar" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">1:1 Mentorship <Link size={16} /></a>
                 </div>
-
-              </div>
             </div>
           </RevealText>
         </section>
