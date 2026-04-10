@@ -200,26 +200,56 @@ export default function Work() {
         </RevealSection>
       </ContentWrap>
 
-      {/* Bio */}
+      {/* Bio — Journey Style */}
       <ContentWrap className="pb-16">
         <RevealSection delay={0.15}>
           <div className="flex flex-col sm:flex-row sm:gap-16">
             <SectionLabel label="Bio" />
-            <div className="flex-1 space-y-4 text-sm leading-relaxed">
-              <p>
-                I'm a Product Manager based in Toronto, and I currently work at Tech Corp leading
-                product strategy for the core platform.
-              </p>
-              <p className="text-muted-foreground">
-                After discovering HCI during my studies, I realized I could combine two of my
-                greatest passions: tech and psychology. This led me on a clear path towards product
-                management.
-              </p>
-              <p className="text-muted-foreground">
-                With a background in Computer Science, I've honed my skills through years of
-                experience as a Product Manager at various tech companies. I firmly believe that
-                products should be user-centric.
-              </p>
+            <div className="flex-1">
+              {/* Journey milestones */}
+              <div className="relative pl-8 border-l-2 border-border/60 space-y-8">
+                {[
+                  {
+                    emoji: "🎓",
+                    label: "The Origin",
+                    text: "Started with Computer Science — thought I'd be writing code forever.",
+                  },
+                  {
+                    emoji: "🧠",
+                    label: "The Plot Twist",
+                    text: "Discovered HCI and realized I could blend tech + psychology. Mind = blown.",
+                  },
+                  {
+                    emoji: "🚀",
+                    label: "The Pivot",
+                    text: "Went all-in on Product Management — building things people actually love.",
+                  },
+                  {
+                    emoji: "📍",
+                    label: "Now",
+                    text: "Based in Toronto, leading product strategy at Tech Corp. Still obsessed with user-centric products.",
+                  },
+                ].map((step, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.12, ease: [0.25, 0.4, 0.25, 1] }}
+                    className="relative"
+                  >
+                    {/* Dot on the timeline */}
+                    <div className="absolute -left-[calc(2rem+5px)] top-0.5 h-3 w-3 rounded-full bg-primary ring-4 ring-background" />
+                    <div className="flex items-start gap-3">
+                      <span className="text-xl mt-[-2px]">{step.emoji}</span>
+                      <div>
+                        <span className="text-xs font-mono tracking-wider text-primary uppercase">{step.label}</span>
+                        <p className="text-sm text-foreground/80 mt-0.5">{step.text}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </RevealSection>
