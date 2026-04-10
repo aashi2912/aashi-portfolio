@@ -512,7 +512,7 @@ export default function Index() {
                   {
                     emoji: "👨‍💻",
                     label: "The Developer Days",
-                    text: "Started as a software developer in Toronto 🇨🇦. Loved building things — but kept asking \"why are we building this?\" more than \"how?\"",
+                    text: "Started as a software developer in Toronto 🇨🇦. Loved building things - but kept asking \"why are we building this?\" more than \"how?\"",
                   },
                   {
                     emoji: "🤔",
@@ -522,7 +522,7 @@ export default function Index() {
                   {
                     emoji: "🎨",
                     label: "The Pivot",
-                    text: "Curiosity pulled me toward UX & Product — it clicked in a way code never did. Turns out, I was good at it before I even had the title.",
+                    text: "Curiosity pulled me toward UX & Product - it clicked in a way code never did. Turns out, I was good at it before I even had the title.",
                   },
                   {
                     emoji: "🧠",
@@ -537,7 +537,7 @@ export default function Index() {
                   {
                     emoji: "❤️",
                     label: "Core Belief",
-                    text: "The best products aren't just technically solid — they're built around real human needs. That shapes every decision I make.",
+                    text: "The best products aren't just technically solid - they're built around real human needs. That shapes every decision I make.",
                   },
                 ].map((step, i) => (
                   <motion.div
@@ -660,7 +660,7 @@ export default function Index() {
           <RevealText delay={0.55}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Contact</span>
+                <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase"></span>
               </div>
               <div className="flex-1">
                 {/* Action buttons */}
