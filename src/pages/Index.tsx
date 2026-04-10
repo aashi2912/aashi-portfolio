@@ -540,7 +540,123 @@ export default function Index() {
                     text: "The best products aren't just technically solid - they're built around real human needs. That shapes every decision I make.",
                   },
                 ].map((step, i) => (
-// ... keep existing code
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ duration: 0.5, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+                    className="relative group"
+                  >
+                    <div className="absolute -left-[calc(2rem+5px)] top-1 h-3 w-3 rounded-full bg-primary ring-4 ring-background transition-transform group-hover:scale-125" />
+                    <div className="flex items-start gap-3">
+                      <span className="text-xl mt-[-2px]">{step.emoji}</span>
+                      <div>
+                        <span className="text-xs font-mono tracking-wider text-primary uppercase">{step.label}</span>
+                        <p className="text-[15px] text-foreground/80 mt-0.5 leading-relaxed">{step.text}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7 }}
+                className="mt-8 pl-8 text-[15px] text-muted-foreground"
+              >
+                Into AI 🤖, data products 📊, or product strategy? <span className="text-foreground font-medium">Let's connect 🤝</span>
+                {" · "}
+                <a href="#about" onClick={(e) => {e.preventDefault();document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });}} className="text-primary underline underline-offset-4 hover:opacity-80 transition-opacity font-medium">See my life outside work ↓</a>
+              </motion.p>
+            </div>
+          </div>
+
+          {/* Experience */}
+          <RevealText delay={0.2}>
+            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+                <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Experience</span>
+              </div>
+              <div className="flex-1 divide-y divide-border/40">
+                {experiences.map((exp, i) =>
+                <div key={i} className="flex items-start gap-4 py-5">
+                    <img src={exp.logo} alt={exp.company} className="mt-1 h-10 w-10 shrink-0 rounded-lg object-contain" />
+                    <div className="flex-1">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <h4 className="text-[17px] font-semibold">{exp.role}</h4>
+                        <span className="font-mono text-[13px] text-muted-foreground">{exp.period}</span>
+                      </div>
+                      <p className="text-[15px] text-muted-foreground">{exp.company}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </RevealText>
+
+
+
+
+          {/* Skills */}
+          <RevealText delay={0.3}>
+            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+                <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Skills</span>
+              </div>
+              <div className="flex-1 space-y-8">
+                {skillCategories.map((cat) =>
+                <div key={cat.name}>
+                    <h4 className="mb-4 text-[22px] font-bold">{cat.name}</h4>
+                    <div className="flex flex-wrap gap-2.5">
+                      {cat.items.map((skill) =>
+                    <span key={skill} className="rounded-full border border-[hsl(200,100%,40%,0.25)] bg-[hsl(200,100%,50%,0.1)] px-3 py-2 text-[14px] text-[hsl(200,50%,35%)] dark:border-[hsl(200,100%,50%,0.15)] dark:bg-[hsl(200,100%,50%,0.13)] dark:text-[hsl(200,40%,75%)]">{skill}</span>
+                    )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </RevealText>
+
+          {/* Education */}
+          <RevealText delay={0.35}>
+            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+                <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Education</span>
+              </div>
+              <div className="flex-1 divide-y divide-border/40">
+                {education.map((edu, i) =>
+                <div key={i} className="flex items-start gap-4 py-5">
+                    <img src={edu.logo} alt={edu.school} className="mt-1 h-10 w-10 shrink-0 rounded-lg object-contain dark:mix-blend-lighten" />
+                    <div className="flex-1">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <h4 className="text-[17px] font-semibold">{edu.degree}</h4>
+                        <span className="font-mono text-[13px] text-muted-foreground">{edu.period}</span>
+                      </div>
+                      <p className="text-[15px] text-muted-foreground">{edu.school}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </RevealText>
+
+          {/* Education Photos */}
+          <RevealText delay={0.4}>
+            <div className="mt-10 grid grid-cols-2 gap-4">
+              <div className="aspect-[4/3] overflow-hidden rounded-2xl">
+                <img src={eduPhoto1} alt="At Assumption College" className="w-full h-full object-cover object-[center_85%]" />
+              </div>
+              <div className="aspect-[4/3] overflow-hidden rounded-2xl">
+                <img src={eduPhoto2} alt="Graduation" className="w-full h-full object-cover object-[center_25%]" />
+              </div>
+            </div>
+          </RevealText>
+
+
+          {/* Contact */}
           <RevealText delay={0.55}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
