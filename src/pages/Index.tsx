@@ -501,24 +501,77 @@ export default function Index() {
             </div>
           </RevealText>
 
-          {/* Bio */}
-          <RevealText delay={0.15}>
-            <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
-              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
-                <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Bio</span>
-              </div>
-              <div className="flex-1 space-y-4 text-[17px] leading-[1.75]">
-                <p>I'm a Product Manager based in Toronto 🇨🇦, currently leading Alternative Data, Gen AI, and Research Technology products at Royal Bank of Canada - Capital Markets 🏦.</p>
-                <p>I started out as a software developer 👨‍💻. Three years in, I noticed something: I was spending more time thinking about why we were building things than actually building them. Who was this for? Does it actually solve their problem? Does it matter? 🤔 Turns out, those were the questions I cared about most.</p>
-                <p>That curiosity pulled me toward UX and Product 🎨 - and honestly, it clicked in a way that writing code never quite did. I found I was good at it, even before I had the title to match 💡✨.</p>
-                <p>What drew me to product management wasn't just the craft - it was the mindset 🧠. Owning a problem end-to-end, bringing clarity to messy situations, and working with people across disciplines to build something that genuinely makes a difference 🎯. That's the work I find most meaningful 🚀.</p>
-                <p>These days, I sit at the intersection of technology and business 💼⚙️. My job is to make sense of complex, ambiguous problems and turn them into something a team can actually build - and that users actually want to use 🙌.</p>
-                <p>The thing I keep coming back to is this: the best products aren't just technically solid, they're built around real human needs ❤️. That belief shapes how I approach every decision 🔍.</p>
-                <p>If you're into AI 🤖, data products 📊, or product strategy - I'd love to connect 🤝.</p>
-                <p>And if you want to see what I'm up to outside of work - check out my <a href="#about" onClick={(e) => {e.preventDefault();document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });}} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)] underline underline-offset-4 decoration-[hsl(200,50%,35%,0.4)] dark:decoration-[hsl(200,40%,75%,0.4)] hover:opacity-80 transition-opacity font-medium">About</a>!</p>
-              </div>
+          {/* Bio — Journey Timeline */}
+          <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
+            <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+              <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Bio</span>
             </div>
-          </RevealText>
+            <div className="flex-1">
+              <div className="relative pl-8 border-l-2 border-border/60 space-y-8">
+                {[
+                  {
+                    emoji: "👨‍💻",
+                    label: "The Developer Days",
+                    text: "Started as a software developer in Toronto 🇨🇦. Loved building things — but kept asking \"why are we building this?\" more than \"how?\"",
+                  },
+                  {
+                    emoji: "🤔",
+                    label: "The Aha Moment",
+                    text: "Three years in, realized I cared more about the problem than the code. Who is this for? Does it matter? Those questions consumed me.",
+                  },
+                  {
+                    emoji: "🎨",
+                    label: "The Pivot",
+                    text: "Curiosity pulled me toward UX & Product — it clicked in a way code never did. Turns out, I was good at it before I even had the title.",
+                  },
+                  {
+                    emoji: "🧠",
+                    label: "The Philosophy",
+                    text: "Owning problems end-to-end, bringing clarity to chaos, building things that genuinely matter. That's the work I find most meaningful.",
+                  },
+                  {
+                    emoji: "🏦",
+                    label: "Now",
+                    text: "Leading Alternative Data, Gen AI & Research Tech products at RBC Capital Markets. Sitting at the intersection of tech × business.",
+                  },
+                  {
+                    emoji: "❤️",
+                    label: "Core Belief",
+                    text: "The best products aren't just technically solid — they're built around real human needs. That shapes every decision I make.",
+                  },
+                ].map((step, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ duration: 0.5, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+                    className="relative group"
+                  >
+                    <div className="absolute -left-[calc(2rem+5px)] top-1 h-3 w-3 rounded-full bg-primary ring-4 ring-background transition-transform group-hover:scale-125" />
+                    <div className="flex items-start gap-3">
+                      <span className="text-xl mt-[-2px]">{step.emoji}</span>
+                      <div>
+                        <span className="text-xs font-mono tracking-wider text-primary uppercase">{step.label}</span>
+                        <p className="text-[15px] text-foreground/80 mt-0.5 leading-relaxed">{step.text}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7 }}
+                className="mt-8 pl-8 text-[15px] text-muted-foreground"
+              >
+                Into AI 🤖, data products 📊, or product strategy? <span className="text-foreground font-medium">Let's connect 🤝</span>
+                {" · "}
+                <a href="#about" onClick={(e) => {e.preventDefault();document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });}} className="text-primary underline underline-offset-4 hover:opacity-80 transition-opacity font-medium">See my life outside work ↓</a>
+              </motion.p>
+            </div>
+          </div>
 
           {/* Experience */}
           <RevealText delay={0.2}>
