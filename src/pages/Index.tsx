@@ -699,12 +699,11 @@ export default function Index() {
             </p>
           </RevealText>
 
-          {/* Projects heading */}
+          {/* Projects subtitle */}
           <RevealText delay={0.2}>
-            <div className="mt-14 mb-12">
-              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Projects</h2>
-              <p className="mt-2 text-muted-foreground">Things I've built, shipped, or experimented with.</p>
-            </div>
+            <p className="mt-14 mb-12 text-lg text-muted-foreground italic">
+              Things I've built, shipped, or experimented with.
+            </p>
           </RevealText>
 
           <StaggerContainer className="space-y-6">
