@@ -701,9 +701,9 @@ export default function Index() {
 
           {/* Projects subtitle */}
           <RevealText delay={0.2}>
-            <p className="mt-14 mb-12 text-lg text-muted-foreground italic">
+            <h3 className="mt-14 mb-12 text-center text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground italic">
               Things I've built, shipped, or experimented with.
-            </p>
+            </h3>
           </RevealText>
 
           <StaggerContainer className="space-y-6">
