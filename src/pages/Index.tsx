@@ -701,7 +701,7 @@ export default function Index() {
 
           {/* Projects subtitle */}
           <RevealText delay={0.2}>
-            <h3 className="mt-14 mb-12 text-center text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground italic">
+            <h3 className="mt-14 mb-12 text-center text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">
               Things I've built, shipped, or experimented with.
             </h3>
           </RevealText>
