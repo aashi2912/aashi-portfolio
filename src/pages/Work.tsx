@@ -174,10 +174,6 @@ export default function Work() {
         <RevealSection delay={0.1}>
           <div className="flex flex-col items-center text-center gap-4">
             <div className="h-48 w-48 rounded-2xl bg-muted" />
-            <div>
-              <h2 className="text-2xl font-bold">Aashi Thakkar</h2>
-              <p className="text-muted-foreground">Product Manager</p>
-            </div>
             <div className="flex gap-3">
               <a
                 href="#"
