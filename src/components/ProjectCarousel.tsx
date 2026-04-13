@@ -731,11 +731,14 @@ function ProjectDrawer({
                 {details.tools && details.tools.length > 0 && (
                   <SectionBlock label="Tools & Stack" color={c} delay={0.75}>
                     <div className="flex flex-wrap gap-2.5">
-                      {details.tools.map((t, i) => (
-                        <span key={i} className="rounded-full px-4 py-2 text-xs font-medium border" style={{ borderColor: `${c}25`, backgroundColor: `${c}10`, color: c }}>
-                          {t}
-                        </span>
-                      ))}
+                      {details.tools.map((t, i) => {
+                        const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl)\b/i.test(t);
+                        return (
+                          <span key={i} className={`rounded-full px-4 py-2 text-xs font-medium border ${isAI ? 'font-bold' : ''}`} style={{ borderColor: isAI ? `${c}45` : `${c}25`, backgroundColor: isAI ? `${c}18` : `${c}10`, color: c }}>
+                            {isAI ? `✦ ${t}` : t}
+                          </span>
+                        );
+                      })}
                     </div>
                   </SectionBlock>
                 )}
