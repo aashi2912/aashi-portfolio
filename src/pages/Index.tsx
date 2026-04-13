@@ -664,7 +664,7 @@ export default function Index() {
                   {
                     emoji: "👨‍💻",
                     label: "The Developer Days",
-                    text: "Started as a software developer in Toronto 🇨🇦. Loved building things - but kept asking \"why are we building this?\" more than \"how?\"",
+                    text: "Started as a full stack software developer. Loved building things - but kept asking \"why are we building this?\" more than \"how?\"",
                   },
                   {
                     emoji: "🤔",
