@@ -936,9 +936,11 @@ export default function Index() {
           </StaggerContainer>
         </section>
       </ContentWrap>
-
+      </ContentWrap>
+      </ScrollSection>
 
       {/* ── References ── */}
+      <ScrollSection>
       <ContentWrap className="pt-8 pb-24 scroll-mt-20">
         <section id="references" className="relative">
           {/* Floating doodle */}
@@ -948,9 +950,11 @@ export default function Index() {
           <ReferencesSection />
         </section>
       </ContentWrap>
-
+      </ContentWrap>
+      </ScrollSection>
 
       {/* ── About ── */}
+      <ScrollSection>
       <ContentWrap className="py-24 pb-16 scroll-mt-20">
         <section id="about" className="scroll-mt-20 relative">
           {/* Floating doodles */}
@@ -1203,8 +1207,11 @@ export default function Index() {
       </ContentWrap>
 
       
+      </ContentWrap>
+      </ScrollSection>
 
       {/* ── Impossible List ── */}
+      <ScrollSection>
       <ContentWrap className="py-24 pb-32 scroll-mt-20">
         <section id="impossible-list" className="relative">
           {/* Floating doodles */}
