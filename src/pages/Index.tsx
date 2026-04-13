@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useInView, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link, ArrowDown } from "lucide-react";
 import { ReferencesSection } from "@/components/ReferencesSection";
-import { SquigglyUnderline, DoodleStar, FloatingDoodle, WiggleText, WavyDivider, AnimatedCounter, DoodleArrow, DoodleCircle } from "@/components/Doodles";
+import { SquigglyUnderline, FloatingDoodle, WiggleText, AnimatedCounter, DoodleArrow, DoodleCircle } from "@/components/Doodles";
 import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
@@ -334,9 +334,10 @@ function StaggerItem({ children, className }: {children: React.ReactNode;classNa
     <motion.div
       className={className}
       variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] } }
-      }}>
+        hidden: { opacity: 0, y: 20, rotate: -1 },
+        visible: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] } }
+      }}
+      whileHover={{ rotate: [0, -1, 1, 0], transition: { duration: 0.4 } }}>
       
       {children}
     </motion.div>);
@@ -347,8 +348,8 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
     <>
       <motion.div
         className={`flex items-center gap-3 rounded-md border border-border/50 bg-muted/20 px-3 py-1.5 group ${depth > 0 ? "ml-8" : ""}`}
-        whileHover={{ x: 3, backgroundColor: "hsl(var(--accent) / 0.5)" }}
-        transition={{ duration: 0.15 }}
+        whileHover={{ x: 3, rotate: [0, -0.5, 0.5, 0], backgroundColor: "hsl(var(--accent) / 0.5)" }}
+        transition={{ duration: 0.25 }}
       >
         {/* Circle checkbox */}
         <motion.div
@@ -417,13 +418,13 @@ export default function Index() {
       <section id="home" className="scroll-mt-20 relative overflow-hidden">
         {/* Floating doodles in hero */}
         <FloatingDoodle className="top-16 right-[10%] hidden md:block" delay={0.5}>
-          <DoodleStar size={24} color="hsl(45,90%,55%)" />
+          <span className="text-2xl">✨</span>
         </FloatingDoodle>
         <FloatingDoodle className="top-32 left-[5%] hidden md:block" delay={1.2} amplitude={10}>
-          <DoodleStar size={16} color="hsl(200,50%,60%)" />
+          <span className="text-xl">💡</span>
         </FloatingDoodle>
         <FloatingDoodle className="top-48 right-[20%] hidden md:block" delay={0.8} amplitude={5}>
-          <DoodleStar size={14} color="hsl(340,70%,55%)" />
+          <span className="text-lg">🎯</span>
         </FloatingDoodle>
 
         {/* Top header: name / roles / social / location */}
@@ -511,7 +512,6 @@ export default function Index() {
 
       </section>
 
-      <WavyDivider />
 
       {/* ── Work ── */}
       <ContentWrap className="py-24 scroll-mt-20">
@@ -533,7 +533,7 @@ export default function Index() {
           <RevealText delay={0.08}>
             <div className="mt-10 mb-8 grid grid-cols-3 gap-6 p-6 rounded-2xl border border-dashed border-border bg-muted/20">
               <AnimatedCounter value={4} suffix="+" label="Years Experience" delay={0} />
-              <AnimatedCounter value={5} suffix="" label="Companies" delay={0.15} />
+              <AnimatedCounter value={3} suffix="" label="Companies" delay={0.15} />
               <AnimatedCounter value={3} suffix="" label="Roles" delay={0.3} />
             </div>
           </RevealText>
@@ -548,7 +548,7 @@ export default function Index() {
               >
                 <img src={profilePhoto} alt="Aashi Thakkar" className="w-80 h-[28rem] rounded-2xl object-cover object-top" />
                 {/* Doodle corner decoration */}
-                <DoodleStar size={22} color="hsl(45,90%,55%)" className="absolute -top-3 -right-3" />
+                <motion.span className="absolute -top-3 -right-3 text-xl" animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2, repeat: Infinity }}>📌</motion.span>
               </motion.div>
             </div>
           </RevealText>
@@ -690,7 +690,7 @@ export default function Index() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: skillIdx * 0.02 + catIdx * 0.05 }}
-                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileHover={{ scale: 1.1, y: -2, rotate: [0, -3, 3, 0] }}
                     >
                       {skill}
                     </motion.span>
@@ -778,7 +778,6 @@ export default function Index() {
         </section>
       </ContentWrap>
 
-      <WavyDivider />
 
       {/* ── Projects ── */}
       <ContentWrap className="scroll-mt-20">
@@ -848,20 +847,18 @@ export default function Index() {
         </section>
       </ContentWrap>
 
-      <WavyDivider />
 
       {/* ── References ── */}
       <ContentWrap className="pt-8 pb-24 scroll-mt-20">
         <section id="references" className="relative">
           {/* Floating doodle */}
           <FloatingDoodle className="-right-4 top-20 hidden md:block" delay={1}>
-            <DoodleStar size={20} color="hsl(340,70%,55%)" />
+            <span className="text-xl">💬</span>
           </FloatingDoodle>
           <ReferencesSection />
         </section>
       </ContentWrap>
 
-      <WavyDivider />
 
       {/* ── About ── */}
       <ContentWrap className="py-24 pb-16 scroll-mt-20">
@@ -1052,7 +1049,7 @@ export default function Index() {
             {/* Block 1 - The social side */}
             <RevealText delay={0.45}>
               <div className="flex gap-4 items-start">
-                <div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg">🎉</div>
+                <motion.div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg" animate={{ rotate: [0, -5, 5, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>🎉</motion.div>
                 <div>
                   <p className="text-[17px] leading-[1.8] text-foreground/90">
                     Outside meeting rooms, sprint boards, and roadmaps, you'll usually find me doing something a little more social - joining team events, exploring new activities, or organizing spontaneous outings with colleagues. Whether it's group adventures 🏔️, company events 🎊, or just moments of shared laughter 😄, these experiences matter to me.
@@ -1073,7 +1070,7 @@ export default function Index() {
             {/* Block 3 - Bringing people together */}
             <RevealText delay={0.55}>
               <div className="flex gap-4 items-start">
-                <div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg">🧩</div>
+                <motion.div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg" animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}>🧩</motion.div>
                 <div>
                   <p className="text-[17px] leading-[1.8] text-foreground/90">
                     As a Product Manager, I spend a lot of time bringing people together - engineers, designers, stakeholders, and users. The same curiosity and energy that pushes me to participate in team activities is what helps me build trust 🤝, understand different perspectives 🌍, and create environments where collaboration thrives 🌱.
@@ -1085,7 +1082,7 @@ export default function Index() {
             {/* Block 4 - The gallery moments */}
             <RevealText delay={0.6}>
               <div className="flex gap-4 items-start">
-                <div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg">📸</div>
+                <motion.div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg" animate={{ rotate: [0, -4, 4, 0] }} transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}>📸</motion.div>
                 <div>
                   <p className="text-[17px] leading-[1.8] text-foreground/90">
                     This gallery captures some of those moments - the conversations 💬, the adventures 🚀, the team bonding 🫂, and the fun along the way.
@@ -1101,7 +1098,7 @@ export default function Index() {
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <DoodleStar size={18} color="hsl(45,90%,55%)" className="absolute -top-2 -right-2" />
+                <motion.span className="absolute -top-2 -right-2 text-lg" animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>💖</motion.span>
                 <p className="text-muted-foreground text-[15px] mb-2 italic">They're small snapshots of something bigger:</p>
                 <p className="text-[19px] leading-[1.6] font-semibold text-foreground">
                   My belief that the best teams and the best products are built when people genuinely enjoy working together ❤️✨
@@ -1113,7 +1110,7 @@ export default function Index() {
         </section>
       </ContentWrap>
 
-      <WavyDivider />
+      
 
       {/* ── Impossible List ── */}
       <ContentWrap className="py-24 pb-32 scroll-mt-20">
