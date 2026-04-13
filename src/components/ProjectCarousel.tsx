@@ -396,10 +396,13 @@ function ProjectDrawer({
                   </a>
                 )}
                 {project.caseStudyPdf && (
-                  <button
-                    onClick={(e) => { e.stopPropagation(); setShowPdf(true); }}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all hover:scale-105 cursor-pointer"
+                  <a
+                    href={project.caseStudyPdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all hover:scale-105"
                     style={{ borderColor: `${sc}40`, color: sc, backgroundColor: `${sc}08` }}
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <FileText size={14} /> View Full Case Study PDF
                   </button>
