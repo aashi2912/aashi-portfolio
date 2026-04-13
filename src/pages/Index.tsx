@@ -406,7 +406,17 @@ export default function Index() {
     <div>
 
       {/* ── Home ── */}
-      <section id="home" className="scroll-mt-20">
+      <section id="home" className="scroll-mt-20 relative overflow-hidden">
+        {/* Floating doodles in hero */}
+        <FloatingDoodle className="top-16 right-[10%] hidden md:block" delay={0.5}>
+          <DoodleStar size={24} color="hsl(45,90%,55%)" />
+        </FloatingDoodle>
+        <FloatingDoodle className="top-32 left-[5%] hidden md:block" delay={1.2} amplitude={10}>
+          <DoodleStar size={16} color="hsl(200,50%,60%)" />
+        </FloatingDoodle>
+        <FloatingDoodle className="top-48 right-[20%] hidden md:block" delay={0.8} amplitude={5}>
+          <DoodleStar size={14} color="hsl(340,70%,55%)" />
+        </FloatingDoodle>
 
         {/* Top header: name / roles / social / location */}
         <ContentWrap className="pt-6">
@@ -418,9 +428,12 @@ export default function Index() {
             
             {/* Left: name + roles + social */}
             <div className="flex flex-col gap-2">
-              <h1 className="text-[26px] font-bold tracking-tight sm:text-[32px] leading-tight">
-                Aashi Thakkar
-              </h1>
+              <div className="relative inline-block">
+                <h1 className="text-[26px] font-bold tracking-tight sm:text-[32px] leading-tight">
+                  <WiggleText>Aashi Thakkar</WiggleText>
+                </h1>
+                <SquigglyUnderline width={180} className="mt-1" />
+              </div>
               <div className="h-6 text-[16px] font-normal text-muted-foreground sm:text-[18px]">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -437,16 +450,18 @@ export default function Index() {
               </div>
               <div className="flex items-center gap-1">
                 {socialLinks.map(({ icon: Icon, href, label }) =>
-                <a
+                <motion.a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-md p-1.5 text-muted-foreground transition-all hover:text-foreground"
-                  aria-label={label}>
+                  aria-label={label}
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}>
                   
                     <Icon className="h-5 w-5" />
-                  </a>
+                  </motion.a>
                 )}
               </div>
             </div>
@@ -474,11 +489,21 @@ export default function Index() {
           <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
             I <span className="italic">bridge</span> the gap between<br />ambition and execution!
           </h2>
+
+          {/* Scroll indicator */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <span className="text-xs text-muted-foreground tracking-widest uppercase">scroll</span>
+            <ArrowDown className="w-4 h-4 text-muted-foreground" />
+          </motion.div>
         </motion.div>
 
-
-
       </section>
+
+      <WavyDivider />
 
       {/* ── Work ── */}
       <ContentWrap className="py-24 scroll-mt-20">
