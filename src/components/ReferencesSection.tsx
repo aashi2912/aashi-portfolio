@@ -103,7 +103,7 @@ function TestimonialsBlock() {
           <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
             I built these projects with!
           </h2>
-          <SquigglyUnderline width={200} className="mt-2" />
+          
         </div>
       </motion.div>
 

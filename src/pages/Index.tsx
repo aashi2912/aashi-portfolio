@@ -539,7 +539,7 @@ export default function Index() {
                 <h1 className="text-[26px] font-bold tracking-tight sm:text-[32px] leading-tight">
                   <WiggleText>Aashi Thakkar</WiggleText>
                 </h1>
-                <SquigglyUnderline width={180} className="mt-1" />
+                
               </div>
               <div className="h-6 text-[16px] font-normal text-muted-foreground sm:text-[18px]">
                 <AnimatePresence mode="wait">
@@ -625,7 +625,7 @@ export default function Index() {
           <RevealText>
             <div className="relative inline-block">
               <h2 className="text-[28px] font-bold tracking-tight">Work</h2>
-              <SquigglyUnderline width={70} className="mt-1" />
+              
             </div>
             <p className="mt-1 text-[18px] text-muted-foreground">An overview of my career.</p>
           </RevealText>
@@ -1229,7 +1229,7 @@ export default function Index() {
               <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
                 <WiggleText>Impossible List</WiggleText>
               </h2>
-              <SquigglyUnderline width={260} className="mt-2" color="hsl(200,50%,35%)" />
+              
               <p className="mt-4 text-lg text-muted-foreground">a bucket list, except better</p>
             </div>
           </RevealText>
