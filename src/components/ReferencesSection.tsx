@@ -81,10 +81,10 @@ function TestimonialsBlock() {
         <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
             But the{" "}
             <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">real story</span>{" "}
-            comes from the
+            comes from the people
           </h2>
           <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
-            people I've worked with!
+            I've worked with!
           </h2>
         </div>
       </motion.div>
