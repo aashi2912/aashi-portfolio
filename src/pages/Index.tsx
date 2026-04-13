@@ -299,6 +299,99 @@ function ScrambleText({ text }: {text: string;}) {
   return <span className="font-mono text-sm text-muted-foreground">{displayed}</span>;
 }
 
+// ─── Letter-by-letter stagger text (inspired by Dev Ashish's bold type) ──────
+function StaggerLetters({ text, className = "", delay = 0 }: { text: string; className?: string; delay?: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  return (
+    <motion.span ref={ref} className={`inline-block ${className}`}>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          className="inline-block"
+          initial={{ opacity: 0, y: 40, rotateX: -90 }}
+          animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+          transition={{
+            duration: 0.5,
+            delay: delay + i * 0.03,
+            ease: [0.22, 0.68, 0.36, 1],
+          }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+}
+
+// ─── Magnetic hover effect (inspired by interactive elements) ────────────────
+function MagneticWrap({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+
+  const handleMouse = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
+    const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+    setPos({ x, y });
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      onMouseMove={handleMouse}
+      onMouseLeave={() => setPos({ x: 0, y: 0 })}
+      animate={{ x: pos.x, y: pos.y }}
+      transition={{ type: "spring", stiffness: 200, damping: 15, mass: 0.5 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ─── Tilt card on hover (inspired by Viha's scattered objects) ──────────────
+function TiltCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
+
+  const handleMouse = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ rotateY: x * 12, rotateX: -y * 12 });
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      onMouseMove={handleMouse}
+      onMouseLeave={() => setTilt({ rotateX: 0, rotateY: 0 })}
+      animate={tilt}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      style={{ perspective: 800, transformStyle: "preserve-3d" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ─── Section wrapper with scale-in on scroll ────────────────────────────────
+function ScrollSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "start 0.7"] });
+  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+  return (
+    <motion.div ref={ref} style={{ scale, opacity }} className={className}>
+      {children}
+    </motion.div>
+  );
+}
+
 function RevealText({ children, delay = 0 }: {children: React.ReactNode;delay?: number;}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -460,18 +553,19 @@ export default function Index() {
               </div>
               <div className="flex items-center gap-1">
                 {socialLinks.map(({ icon: Icon, href, label }) =>
-                <motion.a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md p-1.5 text-muted-foreground transition-all hover:text-foreground"
-                  aria-label={label}
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                  whileTap={{ scale: 0.9 }}>
-                  
-                    <Icon className="h-5 w-5" />
-                  </motion.a>
+                <MagneticWrap key={label} className="inline-block">
+                  <motion.a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-md p-1.5 text-muted-foreground transition-all hover:text-foreground inline-block"
+                    aria-label={label}
+                    whileHover={{ scale: 1.3, rotate: 8 }}
+                    whileTap={{ scale: 0.9 }}>
+                    
+                      <Icon className="h-5 w-5" />
+                    </motion.a>
+                </MagneticWrap>
                 )}
               </div>
             </div>
@@ -497,7 +591,8 @@ export default function Index() {
             className="w-full h-full object-cover" />
           
           <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
-            I <span className="italic">bridge</span> the gap between<br />ambition and execution!
+            I <motion.span className="italic" initial={{ opacity: 0, scale: 1.5, filter: "blur(8px)" }} animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }} transition={{ duration: 0.8, delay: 0.6 }}>bridge</motion.span> the gap between<br />
+            <StaggerLetters text="ambition and execution!" delay={0.8} className="mt-1" />
           </h2>
 
           {/* Scroll indicator */}
@@ -515,6 +610,7 @@ export default function Index() {
 
 
       {/* ── Work ── */}
+      <ScrollSection>
       <ContentWrap className="py-24 scroll-mt-20">
         <section id="work" className="scroll-mt-20 relative">
           {/* Floating doodle decorations */}
@@ -542,17 +638,14 @@ export default function Index() {
           {/* Profile Card */}
           <RevealText delay={0.1}>
             <div className="mt-12 flex flex-col items-center text-center gap-4">
-              <motion.div
-                className="relative"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
+              <TiltCard className="relative">
+
                 <img src={profilePhoto} alt="Aashi Thakkar" className="w-80 h-[28rem] rounded-2xl object-cover object-top" />
                 {/* Doodle corner decoration */}
                 <motion.div className="absolute -top-3 -right-3" animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2, repeat: Infinity }}>
                   <SketchPin size={24} className="text-[hsl(0,70%,55%)] dark:text-[hsl(0,60%,65%)]" color="currentColor" />
                 </motion.div>
-              </motion.div>
+              </TiltCard>
             </div>
           </RevealText>
 
@@ -731,20 +824,12 @@ export default function Index() {
           {/* Education Photos */}
           <RevealText delay={0.4}>
             <div className="mt-10 grid grid-cols-2 gap-4">
-              <motion.div
-                className="aspect-[4/3] overflow-hidden rounded-2xl"
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
+              <TiltCard className="aspect-[4/3] overflow-hidden rounded-2xl">
                 <img src={eduPhoto1} alt="At Assumption College" className="w-full h-full object-cover object-[center_85%] transition-transform duration-500 hover:scale-110" />
-              </motion.div>
-              <motion.div
-                className="aspect-[4/3] overflow-hidden rounded-2xl"
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
+              </TiltCard>
+              <TiltCard className="aspect-[4/3] overflow-hidden rounded-2xl">
                 <img src={eduPhoto2} alt="Graduation" className="w-full h-full object-cover object-[center_25%] transition-transform duration-500 hover:scale-110" />
-              </motion.div>
+              </TiltCard>
             </div>
           </RevealText>
 
@@ -759,30 +844,31 @@ export default function Index() {
                     { href: "https://www.linkedin.com/in/aashithakkar29/", label: "Coffee Chat", icon: Coffee, target: "_blank" },
                     { href: "https://topmate.io/aashi_thakkar", label: "1:1 Mentorship", icon: Link, target: "_blank" },
                   ].map((btn, i) => (
-                    <motion.a
-                      key={btn.label}
-                      href={btn.href}
-                      target={btn.target}
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent animate-pulse-glow"
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {btn.label} <btn.icon size={16} />
-                    </motion.a>
+                    <MagneticWrap key={btn.label} className="inline-block">
+                      <motion.a
+                        href={btn.href}
+                        target={btn.target}
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent animate-pulse-glow"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 }}
+                        whileHover={{ scale: 1.08, y: -3 }}
+                        whileTap={{ scale: 0.92 }}
+                      >
+                        {btn.label} <btn.icon size={16} />
+                      </motion.a>
+                    </MagneticWrap>
                   ))}
                 </div>
             </div>
           </RevealText>
         </section>
       </ContentWrap>
+      </ScrollSection>
 
-
-      {/* ── Projects ── */}
+      <ScrollSection>
       <ContentWrap className="scroll-mt-20">
         <section id="projects" className="relative">
           {/* Tagline */}
@@ -796,13 +882,19 @@ export default function Index() {
               </h3>
               <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
                 that just...{" "}
-                <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">makes sense</span>{" "}
+                <motion.span
+                  className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)] inline-block"
+                  initial={{ opacity: 0, scale: 1.4, filter: "blur(10px)" }}
+                  whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 0.68, 0.36, 1] }}
+                >makes sense</motion.span>{" "}
                 <motion.span
                   className="inline-block"
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.6, type: "spring" }}
+                  transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
                 >
                   👀
                 </motion.span>
@@ -849,9 +941,10 @@ export default function Index() {
           </StaggerContainer>
         </section>
       </ContentWrap>
-
+      </ScrollSection>
 
       {/* ── References ── */}
+      <ScrollSection>
       <ContentWrap className="pt-8 pb-24 scroll-mt-20">
         <section id="references" className="relative">
           {/* Floating doodle */}
@@ -861,9 +954,10 @@ export default function Index() {
           <ReferencesSection />
         </section>
       </ContentWrap>
-
+      </ScrollSection>
 
       {/* ── About ── */}
+      <ScrollSection>
       <ContentWrap className="py-24 pb-16 scroll-mt-20">
         <section id="about" className="scroll-mt-20 relative">
           {/* Floating doodles */}
@@ -1114,10 +1208,10 @@ export default function Index() {
           </div>
         </section>
       </ContentWrap>
-
-      
+      </ScrollSection>
 
       {/* ── Impossible List ── */}
+      <ScrollSection>
       <ContentWrap className="py-24 pb-32 scroll-mt-20">
         <section id="impossible-list" className="relative">
           {/* Floating doodles */}
@@ -1191,6 +1285,7 @@ export default function Index() {
           </div>
         </section>
       </ContentWrap>
+      </ScrollSection>
 
     </div>);
 
