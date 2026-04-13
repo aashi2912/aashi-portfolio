@@ -941,10 +941,8 @@ export default function Index() {
             </h3>
           </RevealText>
 
-          {/* Carousel — breaks out of ContentWrap for full-width scroll */}
-          <div className="-mx-4 sm:-mx-6">
-            <ProjectCarousel projects={projects} />
-          </div>
+          {/* Projects grid */}
+          <ProjectCarousel projects={projects} />
         </section>
       </ContentWrap>
       </ScrollSection>
