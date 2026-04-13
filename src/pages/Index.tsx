@@ -64,31 +64,31 @@ const experiences = [
 {
   role: "Product Manager",
   company: "RBC Capital Markets",
-  period: "Jan 2025 — Present",
+  period: "Jan 2025 - Present",
   logo: logoRbc
 },
 {
   role: "Software Developer",
   company: "RBC Capital Markets",
-  period: "Sep 2023 — Dec 2024",
+  period: "Sep 2023 - Dec 2024",
   logo: logoRbc
 },
 {
   role: "Programmer Analyst",
   company: "Cognizant Technology Solutions",
-  period: "Mar 2021 — Jun 2022",
+  period: "Mar 2021 - Jun 2022",
   logo: logoCognizant
 },
 {
   role: "Open Source Contributor",
   company: "GirlScript Summer of Code",
-  period: "Mar 2021 — May 2021",
+  period: "Mar 2021 - May 2021",
   logo: logoGirlscript
 },
 {
   role: "Software Developer Intern",
   company: "Larsen & Toubro",
-  period: "May 2019 — Jun 2019",
+  period: "May 2019 - Jun 2019",
   logo: logoLt
 }];
 
@@ -128,20 +128,20 @@ const education = [
 {
   degree: "Masters of Engineering, Applied Computing",
   school: "University of Windsor",
-  period: "Sept 2022 — April 2024",
+  period: "Sept 2022 - April 2024",
   logo: logoUwindsor
 },
 {
   degree: "Bachelors of Engineering, Computer Science",
   school: "Gujarat Technological University",
-  period: "Aug 2016 — Aug 2020",
+  period: "Aug 2016 - Aug 2020",
   logo: logoGtu
 }];
 
 
 const contentCreation = [
-{ title: "Podcast Host", platform: "@MyPodcast", period: "Jan 2023 — Present", link: "#" },
-{ title: "Medium Author", platform: "Medium", period: "Oct 2018 — Present", link: "#" }];
+{ title: "Podcast Host", platform: "@MyPodcast", period: "Jan 2023 - Present", link: "#" },
+{ title: "Medium Author", platform: "Medium", period: "Oct 2018 - Present", link: "#" }];
 
 
 const publications = [
@@ -149,8 +149,8 @@ const publications = [
 
 
 const volunteering = [
-{ role: "Product Expert", org: "Organization Name", period: "May 2020 — Present" },
-{ role: "Mentor", org: "EducationUSA", period: "Aug 2015 — Present" }];
+{ role: "Product Expert", org: "Organization Name", period: "May 2020 - Present" },
+{ role: "Mentor", org: "EducationUSA", period: "Aug 2015 - Present" }];
 
 
 const projects = [
@@ -581,7 +581,7 @@ export default function Index() {
           </motion.div>
         </ContentWrap>
 
-        {/* Hero image — true full-bleed, zero padding */}
+        {/* Hero image - true full-bleed, zero padding */}
         <motion.div
           className="bg-background relative flex items-center justify-center"
           style={{ height: 'calc(100vh - 160px)' }}
@@ -653,7 +653,7 @@ export default function Index() {
             </div>
           </RevealText>
 
-          {/* Bio — Journey Timeline */}
+          {/* Bio - Journey Timeline */}
           <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
             <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
               <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Bio</span>
@@ -995,7 +995,7 @@ export default function Index() {
 { emoji: "📚", title: "Reading", caption: "Getting lost in stories & ideas", rotate: "4deg", top: "290px", left: "4%", width: "195px", delay: 0.34, pin: "hsl(120,50%,45%)", image: hobbyReading, imagePos: "center top", link: "https://morning-tile-b61.notion.site/Books-c3bda9122c404b4aaaaf28d3a4ffebd9" },
 { emoji: "🏺", title: "Pottery", caption: "Moulding clay into something beautiful", rotate: "-4deg", top: "370px", left: "36%", width: "200px", delay: 0.42, pin: "hsl(280,60%,55%)", image: hobbyPottery, imagePos: "center 80%" },
             { emoji: "🥾", title: "Hiking", caption: "Chasing trails & mountain views", rotate: "2.5deg", top: "290px", left: "69%", width: "195px", delay: 0.5, pin: "hsl(25,80%,50%)", image: hobbyHiking },
-            { emoji: "💃", title: "Kathak", caption: "Indian classical dance — rhythm & expression", rotate: "-3.5deg", top: "580px", left: "3%", width: "200px", delay: 0.58, pin: "hsl(340,70%,55%)", image: hobbyKathak, imagePos: "center 30%" },
+            { emoji: "💃", title: "Kathak", caption: "Indian classical dance - rhythm & expression", rotate: "-3.5deg", top: "580px", left: "3%", width: "200px", delay: 0.58, pin: "hsl(340,70%,55%)", image: hobbyKathak, imagePos: "center 30%" },
             { emoji: "🏊‍♀️", title: "Swimming", caption: "My kind of meditation", rotate: "5deg", top: "660px", left: "35%", width: "195px", delay: 0.66, pin: "hsl(190,70%,45%)", image: hobbySwimming, imagePos: "center 75%" },
             { emoji: "🏸", title: "Badminton", caption: "Smashing my way through weekends", rotate: "-3deg", top: "560px", left: "67%", width: "200px", delay: 0.74, pin: "hsl(45,90%,55%)", image: hobbyBadminton }].
             map((hobby, i) =>
@@ -1241,7 +1241,7 @@ export default function Index() {
             </div>
           </RevealText>
 
-          {/* Explanation — visual storytelling */}
+          {/* Explanation - visual storytelling */}
           <div className="mb-16 max-w-3xl">
             <RevealText delay={0.15}>
               <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">Impossible what?</h3>
@@ -1252,7 +1252,7 @@ export default function Index() {
                 {
                   emoji: "🚀",
                   label: "The Concept",
-                  text: "The Impossible List is like a bucket list — only more ambitious. The idea was originally created by Joel Runyon, and I first came across it through one of Thomas Frank's videos.",
+                  text: "The Impossible List is like a bucket list - only more ambitious. The idea was originally created by Joel Runyon, and I first came across it through one of Thomas Frank's videos.",
                 },
                 {
                   emoji: "💡",
@@ -1267,7 +1267,7 @@ export default function Index() {
                 {
                   emoji: "🌱",
                   label: "The Philosophy",
-                  text: "I may never complete every item on this list — and that's perfectly fine. The real purpose isn't finishing the list, but embracing the journey and the growth that comes from chasing ambitious goals.",
+                  text: "I may never complete every item on this list - and that's perfectly fine. The real purpose isn't finishing the list, but embracing the journey and the growth that comes from chasing ambitious goals.",
                 },
               ].map((step, i) => (
                 <motion.div

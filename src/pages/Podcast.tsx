@@ -1,7 +1,7 @@
 const episodes = [
-  { title: "Ep. 12 — Finding Your Niche", description: "We discuss how to find your niche in a crowded market.", date: "Feb 1, 2026" },
-  { title: "Ep. 11 — The Power of Habits", description: "A deep dive into building habits that last.", date: "Jan 15, 2026" },
-  { title: "Ep. 10 — From Side Project to Startup", description: "How to turn your side project into a real business.", date: "Dec 20, 2025" },
+  { title: "Ep. 12 - Finding Your Niche", description: "We discuss how to find your niche in a crowded market.", date: "Feb 1, 2026" },
+  { title: "Ep. 11 - The Power of Habits", description: "A deep dive into building habits that last.", date: "Jan 15, 2026" },
+  { title: "Ep. 10 - From Side Project to Startup", description: "How to turn your side project into a real business.", date: "Dec 20, 2025" },
 ];
 
 export default function Podcast() {

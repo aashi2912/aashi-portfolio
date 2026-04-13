@@ -52,19 +52,19 @@ export default function About() {
 
           <RevealSection delay={0.4}>
             <p className="text-base leading-relaxed text-muted-foreground">
-              That curiosity pulled me toward UX and Product 🎨 — and honestly, it clicked in a way that writing code never quite did. I found I was good at it, even before I had the title to match 💡✨.
+              That curiosity pulled me toward UX and Product 🎨 - and honestly, it clicked in a way that writing code never quite did. I found I was good at it, even before I had the title to match 💡✨.
             </p>
           </RevealSection>
 
           <RevealSection delay={0.5}>
             <p className="text-base leading-relaxed text-muted-foreground">
-              What drew me to product management wasn't just the craft — it was the mindset 🧠. Owning a problem end-to-end, bringing clarity to messy situations, and working with people across disciplines to build something that genuinely makes a difference 🎯. That's the work I find most meaningful 🚀.
+              What drew me to product management wasn't just the craft - it was the mindset 🧠. Owning a problem end-to-end, bringing clarity to messy situations, and working with people across disciplines to build something that genuinely makes a difference 🎯. That's the work I find most meaningful 🚀.
             </p>
           </RevealSection>
 
           <RevealSection delay={0.6}>
             <p className="text-base leading-relaxed text-muted-foreground">
-              These days, I sit at the intersection of technology and business 💼⚙️. My job is to make sense of complex, ambiguous problems and turn them into something a team can actually build — and that users actually want to use 🙌.
+              These days, I sit at the intersection of technology and business 💼⚙️. My job is to make sense of complex, ambiguous problems and turn them into something a team can actually build - and that users actually want to use 🙌.
             </p>
           </RevealSection>
 
@@ -76,7 +76,7 @@ export default function About() {
 
           <RevealSection delay={0.8}>
             <p className="text-base leading-relaxed">
-              If you're into AI 🤖, data products 📊, or product strategy — I'd love to connect 🤝.
+              If you're into AI 🤖, data products 📊, or product strategy - I'd love to connect 🤝.
             </p>
           </RevealSection>
         </div>
