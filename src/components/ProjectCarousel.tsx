@@ -757,17 +757,6 @@ function ProjectDrawer({
               />
             )}
           </AnimatePresence>
-          <AnimatePresence>
-            {showPrdModal && project.prdPages && project.prdPages.length > 0 && (
-              <CaseStudyModal
-                title={`${project.title} — PRD`}
-                pages={project.prdPages}
-                color={c}
-                secondaryColor={sc}
-                onClose={() => setShowPrdModal(false)}
-              />
-            )}
-          </AnimatePresence>
         </>
       )}
     </AnimatePresence>
