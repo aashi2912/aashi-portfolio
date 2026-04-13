@@ -9,6 +9,8 @@ export type Project = {
   year: string;
   link?: string;
   color: string;
+  secondaryColor?: string;
+  cardBg?: string;
   icon?: string;
   image?: string;
   caseStudyPdf?: string;
@@ -50,34 +52,36 @@ function ProjectCard({
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className={`relative flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-0 rounded-3xl overflow-hidden border border-border/60 transition-all duration-500`}
+        className={`relative flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-0 rounded-3xl overflow-hidden border transition-all duration-500`}
         style={{
-          background: `linear-gradient(135deg, hsl(var(--card)), ${project.color}08)`,
+          borderColor: `${project.color}20`,
+          background: project.cardBg
+            ? `linear-gradient(135deg, ${project.cardBg}40, hsl(var(--card)))`
+            : `linear-gradient(135deg, hsl(var(--card)), ${project.color}08)`,
         }}
       >
         {/* Visual hero side - FULL BLEED */}
         <motion.div
           className="relative w-full md:w-[55%] min-h-[280px] md:min-h-[400px] overflow-hidden flex items-center justify-center"
           style={{
-            background: `linear-gradient(135deg, ${project.color}22, ${project.color}10, ${project.color}05)`,
+            backgroundColor: project.cardBg || undefined,
+            background: project.cardBg
+              ? project.cardBg
+              : `linear-gradient(135deg, ${project.color}22, ${project.color}10, ${project.color}05)`,
           }}
         >
           {project.image ? (
             <motion.img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover absolute inset-0"
-              animate={hovered ? { scale: 1.05 } : { scale: 1 }}
+              className="w-full h-full object-contain p-6 md:p-8"
+              animate={hovered ? { scale: 1.08 } : { scale: 1 }}
               transition={{ duration: 0.6, ease: [0.22, 0.68, 0.36, 1] }}
             />
           ) : (
             <motion.div
               className="w-full h-full flex items-center justify-center"
-              animate={
-                hovered
-                  ? { scale: 1.05 }
-                  : { scale: 1 }
-              }
+              animate={hovered ? { scale: 1.05 } : { scale: 1 }}
               transition={{ duration: 0.6 }}
             >
               <span className="text-[100px] md:text-[140px] select-none">
@@ -85,14 +89,6 @@ function ProjectCard({
               </span>
             </motion.div>
           )}
-
-          {/* Color overlay on hover */}
-          <motion.div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: `linear-gradient(to top, ${project.color}20, transparent 60%)` }}
-            animate={hovered ? { opacity: 1 } : { opacity: 0.5 }}
-            transition={{ duration: 0.4 }}
-          />
         </motion.div>
 
         {/* Content side */}
@@ -244,7 +240,9 @@ function ProjectDrawer({
             <div
               className="relative min-h-[320px] md:min-h-[400px] flex flex-col justify-end p-8 md:p-10"
               style={{
-                background: `linear-gradient(180deg, ${c}25, ${c}12, hsl(var(--card)))`,
+                background: project.cardBg
+                  ? `linear-gradient(180deg, ${project.cardBg}, ${project.cardBg}CC, hsl(var(--card)))`
+                  : `linear-gradient(180deg, ${c}25, ${c}12, hsl(var(--card)))`,
               }}
             >
               {/* Close button */}
@@ -266,10 +264,18 @@ function ProjectDrawer({
                 <ArrowLeft size={16} /> Back
               </motion.button>
 
-              {/* Large icon in hero */}
-              <div className="absolute top-16 right-8 md:right-12 text-[80px] md:text-[120px] opacity-30 select-none pointer-events-none">
-                {project.icon || "🚀"}
-              </div>
+              {/* Large image or icon in hero */}
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt=""
+                  className="absolute top-8 right-4 md:right-8 w-[160px] md:w-[220px] opacity-40 select-none pointer-events-none object-contain"
+                />
+              ) : (
+                <div className="absolute top-16 right-8 md:right-12 text-[80px] md:text-[120px] opacity-30 select-none pointer-events-none">
+                  {project.icon || "🚀"}
+                </div>
+              )}
 
               {/* Tag + year */}
               <div className="flex items-center gap-3 mb-4 relative z-[1]">

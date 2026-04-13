@@ -24,6 +24,7 @@ import hobbyKathak from "@/assets/hobby-kathak.jpeg";
 import hobbyReading from "@/assets/hobby-reading.jpeg";
 import hobbyBadminton from "@/assets/hobby-badminton.jpeg";
 import impossibleListHero from "@/assets/impossible-list-hero.jpg";
+import vibeRouteHero from "@/assets/vibe-route-hero.png";
 
 import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
 import galleryLego from "@/assets/gallery-lego.jpeg";
@@ -160,8 +161,11 @@ const projects: Project[] = [
   tag: "AI Product",
   link: "https://vibe-route.vercel.app/",
   year: "2025",
-  color: "hsl(145,40%,38%)",
+  color: "#2D6A4F",
+  secondaryColor: "#C77B30",
+  cardBg: "#F5F0E8",
   icon: "🗺️",
+  image: vibeRouteHero,
   caseStudyPdf: "/case-studies/vibe-route-case-study.pdf",
   details: {
     role: "AI Product Manager - Solo (End-to-End)",
