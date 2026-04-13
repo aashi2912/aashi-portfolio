@@ -143,19 +143,22 @@ function ProjectCard({
 
             {project.details?.tools && (
               <div className="flex flex-wrap gap-2 mb-8">
-                {project.details.tools.slice(0, 4).map((t, i) => (
-                  <span
-                    key={i}
-                    className="rounded-full px-3 py-1 text-[11px] font-medium border"
-                    style={{
-                      borderColor: `${project.color}30`,
-                      backgroundColor: `${project.color}08`,
-                      color: project.color,
-                    }}
-                  >
-                    {t}
-                  </span>
-                ))}
+                {project.details.tools.slice(0, 5).map((t, i) => {
+                  const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl)\b/i.test(t);
+                  return (
+                    <span
+                      key={i}
+                      className={`rounded-full px-3 py-1 text-[11px] font-medium border ${isAI ? 'font-bold' : ''}`}
+                      style={{
+                        borderColor: isAI ? `${project.color}60` : `${project.color}30`,
+                        backgroundColor: isAI ? `${project.color}18` : `${project.color}08`,
+                        color: project.color,
+                      }}
+                    >
+                      {isAI ? `✦ ${t}` : t}
+                    </span>
+                  );
+                })}
               </div>
             )}
           </div>
