@@ -405,7 +405,7 @@ function ProjectDrawer({
                     onClick={(e) => e.stopPropagation()}
                   >
                     <FileText size={14} /> View Full Case Study PDF
-                  </button>
+                  </a>
                 )}
               </div>
             </div>
