@@ -35,7 +35,7 @@ const references = [
     company: "RBC Capital Markets",
     initials: "JE",
     color: "hsl(25,80%,50%)",
-    text: "Aashi has been a strong partner on the AidenResearch team. She has played an important role in supporting both requirements and delivery by translating business needs into clear acceptance criteria, creating and managing Jira tickets, and partnering closely with engineering leads to resolve questions and maintain alignment. She also works effectively with business stakeholders to clarify requirements, address issues, and keep workstreams progressing smoothly. Aashi is organized, communicative, and dependable, and her collaborative approach has made her a valuable contributor to the team.",
+    text: "Aashi consistently demonstrated strong product instincts and has been a key partner on the AidenResearch team. She translates business needs into clear acceptance criteria, partners closely with engineering leads to maintain alignment, and works effectively with stakeholders to keep workstreams progressing smoothly. Organized, communicative, and dependable - her collaborative approach makes everyone around her better.",
   },
   {
     name: "Sarah Williams",
@@ -115,13 +115,11 @@ function TestimonialsBlock() {
           transition={{ duration: 0.35, ease: "easeOut" }}
         >
           {/* Name label above bubble */}
-          <p className="text-sm text-muted-foreground mb-1.5 ml-1">{active.name}</p>
-          
-          <div className="relative bg-muted/60 border border-border rounded-2xl rounded-tl-sm p-5 md:p-6">
-            {/* Tap to like - top right */}
+          <div className="flex items-center justify-between mb-1.5 ml-1 mr-1">
+            <p className="text-sm text-muted-foreground">{active.name}</p>
             <motion.button
               onClick={() => toggleLike(activeIndex)}
-              className="absolute top-4 right-4 flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
+              className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
               whileTap={{ scale: 0.85 }}
             >
               <span className="text-[11px] italic">
@@ -135,8 +133,10 @@ function TestimonialsBlock() {
                 }`}
               />
             </motion.button>
-
-            <p className="text-[15px] md:text-[17px] leading-[1.75] text-foreground/90 pr-24">
+          </div>
+          
+          <div className="relative bg-muted/60 border border-border rounded-2xl rounded-tl-sm p-5 md:p-6">
+            <p className="text-[15px] md:text-[17px] leading-[1.75] text-foreground/90">
               {active.text}
             </p>
 
