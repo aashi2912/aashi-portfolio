@@ -382,11 +382,15 @@ function TiltCard({ children, className = "" }: { children: React.ReactNode; cla
 // ─── Section wrapper with scale-in on scroll ────────────────────────────────
 function ScrollSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "start 0.7"] });
-  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
   return (
-    <motion.div ref={ref} style={{ scale, opacity }} className={className}>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30, scale: 0.97 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
+      className={className}
+    >
       {children}
     </motion.div>
   );
@@ -591,7 +595,7 @@ export default function Index() {
             className="w-full h-full object-cover" />
           
           <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
-            I <motion.span className="italic" initial={{ opacity: 0, scale: 1.5, filter: "blur(8px)" }} animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }} transition={{ duration: 0.8, delay: 0.6 }}>bridge</motion.span> the gap between<br />
+            I <motion.span className="italic" initial={{ opacity: 0, scale: 1.3 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>bridge</motion.span> the gap between<br />
             <StaggerLetters text="ambition and execution!" delay={0.8} className="mt-1" />
           </h2>
 
@@ -884,10 +888,10 @@ export default function Index() {
                 that just...{" "}
                 <motion.span
                   className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)] inline-block"
-                  initial={{ opacity: 0, scale: 1.4, filter: "blur(10px)" }}
-                  whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  initial={{ opacity: 0, scale: 1.3, y: 10 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 0.68, 0.36, 1] }}
+                  transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 0.68, 0.36, 1] }}
                 >makes sense</motion.span>{" "}
                 <motion.span
                   className="inline-block"
