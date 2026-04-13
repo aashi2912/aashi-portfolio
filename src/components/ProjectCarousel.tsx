@@ -261,10 +261,18 @@ function ProjectDrawer({
                 <ArrowLeft size={16} /> Back
               </motion.button>
 
-              {/* Large icon in hero */}
-              <div className="absolute top-16 right-8 md:right-12 text-[80px] md:text-[120px] opacity-30 select-none pointer-events-none">
-                {project.icon || "🚀"}
-              </div>
+              {/* Large image or icon in hero */}
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt=""
+                  className="absolute top-8 right-4 md:right-8 w-[160px] md:w-[220px] opacity-40 select-none pointer-events-none object-contain"
+                />
+              ) : (
+                <div className="absolute top-16 right-8 md:right-12 text-[80px] md:text-[120px] opacity-30 select-none pointer-events-none">
+                  {project.icon || "🚀"}
+                </div>
+              )}
 
               {/* Tag + year */}
               <div className="flex items-center gap-3 mb-4 relative z-[1]">
