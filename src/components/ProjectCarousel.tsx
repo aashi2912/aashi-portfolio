@@ -337,7 +337,7 @@ function ProjectDrawer({
   onClose: () => void;
 }) {
   const [showCaseStudyModal, setShowCaseStudyModal] = useState(false);
-  const [showPrdModal, setShowPrdModal] = useState(false);
+  
 
   if (!project) return null;
   const details = project.details;
