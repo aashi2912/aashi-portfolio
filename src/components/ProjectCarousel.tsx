@@ -9,6 +9,8 @@ export type Project = {
   year: string;
   link?: string;
   color: string;
+  secondaryColor?: string;
+  cardBg?: string;
   icon?: string;
   image?: string;
   caseStudyPdf?: string;
