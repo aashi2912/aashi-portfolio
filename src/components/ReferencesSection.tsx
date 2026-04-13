@@ -72,30 +72,21 @@ function TestimonialsBlock() {
     <div className="py-16 md:py-24">
       {/* Heading */}
       <motion.div
-        className="text-center"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.7 }}
       >
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
-          But{" "}
-          <span className="relative inline-block">
-            <span className="relative z-10 px-4 py-1">the real story</span>
-            <motion.span
-              className="absolute inset-0 rounded-full bg-primary/15 dark:bg-primary/20"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              style={{ originX: 0 }}
-            />
-          </span>{" "}
-          comes from the
-        </h2>
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-muted-foreground mt-1">
-          people I've worked with
-        </h2>
+        <div className="mb-4">
+          <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
+            But the{" "}
+            <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">real story</span>{" "}
+            comes from the
+          </h2>
+          <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
+            people I've worked with
+          </h3>
+        </div>
       </motion.div>
 
       {/* Chat Bubble */}
