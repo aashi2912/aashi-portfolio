@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, ArrowUpRight, ArrowLeft, FileText, X, Github } from "lucide-react";
+import { ExternalLink, ArrowUpRight, ArrowLeft, FileText, X, Github, ChevronLeft, ChevronRight } from "lucide-react";
 
 export type DrawerSection = {
   label: string;
@@ -53,38 +53,35 @@ function ProjectCard({
   project,
   index,
   onClick,
-  isEven,
 }: {
   project: Project;
   index: number;
   onClick: () => void;
-  isEven: boolean;
+  isEven?: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
 
   return (
     <motion.div
-      className="group cursor-pointer"
-      initial={{ opacity: 0, y: 60 }}
+      className="group cursor-pointer flex-shrink-0 w-[340px] sm:w-[380px] md:w-[420px] snap-center"
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 0.68, 0.36, 1] }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 0.68, 0.36, 1] }}
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className={`relative flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-0 rounded-3xl overflow-hidden border transition-all duration-500`}
+        className="relative flex flex-col rounded-3xl overflow-hidden border transition-all duration-500 h-full"
         style={{
-          borderColor: `${project.color}20`,
-          background: project.cardBg
-            ? `linear-gradient(135deg, ${project.cardBg}40, hsl(var(--card)))`
-            : `linear-gradient(135deg, hsl(var(--card)), ${project.color}08)`,
+          borderColor: hovered ? `${project.color}40` : `${project.color}15`,
+          background: `linear-gradient(180deg, hsl(var(--card)), ${project.color}06)`,
         }}
       >
-        {/* Visual hero side */}
+        {/* Image area */}
         <motion.div
-          className="relative w-full md:w-[55%] min-h-[280px] md:min-h-[400px] overflow-hidden flex items-center justify-center"
+          className="relative w-full h-[220px] overflow-hidden flex items-center justify-center"
           style={{
             background: `linear-gradient(135deg, ${project.color}08, ${project.color}04)`,
             backgroundColor: '#ffffff',
@@ -94,7 +91,7 @@ function ProjectCard({
             <motion.img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-contain p-6 md:p-8"
+              className="w-full h-full object-contain p-5"
               animate={hovered ? { scale: 1.08 } : { scale: 1 }}
               transition={{ duration: 0.6, ease: [0.22, 0.68, 0.36, 1] }}
             />
@@ -104,85 +101,85 @@ function ProjectCard({
               animate={hovered ? { scale: 1.05 } : { scale: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-[100px] md:text-[140px] select-none">
+              <span className="text-[80px] select-none">
                 {project.icon || "🚀"}
               </span>
             </motion.div>
           )}
         </motion.div>
 
-        {/* Content side */}
-        <div className="relative w-full md:w-[45%] flex flex-col justify-between p-8 md:p-10">
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <span
-                className="rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider"
-                style={{
-                  backgroundColor: `${project.color}20`,
-                  color: project.color,
-                }}
-              >
-                {project.tag}
-              </span>
-              <span className="font-mono text-xs text-muted-foreground tracking-wider">
-                {project.year}
-              </span>
-            </div>
+        {/* Content */}
+        <div className="relative flex flex-col flex-1 p-6">
+          <div className="flex items-center gap-2.5 mb-4">
+            <span
+              className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wider"
+              style={{
+                backgroundColor: `${project.color}20`,
+                color: project.color,
+              }}
+            >
+              {project.tag}
+            </span>
+            <span className="font-mono text-[10px] text-muted-foreground tracking-wider">
+              {project.year}
+            </span>
+          </div>
 
-            <motion.h3
-              className="text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-4 text-foreground"
+          <motion.h3
+            className="text-xl font-bold tracking-tight leading-tight mb-3 text-foreground"
+            animate={hovered ? { x: 3 } : { x: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {project.title}
+          </motion.h3>
+
+          <p className="text-[13px] text-muted-foreground leading-relaxed mb-5 line-clamp-3">
+            {project.description}
+          </p>
+
+          {project.details?.tools && (
+            <div className="flex flex-wrap gap-1.5 mb-5">
+              {project.details.tools.slice(0, 4).map((t, i) => {
+                const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl)\b/i.test(t);
+                return (
+                  <span
+                    key={i}
+                    className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border ${isAI ? 'font-bold' : ''}`}
+                    style={{
+                      borderColor: isAI ? `${project.color}60` : `${project.color}25`,
+                      backgroundColor: isAI ? `${project.color}18` : `${project.color}06`,
+                      color: project.color,
+                    }}
+                  >
+                    {isAI ? `✦ ${t}` : t}
+                  </span>
+                );
+              })}
+            </div>
+          )}
+
+          <div className="mt-auto">
+            <motion.div
+              className="flex items-center gap-2 text-sm font-semibold tracking-wide"
+              style={{ color: project.color }}
               animate={hovered ? { x: 4 } : { x: 0 }}
               transition={{ duration: 0.3 }}
             >
-              {project.title}
-            </motion.h3>
-
-            <p className="text-[15px] md:text-base text-muted-foreground leading-relaxed mb-8">
-              {project.description}
-            </p>
-
-            {project.details?.tools && (
-              <div className="flex flex-wrap gap-2 mb-8">
-                {project.details.tools.slice(0, 5).map((t, i) => {
-                  const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl)\b/i.test(t);
-                  return (
-                    <span
-                      key={i}
-                      className={`rounded-full px-3 py-1 text-[11px] font-medium border ${isAI ? 'font-bold' : ''}`}
-                      style={{
-                        borderColor: isAI ? `${project.color}60` : `${project.color}30`,
-                        backgroundColor: isAI ? `${project.color}18` : `${project.color}08`,
-                        color: project.color,
-                      }}
-                    >
-                      {isAI ? `✦ ${t}` : t}
-                    </span>
-                  );
-                })}
-              </div>
-            )}
+              Read case study
+              <motion.span
+                animate={hovered ? { x: 3, y: -3 } : { x: 0, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ArrowUpRight size={14} />
+              </motion.span>
+            </motion.div>
           </div>
 
           <motion.div
-            className="flex items-center gap-2 text-sm font-semibold tracking-wide"
-            style={{ color: project.color }}
-            animate={hovered ? { x: 6 } : { x: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            Read case study
-            <motion.span
-              animate={hovered ? { x: 3, y: -3 } : { x: 0, y: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ArrowUpRight size={16} />
-            </motion.span>
-          </motion.div>
-
-          <motion.div
-            className="absolute bottom-0 left-0 h-1 rounded-full"
+            className="absolute bottom-0 left-0 h-[3px] rounded-full"
             style={{ backgroundColor: project.color }}
             initial={{ width: "0%" }}
-            animate={hovered ? { width: "100%" } : { width: "40%" }}
+            animate={hovered ? { width: "100%" } : { width: "30%" }}
             transition={{ duration: 0.5, ease: [0.22, 0.68, 0.36, 1] }}
           />
         </div>
@@ -779,6 +776,7 @@ function ProjectDrawer({
 
 export function ProjectCarousel({ projects }: { projects: Project[] }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleCardClick = (project: Project) => {
     setSelectedProject(project);
@@ -790,17 +788,46 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
     document.body.style.overflow = "";
   };
 
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const scrollAmount = 440;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <div className="space-y-6 md:space-y-8">
-      {projects.map((project, i) => (
-        <ProjectCard
-          key={i}
-          project={project}
-          index={i}
-          onClick={() => handleCardClick(project)}
-          isEven={i % 2 === 0}
-        />
-      ))}
+    <div className="relative">
+      {/* Navigation arrows */}
+      <button
+        onClick={() => scroll("left")}
+        className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-lg"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        onClick={() => scroll("right")}
+        className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-lg"
+      >
+        <ChevronRight size={20} />
+      </button>
+
+      {/* Scrollable carousel */}
+      <div
+        ref={scrollRef}
+        className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {projects.map((project, i) => (
+          <ProjectCard
+            key={i}
+            project={project}
+            index={i}
+            onClick={() => handleCardClick(project)}
+          />
+        ))}
+      </div>
 
       <AnimatePresence>
         {selectedProject && (
