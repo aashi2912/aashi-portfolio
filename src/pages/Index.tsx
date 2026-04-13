@@ -774,7 +774,7 @@ export default function Index() {
 
       {/* ── Projects ── */}
       <ContentWrap className="scroll-mt-20">
-        <section id="projects">
+        <section id="projects" className="relative">
           {/* Tagline */}
           <RevealText>
             <div className="mb-4">
