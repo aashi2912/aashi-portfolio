@@ -27,6 +27,7 @@ export type Project = {
   caseStudyPdf?: string;
   caseStudyPages?: string[];
   prdPages?: string[];
+  prdPdf?: string;
   githubLink?: string;
   details?: {
     background?: string;
