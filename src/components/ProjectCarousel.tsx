@@ -2,6 +2,17 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, ArrowUpRight, ArrowLeft, FileText, X, Github } from "lucide-react";
 
+export type DrawerSection = {
+  label: string;
+  title?: string;
+  content?: string;
+  items?: { title: string; desc: string; num?: string; version?: string }[];
+  layout?: "text" | "grid" | "list" | "steps" | "roadmap";
+  rejections?: string[];
+  quote?: string;
+  quoteAttribution?: string;
+};
+
 export type Project = {
   title: string;
   description: string;
@@ -27,16 +38,12 @@ export type Project = {
     results?: string[];
     tools?: string[];
     heroTagline?: string;
-    sections?: CaseStudySection[];
+    stats?: { value: string; label: string }[];
+    drawerSections?: DrawerSection[];
+    competitiveGap?: { label: string; status: string; tools: string; solved: boolean }[];
+    takeawayQuote?: string;
+    takeawayTags?: string[];
   };
-};
-
-export type CaseStudySection = {
-  label: string;
-  title?: string;
-  content: string;
-  highlights?: string[];
-  type?: "text" | "grid" | "list" | "quote";
 };
 
 /* ─── Project Card ─── */
