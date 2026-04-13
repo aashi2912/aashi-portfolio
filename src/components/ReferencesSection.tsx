@@ -175,7 +175,7 @@ function TestimonialsBlock() {
               return (
                 <TestimonialCard
                   key={realIndex}
-                  ref={person}
+                  person={person}
                   index={realIndex}
                   isActive={activeIndex === realIndex}
                   onClick={() => setActiveIndex(realIndex)}
@@ -189,7 +189,7 @@ function TestimonialsBlock() {
               return (
                 <TestimonialCard
                   key={realIndex}
-                  ref={person}
+                  person={person}
                   index={realIndex}
                   isActive={activeIndex === realIndex}
                   onClick={() => setActiveIndex(realIndex)}
@@ -210,7 +210,7 @@ function TestimonialsBlock() {
               transition={{ duration: 0.3 }}
             >
               <TestimonialCard
-                ref={references[activeIndex]}
+                person={references[activeIndex]}
                 index={activeIndex}
                 isActive={true}
                 onClick={() => {}}
