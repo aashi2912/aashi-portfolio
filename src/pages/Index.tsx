@@ -24,7 +24,7 @@ import hobbyKathak from "@/assets/hobby-kathak.jpeg";
 import hobbyReading from "@/assets/hobby-reading.jpeg";
 import hobbyBadminton from "@/assets/hobby-badminton.jpeg";
 import impossibleListHero from "@/assets/impossible-list-hero.jpg";
-import vibeRouteHero from "@/assets/vibe-route-hero.png";
+import vibeRouteHero from "@/assets/vibe-route-doodle.jpg";
 
 import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
 import galleryLego from "@/assets/gallery-lego.jpeg";
