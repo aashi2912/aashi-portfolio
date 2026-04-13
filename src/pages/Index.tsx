@@ -610,6 +610,7 @@ export default function Index() {
 
 
       {/* ── Work ── */}
+      <ScrollSection>
       <ContentWrap className="py-24 scroll-mt-20">
         <section id="work" className="scroll-mt-20 relative">
           {/* Floating doodle decorations */}
