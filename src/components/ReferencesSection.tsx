@@ -51,12 +51,13 @@ const references = [
     text: "As a developer, I really appreciated how Aashi wrote crystal-clear requirements and was always available to unblock the team. She genuinely cares about building the right thing.",
   },
   {
-    name: "David Kim",
-    role: "Product Lead",
-    company: "GlobalFinance",
-    initials: "DK",
+    name: "Linda Bugaziyanos",
+    role: "Director, Product Management",
+    company: "RBC Capital Markets",
+    initials: "LB",
+    photo: lindaBugaziyanosPhoto,
     color: "hsl(45,90%,45%)",
-    text: "Aashi has a natural talent for stakeholder management. She navigates complex organizational dynamics with grace and always keeps the user at the center of every decision.",
+    text: "Aashi combines strong organization and a practical understanding of technology in a way that's rare to find. She translates business needs into clear, actionable requirements — reducing back-and-forth and helping teams move faster. Collaborative, dependable, and solution-oriented, she identifies gaps early and brings real structure to complex initiatives.",
   },
 ];
 
