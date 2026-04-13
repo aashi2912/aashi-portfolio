@@ -58,7 +58,7 @@ const categories: Category[] = [
     items: [
       { text: "Open a NGO", done: false },
       { text: "Own a lake house", done: false },
-      { text: "Study and settle abroad", done: false },
+      { text: "Study and settle abroad", done: true },
     ],
   },
   {
