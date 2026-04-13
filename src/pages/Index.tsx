@@ -690,7 +690,7 @@ export default function Index() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: skillIdx * 0.02 + catIdx * 0.05 }}
-                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileHover={{ scale: 1.1, y: -2, rotate: [0, -3, 3, 0] }}
                     >
                       {skill}
                     </motion.span>
