@@ -477,186 +477,190 @@ function ProjectDrawer({
               <div className="px-8 md:px-10 py-10 space-y-12">
 
                 {/* Key stats row */}
-                <motion.div
-                  className="grid grid-cols-2 sm:grid-cols-4 gap-3"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                >
-                  <StatCard value="4" label="AI Components" color={c} delay={0.12} />
-                  <StatCard value="6" label="Research Studies" color={sc} delay={0.16} />
-                  <StatCard value="30+" label="POIs per Route" color={c} delay={0.2} />
-                  <StatCard value="5" label="Weeks to Ship" color={sc} delay={0.24} />
-                </motion.div>
+                {details.stats && details.stats.length > 0 && (
+                  <motion.div
+                    className={`grid grid-cols-2 ${details.stats.length >= 4 ? 'sm:grid-cols-4' : `sm:grid-cols-${details.stats.length}`} gap-3`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    {details.stats.map((stat, i) => (
+                      <StatCard key={i} value={stat.value} label={stat.label} color={i % 2 === 0 ? c : sc} delay={0.12 + i * 0.04} />
+                    ))}
+                  </motion.div>
+                )}
 
-                {/* The Problem */}
+                {/* Background / Problem */}
                 {details.background && (
-                  <SectionBlock label="The Problem" title="The Problem Nobody Has Solved" color={c} delay={0.2}>
+                  <SectionBlock label="The Problem" color={c} delay={0.2}>
                     <p className="mb-4">{details.background}</p>
-                    <div className="grid grid-cols-3 gap-3 mt-4">
-                      {[
-                        { label: "Scenic Driving", status: "Solved", tools: "Roadtrippers, Scenic", solved: true },
-                        { label: "Hiking & Trails", status: "Solved", tools: "AllTrails, Komoot", solved: true },
-                        { label: "Urban Walking", status: "Huge Gap", tools: "Google Maps = speed only", solved: false },
-                      ].map((item, i) => (
-                        <div
-                          key={i}
-                          className="rounded-xl p-3 border text-center"
-                          style={{
-                            borderColor: item.solved ? `${c}20` : `${sc}40`,
-                            backgroundColor: item.solved ? `${c}06` : `${sc}12`,
-                          }}
-                        >
-                          <p className="text-xs font-bold mb-1 text-foreground">{item.label}</p>
-                          <p className="text-[10px] font-semibold mb-1" style={{ color: item.solved ? c : sc }}>
-                            {item.solved ? "✓" : "✕"} {item.status}
-                          </p>
-                          <p className="text-[10px] text-muted-foreground">{item.tools}</p>
-                        </div>
-                      ))}
-                    </div>
+                    {details.competitiveGap && (
+                      <div className={`grid grid-cols-${Math.min(details.competitiveGap.length, 3)} gap-3 mt-4`}>
+                        {details.competitiveGap.map((item, i) => (
+                          <div
+                            key={i}
+                            className="rounded-xl p-3 border text-center"
+                            style={{
+                              borderColor: item.solved ? `${c}20` : `${sc}40`,
+                              backgroundColor: item.solved ? `${c}06` : `${sc}12`,
+                            }}
+                          >
+                            <p className="text-xs font-bold mb-1 text-foreground">{item.label}</p>
+                            <p className="text-[10px] font-semibold mb-1" style={{ color: item.solved ? c : sc }}>
+                              {item.solved ? "✓" : "✕"} {item.status}
+                            </p>
+                            <p className="text-[10px] text-muted-foreground">{item.tools}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </SectionBlock>
                 )}
 
-                {/* Research-Backed */}
-                <SectionBlock label="Research" title="Every Decision Backed by Research" color={sc} delay={0.25}>
-                  <p className="mb-4">6 peer-reviewed studies shaped the MVP.</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {[
-                      { num: "1", title: "Detour tolerance", desc: "Leisure walkers accept ~25% detours - cap at ~30%" },
-                      { num: "2", title: "What people love", desc: "Parks, sky visibility, amenities - define vibe dimensions" },
-                      { num: "3", title: "Facility detours", desc: "Walkers detour for attractive stops - waypoint injection" },
-                      { num: "4", title: "Night safety gap", desc: "Different needs after dark - Night Walker persona" },
-                      { num: "5", title: "Avoid poor lighting", desc: "People avoid dark routes - Well-Lit scoring (V2)" },
-                      { num: "6", title: "Night attention", desc: "Hazard scanning changes - night-mode weights" },
-                    ].map((r, i) => (
-                      <motion.div
-                        key={i}
-                        className="flex items-start gap-3 p-3 rounded-xl border"
-                        style={{ borderColor: `${sc}15`, backgroundColor: `${sc}05` }}
-                        initial={{ opacity: 0, x: -16 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 + i * 0.05 }}
-                      >
-                        <span
-                          className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold text-white"
-                          style={{ backgroundColor: sc }}
-                        >
-                          {r.num}
-                        </span>
-                        <div>
-                          <p className="text-sm font-semibold text-foreground">{r.title}</p>
-                          <p className="text-xs text-muted-foreground mt-0.5">{r.desc}</p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </SectionBlock>
+                {/* Dynamic drawer sections */}
+                {details.drawerSections?.map((section, sectionIdx) => {
+                  const sColor = sectionIdx % 2 === 0 ? sc : c;
+                  const delay = 0.25 + sectionIdx * 0.05;
 
-                {/* How It Works */}
-                <SectionBlock label="How It Works" title="How Vibe Route Works" color={c} delay={0.3}>
-                  <div className="space-y-3">
-                    {[
-                      { step: "1", title: "Enter Origin & Destination", desc: "User inputs start and end points on the map" },
-                      { step: "2", title: "Select Vibes", desc: "Choose preferences like 'Green & Peaceful' or 'Coffee Stops' - or type naturally" },
-                      { step: "3", title: "AI Discovers Waypoints", desc: "ML clustering generates genuinely different routes when Google alternatives overlap >70%" },
-                      { step: "4", title: "Score Routes", desc: "Density-based vibe scoring with diminishing returns (log curve) to avoid inflation" },
-                      { step: "5", title: "Generate Narratives", desc: "LLM summaries constrained to verified POIs with anti-hallucination guardrails" },
-                      { step: "6", title: "Compare & Navigate", desc: "Side-by-side comparison with deep link to Google Maps for real navigation" },
-                    ].map((s, i) => (
-                      <motion.div
-                        key={i}
-                        className="flex items-start gap-4 p-4 rounded-xl border"
-                        style={{ borderColor: `${c}15`, backgroundColor: `${c}04` }}
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.35 + i * 0.05 }}
-                      >
-                        <span
-                          className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white"
-                          style={{ backgroundColor: c }}
-                        >
-                          {s.step}
-                        </span>
-                        <div>
-                          <p className="text-sm font-semibold text-foreground">{s.title}</p>
-                          <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{s.desc}</p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </SectionBlock>
+                  return (
+                    <SectionBlock key={sectionIdx} label={section.label} title={section.title} color={sColor} delay={delay}>
+                      {section.content && <p className="mb-4">{section.content}</p>}
+                      {section.quote && (
+                        <p className="mb-4 italic" style={{ color: sColor }}>"{section.quote}"</p>
+                      )}
 
-                {/* AI Architecture */}
-                <SectionBlock label="AI Architecture" title="4 AI Components - Each One Earns Its Place" color={sc} delay={0.35}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                    {[
-                      { title: "Waypoint Discovery", desc: "ML clustering to create genuinely different route options" },
-                      { title: "Natural Language", desc: "Parse 'quiet walk with coffee' into structured vibe preferences" },
-                      { title: "Route Narratives", desc: "LLM summaries constrained to verified POIs (anti-hallucination)" },
-                      { title: "Vibe Scoring", desc: "Density-based scoring with diminishing returns" },
-                    ].map((ai, i) => (
-                      <motion.div
-                        key={i}
-                        className="rounded-2xl p-4 border"
-                        style={{ borderColor: `${sc}20`, backgroundColor: `${sc}06` }}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.4 + i * 0.06 }}
-                      >
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-bold text-white" style={{ backgroundColor: sc }}>
-                            {i + 1}
-                          </span>
-                          <p className="text-sm font-bold text-foreground">{ai.title}</p>
+                      {section.items && section.layout === "grid" && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {section.items.map((item, i) => (
+                            <motion.div
+                              key={i}
+                              className="rounded-2xl p-4 border"
+                              style={{ borderColor: `${sColor}20`, backgroundColor: `${sColor}06` }}
+                              initial={{ opacity: 0, scale: 0.95 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: delay + 0.05 + i * 0.05 }}
+                            >
+                              <div className="flex items-center gap-2 mb-2">
+                                <span className="w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-bold text-white" style={{ backgroundColor: sColor }}>
+                                  {item.num || i + 1}
+                                </span>
+                                <p className="text-sm font-bold text-foreground">{item.title}</p>
+                              </div>
+                              <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                            </motion.div>
+                          ))}
                         </div>
-                        <p className="text-xs text-muted-foreground leading-relaxed">{ai.desc}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                  <div className="rounded-xl p-4 border" style={{ borderColor: `${c}15`, backgroundColor: `${c}04` }}>
-                    <p className="text-xs font-semibold text-foreground mb-2">What I rejected (on purpose):</p>
-                    <div className="space-y-1.5">
-                      {["Personalization (not enough user data yet)", "'Scenic' LLM scoring (high bias risk)", "AI soundtrack (feature creep)"].map((r, i) => (
-                        <p key={i} className="text-xs text-muted-foreground">✕ {r}</p>
-                      ))}
-                    </div>
-                  </div>
-                </SectionBlock>
+                      )}
 
-                {/* Designing Around Bias */}
-                <SectionBlock label="Bias Design" title="Designing Around Bias" color={c} delay={0.4}>
-                  <p className="mb-4 italic" style={{ color: c }}>Bias isn't a reason not to build - it's a design constraint.</p>
-                  <div className="space-y-3">
-                    {[
-                      { title: "Objective signals", desc: "Use parks, POI density, road types - not subjective 'beauty'. Reduces value-judgment bias." },
-                      { title: "User-defined vibe", desc: "'Green & peaceful' is a preference - not a neighborhood ranking. Shifts agency to the user." },
-                      { title: "Audit for correlation", desc: "Planned: 50 routes across diverse Toronto neighborhoods. Correlate vibe scores with census data." },
-                      { title: "Reward local discovery", desc: "Count cultural spots + independent shops as positive 'Local Character'. Rewards diversity, not just affluence." },
-                    ].map((b, i) => (
-                      <motion.div
-                        key={i}
-                        className="flex items-start gap-3 p-3 rounded-xl border"
-                        style={{ borderColor: `${c}15`, backgroundColor: `${c}04` }}
-                        initial={{ opacity: 0, x: -12 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.45 + i * 0.05 }}
-                      >
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white" style={{ backgroundColor: c }}>
-                          {i + 1}
-                        </span>
-                        <div>
-                          <p className="text-sm font-semibold text-foreground">{b.title}</p>
-                          <p className="text-xs text-muted-foreground mt-0.5">{b.desc}</p>
+                      {section.items && section.layout === "list" && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {section.items.map((item, i) => (
+                            <motion.div
+                              key={i}
+                              className="flex items-start gap-3 p-3 rounded-xl border"
+                              style={{ borderColor: `${sColor}15`, backgroundColor: `${sColor}05` }}
+                              initial={{ opacity: 0, x: -16 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: delay + 0.05 + i * 0.04 }}
+                            >
+                              <span className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: sColor }}>
+                                {item.num || i + 1}
+                              </span>
+                              <div>
+                                <p className="text-sm font-semibold text-foreground">{item.title}</p>
+                                <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
+                              </div>
+                            </motion.div>
+                          ))}
                         </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </SectionBlock>
+                      )}
+
+                      {section.items && section.layout === "steps" && (
+                        <div className="space-y-3">
+                          {section.items.map((item, i) => (
+                            <motion.div
+                              key={i}
+                              className="flex items-start gap-4 p-4 rounded-xl border"
+                              style={{ borderColor: `${sColor}15`, backgroundColor: `${sColor}04` }}
+                              initial={{ opacity: 0, y: 12 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: delay + 0.05 + i * 0.04 }}
+                            >
+                              <span className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style={{ backgroundColor: sColor }}>
+                                {item.num || i + 1}
+                              </span>
+                              <div>
+                                <p className="text-sm font-semibold text-foreground">{item.title}</p>
+                                <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{item.desc}</p>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+                      )}
+
+                      {section.items && section.layout === "roadmap" && (
+                        <div className="space-y-3">
+                          {section.items.map((item, i) => (
+                            <motion.div
+                              key={i}
+                              className="flex items-start gap-3 p-3 rounded-xl border"
+                              style={{ borderColor: `${sColor}15`, backgroundColor: `${sColor}04` }}
+                              initial={{ opacity: 0, x: -12 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: delay + 0.05 + i * 0.04 }}
+                            >
+                              <span className="flex-shrink-0 px-2 py-1 rounded-md text-[10px] font-bold text-white" style={{ backgroundColor: sColor }}>
+                                {item.version || "V2"}
+                              </span>
+                              <div>
+                                <p className="text-sm font-semibold text-foreground">{item.title}</p>
+                                <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+                      )}
+
+                      {section.items && !section.layout && (
+                        <div className="space-y-3">
+                          {section.items.map((item, i) => (
+                            <motion.div
+                              key={i}
+                              className="flex items-start gap-3 p-3 rounded-xl border"
+                              style={{ borderColor: `${sColor}15`, backgroundColor: `${sColor}05` }}
+                              initial={{ opacity: 0, x: -12 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: delay + 0.05 + i * 0.04 }}
+                            >
+                              <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white" style={{ backgroundColor: sColor }}>
+                                {item.num || i + 1}
+                              </span>
+                              <div>
+                                <p className="text-sm font-semibold text-foreground">{item.title}</p>
+                                <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+                      )}
+
+                      {section.rejections && (
+                        <div className="rounded-xl p-4 border mt-4" style={{ borderColor: `${c}15`, backgroundColor: `${c}04` }}>
+                          <p className="text-xs font-semibold text-foreground mb-2">What I rejected (on purpose):</p>
+                          <div className="space-y-1.5">
+                            {section.rejections.map((r, i) => (
+                              <p key={i} className="text-xs text-muted-foreground">✕ {r}</p>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </SectionBlock>
+                  );
+                })}
 
                 {/* Results */}
                 {details.results && details.results.length > 0 && (
-                  <SectionBlock label="Results" title="Key Outcomes" color={sc} delay={0.45}>
+                  <SectionBlock label="Results" title="Key Outcomes" color={sc} delay={0.6}>
                     <div className="space-y-3 mt-2">
                       {details.results.map((r, i) => (
                         <motion.div
@@ -665,12 +669,9 @@ function ProjectDrawer({
                           style={{ borderColor: `${sc}15`, backgroundColor: `${sc}05` }}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.5 + i * 0.05 }}
+                          transition={{ delay: 0.65 + i * 0.04 }}
                         >
-                          <span
-                            className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold text-white"
-                            style={{ backgroundColor: sc }}
-                          >
+                          <span className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: sc }}>
                             {i + 1}
                           </span>
                           <span className="text-[14px] leading-relaxed pt-0.5 text-foreground">{r}</span>
@@ -680,109 +681,36 @@ function ProjectDrawer({
                   </SectionBlock>
                 )}
 
-                {/* Decisions & Tradeoffs */}
-                <SectionBlock label="Decisions" title="Decisions & Tradeoffs" color={c} delay={0.5}>
-                  <p className="mb-3">6 choices that shaped the MVP.</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {[
-                      { title: "Overlap check", desc: "Alternates overlap - waypoint injection fallback" },
-                      { title: "Scoring curve", desc: "Linear to diminishing returns (log) to avoid score inflation" },
-                      { title: "Global-first MVP", desc: "No city datasets yet - ship everywhere using Maps APIs" },
-                      { title: "Progressive loading", desc: "Routes, scores, narratives for faster perceived speed" },
-                      { title: "Anti-hallucination", desc: "Constrained prompts + template fallback for reliability" },
-                      { title: "Scope cut", desc: "Defer 'Well-Lit' to V2 due to data availability" },
-                    ].map((d, i) => (
-                      <motion.div
-                        key={i}
-                        className="rounded-xl p-3 border"
-                        style={{ borderColor: `${c}15`, backgroundColor: `${c}04` }}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.55 + i * 0.04 }}
-                      >
-                        <p className="text-sm font-semibold text-foreground mb-1">{d.title}</p>
-                        <p className="text-xs text-muted-foreground">{d.desc}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                  <p className="text-xs mt-3 italic" style={{ color: c }}>
-                    Tradeoff principle: ship the core loop first, then deepen quality + safety.
-                  </p>
-                </SectionBlock>
-
-                {/* Future Roadmap */}
-                <SectionBlock label="Roadmap" title="Future Roadmap" color={sc} delay={0.55}>
-                  <div className="space-y-3">
-                    {[
-                      { version: "V2", title: "Street View Computer Vision", desc: "Green View Index via semantic segmentation - measure what a route actually looks like" },
-                      { version: "V2", title: "Well-Lit Scoring", desc: "Use streetlight datasets to support the Night Walker persona" },
-                      { version: "V2", title: "Bias Audit", desc: "Run 50 routes across diverse neighborhoods, correlate with census income data, publish results" },
-                      { version: "V3", title: "Community Layer", desc: "User-submitted vibes + ratings. Big value - but comes with moderation & privacy risks." },
-                    ].map((r, i) => (
-                      <motion.div
-                        key={i}
-                        className="flex items-start gap-3 p-3 rounded-xl border"
-                        style={{ borderColor: `${sc}15`, backgroundColor: `${sc}04` }}
-                        initial={{ opacity: 0, x: -12 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.6 + i * 0.05 }}
-                      >
-                        <span
-                          className="flex-shrink-0 px-2 py-1 rounded-md text-[10px] font-bold text-white"
-                          style={{ backgroundColor: sc }}
-                        >
-                          {r.version}
-                        </span>
-                        <div>
-                          <p className="text-sm font-semibold text-foreground">{r.title}</p>
-                          <p className="text-xs text-muted-foreground mt-0.5">{r.desc}</p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </SectionBlock>
-
                 {/* Key Takeaway Quote */}
-                <motion.div
-                  className="rounded-2xl p-6 md:p-8 border"
-                  style={{
-                    borderColor: `${c}25`,
-                    background: `linear-gradient(135deg, ${c}08, ${sc}06)`,
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.65 }}
-                >
-                  <p className="text-lg md:text-xl font-bold leading-relaxed text-foreground mb-4">
-                    "The best AI project isn't the one with the most AI - it's the one where every AI component exists because the product is genuinely <span style={{ color: c }}>better</span> with it."
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {["Research-driven thinking", "Honest about limitations", "AI applied where it adds value", "Bias-aware design", "End-to-end shipping", "Scope management"].map((tag, i) => (
-                      <span
-                        key={i}
-                        className="rounded-full px-3 py-1 text-[10px] font-medium border"
-                        style={{ borderColor: `${c}25`, backgroundColor: `${c}10`, color: c }}
-                      >
-                        ✓ {tag}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
+                {details.takeawayQuote && (
+                  <motion.div
+                    className="rounded-2xl p-6 md:p-8 border"
+                    style={{ borderColor: `${c}25`, background: `linear-gradient(135deg, ${c}08, ${sc}06)` }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
+                  >
+                    <p className="text-lg md:text-xl font-bold leading-relaxed text-foreground mb-4">
+                      "{details.takeawayQuote}"
+                    </p>
+                    {details.takeawayTags && (
+                      <div className="flex flex-wrap gap-2">
+                        {details.takeawayTags.map((tag, i) => (
+                          <span key={i} className="rounded-full px-3 py-1 text-[10px] font-medium border" style={{ borderColor: `${c}25`, backgroundColor: `${c}10`, color: c }}>
+                            ✓ {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </motion.div>
+                )}
 
                 {/* Tools */}
                 {details.tools && details.tools.length > 0 && (
-                  <SectionBlock label="Tools & Stack" color={c} delay={0.7}>
+                  <SectionBlock label="Tools & Stack" color={c} delay={0.75}>
                     <div className="flex flex-wrap gap-2.5">
                       {details.tools.map((t, i) => (
-                        <span
-                          key={i}
-                          className="rounded-full px-4 py-2 text-xs font-medium border"
-                          style={{
-                            borderColor: `${c}25`,
-                            backgroundColor: `${c}10`,
-                            color: c,
-                          }}
-                        >
+                        <span key={i} className="rounded-full px-4 py-2 text-xs font-medium border" style={{ borderColor: `${c}25`, backgroundColor: `${c}10`, color: c }}>
                           {t}
                         </span>
                       ))}
