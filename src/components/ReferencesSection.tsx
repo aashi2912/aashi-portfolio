@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, FileText, Mail, MessageCircle } from "lucide-react";
+import { Heart, FileText, Mail, MessageCircle, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 /* ── Main Export ── */
 const references = [
@@ -54,19 +54,89 @@ const references = [
   },
 ];
 
+function TestimonialCard({ ref: person, index, isActive, onClick }: { ref: typeof references[0]; index: number; isActive: boolean; onClick: () => void }) {
+  return (
+    <motion.button
+      onClick={onClick}
+      className={`relative text-left w-full rounded-2xl p-6 md:p-7 transition-all duration-300 border cursor-pointer ${
+        isActive
+          ? "bg-card border-border shadow-lg scale-[1.02]"
+          : "bg-transparent border-transparent hover:bg-muted/40 hover:border-border/50"
+      }`}
+      layout
+      whileHover={{ y: -2 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+    >
+      {/* Quote icon */}
+      <Quote
+        className={`w-8 h-8 mb-4 transition-colors duration-300 ${
+          isActive ? "text-foreground/20" : "text-muted-foreground/10"
+        }`}
+        strokeWidth={1.5}
+      />
+
+      {/* Quote text */}
+      <AnimatePresence mode="wait">
+        <motion.p
+          className={`text-[14px] md:text-[15px] leading-[1.7] transition-colors duration-300 ${
+            isActive ? "text-foreground/90" : "text-muted-foreground/70"
+          }`}
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: isActive ? 999 : 3,
+            WebkitBoxOrient: "vertical",
+            overflow: isActive ? "visible" : "hidden",
+          }}
+        >
+          "{person.text}"
+        </motion.p>
+      </AnimatePresence>
+
+      {/* Author */}
+      <div className="mt-5 flex items-center gap-3">
+        <div
+          className="flex h-9 w-9 items-center justify-center rounded-full text-white text-[11px] font-bold shrink-0"
+          style={{ background: person.color }}
+        >
+          {person.initials}
+        </div>
+        <div>
+          <p className="text-[13px] font-semibold leading-tight">{person.name}</p>
+          <p className="text-[11px] text-muted-foreground leading-tight mt-0.5">
+            {person.role} · {person.company}
+          </p>
+        </div>
+      </div>
+
+      {/* Active indicator line */}
+      {isActive && (
+        <motion.div
+          className="absolute left-0 top-6 bottom-6 w-[3px] rounded-full bg-foreground/20"
+          layoutId="active-indicator"
+          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        />
+      )}
+    </motion.button>
+  );
+}
+
 function TestimonialsBlock() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [liked, setLiked] = useState<Set<number>>(new Set());
-  const active = references[activeIndex];
 
-  const toggleLike = () => {
-    setLiked((prev) => {
-      const next = new Set(prev);
-      if (next.has(activeIndex)) next.delete(activeIndex);
-      else next.add(activeIndex);
-      return next;
-    });
-  };
+  // Auto-rotate
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % references.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [activeIndex]);
+
+  const goNext = () => setActiveIndex((prev) => (prev + 1) % references.length);
+  const goPrev = () => setActiveIndex((prev) => (prev - 1 + references.length) % references.length);
+
+  // Split into two columns
+  const col1 = references.filter((_, i) => i % 2 === 0);
+  const col2 = references.filter((_, i) => i % 2 === 1);
 
   return (
     <div className="py-16 md:py-24">
@@ -78,7 +148,7 @@ function TestimonialsBlock() {
         transition={{ duration: 0.7 }}
       >
         <div className="mb-4">
-        <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
+          <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
             But the{" "}
             <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">real story</span>{" "}
             comes from the people
@@ -89,172 +159,102 @@ function TestimonialsBlock() {
         </div>
       </motion.div>
 
-      {/* Chat Bubble */}
+      {/* Testimonial Grid */}
       <motion.div
-        className="mt-14 flex flex-col items-center"
+        className="mt-12"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.7, delay: 0.2 }}
       >
-        {/* Name label */}
-        <AnimatePresence mode="wait">
-          <motion.p
-            key={`name-${activeIndex}`}
-            className="text-sm text-muted-foreground mb-2 font-medium"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25 }}
-          >
-            {active.name}
-          </motion.p>
-        </AnimatePresence>
+        {/* Desktop: 2-column masonry-style */}
+        <div className="hidden md:grid md:grid-cols-2 gap-3">
+          <div className="flex flex-col gap-3">
+            {col1.map((person, ci) => {
+              const realIndex = ci * 2;
+              return (
+                <TestimonialCard
+                  key={realIndex}
+                  ref={person}
+                  index={realIndex}
+                  isActive={activeIndex === realIndex}
+                  onClick={() => setActiveIndex(realIndex)}
+                />
+              );
+            })}
+          </div>
+          <div className="flex flex-col gap-3">
+            {col2.map((person, ci) => {
+              const realIndex = ci * 2 + 1;
+              return (
+                <TestimonialCard
+                  key={realIndex}
+                  ref={person}
+                  index={realIndex}
+                  isActive={activeIndex === realIndex}
+                  onClick={() => setActiveIndex(realIndex)}
+                />
+              );
+            })}
+          </div>
+        </div>
 
-        {/* Bubble + like */}
-        <div className="relative w-full max-w-2xl">
-          {/* Tap to like - positioned outside bubble */}
-          <motion.button
-            onClick={toggleLike}
-            className="absolute -right-2 top-2 md:right-[-80px] flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors z-10"
-            whileTap={{ scale: 0.9 }}
-          >
-            <motion.span
-              className="text-[11px] italic hidden md:inline"
-              initial={false}
-              animate={{ opacity: liked.has(activeIndex) ? 0 : 0.7 }}
-            >
-              tap to like
-            </motion.span>
-            <motion.div
-              initial={false}
-              animate={{
-                scale: liked.has(activeIndex) ? [1, 1.4, 1] : 1,
-                color: liked.has(activeIndex) ? "hsl(0,80%,55%)" : "currentColor",
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              <Heart
-                className="w-5 h-5"
-                fill={liked.has(activeIndex) ? "hsl(0,80%,55%)" : "none"}
-              />
-            </motion.div>
-          </motion.button>
-
+        {/* Mobile: Single card carousel */}
+        <div className="md:hidden">
           <AnimatePresence mode="wait">
             <motion.div
-              key={`bubble-${activeIndex}`}
-              className="relative rounded-2xl bg-muted/60 dark:bg-muted/40 px-7 py-6 shadow-sm"
-              initial={{ opacity: 0, scale: 0.95, y: 16 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -16 }}
-              transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
+              key={activeIndex}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.3 }}
             >
-              <p className="text-[16px] md:text-[18px] leading-[1.75] text-foreground/90">
-                {active.text}
-              </p>
-              <div className="mt-4 flex items-center gap-2">
-                <div
-                  className="flex h-6 w-6 items-center justify-center rounded-full text-white text-[10px] font-bold"
-                  style={{ background: active.color }}
-                >
-                  {active.initials}
-                </div>
-                <span className="text-xs text-muted-foreground">
-                  {active.company}
-                </span>
-              </div>
-
-              {/* Bubble tail */}
-              <div className="absolute -bottom-2 left-10 w-4 h-4 rotate-45 bg-muted/60 dark:bg-muted/40" />
+              <TestimonialCard
+                ref={references[activeIndex]}
+                index={activeIndex}
+                isActive={true}
+                onClick={() => {}}
+              />
             </motion.div>
           </AnimatePresence>
-        </div>
 
-        {/* Avatar Row */}
-        <div className="mt-10 flex items-end justify-center gap-3 sm:gap-5">
-          {references.map((ref, i) => {
-            const isActive = i === activeIndex;
-            return (
-              <motion.button
-                key={i}
-                onClick={() => setActiveIndex(i)}
-                className="flex flex-col items-center gap-1.5 group cursor-pointer"
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              >
-                <motion.div
-                  className="relative flex items-center justify-center rounded-full text-white font-bold shadow-md transition-all duration-300"
-                  style={{
-                    background: ref.color,
-                    width: isActive ? 72 : 56,
-                    height: isActive ? 72 : 56,
-                    fontSize: isActive ? 20 : 16,
-                  }}
-                  animate={{
-                    scale: isActive ? 1 : 0.85,
-                    opacity: isActive ? 1 : 0.6,
-                  }}
-                  whileHover={{ opacity: 1, scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  {ref.initials}
-                  {isActive && (
-                    <motion.div
-                      className="absolute inset-0 rounded-full border-2"
-                      style={{ borderColor: ref.color }}
-                      initial={{ scale: 1.1, opacity: 0 }}
-                      animate={{ scale: 1.25, opacity: [0, 0.6, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    />
-                  )}
-                </motion.div>
-
-                <div className="text-center">
-                  <p
-                    className={`text-[13px] font-semibold leading-tight transition-opacity ${
-                      isActive ? "opacity-100" : "opacity-50 group-hover:opacity-100"
-                    }`}
-                  >
-                    {ref.name.split(" ")[0]}
-                  </p>
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.p
-                        className="text-[10px] text-muted-foreground leading-tight italic"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        {ref.role}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </motion.button>
-            );
-          })}
-        </div>
-
-        {/* Navigation dots */}
-        <div className="mt-6 flex items-center gap-1.5">
-          {references.map((_, i) => (
+          {/* Mobile nav */}
+          <div className="mt-6 flex items-center justify-center gap-4">
             <motion.button
-              key={i}
-              onClick={() => setActiveIndex(i)}
-              className="rounded-full transition-all"
-              animate={{
-                width: i === activeIndex ? 24 : 8,
-                height: 8,
-                background:
-                  i === activeIndex
-                    ? "hsl(var(--primary))"
-                    : "hsl(var(--muted-foreground) / 0.25)",
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            />
-          ))}
+              onClick={goPrev}
+              className="p-2 rounded-full border border-border hover:bg-muted transition-colors"
+              whileTap={{ scale: 0.9 }}
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </motion.button>
+
+            <div className="flex items-center gap-1.5">
+              {references.map((_, i) => (
+                <motion.button
+                  key={i}
+                  onClick={() => setActiveIndex(i)}
+                  className="rounded-full transition-all"
+                  animate={{
+                    width: i === activeIndex ? 20 : 6,
+                    height: 6,
+                    background:
+                      i === activeIndex
+                        ? "hsl(var(--foreground))"
+                        : "hsl(var(--muted-foreground) / 0.25)",
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                />
+              ))}
+            </div>
+
+            <motion.button
+              onClick={goNext}
+              className="p-2 rounded-full border border-border hover:bg-muted transition-colors"
+              whileTap={{ scale: 0.9 }}
+            >
+              <ChevronRight className="w-4 h-4" />
+            </motion.button>
+          </div>
         </div>
       </motion.div>
     </div>
