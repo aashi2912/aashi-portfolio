@@ -1088,26 +1088,41 @@ export default function Index() {
 
             {/* Block 5 - The belief - closing statement */}
             <RevealText delay={0.65}>
-              <div className="mt-4 rounded-xl border border-border bg-muted/30 p-6">
+              <motion.div
+                className="mt-4 rounded-xl border border-dashed border-border bg-muted/30 p-6 relative"
+                whileHover={{ scale: 1.01 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <DoodleStar size={18} color="hsl(45,90%,55%)" className="absolute -top-2 -right-2" />
                 <p className="text-muted-foreground text-[15px] mb-2 italic">They're small snapshots of something bigger:</p>
                 <p className="text-[19px] leading-[1.6] font-semibold text-foreground">
                   My belief that the best teams and the best products are built when people genuinely enjoy working together ❤️✨
                 </p>
-              </div>
+              </motion.div>
             </RevealText>
           </div>
           </div>
         </section>
       </ContentWrap>
 
+      <WavyDivider />
+
       {/* ── Impossible List ── */}
       <ContentWrap className="py-24 pb-32 scroll-mt-20">
-        <section id="impossible-list">
+        <section id="impossible-list" className="relative">
+          {/* Floating doodles */}
+          <FloatingDoodle className="right-0 -top-4 hidden md:block" delay={0.5} amplitude={10}>
+            <span className="text-3xl">🚀</span>
+          </FloatingDoodle>
+          
           {/* Header */}
           <RevealText>
-            <div className="mb-4">
-              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">Impossible List</h2>
-              <p className="mt-2 text-lg text-muted-foreground">a bucket list, except better</p>
+            <div className="mb-4 relative inline-block">
+              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+                <WiggleText>Impossible List</WiggleText>
+              </h2>
+              <SquigglyUnderline width={260} className="mt-2" color="hsl(200,50%,35%)" />
+              <p className="mt-4 text-lg text-muted-foreground">a bucket list, except better</p>
             </div>
           </RevealText>
 
