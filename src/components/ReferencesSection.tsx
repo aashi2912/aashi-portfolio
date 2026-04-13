@@ -199,7 +199,7 @@ function TestimonialsBlock() {
 function PhilosophyBlock() {
   return (
     <motion.div
-      className="py-16 md:py-24"
+      className="py-8 md:py-12"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
@@ -227,7 +227,7 @@ function PhilosophyBlock() {
           >
             <p className="text-[16px] md:text-[18px] leading-[1.8] text-foreground/90">
               In short, I'm someone who{" "}
-              <span className="bg-primary/20 px-1 rounded font-medium">
+              <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)] font-medium">
                 enjoys working in messy, complex spaces
               </span>{" "}
               and making them clearer and more human.
@@ -235,7 +235,7 @@ function PhilosophyBlock() {
 
             <p className="text-[16px] md:text-[18px] leading-[1.8] text-foreground/90">
               I do that by{" "}
-              <span className="bg-primary/20 px-1 rounded font-medium">
+              <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)] font-medium">
                 experimenting to learn, shaping clear stories that help people
                 align, and designing systems with care
               </span>{" "}
@@ -288,14 +288,14 @@ function PhilosophyBlock() {
 
           {/* Email */}
           <motion.a
-            href="mailto:aashi@example.com"
+            href="mailto:aashithakkar29@gmail.com"
             className="group flex flex-col items-center"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <div className="border-2 border-foreground/20 rounded-full px-6 py-2.5 flex items-center gap-2 group-hover:border-foreground/50 transition-colors">
               <Mail className="w-4 h-4" />
-              <span className="text-[15px] font-medium">aashi@example.com</span>
+              <span className="text-[15px] font-medium">aashithakkar29@gmail.com</span>
             </div>
             <span className="text-[11px] text-muted-foreground mt-1 italic">
               tap to copy
