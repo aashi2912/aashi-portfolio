@@ -8,6 +8,7 @@ import gouthamKonthamPhoto from "@/assets/goutham-kontham.jpeg";
 import lindaBugaziyanosPhoto from "@/assets/linda-bugaziyanos.jpeg";
 import josephWongPhoto from "@/assets/joseph-wong.jpeg";
 import binoManuelPhoto from "@/assets/bino-manuel.jpeg";
+import logoRbc from "@/assets/logo-rbc.svg";
 
 const references = [
   {
@@ -17,6 +18,7 @@ const references = [
     initials: "GK",
     photo: gouthamKonthamPhoto,
     color: "hsl(200,70%,50%)",
+    companyLogo: logoRbc,
     text: "Aashi is a key pillar in the successful rollout of our AI product suite. She has a rare ability to translate complex AI capabilities into precise, high-impact business requirements. Her meticulous attention to detail ensures engineering efforts stay focused on what matters most to end users - and the high adoption rates we've seen are a direct result of her user-centric vision and solutions-oriented approach.",
   },
   {
@@ -26,6 +28,7 @@ const references = [
     initials: "JW",
     photo: josephWongPhoto,
     color: "hsl(280,60%,55%)",
+    companyLogo: logoRbc,
     text: "Aashi is friendly, helpful, and consistently responsive when it comes to collaboration. She communicates clearly, follows up promptly, and contributes in a genuinely supportive way to every team she's part of - the kind of teammate who makes complex assignments feel manageable.",
   },
   {
@@ -35,6 +38,7 @@ const references = [
     initials: "JE",
     photo: jackEvansPhoto,
     color: "hsl(25,80%,50%)",
+    companyLogo: logoRbc,
     text: "Aashi consistently demonstrated strong product instincts and has been a key partner on the AidenResearch team. She translates business needs into clear acceptance criteria, partners closely with engineering leads to maintain alignment, and works effectively with stakeholders to keep workstreams progressing smoothly. Organized, communicative, and dependable - her collaborative approach makes everyone around her better.",
   },
   {
@@ -44,6 +48,7 @@ const references = [
     initials: "BM",
     photo: binoManuelPhoto,
     color: "hsl(120,50%,45%)",
+    companyLogo: logoRbc,
     text: "Aashi is resourceful and thoughtful in how she approaches her work. From analyzing legacy systems to organizing stories on the sprint board, she brings clarity to complex modernization efforts and collaborates seamlessly with the development team.",
   },
   {
@@ -53,6 +58,7 @@ const references = [
     initials: "LB",
     photo: lindaBugaziyanosPhoto,
     color: "hsl(45,90%,45%)",
+    companyLogo: logoRbc,
     text: "Aashi has a practical understanding of technology that's rare to find in product. She identifies gaps early, brings real structure to complex initiatives, and keeps cross-functional teams moving without unnecessary back-and-forth. Proactive, resourceful, and sharp - she sees around corners and ensures nothing falls through the cracks.",
   },
 ];
@@ -145,12 +151,16 @@ function TestimonialsBlock() {
 
             {/* Company at bottom */}
             <div className="mt-4 flex items-center gap-2">
-              <div
-                className="w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold text-white shrink-0"
-                style={{ background: active.color }}
-              >
-                {active.company.charAt(0)}
-              </div>
+              {active.companyLogo ? (
+                <img src={active.companyLogo} alt={active.company} className="w-5 h-5 rounded-full object-contain shrink-0" />
+              ) : (
+                <div
+                  className="w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold text-white shrink-0"
+                  style={{ background: active.color }}
+                >
+                  {active.company.charAt(0)}
+                </div>
+              )}
               <span className="text-[12px] text-muted-foreground">{active.company}</span>
             </div>
           </div>
