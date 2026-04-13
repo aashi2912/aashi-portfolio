@@ -54,7 +54,7 @@ const references = [
   },
 ];
 
-function TestimonialCard({ ref: person, index, isActive, onClick }: { ref: typeof references[0]; index: number; isActive: boolean; onClick: () => void }) {
+function TestimonialCard({ person, index, isActive, onClick }: { person: typeof references[0]; index: number; isActive: boolean; onClick: () => void }) {
   return (
     <motion.button
       onClick={onClick}
