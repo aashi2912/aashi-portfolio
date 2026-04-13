@@ -868,9 +868,8 @@ export default function Index() {
           </RevealText>
         </section>
       </ContentWrap>
+      </ScrollSection>
 
-
-      {/* ── Projects ── */}
       <ContentWrap className="scroll-mt-20">
         <section id="projects" className="relative">
           {/* Tagline */}
