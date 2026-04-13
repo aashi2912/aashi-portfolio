@@ -52,9 +52,12 @@ function ProjectCard({
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className={`relative flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-0 rounded-3xl overflow-hidden border border-border/60 transition-all duration-500`}
+        className={`relative flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-0 rounded-3xl overflow-hidden border transition-all duration-500`}
         style={{
-          background: `linear-gradient(135deg, hsl(var(--card)), ${project.color}08)`,
+          borderColor: `${project.color}20`,
+          background: project.cardBg
+            ? `linear-gradient(135deg, ${project.cardBg}40, hsl(var(--card)))`
+            : `linear-gradient(135deg, hsl(var(--card)), ${project.color}08)`,
         }}
       >
         {/* Visual hero side - FULL BLEED */}
