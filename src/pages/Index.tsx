@@ -884,13 +884,19 @@ export default function Index() {
               </h3>
               <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
                 that just...{" "}
-                <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">makes sense</span>{" "}
+                <motion.span
+                  className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)] inline-block"
+                  initial={{ opacity: 0, scale: 1.4, filter: "blur(10px)" }}
+                  whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 0.68, 0.36, 1] }}
+                >makes sense</motion.span>{" "}
                 <motion.span
                   className="inline-block"
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.6, type: "spring" }}
+                  transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
                 >
                   👀
                 </motion.span>
