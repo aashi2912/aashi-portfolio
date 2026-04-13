@@ -167,7 +167,7 @@ const projects: Project[] = [
   icon: "🗺️",
   image: vibeRouteHero,
   caseStudyPdf: "/case-studies/vibe-route-case-study.pdf",
-  githubLink: "https://github.com/aashi2912",
+  githubLink: "https://github.com/aashi2912/vibe-route",
   details: {
     heroTagline: "An AI Product Manager case study - from research to shipped product in 5 weeks.",
     background: "A former Google Maps Senior UX Researcher explained why 'scenic' routing is hard: scoring beauty can bias toward affluent neighborhoods. Google distanced from the feature - but the gap still exists. Scenic driving and hiking trails are solved (Roadtrippers, AllTrails), but urban walking remains a huge gap. 6 peer-reviewed studies shaped every design decision.",
