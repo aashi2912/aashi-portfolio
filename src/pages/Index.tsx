@@ -720,12 +720,20 @@ export default function Index() {
           {/* Education Photos */}
           <RevealText delay={0.4}>
             <div className="mt-10 grid grid-cols-2 gap-4">
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl">
-                <img src={eduPhoto1} alt="At Assumption College" className="w-full h-full object-cover object-[center_85%]" />
-              </div>
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl">
-                <img src={eduPhoto2} alt="Graduation" className="w-full h-full object-cover object-[center_25%]" />
-              </div>
+              <motion.div
+                className="aspect-[4/3] overflow-hidden rounded-2xl"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <img src={eduPhoto1} alt="At Assumption College" className="w-full h-full object-cover object-[center_85%] transition-transform duration-500 hover:scale-110" />
+              </motion.div>
+              <motion.div
+                className="aspect-[4/3] overflow-hidden rounded-2xl"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <img src={eduPhoto2} alt="Graduation" className="w-full h-full object-cover object-[center_25%] transition-transform duration-500 hover:scale-110" />
+              </motion.div>
             </div>
           </RevealText>
 
@@ -735,14 +743,34 @@ export default function Index() {
             <div className="mt-16">
                 {/* Action buttons */}
                 <div className="flex flex-wrap gap-3 justify-center">
-                  <a href="/Aashi_Thakkar_Resume.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">Hire Me <FileText size={16} /></a>
-                  <a href="https://www.linkedin.com/in/aashithakkar29/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">Coffee Chat <Coffee size={16} /></a>
-                  <a href="https://topmate.io/aashi_thakkar" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">1:1 Mentorship <Link size={16} /></a>
+                  {[
+                    { href: "/Aashi_Thakkar_Resume.pdf", label: "Hire Me", icon: FileText, target: "_blank" },
+                    { href: "https://www.linkedin.com/in/aashithakkar29/", label: "Coffee Chat", icon: Coffee, target: "_blank" },
+                    { href: "https://topmate.io/aashi_thakkar", label: "1:1 Mentorship", icon: Link, target: "_blank" },
+                  ].map((btn, i) => (
+                    <motion.a
+                      key={btn.label}
+                      href={btn.href}
+                      target={btn.target}
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent animate-pulse-glow"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {btn.label} <btn.icon size={16} />
+                    </motion.a>
+                  ))}
                 </div>
             </div>
           </RevealText>
         </section>
       </ContentWrap>
+
+      <WavyDivider />
 
       {/* ── Projects ── */}
       <ContentWrap className="scroll-mt-20">
