@@ -936,7 +936,6 @@ export default function Index() {
           </StaggerContainer>
         </section>
       </ContentWrap>
-      </ContentWrap>
       </ScrollSection>
 
       {/* ── References ── */}
@@ -949,7 +948,6 @@ export default function Index() {
           </FloatingDoodle>
           <ReferencesSection />
         </section>
-      </ContentWrap>
       </ContentWrap>
       </ScrollSection>
 
@@ -1205,9 +1203,6 @@ export default function Index() {
           </div>
         </section>
       </ContentWrap>
-
-      
-      </ContentWrap>
       </ScrollSection>
 
       {/* ── Impossible List ── */}
@@ -1285,7 +1280,6 @@ export default function Index() {
           </div>
         </section>
       </ContentWrap>
-
-    </div>);
+      </ScrollSection>
 
 }
