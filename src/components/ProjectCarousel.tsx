@@ -63,7 +63,7 @@ function ProjectCard({
 
   return (
     <motion.div
-      className="group cursor-pointer flex-shrink-0 w-[340px] sm:w-[380px] md:w-[420px] snap-center"
+      className="group cursor-pointer flex-shrink-0 w-[85vw] sm:w-[600px] md:w-[720px] lg:w-[800px] snap-center"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -73,15 +73,15 @@ function ProjectCard({
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className="relative flex flex-col rounded-3xl overflow-hidden border transition-all duration-500 h-full"
+        className="relative flex flex-col md:flex-row gap-0 rounded-3xl overflow-hidden border transition-all duration-500 h-full"
         style={{
           borderColor: hovered ? `${project.color}40` : `${project.color}15`,
-          background: `linear-gradient(180deg, hsl(var(--card)), ${project.color}06)`,
+          background: `linear-gradient(135deg, hsl(var(--card)), ${project.color}06)`,
         }}
       >
-        {/* Image area */}
+        {/* Visual hero side */}
         <motion.div
-          className="relative w-full h-[220px] overflow-hidden flex items-center justify-center"
+          className="relative w-full md:w-[50%] min-h-[220px] md:min-h-[360px] overflow-hidden flex items-center justify-center"
           style={{
             background: `linear-gradient(135deg, ${project.color}08, ${project.color}04)`,
             backgroundColor: '#ffffff',
@@ -91,7 +91,7 @@ function ProjectCard({
             <motion.img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-contain p-5"
+              className="w-full h-full object-contain p-6"
               animate={hovered ? { scale: 1.08 } : { scale: 1 }}
               transition={{ duration: 0.6, ease: [0.22, 0.68, 0.36, 1] }}
             />
@@ -101,85 +101,85 @@ function ProjectCard({
               animate={hovered ? { scale: 1.05 } : { scale: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-[80px] select-none">
+              <span className="text-[80px] md:text-[100px] select-none">
                 {project.icon || "🚀"}
               </span>
             </motion.div>
           )}
         </motion.div>
 
-        {/* Content */}
-        <div className="relative flex flex-col flex-1 p-6">
-          <div className="flex items-center gap-2.5 mb-4">
-            <span
-              className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wider"
-              style={{
-                backgroundColor: `${project.color}20`,
-                color: project.color,
-              }}
-            >
-              {project.tag}
-            </span>
-            <span className="font-mono text-[10px] text-muted-foreground tracking-wider">
-              {project.year}
-            </span>
-          </div>
-
-          <motion.h3
-            className="text-xl font-bold tracking-tight leading-tight mb-3 text-foreground"
-            animate={hovered ? { x: 3 } : { x: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {project.title}
-          </motion.h3>
-
-          <p className="text-[13px] text-muted-foreground leading-relaxed mb-5 line-clamp-3">
-            {project.description}
-          </p>
-
-          {project.details?.tools && (
-            <div className="flex flex-wrap gap-1.5 mb-5">
-              {project.details.tools.slice(0, 4).map((t, i) => {
-                const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl)\b/i.test(t);
-                return (
-                  <span
-                    key={i}
-                    className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border ${isAI ? 'font-bold' : ''}`}
-                    style={{
-                      borderColor: isAI ? `${project.color}60` : `${project.color}25`,
-                      backgroundColor: isAI ? `${project.color}18` : `${project.color}06`,
-                      color: project.color,
-                    }}
-                  >
-                    {isAI ? `✦ ${t}` : t}
-                  </span>
-                );
-              })}
+        {/* Content side */}
+        <div className="relative w-full md:w-[50%] flex flex-col justify-between p-6 md:p-8">
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <span
+                className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wider"
+                style={{
+                  backgroundColor: `${project.color}20`,
+                  color: project.color,
+                }}
+              >
+                {project.tag}
+              </span>
+              <span className="font-mono text-[10px] text-muted-foreground tracking-wider">
+                {project.year}
+              </span>
             </div>
-          )}
 
-          <div className="mt-auto">
-            <motion.div
-              className="flex items-center gap-2 text-sm font-semibold tracking-wide"
-              style={{ color: project.color }}
+            <motion.h3
+              className="text-xl md:text-2xl font-bold tracking-tight leading-tight mb-3 text-foreground"
               animate={hovered ? { x: 4 } : { x: 0 }}
               transition={{ duration: 0.3 }}
             >
-              Read case study
-              <motion.span
-                animate={hovered ? { x: 3, y: -3 } : { x: 0, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ArrowUpRight size={14} />
-              </motion.span>
-            </motion.div>
+              {project.title}
+            </motion.h3>
+
+            <p className="text-[13px] md:text-sm text-muted-foreground leading-relaxed mb-5 line-clamp-3">
+              {project.description}
+            </p>
+
+            {project.details?.tools && (
+              <div className="flex flex-wrap gap-1.5 mb-5">
+                {project.details.tools.slice(0, 4).map((t, i) => {
+                  const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl)\b/i.test(t);
+                  return (
+                    <span
+                      key={i}
+                      className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border ${isAI ? 'font-bold' : ''}`}
+                      style={{
+                        borderColor: isAI ? `${project.color}60` : `${project.color}25`,
+                        backgroundColor: isAI ? `${project.color}18` : `${project.color}06`,
+                        color: project.color,
+                      }}
+                    >
+                      {isAI ? `✦ ${t}` : t}
+                    </span>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
           <motion.div
-            className="absolute bottom-0 left-0 h-[3px] rounded-full"
+            className="flex items-center gap-2 text-sm font-semibold tracking-wide"
+            style={{ color: project.color }}
+            animate={hovered ? { x: 6 } : { x: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            Read case study
+            <motion.span
+              animate={hovered ? { x: 3, y: -3 } : { x: 0, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ArrowUpRight size={16} />
+            </motion.span>
+          </motion.div>
+
+          <motion.div
+            className="absolute bottom-0 left-0 h-1 rounded-full"
             style={{ backgroundColor: project.color }}
             initial={{ width: "0%" }}
-            animate={hovered ? { width: "100%" } : { width: "30%" }}
+            animate={hovered ? { width: "100%" } : { width: "40%" }}
             transition={{ duration: 0.5, ease: [0.22, 0.68, 0.36, 1] }}
           />
         </div>
