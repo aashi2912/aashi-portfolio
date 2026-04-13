@@ -321,7 +321,7 @@ function ProjectDrawer({
                 >
                   {project.tag}
                 </span>
-                <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
+                <span className="font-mono text-xs tracking-wider" style={{ color: project.cardBg ? "#777" : undefined }}>{project.year}</span>
               </div>
 
               <h2
