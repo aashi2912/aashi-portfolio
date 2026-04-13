@@ -61,6 +61,14 @@ const references = [
     companyLogo: logoRbc,
     text: "Aashi has a practical understanding of technology that's rare to find in product. She identifies gaps early, brings real structure to complex initiatives, and keeps cross-functional teams moving without unnecessary back-and-forth. Proactive, resourceful, and sharp - she sees around corners and ensures nothing falls through the cracks.",
   },
+  {
+    name: "Alex Chen",
+    role: "Product Designer",
+    company: "DesignStudio",
+    initials: "AC",
+    color: "hsl(320,60%,50%)",
+    text: "Aashi has a sharp eye for user experience and brings a design-informed perspective to every product decision. She bridges the gap between design intent and engineering execution, ensuring the final product feels as good as it looks.",
+  },
 ];
 
 function TestimonialsBlock() {
