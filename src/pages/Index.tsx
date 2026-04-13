@@ -1019,7 +1019,7 @@ export default function Index() {
         <section id="projects" className="relative">
           {/* Tagline */}
           <RevealText>
-            <div className="mb-4">
+            <div className="mb-4 text-center">
               <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
                 I blend my engineering roots with
               </h2>
@@ -1048,7 +1048,7 @@ export default function Index() {
             </div>
           </RevealText>
           <RevealText delay={0.1}>
-            <p className="text-[17px] text-muted-foreground italic">
+            <p className="text-[17px] text-muted-foreground italic text-center">
               Okay so... how do I do that? Here's how 👇
             </p>
           </RevealText>

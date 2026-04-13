@@ -108,7 +108,7 @@ function TestimonialsBlock() {
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.7 }}
       >
-        <div className="mb-10 md:mb-14">
+        <div className="mb-10 md:mb-14 text-center">
           <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
             But the{" "}
             <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">real story</span>{" "}
