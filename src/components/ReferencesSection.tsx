@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, FileText, Mail, MessageCircle } from "lucide-react";
+import { SquigglyUnderline, DoodleStar, FloatingDoodle } from "@/components/Doodles";
 
 const references = [
   {
