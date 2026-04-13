@@ -4,15 +4,17 @@ import { Heart, FileText, Mail, MessageCircle } from "lucide-react";
 import { FloatingDoodle } from "@/components/Doodles";
 import { SketchSpeechBubble } from "@/components/SketchIcons";
 import jackEvansPhoto from "@/assets/jack-evans.jpeg";
+import gouthamKonthamPhoto from "@/assets/goutham-kontham.jpeg";
 
 const references = [
   {
-    name: "Jane Smith",
-    role: "Engineering Manager",
-    company: "TechCorp",
-    initials: "JS",
+    name: "Goutham Kontham",
+    role: "AI Lead, Engineering",
+    company: "RBC Capital Markets",
+    initials: "GK",
+    photo: gouthamKonthamPhoto,
     color: "hsl(200,70%,50%)",
-    text: "Aashi is one of the most thoughtful product managers I've worked with. She has a rare ability to translate complex technical constraints into clear product decisions that everyone can rally behind.",
+    text: "Aashi is a key pillar in the successful rollout of our AI product suite. She has a rare ability to translate complex AI capabilities into precise, high-impact business requirements. Her meticulous attention to detail ensures engineering efforts stay focused on what matters most to end users - and the high adoption rates we've seen are a direct result of her user-centric vision and solutions-oriented approach.",
   },
   {
     name: "Alex Johnson",
