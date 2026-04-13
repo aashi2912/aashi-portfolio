@@ -77,7 +77,15 @@ function TestimonialsBlock() {
   const active = references[activeIndex];
 
   return (
-    <div className="py-16 md:py-24">
+    <div className="py-16 md:py-24 relative">
+      {/* Floating doodles */}
+      <FloatingDoodle className="-left-8 top-20 hidden md:block" delay={0.8} amplitude={8}>
+        <DoodleStar size={18} color="hsl(45,90%,55%)" />
+      </FloatingDoodle>
+      <FloatingDoodle className="-right-4 top-40 hidden md:block" delay={1.5}>
+        <DoodleStar size={14} color="hsl(200,50%,60%)" />
+      </FloatingDoodle>
+
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -94,6 +102,7 @@ function TestimonialsBlock() {
           <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
             I built these projects with!
           </h2>
+          <SquigglyUnderline width={200} className="mt-2" />
         </div>
       </motion.div>
 
