@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Heart, FileText, Mail, MessageCircle } from "lucide-react";
 import { FloatingDoodle } from "@/components/Doodles";
 import { SketchSpeechBubble } from "@/components/SketchIcons";
+import jackEvansPhoto from "@/assets/jack-evans.jpeg";
 
 const references = [
   {
@@ -34,6 +35,7 @@ const references = [
     role: "VP, AI & Digital Product",
     company: "RBC Capital Markets",
     initials: "JE",
+    photo: jackEvansPhoto,
     color: "hsl(25,80%,50%)",
     text: "Aashi consistently demonstrated strong product instincts and has been a key partner on the AidenResearch team. She translates business needs into clear acceptance criteria, partners closely with engineering leads to maintain alignment, and works effectively with stakeholders to keep workstreams progressing smoothly. Organized, communicative, and dependable - her collaborative approach makes everyone around her better.",
   },
@@ -176,7 +178,7 @@ function TestimonialsBlock() {
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
           >
             <div
-              className={`flex items-center justify-center rounded-full text-white font-bold shrink-0 transition-all duration-300 w-16 h-16 md:w-[100px] md:h-[100px] text-xl md:text-2xl ${
+              className={`flex items-center justify-center rounded-full text-white font-bold shrink-0 transition-all duration-300 w-16 h-16 md:w-[100px] md:h-[100px] text-xl md:text-2xl overflow-hidden ${
                 activeIndex === i
                   ? "ring-2 ring-offset-2 ring-offset-background shadow-xl"
                   : "opacity-70 group-hover:opacity-100"
@@ -186,7 +188,11 @@ function TestimonialsBlock() {
                 ...(activeIndex === i ? { boxShadow: `0 8px 25px ${person.color}40` } : {}),
               }}
             >
-              {person.initials}
+              {person.photo ? (
+                <img src={person.photo} alt={person.name} className="w-full h-full object-cover" />
+              ) : (
+                person.initials
+              )}
             </div>
             <span className={`mt-2 text-[13px] md:text-[14px] font-semibold transition-colors ${
               activeIndex === i ? "text-foreground" : "text-muted-foreground"
