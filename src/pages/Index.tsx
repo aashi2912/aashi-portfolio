@@ -1237,27 +1237,59 @@ export default function Index() {
           {/* Hero image */}
           <RevealText delay={0.1}>
             <div className="w-full aspect-[2/1] rounded-xl overflow-hidden my-10">
-              <img src={impossibleListHero} alt="Impossible List hero" className="w-full h-full object-contain dark:invert" />
+              <img src={impossibleListHero} alt="Impossible List hero" className="w-full h-full object-cover" />
             </div>
           </RevealText>
 
-          {/* Explanation */}
-          <RevealText delay={0.15}>
-            <div className="space-y-5 mb-16 max-w-2xl">
-              <h3 className="text-2xl md:text-3xl font-bold tracking-tight">Impossible what?</h3>
-              <p className="text-[15px] leading-relaxed text-foreground/90">
-                The Impossible List is like a bucket list - only more ambitious. The idea was originally created by Joel Runyon, and I first came across it through one of Thomas Frank's videos.
-              </p>
-              <p className="text-[15px] leading-relaxed text-foreground/90">
-                The concept immediately resonated with me, so I decided to create my own.
-              </p>
-              <p className="text-[15px] leading-relaxed text-foreground/90">
-                This list contains goals that challenge me to push beyond my current limits. While these ambitions are personal, sharing them publicly helps keep me accountable and committed to pursuing them.
-              </p>
-              <p className="text-[15px] leading-relaxed text-foreground/90">
-                I may never complete every item on this list - and that's perfectly fine. The real purpose isn't finishing the list, but embracing the journey and the growth that comes from chasing ambitious goals.
-              </p>
+          {/* Explanation — visual storytelling */}
+          <div className="mb-16 max-w-3xl">
+            <RevealText delay={0.15}>
+              <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">Impossible what?</h3>
+            </RevealText>
+
+            <div className="relative pl-8 border-l-2 border-border/60 space-y-8">
+              {[
+                {
+                  emoji: "🚀",
+                  label: "The Concept",
+                  text: "The Impossible List is like a bucket list — only more ambitious. The idea was originally created by Joel Runyon, and I first came across it through one of Thomas Frank's videos.",
+                },
+                {
+                  emoji: "💡",
+                  label: "The Spark",
+                  text: "The concept immediately resonated with me, so I decided to create my own.",
+                },
+                {
+                  emoji: "🎯",
+                  label: "The Purpose",
+                  text: "This list contains goals that challenge me to push beyond my current limits. While these ambitions are personal, sharing them publicly helps keep me accountable and committed to pursuing them.",
+                },
+                {
+                  emoji: "🌱",
+                  label: "The Philosophy",
+                  text: "I may never complete every item on this list — and that's perfectly fine. The real purpose isn't finishing the list, but embracing the journey and the growth that comes from chasing ambitious goals.",
+                },
+              ].map((step, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+                  className="relative group"
+                >
+                  <div className="absolute -left-[calc(2rem+5px)] top-1 h-3 w-3 rounded-full bg-primary ring-4 ring-background transition-transform group-hover:scale-125" />
+                  <div className="flex items-start gap-3">
+                    <span className="text-xl mt-[-2px]">{step.emoji}</span>
+                    <div>
+                      <span className="text-xs font-mono tracking-wider text-primary uppercase">{step.label}</span>
+                      <p className="text-[15px] text-foreground/80 mt-0.5 leading-relaxed">{step.text}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
+          </div>
           </RevealText>
 
           {/* Categories */}
