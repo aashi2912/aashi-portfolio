@@ -1290,7 +1290,6 @@ export default function Index() {
               ))}
             </div>
           </div>
-          </RevealText>
 
           {/* Categories */}
           <div className="space-y-0">
