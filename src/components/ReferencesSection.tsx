@@ -91,7 +91,7 @@ function TestimonialsBlock() {
             comes from the people
           </h2>
           <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
-            I built these projects with
+            I built these projects with!
           </h2>
         </div>
       </motion.div>
