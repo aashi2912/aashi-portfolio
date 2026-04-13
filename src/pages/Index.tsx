@@ -941,31 +941,10 @@ export default function Index() {
             </h3>
           </RevealText>
 
-          <StaggerContainer className="space-y-6">
-            {projects.map((project, i) =>
-            <StaggerItem key={i}>
-                <motion.div
-                className="group cursor-pointer rounded-lg border border-border p-5 transition-colors hover:bg-accent/50 relative overflow-hidden"
-                whileHover={{ x: 4, boxShadow: "0 8px 30px -12px hsl(200 50% 50% / 0.2)" }}
-                transition={{ duration: 0.2 }}>
-                
-                  {/* Sketch corner accent */}
-                  <div className="absolute top-0 right-0 w-12 h-12 border-b-2 border-l-2 border-dashed border-[hsl(200,50%,35%,0.15)] dark:border-[hsl(200,40%,75%,0.15)] rounded-bl-xl" />
-                  <div className="flex items-center justify-between">
-                    <motion.span
-                      className="rounded-full bg-accent px-2 py-0.5 text-xs text-muted-foreground"
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      {project.tag}
-                    </motion.span>
-                    <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
-                  </div>
-                  <h3 className="mt-3 text-lg font-semibold group-hover:text-[hsl(200,50%,35%)] dark:group-hover:text-[hsl(200,40%,75%)] transition-colors">{project.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
-                </motion.div>
-              </StaggerItem>
-            )}
-          </StaggerContainer>
+          {/* Carousel — breaks out of ContentWrap for full-width scroll */}
+          <div className="-mx-4 sm:-mx-6">
+            <ProjectCarousel projects={projects} />
+          </div>
         </section>
       </ContentWrap>
       </ScrollSection>
