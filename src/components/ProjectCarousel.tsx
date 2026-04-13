@@ -776,6 +776,7 @@ function ProjectDrawer({
 
 export function ProjectCarousel({ projects }: { projects: Project[] }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleCardClick = (project: Project) => {
     setSelectedProject(project);
@@ -787,17 +788,46 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
     document.body.style.overflow = "";
   };
 
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const scrollAmount = 440;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <div className="space-y-6 md:space-y-8">
-      {projects.map((project, i) => (
-        <ProjectCard
-          key={i}
-          project={project}
-          index={i}
-          onClick={() => handleCardClick(project)}
-          isEven={i % 2 === 0}
-        />
-      ))}
+    <div className="relative">
+      {/* Navigation arrows */}
+      <button
+        onClick={() => scroll("left")}
+        className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-lg"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        onClick={() => scroll("right")}
+        className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-lg"
+      >
+        <ChevronRight size={20} />
+      </button>
+
+      {/* Scrollable carousel */}
+      <div
+        ref={scrollRef}
+        className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {projects.map((project, i) => (
+          <ProjectCard
+            key={i}
+            project={project}
+            index={i}
+            onClick={() => handleCardClick(project)}
+          />
+        ))}
+      </div>
 
       <AnimatePresence>
         {selectedProject && (
