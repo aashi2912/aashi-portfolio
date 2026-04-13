@@ -7,6 +7,7 @@ import jackEvansPhoto from "@/assets/jack-evans.jpeg";
 import gouthamKonthamPhoto from "@/assets/goutham-kontham.jpeg";
 import lindaBugaziyanosPhoto from "@/assets/linda-bugaziyanos.jpeg";
 import josephWongPhoto from "@/assets/joseph-wong.jpeg";
+import binoManuelPhoto from "@/assets/bino-manuel.jpeg";
 
 const references = [
   {
@@ -37,12 +38,13 @@ const references = [
     text: "Aashi consistently demonstrated strong product instincts and has been a key partner on the AidenResearch team. She translates business needs into clear acceptance criteria, partners closely with engineering leads to maintain alignment, and works effectively with stakeholders to keep workstreams progressing smoothly. Organized, communicative, and dependable - her collaborative approach makes everyone around her better.",
   },
   {
-    name: "Sarah Williams",
-    role: "Software Developer",
-    company: "InnovateTech",
-    initials: "SW",
+    name: "Bino Manuel",
+    role: "Senior Software Developer",
+    company: "RBC Capital Markets",
+    initials: "BM",
+    photo: binoManuelPhoto,
     color: "hsl(120,50%,45%)",
-    text: "As a developer, I really appreciated how Aashi wrote crystal-clear requirements and was always available to unblock the team. She genuinely cares about building the right thing.",
+    text: "Aashi is resourceful and thoughtful in how she approaches her work. From analyzing legacy systems to organizing stories on the sprint board, she brings clarity to complex modernization efforts and collaborates seamlessly with the development team.",
   },
   {
     name: "Linda Bugaziyanos",
