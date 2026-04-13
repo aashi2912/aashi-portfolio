@@ -78,14 +78,12 @@ function TestimonialsBlock() {
         transition={{ duration: 0.7 }}
       >
         <div className="mb-4">
-          <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
+        <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
             But the{" "}
             <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">real story</span>{" "}
-            comes from the
+            comes from the{" "}
+            <span className="text-muted-foreground">people I've worked with!</span>
           </h2>
-          <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
-            people I've worked with
-          </h3>
         </div>
       </motion.div>
 
