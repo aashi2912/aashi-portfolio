@@ -1283,4 +1283,6 @@ export default function Index() {
       </ContentWrap>
       </ScrollSection>
 
+    </div>);
+
 }
