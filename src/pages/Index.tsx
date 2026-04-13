@@ -622,19 +622,33 @@ export default function Index() {
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
                 <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Experience</span>
+                <DoodleArrow direction="down" size={30} className="mt-2 ml-2 hidden sm:block" />
               </div>
               <div className="flex-1 divide-y divide-border/40">
                 {experiences.map((exp, i) =>
-                <div key={i} className="flex items-start gap-4 py-5">
-                    <img src={exp.logo} alt={exp.company} className="mt-1 h-10 w-10 shrink-0 rounded-lg object-contain" />
+                <motion.div
+                  key={i}
+                  className="flex items-start gap-4 py-5 group"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  whileHover={{ x: 4 }}
+                >
+                    <motion.img
+                      src={exp.logo}
+                      alt={exp.company}
+                      className="mt-1 h-10 w-10 shrink-0 rounded-lg object-contain"
+                      whileHover={{ rotate: 5, scale: 1.1 }}
+                    />
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                        <h4 className="text-[17px] font-semibold">{exp.role}</h4>
+                        <h4 className="text-[17px] font-semibold group-hover:text-[hsl(200,50%,35%)] dark:group-hover:text-[hsl(200,40%,75%)] transition-colors">{exp.role}</h4>
                         <span className="font-mono text-[13px] text-muted-foreground">{exp.period}</span>
                       </div>
                       <p className="text-[15px] text-muted-foreground">{exp.company}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 )}
               </div>
             </div>
