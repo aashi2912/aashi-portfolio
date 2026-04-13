@@ -162,6 +162,7 @@ const projects: Project[] = [
   year: "2025",
   color: "hsl(145,40%,38%)",
   icon: "🗺️",
+  caseStudyPdf: "/case-studies/vibe-route-case-study.pdf",
   details: {
     role: "AI Product Manager - Solo (End-to-End)",
     duration: "5 weeks",
