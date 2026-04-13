@@ -57,7 +57,7 @@ const references = [
     initials: "LB",
     photo: lindaBugaziyanosPhoto,
     color: "hsl(45,90%,45%)",
-    text: "Aashi combines strong organization and a practical understanding of technology in a way that's rare to find. She translates business needs into clear, actionable requirements — reducing back-and-forth and helping teams move faster. Collaborative, dependable, and solution-oriented, she identifies gaps early and brings real structure to complex initiatives.",
+    text: "Aashi has a practical understanding of technology that's rare to find in product. She identifies gaps early, brings real structure to complex initiatives, and keeps cross-functional teams moving without unnecessary back-and-forth. Proactive, resourceful, and sharp - she sees around corners and ensures nothing falls through the cracks.",
   },
 ];
 
