@@ -1247,7 +1247,7 @@ export default function Index() {
               <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">Impossible what?</h3>
             </RevealText>
 
-            <div className="relative pl-8 border-l-2 border-border/60 space-y-8">
+            <div className="space-y-8">
               {[
                 {
                   emoji: "🚀",
@@ -1278,7 +1278,6 @@ export default function Index() {
                   transition={{ duration: 0.5, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
                   className="relative group"
                 >
-                  <div className="absolute -left-[calc(2rem+5px)] top-1 h-3 w-3 rounded-full bg-primary ring-4 ring-background transition-transform group-hover:scale-125" />
                   <div className="flex items-start gap-3">
                     <span className="text-xl mt-[-2px]">{step.emoji}</span>
                     <div>
