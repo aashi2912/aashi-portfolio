@@ -1188,16 +1188,12 @@ export default function Index() {
       <ScrollSection>
       <ContentWrap className="py-24 pb-32 scroll-mt-20">
         <section id="impossible-list" className="relative">
-          {/* Floating doodles */}
-          <FloatingDoodle className="right-0 -top-4 hidden md:block" delay={0.5} amplitude={10}>
-            <SketchRocket size={36} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" color="currentColor" />
-          </FloatingDoodle>
           
           {/* Header */}
           <RevealText>
             <div className="mb-4 relative inline-block">
               <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-                <WiggleText>Impossible List</WiggleText>
+                Impossible List
               </h2>
               
               <p className="mt-4 text-lg text-muted-foreground">a bucket list, except better</p>
