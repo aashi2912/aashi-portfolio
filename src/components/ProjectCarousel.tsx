@@ -472,6 +472,19 @@ function ProjectDrawer({
                     <FileText size={14} /> View Full Case Study PDF
                   </button>
                 )}
+                {project.prdPages && project.prdPages.length > 0 && (
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all hover:scale-105"
+                    style={{ borderColor: `${c}40`, color: c, backgroundColor: `${c}08` }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowPrdModal(true);
+                    }}
+                  >
+                    <FileText size={14} /> View PRD
+                  </button>
+                )}
               </div>
             </div>
 
