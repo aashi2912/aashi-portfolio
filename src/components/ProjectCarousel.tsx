@@ -237,7 +237,9 @@ function ProjectDrawer({
             <div
               className="relative min-h-[320px] md:min-h-[400px] flex flex-col justify-end p-8 md:p-10"
               style={{
-                background: `linear-gradient(180deg, ${c}25, ${c}12, hsl(var(--card)))`,
+                background: project.cardBg
+                  ? `linear-gradient(180deg, ${project.cardBg}, ${project.cardBg}CC, hsl(var(--card)))`
+                  : `linear-gradient(180deg, ${c}25, ${c}12, hsl(var(--card)))`,
               }}
             >
               {/* Close button */}
