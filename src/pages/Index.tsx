@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link } from "lucide-react";
+import { motion, useInView, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link, ArrowDown } from "lucide-react";
 import { ReferencesSection } from "@/components/ReferencesSection";
-
+import { SquigglyUnderline, DoodleStar, FloatingDoodle, WiggleText, WavyDivider, AnimatedCounter, DoodleArrow, DoodleCircle } from "@/components/Doodles";
 import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
