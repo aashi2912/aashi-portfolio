@@ -299,6 +299,99 @@ function ScrambleText({ text }: {text: string;}) {
   return <span className="font-mono text-sm text-muted-foreground">{displayed}</span>;
 }
 
+// ─── Letter-by-letter stagger text (inspired by Dev Ashish's bold type) ──────
+function StaggerLetters({ text, className = "", delay = 0 }: { text: string; className?: string; delay?: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  return (
+    <motion.span ref={ref} className={`inline-block ${className}`}>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          className="inline-block"
+          initial={{ opacity: 0, y: 40, rotateX: -90 }}
+          animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+          transition={{
+            duration: 0.5,
+            delay: delay + i * 0.03,
+            ease: [0.22, 0.68, 0.36, 1],
+          }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+}
+
+// ─── Magnetic hover effect (inspired by interactive elements) ────────────────
+function MagneticWrap({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+
+  const handleMouse = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
+    const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+    setPos({ x, y });
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      onMouseMove={handleMouse}
+      onMouseLeave={() => setPos({ x: 0, y: 0 })}
+      animate={{ x: pos.x, y: pos.y }}
+      transition={{ type: "spring", stiffness: 200, damping: 15, mass: 0.5 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ─── Tilt card on hover (inspired by Viha's scattered objects) ──────────────
+function TiltCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
+
+  const handleMouse = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ rotateY: x * 12, rotateX: -y * 12 });
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      onMouseMove={handleMouse}
+      onMouseLeave={() => setTilt({ rotateX: 0, rotateY: 0 })}
+      animate={tilt}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      style={{ perspective: 800, transformStyle: "preserve-3d" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ─── Section wrapper with scale-in on scroll ────────────────────────────────
+function ScrollSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "start 0.7"] });
+  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+  return (
+    <motion.div ref={ref} style={{ scale, opacity }} className={className}>
+      {children}
+    </motion.div>
+  );
+}
+
 function RevealText({ children, delay = 0 }: {children: React.ReactNode;delay?: number;}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
