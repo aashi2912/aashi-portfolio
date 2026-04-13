@@ -730,7 +730,7 @@ export default function Index() {
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
                 <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Experience</span>
-                <DoodleArrow direction="down" size={30} className="mt-2 ml-2 hidden sm:block" />
+                
               </div>
               <div className="flex-1 divide-y divide-border/40">
                 {experiences.map((exp, i) =>
