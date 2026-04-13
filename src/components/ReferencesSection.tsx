@@ -6,6 +6,7 @@ import { SketchSpeechBubble } from "@/components/SketchIcons";
 import jackEvansPhoto from "@/assets/jack-evans.jpeg";
 import gouthamKonthamPhoto from "@/assets/goutham-kontham.jpeg";
 import lindaBugaziyanosPhoto from "@/assets/linda-bugaziyanos.jpeg";
+import josephWongPhoto from "@/assets/joseph-wong.jpeg";
 
 const references = [
   {
@@ -18,20 +19,13 @@ const references = [
     text: "Aashi is a key pillar in the successful rollout of our AI product suite. She has a rare ability to translate complex AI capabilities into precise, high-impact business requirements. Her meticulous attention to detail ensures engineering efforts stay focused on what matters most to end users - and the high adoption rates we've seen are a direct result of her user-centric vision and solutions-oriented approach.",
   },
   {
-    name: "Alex Johnson",
-    role: "Senior Designer",
-    company: "DesignStudio",
-    initials: "AJ",
+    name: "Joseph Wong",
+    role: "Project & Program Manager",
+    company: "RBC Capital Markets",
+    initials: "JW",
+    photo: josephWongPhoto,
     color: "hsl(280,60%,55%)",
-    text: "Working with Aashi was a masterclass in collaboration. She deeply understands user needs and always pushes for the best possible experience without losing sight of business goals.",
-  },
-  {
-    name: "Priya Patel",
-    role: "Data Scientist",
-    company: "DataCo",
-    initials: "PP",
-    color: "hsl(340,70%,55%)",
-    text: "Aashi bridges the gap between data and product like no one else. She asks the right questions, digs into the numbers, and turns insights into actionable product improvements.",
+    text: "Aashi is friendly, helpful, and consistently responsive when it comes to collaboration. She communicates clearly, follows up promptly, and contributes in a genuinely supportive way to every team she's part of - the kind of teammate who makes complex assignments feel manageable.",
   },
   {
     name: "Jack Evans",
