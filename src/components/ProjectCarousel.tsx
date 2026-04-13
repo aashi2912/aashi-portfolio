@@ -338,11 +338,16 @@ function ProjectDrawer({
   onClose: () => void;
 }) {
   const [showCaseStudyModal, setShowCaseStudyModal] = useState(false);
+  const [showPrdModal, setShowPrdModal] = useState(false);
 
   if (!project) return null;
   const details = project.details;
   const c = project.color;
   const sc = project.secondaryColor || c;
+  const isDarkBg = project.cardBg && project.cardBg !== "#F5F0E8";
+  const heroTextColor = project.cardBg ? (isDarkBg ? "#f0f0f0" : "#1a1a1a") : undefined;
+  const heroSubTextColor = project.cardBg ? (isDarkBg ? "#ccc" : "#555") : undefined;
+  const heroMutedColor = project.cardBg ? (isDarkBg ? "#999" : "#777") : undefined;
 
   return (
     <AnimatePresence>
@@ -410,12 +415,12 @@ function ProjectDrawer({
                 >
                   {project.tag}
                 </span>
-                <span className="font-mono text-xs tracking-wider" style={{ color: project.cardBg ? "#777" : undefined }}>{project.year}</span>
+                <span className="font-mono text-xs tracking-wider" style={{ color: heroMutedColor }}>{project.year}</span>
               </div>
 
               <h2
                 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 leading-tight relative z-[1]"
-                style={{ color: project.cardBg ? "#1a1a1a" : undefined }}
+                style={{ color: heroTextColor }}
               >
                 {project.title}
               </h2>
@@ -424,7 +429,7 @@ function ProjectDrawer({
               {details?.heroTagline && (
                 <p
                   className="text-base leading-relaxed max-w-lg relative z-[1] italic"
-                  style={{ color: project.cardBg ? "#555" : undefined }}
+                  style={{ color: heroSubTextColor }}
                 >
                   {details.heroTagline}
                 </p>
