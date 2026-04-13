@@ -84,16 +84,14 @@ function TestimonialsBlock() {
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.7 }}
       >
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold tracking-tight md:text-[44px] md:leading-[1.2]">
-            But{" "}
-            <span className="inline-flex items-center bg-[hsl(200,70%,50%)] text-white px-4 py-1 rounded-full text-2xl md:text-[36px] italic font-semibold align-middle">
-              the real story
-            </span>{" "}
-            comes from the
+        <div className="mb-4">
+          <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
+            But the{" "}
+            <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">real story</span>{" "}
+            comes from the people
           </h2>
-          <h2 className="text-3xl font-bold tracking-tight md:text-[44px] md:leading-[1.2]">
-            people I built these projects with
+          <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
+            I built these projects with
           </h2>
         </div>
       </motion.div>
