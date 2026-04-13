@@ -736,7 +736,7 @@ export default function Index() {
 
       {/* ── About ── */}
       <ContentWrap className="py-24 pb-16 scroll-mt-20">
-        <section id="about">
+        <section id="about" className="scroll-mt-20">
           {/* Headline */}
           <RevealText>
             <div className="mb-4">
