@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, FileText, Mail, MessageCircle, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Heart, FileText, Mail, MessageCircle } from "lucide-react";
 
-/* ── Main Export ── */
 const references = [
   {
     name: "Jane Smith",
@@ -54,76 +53,10 @@ const references = [
   },
 ];
 
-function TestimonialCard({ person, index, isActive, onClick }: { person: typeof references[0]; index: number; isActive: boolean; onClick: () => void }) {
-  return (
-    <motion.button
-      onClick={onClick}
-      className={`relative text-left w-full rounded-2xl p-6 md:p-7 transition-all duration-300 border cursor-pointer ${
-        isActive
-          ? "bg-card border-border shadow-lg scale-[1.02]"
-          : "bg-transparent border-transparent hover:bg-muted/40 hover:border-border/50"
-      }`}
-      layout
-      whileHover={{ y: -2 }}
-      transition={{ type: "spring", stiffness: 400, damping: 25 }}
-    >
-      {/* Quote icon */}
-      <Quote
-        className={`w-8 h-8 mb-4 transition-colors duration-300 ${
-          isActive ? "text-foreground/20" : "text-muted-foreground/10"
-        }`}
-        strokeWidth={1.5}
-      />
-
-      {/* Quote text */}
-      <AnimatePresence mode="wait">
-        <motion.p
-          className={`text-[14px] md:text-[15px] leading-[1.7] transition-colors duration-300 ${
-            isActive ? "text-foreground/90" : "text-muted-foreground/70"
-          }`}
-          style={{
-            display: "-webkit-box",
-            WebkitLineClamp: isActive ? 999 : 3,
-            WebkitBoxOrient: "vertical",
-            overflow: isActive ? "visible" : "hidden",
-          }}
-        >
-          "{person.text}"
-        </motion.p>
-      </AnimatePresence>
-
-      {/* Author */}
-      <div className="mt-5 flex items-center gap-3">
-        <div
-          className="flex h-9 w-9 items-center justify-center rounded-full text-white text-[11px] font-bold shrink-0"
-          style={{ background: person.color }}
-        >
-          {person.initials}
-        </div>
-        <div>
-          <p className="text-[13px] font-semibold leading-tight">{person.name}</p>
-          <p className="text-[11px] text-muted-foreground leading-tight mt-0.5">
-            {person.role} · {person.company}
-          </p>
-        </div>
-      </div>
-
-      {/* Active indicator line */}
-      {isActive && (
-        <motion.div
-          className="absolute left-0 top-6 bottom-6 w-[3px] rounded-full bg-foreground/20"
-          layoutId="active-indicator"
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        />
-      )}
-    </motion.button>
-  );
-}
-
 function TestimonialsBlock() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [liked, setLiked] = useState<Set<number>>(new Set());
 
-  // Auto-rotate
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % references.length);
@@ -131,12 +64,16 @@ function TestimonialsBlock() {
     return () => clearInterval(timer);
   }, [activeIndex]);
 
-  const goNext = () => setActiveIndex((prev) => (prev + 1) % references.length);
-  const goPrev = () => setActiveIndex((prev) => (prev - 1 + references.length) % references.length);
+  const toggleLike = (i: number) => {
+    setLiked((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
+  };
 
-  // Split into two columns
-  const col1 = references.filter((_, i) => i % 2 === 0);
-  const col2 = references.filter((_, i) => i % 2 === 1);
+  const active = references[activeIndex];
 
   return (
     <div className="py-16 md:py-24">
@@ -154,109 +91,98 @@ function TestimonialsBlock() {
             comes from the people
           </h2>
           <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
-            I've worked with!
+            I built these products with!
           </h2>
         </div>
       </motion.div>
 
-      {/* Testimonial Grid */}
+      {/* Avatar Row */}
       <motion.div
-        className="mt-12"
-        initial={{ opacity: 0, y: 40 }}
+        className="mt-10 flex items-center gap-3 md:gap-4 flex-wrap"
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-30px" }}
-        transition={{ duration: 0.7, delay: 0.2 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
       >
-        {/* Desktop: 2-column masonry-style */}
-        <div className="hidden md:grid md:grid-cols-2 gap-3">
-          <div className="flex flex-col gap-3">
-            {col1.map((person, ci) => {
-              const realIndex = ci * 2;
-              return (
-                <TestimonialCard
-                  key={realIndex}
-                  person={person}
-                  index={realIndex}
-                  isActive={activeIndex === realIndex}
-                  onClick={() => setActiveIndex(realIndex)}
-                />
-              );
-            })}
-          </div>
-          <div className="flex flex-col gap-3">
-            {col2.map((person, ci) => {
-              const realIndex = ci * 2 + 1;
-              return (
-                <TestimonialCard
-                  key={realIndex}
-                  person={person}
-                  index={realIndex}
-                  isActive={activeIndex === realIndex}
-                  onClick={() => setActiveIndex(realIndex)}
-                />
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Mobile: Single card carousel */}
-        <div className="md:hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -40 }}
-              transition={{ duration: 0.3 }}
+        {references.map((person, i) => (
+          <motion.button
+            key={i}
+            onClick={() => setActiveIndex(i)}
+            className="relative group"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            animate={{
+              scale: activeIndex === i ? 1.15 : 1,
+            }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+          >
+            <div
+              className={`flex items-center justify-center rounded-full text-white font-bold shrink-0 transition-shadow duration-300 w-14 h-14 md:w-[72px] md:h-[72px] text-lg md:text-xl ${
+                activeIndex === i
+                  ? "ring-3 ring-offset-2 ring-offset-background shadow-lg"
+                  : "opacity-60 group-hover:opacity-100"
+              }`}
+              style={{
+                background: person.color,
+                ...(activeIndex === i ? { ringColor: person.color } : {}),
+              }}
             >
-              <TestimonialCard
-                person={references[activeIndex]}
-                index={activeIndex}
-                isActive={true}
-                onClick={() => {}}
-              />
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Mobile nav */}
-          <div className="mt-6 flex items-center justify-center gap-4">
-            <motion.button
-              onClick={goPrev}
-              className="p-2 rounded-full border border-border hover:bg-muted transition-colors"
-              whileTap={{ scale: 0.9 }}
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </motion.button>
-
-            <div className="flex items-center gap-1.5">
-              {references.map((_, i) => (
-                <motion.button
-                  key={i}
-                  onClick={() => setActiveIndex(i)}
-                  className="rounded-full transition-all"
-                  animate={{
-                    width: i === activeIndex ? 20 : 6,
-                    height: 6,
-                    background:
-                      i === activeIndex
-                        ? "hsl(var(--foreground))"
-                        : "hsl(var(--muted-foreground) / 0.25)",
-                  }}
-                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                />
-              ))}
+              {person.initials}
             </div>
-
-            <motion.button
-              onClick={goNext}
-              className="p-2 rounded-full border border-border hover:bg-muted transition-colors"
-              whileTap={{ scale: 0.9 }}
-            >
-              <ChevronRight className="w-4 h-4" />
-            </motion.button>
-          </div>
-        </div>
+            {activeIndex === i && (
+              <motion.div
+                className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-foreground"
+                layoutId="avatar-dot"
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              />
+            )}
+          </motion.button>
+        ))}
       </motion.div>
+
+      {/* Chat Bubble */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeIndex}
+          className="mt-8 max-w-2xl"
+          initial={{ opacity: 0, y: 20, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -10, scale: 0.97 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+        >
+          <div className="relative bg-muted/50 border border-border rounded-2xl rounded-tl-sm p-6 md:p-8">
+            <p className="text-[15px] md:text-[17px] leading-[1.8] text-foreground/90 italic">
+              "{active.text}"
+            </p>
+
+            <div className="mt-5 flex items-center justify-between">
+              <div>
+                <p className="text-[14px] font-semibold">{active.name}</p>
+                <p className="text-[12px] text-muted-foreground">
+                  {active.role} · {active.company}
+                </p>
+              </div>
+
+              <motion.button
+                onClick={() => toggleLike(activeIndex)}
+                className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
+                whileTap={{ scale: 0.85 }}
+              >
+                <Heart
+                  className={`w-5 h-5 transition-colors ${
+                    liked.has(activeIndex)
+                      ? "fill-red-500 text-red-500"
+                      : ""
+                  }`}
+                />
+                <span className="text-[11px]">
+                  {liked.has(activeIndex) ? "Liked" : "Tap to Like"}
+                </span>
+              </motion.button>
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
