@@ -40,7 +40,7 @@ export default function About() {
         <div className="space-y-6">
           <RevealSection delay={0.2}>
             <p className="text-base leading-relaxed">
-              I'm a Product Manager based in Toronto 🇨🇦, currently leading Alternative Data, Gen AI, and Research Technology products at Royal Bank of Canada – Capital Markets 🏦.
+              I'm a Product Manager based in Toronto 🇨🇦, currently leading Alternative Data, Gen AI, and Research Technology products at Royal Bank of Canada - Capital Markets 🏦.
             </p>
           </RevealSection>
 
