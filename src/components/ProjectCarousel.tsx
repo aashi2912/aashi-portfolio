@@ -86,10 +86,8 @@ function ProjectCard({
         <motion.div
           className="relative w-full md:w-[55%] min-h-[280px] md:min-h-[400px] overflow-hidden flex items-center justify-center"
           style={{
-            backgroundColor: project.cardBg || undefined,
-            background: project.cardBg
-              ? project.cardBg
-              : `linear-gradient(135deg, ${project.color}22, ${project.color}10, ${project.color}05)`,
+            background: `linear-gradient(135deg, ${project.color}08, ${project.color}04)`,
+            backgroundColor: '#ffffff',
           }}
         >
           {project.image ? (

@@ -310,7 +310,7 @@ const projects: Project[] = [
     ],
     takeawayQuote: "Netflix's algorithm is optimized to keep you watching. Blind Spot is optimized to help you grow.",
     takeawayTags: ["Research-driven product thinking", "AI applied where it matters", "Technical depth", "Full-stack shipping"],
-    tools: ["React", "TMDB API", "Claude API", "Cosine Similarity", "Herfindahl Index", "Vercel", "TypeScript"]
+    tools: ["React", "TMDB API", "Claude API (LLM)", "Cosine Similarity (ML)", "Herfindahl Index", "Content-Based Filtering", "Vercel", "TypeScript"]
   }
 },
 {
