@@ -5,6 +5,7 @@ import { FloatingDoodle } from "@/components/Doodles";
 import { SketchSpeechBubble } from "@/components/SketchIcons";
 import jackEvansPhoto from "@/assets/jack-evans.jpeg";
 import gouthamKonthamPhoto from "@/assets/goutham-kontham.jpeg";
+import lindaBugaziyanosPhoto from "@/assets/linda-bugaziyanos.jpeg";
 
 const references = [
   {
