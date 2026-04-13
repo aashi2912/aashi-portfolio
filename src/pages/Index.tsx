@@ -847,21 +847,22 @@ export default function Index() {
                     { href: "https://www.linkedin.com/in/aashithakkar29/", label: "Coffee Chat", icon: Coffee, target: "_blank" },
                     { href: "https://topmate.io/aashi_thakkar", label: "1:1 Mentorship", icon: Link, target: "_blank" },
                   ].map((btn, i) => (
-                    <motion.a
-                      key={btn.label}
-                      href={btn.href}
-                      target={btn.target}
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent animate-pulse-glow"
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {btn.label} <btn.icon size={16} />
-                    </motion.a>
+                    <MagneticWrap key={btn.label} className="inline-block">
+                      <motion.a
+                        href={btn.href}
+                        target={btn.target}
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent animate-pulse-glow"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 }}
+                        whileHover={{ scale: 1.08, y: -3 }}
+                        whileTap={{ scale: 0.92 }}
+                      >
+                        {btn.label} <btn.icon size={16} />
+                      </motion.a>
+                    </MagneticWrap>
                   ))}
                 </div>
             </div>
