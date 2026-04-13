@@ -645,7 +645,7 @@ export default function Index() {
                 <motion.div className="absolute -top-3 -right-3" animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2, repeat: Infinity }}>
                   <SketchPin size={24} className="text-[hsl(0,70%,55%)] dark:text-[hsl(0,60%,65%)]" color="currentColor" />
                 </motion.div>
-              </motion.div>
+              </TiltCard>
             </div>
           </RevealText>
 
