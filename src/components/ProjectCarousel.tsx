@@ -222,23 +222,87 @@ function SectionBlock({
   );
 }
 
-/* ─── Stat Card ─── */
-function StatCard({ value, label, color, delay = 0 }: { value: string; label: string; color: string; delay?: number }) {
+/* ─── Case Study Pages Modal ─── */
+function CaseStudyModal({
+  title,
+  pages,
+  color,
+  secondaryColor,
+  onClose,
+}: {
+  title: string;
+  pages: string[];
+  color: string;
+  secondaryColor?: string;
+  onClose: () => void;
+}) {
   return (
     <motion.div
-      className="rounded-2xl p-5 border text-center"
-      style={{ borderColor: `${color}25`, backgroundColor: `${color}08` }}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay }}
+      className="fixed inset-0 z-[70] bg-black/80 backdrop-blur-md p-3 md:p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
     >
-      <p className="text-2xl md:text-3xl font-bold mb-1" style={{ color }}>{value}</p>
-      <p className="text-xs text-muted-foreground font-medium">{label}</p>
+      <motion.div
+        className="mx-auto flex h-full w-full max-w-5xl flex-col overflow-hidden rounded-[28px] border bg-card shadow-2xl"
+        style={{ borderColor: `${color}35` }}
+        initial={{ y: 24, opacity: 0, scale: 0.98 }}
+        animate={{ y: 0, opacity: 1, scale: 1 }}
+        exit={{ y: 24, opacity: 0, scale: 0.98 }}
+        transition={{ type: "spring", stiffness: 220, damping: 26 }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div
+          className="flex items-center justify-between gap-4 border-b px-5 py-4 md:px-7"
+          style={{
+            borderColor: `${color}20`,
+            background: `linear-gradient(90deg, ${color}12, ${secondaryColor || color}08, transparent)`,
+          }}
+        >
+          <div>
+            <p className="text-[11px] font-mono uppercase tracking-[0.24em]" style={{ color }}>
+              Full case study
+            </p>
+            <h3 className="text-lg font-semibold text-foreground md:text-xl">{title}</h3>
+          </div>
+          <button
+            onClick={onClose}
+            className="flex h-10 w-10 items-center justify-center rounded-full border bg-background/80 text-muted-foreground transition-colors hover:text-foreground"
+            style={{ borderColor: `${color}20` }}
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto bg-muted/30 px-3 py-4 md:px-6 md:py-6">
+          <div className="mx-auto flex max-w-3xl flex-col gap-5">
+            {pages.map((page, index) => (
+              <motion.figure
+                key={page}
+                className="overflow-hidden rounded-[24px] border bg-background shadow-lg"
+                style={{ borderColor: `${index % 2 === 0 ? color : secondaryColor || color}25` }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.04 * index, duration: 0.35 }}
+              >
+                <img
+                  src={page}
+                  alt={`${title} case study page ${index + 1}`}
+                  className="block h-auto w-full"
+                  loading={index < 2 ? "eager" : "lazy"}
+                />
+                <figcaption className="border-t px-4 py-2 text-right text-[11px] font-medium text-muted-foreground" style={{ borderColor: `${color}12` }}>
+                  Page {index + 1}
+                </figcaption>
+              </motion.figure>
+            ))}
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
   );
 }
-
-
 
 /* ─── Case Study Drawer ─── */
 
