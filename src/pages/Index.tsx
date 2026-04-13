@@ -507,18 +507,41 @@ export default function Index() {
 
       {/* ── Work ── */}
       <ContentWrap className="py-24 scroll-mt-20">
-        <section id="work" className="scroll-mt-20">
+        <section id="work" className="scroll-mt-20 relative">
+          {/* Floating doodle decorations */}
+          <FloatingDoodle className="-right-8 top-0 hidden md:block" delay={0.3} amplitude={8}>
+            <span className="text-3xl">💼</span>
+          </FloatingDoodle>
+
           <RevealText>
-            <h2 className="text-[28px] font-bold tracking-tight">Work</h2>
+            <div className="relative inline-block">
+              <h2 className="text-[28px] font-bold tracking-tight">Work</h2>
+              <SquigglyUnderline width={70} className="mt-1" />
+            </div>
             <p className="mt-1 text-[18px] text-muted-foreground">An overview of my career.</p>
+          </RevealText>
+
+          {/* Infographic Stats Row */}
+          <RevealText delay={0.08}>
+            <div className="mt-10 mb-8 grid grid-cols-3 gap-6 p-6 rounded-2xl border border-dashed border-border bg-muted/20">
+              <AnimatedCounter value={4} suffix="+" label="Years Experience" delay={0} />
+              <AnimatedCounter value={5} suffix="" label="Companies" delay={0.15} />
+              <AnimatedCounter value={3} suffix="" label="Roles" delay={0.3} />
+            </div>
           </RevealText>
 
           {/* Profile Card */}
           <RevealText delay={0.1}>
             <div className="mt-12 flex flex-col items-center text-center gap-4">
-              <img src={profilePhoto} alt="Aashi Thakkar" className="w-80 h-[28rem] rounded-2xl object-cover object-top" />
-
-
+              <motion.div
+                className="relative"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <img src={profilePhoto} alt="Aashi Thakkar" className="w-80 h-[28rem] rounded-2xl object-cover object-top" />
+                {/* Doodle corner decoration */}
+                <DoodleStar size={22} color="hsl(45,90%,55%)" className="absolute -top-3 -right-3" />
+              </motion.div>
             </div>
           </RevealText>
 
