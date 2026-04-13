@@ -1237,7 +1237,7 @@ export default function Index() {
           {/* Hero image */}
           <RevealText delay={0.1}>
             <div className="w-full aspect-[2/1] rounded-xl overflow-hidden my-10">
-              <img src={impossibleListHero} alt="Impossible List hero" className="w-full h-full object-cover" />
+              <img src={impossibleListHero} alt="Impossible List hero" className="w-full h-full object-contain dark:invert" />
             </div>
           </RevealText>
 
