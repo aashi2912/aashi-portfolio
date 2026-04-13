@@ -553,18 +553,19 @@ export default function Index() {
               </div>
               <div className="flex items-center gap-1">
                 {socialLinks.map(({ icon: Icon, href, label }) =>
-                <motion.a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md p-1.5 text-muted-foreground transition-all hover:text-foreground"
-                  aria-label={label}
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                  whileTap={{ scale: 0.9 }}>
-                  
-                    <Icon className="h-5 w-5" />
-                  </motion.a>
+                <MagneticWrap key={label} className="inline-block">
+                  <motion.a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-md p-1.5 text-muted-foreground transition-all hover:text-foreground inline-block"
+                    aria-label={label}
+                    whileHover={{ scale: 1.3, rotate: 8 }}
+                    whileTap={{ scale: 0.9 }}>
+                    
+                      <Icon className="h-5 w-5" />
+                    </motion.a>
+                </MagneticWrap>
                 )}
               </div>
             </div>
@@ -590,7 +591,8 @@ export default function Index() {
             className="w-full h-full object-cover" />
           
           <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
-            I <span className="italic">bridge</span> the gap between<br />ambition and execution!
+            I <motion.span className="italic" initial={{ opacity: 0, scale: 1.5, filter: "blur(8px)" }} animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }} transition={{ duration: 0.8, delay: 0.6 }}>bridge</motion.span> the gap between<br />
+            <StaggerLetters text="ambition and execution!" delay={0.8} className="mt-1" />
           </h2>
 
           {/* Scroll indicator */}
@@ -824,20 +826,12 @@ export default function Index() {
           {/* Education Photos */}
           <RevealText delay={0.4}>
             <div className="mt-10 grid grid-cols-2 gap-4">
-              <motion.div
-                className="aspect-[4/3] overflow-hidden rounded-2xl"
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
+              <TiltCard className="aspect-[4/3] overflow-hidden rounded-2xl">
                 <img src={eduPhoto1} alt="At Assumption College" className="w-full h-full object-cover object-[center_85%] transition-transform duration-500 hover:scale-110" />
-              </motion.div>
-              <motion.div
-                className="aspect-[4/3] overflow-hidden rounded-2xl"
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
+              </TiltCard>
+              <TiltCard className="aspect-[4/3] overflow-hidden rounded-2xl">
                 <img src={eduPhoto2} alt="Graduation" className="w-full h-full object-cover object-[center_25%] transition-transform duration-500 hover:scale-110" />
-              </motion.div>
+              </TiltCard>
             </div>
           </RevealText>
 
