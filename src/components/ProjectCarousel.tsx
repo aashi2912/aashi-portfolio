@@ -222,6 +222,22 @@ function SectionBlock({
   );
 }
 
+/* ─── Stat Card ─── */
+function StatCard({ value, label, color, delay = 0 }: { value: string; label: string; color: string; delay?: number }) {
+  return (
+    <motion.div
+      className="rounded-2xl p-5 border text-center"
+      style={{ borderColor: `${color}25`, backgroundColor: `${color}08` }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay }}
+    >
+      <p className="mb-1 text-2xl font-bold md:text-3xl" style={{ color }}>{value}</p>
+      <p className="text-xs font-medium text-muted-foreground">{label}</p>
+    </motion.div>
+  );
+}
+
 /* ─── Case Study Pages Modal ─── */
 function CaseStudyModal({
   title,
@@ -313,7 +329,7 @@ function ProjectDrawer({
   project: Project | null;
   onClose: () => void;
 }) {
-  
+  const [showCaseStudyModal, setShowCaseStudyModal] = useState(false);
 
   if (!project) return null;
   const details = project.details;
@@ -430,17 +446,18 @@ function ProjectDrawer({
                     <Github size={14} /> GitHub
                   </a>
                 )}
-                {project.caseStudyPdf && (
-                  <a
-                    href={project.caseStudyPdf}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                {project.caseStudyPages && project.caseStudyPages.length > 0 && (
+                  <button
+                    type="button"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all hover:scale-105"
                     style={{ borderColor: `${sc}40`, color: sc, backgroundColor: `${sc}08` }}
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowCaseStudyModal(true);
+                    }}
                   >
                     <FileText size={14} /> View Full Case Study PDF
-                  </a>
+                  </button>
                 )}
               </div>
             </div>
@@ -772,6 +789,17 @@ function ProjectDrawer({
             <div className="h-16" />
           </motion.div>
 
+          <AnimatePresence>
+            {showCaseStudyModal && project.caseStudyPages && project.caseStudyPages.length > 0 && (
+              <CaseStudyModal
+                title={project.title}
+                pages={project.caseStudyPages}
+                color={c}
+                secondaryColor={sc}
+                onClose={() => setShowCaseStudyModal(false)}
+              />
+            )}
+          </AnimatePresence>
         </>
       )}
     </AnimatePresence>

@@ -167,6 +167,7 @@ const projects: Project[] = [
   icon: "🗺️",
   image: vibeRouteHero,
   caseStudyPdf: "/case-studies/vibe-route-case-study.pdf",
+  caseStudyPages: Array.from({ length: 13 }, (_, i) => `/case-studies/vibe-route-pages/page-${i + 1}.jpg`),
   githubLink: "https://github.com/aashi2912/vibe-route",
   details: {
     heroTagline: "An AI Product Manager case study - from research to shipped product in 5 weeks.",
