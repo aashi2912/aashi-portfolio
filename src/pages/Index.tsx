@@ -170,6 +170,7 @@ const projects: Project[] = [
   caseStudyPdf: "/case-studies/vibe-route-case-study.pdf",
   caseStudyPages: Array.from({ length: 13 }, (_, i) => `/case-studies/vibe-route-pages/page-${i + 1}.jpg`),
   prdPages: Array.from({ length: 5 }, (_, i) => `/case-studies/vibe-route-prd-pages/page-${i + 1}.jpg`),
+  prdPdf: "/case-studies/vibe-route-prd.pdf",
   githubLink: "https://github.com/aashi2912/vibe-route",
   details: {
     heroTagline: "An AI Product Manager case study - from research to shipped product in 5 weeks.",
@@ -256,6 +257,7 @@ const projects: Project[] = [
   image: netflixLogo,
   caseStudyPages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-pages/page-${i + 1}.jpg`),
   prdPages: Array.from({ length: 5 }, (_, i) => `/case-studies/blind-spot-prd-pages/page-${i + 1}.jpg`),
+  prdPdf: "/case-studies/blind-spot-prd.pdf",
   githubLink: "https://github.com/aashi2912/blind-spot",
   details: {
     heroTagline: "Netflix's algorithm is optimized to keep you watching. Blind Spot is optimized to help you grow.",

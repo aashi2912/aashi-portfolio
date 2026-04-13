@@ -27,6 +27,7 @@ export type Project = {
   caseStudyPdf?: string;
   caseStudyPages?: string[];
   prdPages?: string[];
+  prdPdf?: string;
   githubLink?: string;
   details?: {
     background?: string;
@@ -75,7 +76,7 @@ function ProjectCard({
       <div
         className="relative flex flex-col md:flex-row gap-0 rounded-3xl overflow-hidden border transition-all duration-500 h-full"
         style={{
-          borderColor: hovered ? `${project.color}40` : `${project.color}15`,
+          borderColor: hovered ? `${project.color}60` : `${project.color}35`,
           background: `linear-gradient(135deg, hsl(var(--card)), ${project.color}06)`,
         }}
       >
@@ -134,7 +135,7 @@ function ProjectCard({
               {project.title}
             </motion.h3>
 
-            <p className="text-[13px] md:text-sm text-muted-foreground leading-relaxed mb-5 line-clamp-3">
+            <p className="text-[13px] md:text-sm text-muted-foreground leading-relaxed mb-5">
               {project.description}
             </p>
 
@@ -290,8 +291,8 @@ function CaseStudyModal({
           </div>
           <button
             onClick={onClose}
-            className="flex h-10 w-10 items-center justify-center rounded-full border bg-background/80 text-muted-foreground transition-colors hover:text-foreground"
-            style={{ borderColor: `${color}20` }}
+            className="flex h-10 w-10 items-center justify-center rounded-full border bg-background/80 text-foreground transition-colors hover:text-foreground hover:bg-background"
+            style={{ borderColor: `${color}30` }}
           >
             <X size={18} />
           </button>
@@ -336,7 +337,7 @@ function ProjectDrawer({
   onClose: () => void;
 }) {
   const [showCaseStudyModal, setShowCaseStudyModal] = useState(false);
-  const [showPrdModal, setShowPrdModal] = useState(false);
+  
 
   if (!project) return null;
   const details = project.details;
@@ -472,18 +473,17 @@ function ProjectDrawer({
                     <FileText size={14} /> View Full Case Study PDF
                   </button>
                 )}
-                {project.prdPages && project.prdPages.length > 0 && (
-                  <button
-                    type="button"
+                {project.prdPdf && (
+                  <a
+                    href={project.prdPdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all hover:scale-105"
                     style={{ borderColor: `${c}40`, color: c, backgroundColor: `${c}08` }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setShowPrdModal(true);
-                    }}
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <FileText size={14} /> View PRD
-                  </button>
+                  </a>
                 )}
               </div>
             </div>
@@ -754,17 +754,6 @@ function ProjectDrawer({
                 color={c}
                 secondaryColor={sc}
                 onClose={() => setShowCaseStudyModal(false)}
-              />
-            )}
-          </AnimatePresence>
-          <AnimatePresence>
-            {showPrdModal && project.prdPages && project.prdPages.length > 0 && (
-              <CaseStudyModal
-                title={`${project.title} — PRD`}
-                pages={project.prdPages}
-                color={c}
-                secondaryColor={sc}
-                onClose={() => setShowPrdModal(false)}
               />
             )}
           </AnimatePresence>
