@@ -30,12 +30,12 @@ const references = [
     text: "Aashi bridges the gap between data and product like no one else. She asks the right questions, digs into the numbers, and turns insights into actionable product improvements.",
   },
   {
-    name: "Michael Chen",
-    role: "VP of Product",
-    company: "StartupXYZ",
-    initials: "MC",
+    name: "Jack Evans",
+    role: "VP, AI & Digital Product",
+    company: "RBC Capital Markets",
+    initials: "JE",
     color: "hsl(25,80%,50%)",
-    text: "Aashi consistently demonstrated strong product instincts and an incredible work ethic. She's the kind of PM who makes everyone around her better.",
+    text: "Aashi has been a strong partner on the AidenResearch team. She has played an important role in supporting both requirements and delivery by translating business needs into clear acceptance criteria, creating and managing Jira tickets, and partnering closely with engineering leads to resolve questions and maintain alignment. She also works effectively with business stakeholders to clarify requirements, address issues, and keep workstreams progressing smoothly. Aashi is organized, communicative, and dependable, and her collaborative approach has made her a valuable contributor to the team.",
   },
   {
     name: "Sarah Williams",
