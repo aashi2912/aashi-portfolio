@@ -36,7 +36,6 @@ function ProjectCard({
   isEven: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
-  const num = String(index + 1).padStart(2, "0");
 
   return (
     <motion.div
