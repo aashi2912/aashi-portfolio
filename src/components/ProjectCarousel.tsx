@@ -61,25 +61,24 @@ function ProjectCard({
         <motion.div
           className="relative w-full md:w-[55%] min-h-[280px] md:min-h-[400px] overflow-hidden flex items-center justify-center"
           style={{
-            background: `linear-gradient(135deg, ${project.color}22, ${project.color}10, ${project.color}05)`,
+            backgroundColor: project.cardBg || undefined,
+            background: project.cardBg
+              ? project.cardBg
+              : `linear-gradient(135deg, ${project.color}22, ${project.color}10, ${project.color}05)`,
           }}
         >
           {project.image ? (
             <motion.img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover absolute inset-0"
-              animate={hovered ? { scale: 1.05 } : { scale: 1 }}
+              className="w-full h-full object-contain p-6 md:p-8"
+              animate={hovered ? { scale: 1.08 } : { scale: 1 }}
               transition={{ duration: 0.6, ease: [0.22, 0.68, 0.36, 1] }}
             />
           ) : (
             <motion.div
               className="w-full h-full flex items-center justify-center"
-              animate={
-                hovered
-                  ? { scale: 1.05 }
-                  : { scale: 1 }
-              }
+              animate={hovered ? { scale: 1.05 } : { scale: 1 }}
               transition={{ duration: 0.6 }}
             >
               <span className="text-[100px] md:text-[140px] select-none">
@@ -87,14 +86,6 @@ function ProjectCard({
               </span>
             </motion.div>
           )}
-
-          {/* Color overlay on hover */}
-          <motion.div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: `linear-gradient(to top, ${project.color}20, transparent 60%)` }}
-            animate={hovered ? { opacity: 1 } : { opacity: 0.5 }}
-            transition={{ duration: 0.4 }}
-          />
         </motion.div>
 
         {/* Content side */}
