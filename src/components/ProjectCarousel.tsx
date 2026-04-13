@@ -26,6 +26,7 @@ export type Project = {
   image?: string;
   caseStudyPdf?: string;
   caseStudyPages?: string[];
+  prdPages?: string[];
   githubLink?: string;
   details?: {
     background?: string;
@@ -337,11 +338,16 @@ function ProjectDrawer({
   onClose: () => void;
 }) {
   const [showCaseStudyModal, setShowCaseStudyModal] = useState(false);
+  const [showPrdModal, setShowPrdModal] = useState(false);
 
   if (!project) return null;
   const details = project.details;
   const c = project.color;
   const sc = project.secondaryColor || c;
+  const isDarkBg = project.cardBg && project.cardBg !== "#F5F0E8";
+  const heroTextColor = project.cardBg ? (isDarkBg ? "#f0f0f0" : "#1a1a1a") : undefined;
+  const heroSubTextColor = project.cardBg ? (isDarkBg ? "#ccc" : "#555") : undefined;
+  const heroMutedColor = project.cardBg ? (isDarkBg ? "#999" : "#777") : undefined;
 
   return (
     <AnimatePresence>
@@ -374,7 +380,8 @@ function ProjectDrawer({
               {/* Close & back */}
               <motion.button
                 onClick={onClose}
-                className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center bg-background/60 backdrop-blur-sm border border-border/50 text-muted-foreground hover:text-foreground transition-colors z-10"
+                className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm border transition-colors z-10"
+                style={{ backgroundColor: isDarkBg ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.6)', borderColor: isDarkBg ? 'rgba(255,255,255,0.2)' : undefined, color: isDarkBg ? '#fff' : undefined }}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -382,7 +389,8 @@ function ProjectDrawer({
               </motion.button>
               <motion.button
                 onClick={onClose}
-                className="absolute top-6 left-8 flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="absolute top-6 left-8 flex items-center gap-2 text-sm transition-colors"
+                style={{ color: heroMutedColor }}
                 whileHover={{ x: -3 }}
               >
                 <ArrowLeft size={16} /> Back
@@ -409,12 +417,12 @@ function ProjectDrawer({
                 >
                   {project.tag}
                 </span>
-                <span className="font-mono text-xs tracking-wider" style={{ color: project.cardBg ? "#777" : undefined }}>{project.year}</span>
+                <span className="font-mono text-xs tracking-wider" style={{ color: heroMutedColor }}>{project.year}</span>
               </div>
 
               <h2
                 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 leading-tight relative z-[1]"
-                style={{ color: project.cardBg ? "#1a1a1a" : undefined }}
+                style={{ color: heroTextColor }}
               >
                 {project.title}
               </h2>
@@ -423,7 +431,7 @@ function ProjectDrawer({
               {details?.heroTagline && (
                 <p
                   className="text-base leading-relaxed max-w-lg relative z-[1] italic"
-                  style={{ color: project.cardBg ? "#555" : undefined }}
+                  style={{ color: heroSubTextColor }}
                 >
                   {details.heroTagline}
                 </p>
@@ -464,6 +472,19 @@ function ProjectDrawer({
                     }}
                   >
                     <FileText size={14} /> View Full Case Study PDF
+                  </button>
+                )}
+                {project.prdPages && project.prdPages.length > 0 && (
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all hover:scale-105"
+                    style={{ borderColor: `${c}40`, color: c, backgroundColor: `${c}08` }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowPrdModal(true);
+                    }}
+                  >
+                    <FileText size={14} /> View PRD
                   </button>
                 )}
               </div>
@@ -732,6 +753,17 @@ function ProjectDrawer({
                 color={c}
                 secondaryColor={sc}
                 onClose={() => setShowCaseStudyModal(false)}
+              />
+            )}
+          </AnimatePresence>
+          <AnimatePresence>
+            {showPrdModal && project.prdPages && project.prdPages.length > 0 && (
+              <CaseStudyModal
+                title={`${project.title} — PRD`}
+                pages={project.prdPages}
+                color={c}
+                secondaryColor={sc}
+                onClose={() => setShowPrdModal(false)}
               />
             )}
           </AnimatePresence>

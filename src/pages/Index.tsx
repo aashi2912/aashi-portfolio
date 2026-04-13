@@ -25,7 +25,7 @@ import hobbyReading from "@/assets/hobby-reading.jpeg";
 import hobbyBadminton from "@/assets/hobby-badminton.jpeg";
 import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 import vibeRouteHero from "@/assets/vibe-route-doodle.jpg";
-import blindSpotHero from "@/assets/blind-spot-hero.jpg";
+import netflixLogo from "@/assets/netflix-logo.png";
 
 import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
 import galleryLego from "@/assets/gallery-lego.jpeg";
@@ -161,7 +161,7 @@ const projects: Project[] = [
   description: "Google Maps tells you the fastest route. I built a tool that tells you the best one - an AI-powered walking route comparison that scores routes by how they feel, not just how fast they are.",
   tag: "AI Product",
   link: "https://vibe-route.vercel.app/",
-  year: "2025",
+  year: "2026",
   color: "#2D6A4F",
   secondaryColor: "#C77B30",
   cardBg: "#F5F0E8",
@@ -247,13 +247,14 @@ const projects: Project[] = [
   description: "80% of what you watch on Netflix was chosen by an algorithm. I built a tool that shows you what it's hiding - see your filter bubble, find blind spots, and bridge the gap with AI.",
   tag: "AI Product",
   link: "https://my-blind-spot.vercel.app/",
-  year: "2025",
+  year: "2026",
   color: "#E50914",
   secondaryColor: "#B81D24",
   cardBg: "#141414",
   icon: "🎬",
-  image: blindSpotHero,
+  image: netflixLogo,
   caseStudyPages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-pages/page-${i + 1}.jpg`),
+  prdPages: Array.from({ length: 5 }, (_, i) => `/case-studies/blind-spot-prd-pages/page-${i + 1}.jpg`),
   githubLink: "https://github.com/aashi2912/blind-spot",
   details: {
     heroTagline: "Netflix's algorithm is optimized to keep you watching. Blind Spot is optimized to help you grow.",
