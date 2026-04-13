@@ -63,7 +63,7 @@ function ProjectCard({
 
   return (
     <motion.div
-      className="group cursor-pointer flex-shrink-0 w-[85vw] sm:w-[600px] md:w-[720px] lg:w-[800px] snap-center"
+      className="group cursor-pointer flex-shrink-0 w-[80vw] sm:w-[520px] md:w-[620px] lg:w-[700px] snap-center"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -91,7 +91,7 @@ function ProjectCard({
             <motion.img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-contain p-6"
+              className="w-full h-full object-cover"
               animate={hovered ? { scale: 1.08 } : { scale: 1 }}
               transition={{ duration: 0.6, ease: [0.22, 0.68, 0.36, 1] }}
             />
