@@ -162,6 +162,8 @@ const projects: Project[] = [
   link: "https://vibe-route.vercel.app/",
   year: "2025",
   color: "#2D6A4F",
+  secondaryColor: "#C77B30",
+  cardBg: "#F5F0E8",
   icon: "🗺️",
   image: vibeRouteHero,
   caseStudyPdf: "/case-studies/vibe-route-case-study.pdf",
