@@ -903,48 +903,71 @@ export default function Index() {
             </div>
           </RevealText>
 
-          <div className="mt-12 flex flex-col items-center">
+          <div className="mt-12">
           {/* Product management is about people section - AFTER the gallery */}
           <RevealText delay={0.4}>
-            <div className="mb-4 text-center">
+            <div className="mb-10">
               <h4 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
                 Product management is about <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">people</span> before it's about <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">products.</span>
               </h4>
             </div>
           </RevealText>
 
-          <div className="space-y-5 text-[17px] leading-[1.75] max-w-2xl text-left">
+          {/* Storytelling blocks */}
+          <div className="space-y-6 max-w-3xl">
+            {/* Block 1 - The social side */}
             <RevealText delay={0.45}>
-              <p className="text-muted-foreground">Outside meeting rooms, sprint boards, and roadmaps, you'll usually find me doing something a little more social 🎉 - joining team events, exploring new activities, or organizing spontaneous outings with colleagues. Whether it's group adventures 🏔️, company events 🎊, or just moments of shared laughter 😄, these experiences matter to me.
-
-              </p>
+              <div className="flex gap-4 items-start">
+                <div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg">🎉</div>
+                <div>
+                  <p className="text-[17px] leading-[1.8] text-foreground/90">
+                    Outside meeting rooms, sprint boards, and roadmaps, you'll usually find me doing something a little more social - joining team events, exploring new activities, or organizing spontaneous outings with colleagues. Whether it's group adventures 🏔️, company events 🎊, or just moments of shared laughter 😄, these experiences matter to me.
+                  </p>
+                </div>
+              </div>
             </RevealText>
 
+            {/* Block 2 - The why - highlighted callout */}
             <RevealText delay={0.5}>
-              <p>
-                Why? Because great products come from <span className="font-semibold">strong human connections</span> 💡.
-              </p>
+              <div className="border-l-4 border-[hsl(200,50%,35%)] dark:border-[hsl(200,40%,75%)] pl-5 py-3 ml-14">
+                <p className="text-[19px] leading-[1.7] font-semibold text-foreground">
+                  Why? Because great products come from <span className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">strong human connections</span> 💡
+                </p>
+              </div>
             </RevealText>
 
+            {/* Block 3 - Bringing people together */}
             <RevealText delay={0.55}>
-              <p className="text-muted-foreground">As a Product Manager, I spend a lot of time bringing people together - engineers, designers, stakeholders, and users 🧩. The same curiosity and energy that pushes me to participate in team activities is what helps me build trust 🤝, understand different perspectives 🌍, and create environments where collaboration thrives 🌱.
-
-              </p>
+              <div className="flex gap-4 items-start">
+                <div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg">🧩</div>
+                <div>
+                  <p className="text-[17px] leading-[1.8] text-foreground/90">
+                    As a Product Manager, I spend a lot of time bringing people together - engineers, designers, stakeholders, and users. The same curiosity and energy that pushes me to participate in team activities is what helps me build trust 🤝, understand different perspectives 🌍, and create environments where collaboration thrives 🌱.
+                  </p>
+                </div>
+              </div>
             </RevealText>
 
+            {/* Block 4 - The gallery moments */}
             <RevealText delay={0.6}>
-              <p className="text-muted-foreground">This gallery captures some of those moments - the conversations 💬, the adventures 🚀, the team bonding 🫂, and the fun along the way.
-
-              </p>
+              <div className="flex gap-4 items-start">
+                <div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg">📸</div>
+                <div>
+                  <p className="text-[17px] leading-[1.8] text-foreground/90">
+                    This gallery captures some of those moments - the conversations 💬, the adventures 🚀, the team bonding 🫂, and the fun along the way.
+                  </p>
+                </div>
+              </div>
             </RevealText>
 
+            {/* Block 5 - The belief - closing statement */}
             <RevealText delay={0.65}>
-              <p className="text-muted-foreground">
-                They're small snapshots of something bigger:
-              </p>
-              <p className="mt-2 text-[19px] font-semibold">My belief that the best teams and the best products are built when people genuinely enjoy working together ❤️✨.
-
-              </p>
+              <div className="mt-4 rounded-xl border border-border bg-muted/30 p-6">
+                <p className="text-muted-foreground text-[15px] mb-2 italic">They're small snapshots of something bigger:</p>
+                <p className="text-[19px] leading-[1.6] font-semibold text-foreground">
+                  My belief that the best teams and the best products are built when people genuinely enjoy working together ❤️✨
+                </p>
+              </div>
             </RevealText>
           </div>
           </div>
