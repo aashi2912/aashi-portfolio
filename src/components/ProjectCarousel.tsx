@@ -10,6 +10,7 @@ export type Project = {
   link?: string;
   color: string;
   icon?: string;
+  image?: string;
   details?: {
     background?: string;
     role?: string;
@@ -35,7 +36,6 @@ function ProjectCard({
   isEven: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
-  const num = String(index + 1).padStart(2, "0");
 
   return (
     <motion.div
@@ -56,48 +56,33 @@ function ProjectCard({
       >
         {/* Visual hero side */}
         <motion.div
-          className="relative w-full md:w-[55%] aspect-[16/10] md:aspect-auto md:min-h-[380px] overflow-hidden"
+          className="relative w-full md:w-[55%] aspect-[16/10] md:aspect-auto md:min-h-[380px] overflow-hidden flex items-center justify-center"
           style={{
             background: `linear-gradient(135deg, ${project.color}18, ${project.color}08, hsl(var(--card)))`,
           }}
-          animate={hovered ? { scale: 1.0 } : { scale: 1.0 }}
         >
-          {/* Large number watermark */}
-          <motion.span
-            className="absolute top-6 left-8 font-mono text-[120px] md:text-[180px] font-black leading-none select-none pointer-events-none"
-            style={{ color: `${project.color}12` }}
-            animate={hovered ? { scale: 1.05, x: 5 } : { scale: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            {num}
-          </motion.span>
-
-          {/* Icon */}
-          <motion.div
-            className="absolute bottom-8 right-8 w-20 h-20 md:w-28 md:h-28 rounded-3xl flex items-center justify-center text-5xl md:text-7xl"
-            style={{ backgroundColor: `${project.color}15` }}
-            animate={
-              hovered
-                ? { rotate: [0, -8, 8, -4, 0], scale: 1.1 }
-                : { rotate: 0, scale: 1 }
-            }
-            transition={{ duration: 0.6 }}
-          >
-            {project.icon || "🚀"}
-          </motion.div>
-
-          {/* Decorative dots pattern */}
-          <div
-            className="absolute top-8 right-8 grid grid-cols-4 gap-2 opacity-[0.15]"
-          >
-            {Array.from({ length: 12 }).map((_, i) => (
-              <div
-                key={i}
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ backgroundColor: project.color }}
-              />
-            ))}
-          </div>
+          {project.image ? (
+            <motion.img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover"
+              animate={hovered ? { scale: 1.05 } : { scale: 1 }}
+              transition={{ duration: 0.6, ease: [0.22, 0.68, 0.36, 1] }}
+            />
+          ) : (
+            <motion.div
+              className="w-24 h-24 md:w-32 md:h-32 rounded-3xl flex items-center justify-center text-6xl md:text-8xl"
+              style={{ backgroundColor: `${project.color}15` }}
+              animate={
+                hovered
+                  ? { rotate: [0, -8, 8, -4, 0], scale: 1.1 }
+                  : { rotate: 0, scale: 1 }
+              }
+              transition={{ duration: 0.6 }}
+            >
+              {project.icon || "🚀"}
+            </motion.div>
+          )}
         </motion.div>
 
         {/* Content side */}

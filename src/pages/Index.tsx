@@ -156,27 +156,27 @@ const volunteering = [
 const projects: Project[] = [
 {
   title: "Vibe Route",
-  description: "Google Maps tells you the fastest route. I built a tool that tells you the best one — an AI-powered walking route comparison that scores routes by how they feel, not just how fast they are.",
+  description: "Google Maps tells you the fastest route. I built a tool that tells you the best one - an AI-powered walking route comparison that scores routes by how they feel, not just how fast they are.",
   tag: "AI Product",
   link: "https://vibe-route.vercel.app/",
   year: "2025",
   color: "hsl(145,40%,38%)",
   icon: "🗺️",
   details: {
-    role: "AI Product Manager — Solo (End-to-End)",
+    role: "AI Product Manager - Solo (End-to-End)",
     duration: "5 weeks",
-    team: "Solo project — research, design, engineering & shipping",
-    background: "A former Google Maps Senior UX Researcher explained why 'scenic' routing is hard: scoring beauty can bias toward affluent neighborhoods. Google distanced from the feature — but the gap still exists. Scenic driving and hiking trails are solved (Roadtrippers, AllTrails), but urban walking remains a huge gap. 6 peer-reviewed studies shaped every design decision.",
-    challenge: "Walking navigation tools treat all routes as distance-minimization problems. A quiet residential path through a park and a noisy arterial road are equivalent if they take the same time. The real challenge: designing vibe-based routing without encoding socioeconomic bias — the exact constraint that keeps mainstream maps from shipping 'pleasantness'.",
-    solution: "Built 4 purposeful AI components: (1) Waypoint Discovery — ML clustering to generate genuinely different routes when Google alternatives overlap >70%, (2) Natural Language parsing — converts 'quiet walk with coffee' into structured vibe preferences, (3) Route Narratives — LLM summaries constrained to verified POIs with anti-hallucination guardrails, (4) Vibe Scoring — density-based scoring with diminishing returns (log curve) to avoid score inflation. Designed around bias using objective signals (parks, POI density, road types) instead of subjective 'beauty', and user-defined vibes that shift agency to the walker.",
+    team: "Solo project - research, design, engineering & shipping",
+    background: "A former Google Maps Senior UX Researcher explained why 'scenic' routing is hard: scoring beauty can bias toward affluent neighborhoods. Google distanced from the feature - but the gap still exists. Scenic driving and hiking trails are solved (Roadtrippers, AllTrails), but urban walking remains a huge gap. 6 peer-reviewed studies shaped every design decision.",
+    challenge: "Walking navigation tools treat all routes as distance-minimization problems. A quiet residential path through a park and a noisy arterial road are equivalent if they take the same time. The real challenge: designing vibe-based routing without encoding socioeconomic bias - the exact constraint that keeps mainstream maps from shipping 'pleasantness'.",
+    solution: "Built 4 purposeful AI components: (1) Waypoint Discovery - ML clustering to generate genuinely different routes when Google alternatives overlap >70%, (2) Natural Language parsing - converts 'quiet walk with coffee' into structured vibe preferences, (3) Route Narratives - LLM summaries constrained to verified POIs with anti-hallucination guardrails, (4) Vibe Scoring - density-based scoring with diminishing returns (log curve) to avoid score inflation. Designed around bias using objective signals (parks, POI density, road types) instead of subjective 'beauty', and user-defined vibes that shift agency to the walker.",
     results: [
-      "Shipped a live product in 5 weeks — not a concept deck (vibe-route.vercel.app)",
-      "4 AI components — each one earns its place with a clear 'why'",
+      "Shipped a live product in 5 weeks - not a concept deck (vibe-route.vercel.app)",
+      "4 AI components - each one earns its place with a clear 'why'",
       "0 hallucinated locations across 20 narrative audits",
       "Waypoint injection triggered in >40% of routes, proving Google alternatives are too similar",
-      "Log scoring separates routes effectively (0.8–4.2 range vs all hitting 5.0 with linear)",
+      "Log scoring separates routes effectively (0.8-4.2 range vs all hitting 5.0 with linear)",
       "~40% Places API cache hit rate for cost efficiency",
-      "Total build + launch cost: $5–$22 (APIs + LLM during dev)"
+      "Total build + launch cost: $5-$22 (APIs + LLM during dev)"
     ],
     tools: ["React", "Google Maps API", "Google Places API", "Claude API", "DBSCAN Clustering", "Vercel", "TypeScript", "NLP"]
   }
@@ -211,7 +211,7 @@ const projects: Project[] = [
   details: {
     role: "Designer & Developer",
     duration: "2 weeks",
-    overview: "A personal project to create a home for my podcast — featuring episode archives, show notes, and an integrated newsletter signup.",
+    overview: "A personal project to create a home for my podcast - featuring episode archives, show notes, and an integrated newsletter signup.",
     tools: ["React", "Next.js", "Tailwind CSS", "Notion API"]
   }
 },
@@ -226,7 +226,7 @@ const projects: Project[] = [
   details: {
     role: "Creator",
     duration: "Ongoing",
-    overview: "A comprehensive Notion template system covering the entire product lifecycle — from discovery and research to roadmapping, sprint planning, and retrospectives.",
+    overview: "A comprehensive Notion template system covering the entire product lifecycle - from discovery and research to roadmapping, sprint planning, and retrospectives.",
     results: ["Used by 500+ product managers", "Featured in 3 PM newsletters", "4.8/5 average rating"],
     tools: ["Notion", "Figma"]
   }
