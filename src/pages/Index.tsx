@@ -526,7 +526,7 @@ export default function Index() {
             <div className="flex flex-col gap-2">
               <div className="relative inline-block">
                 <h1 className="text-[26px] font-bold tracking-tight sm:text-[32px] leading-tight">
-                  Aashi Thakkar
+                  <WiggleText>Aashi Thakkar</WiggleText>
                 </h1>
                 
               </div>
