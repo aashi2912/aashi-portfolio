@@ -2,8 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link, ArrowDown } from "lucide-react";
 import { ReferencesSection } from "@/components/ReferencesSection";
-import { SquigglyUnderline, FloatingDoodle, WiggleText, AnimatedCounter, DoodleArrow, DoodleCircle } from "@/components/Doodles";
-import { SketchSparkle, SketchLightbulb, SketchTarget, SketchBriefcase, SketchPin, SketchRocket, SketchPalette, SketchHeart } from "@/components/SketchIcons";
+import { AnimatedCounter } from "@/components/Doodles";
 import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
@@ -514,16 +513,6 @@ export default function Index() {
 
       {/* ── Home ── */}
       <section id="home" className="scroll-mt-20 relative overflow-hidden">
-        {/* Floating doodles in hero */}
-        <FloatingDoodle className="top-16 right-[10%] hidden md:block" delay={0.5}>
-          <SketchSparkle size={32} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" color="currentColor" />
-        </FloatingDoodle>
-        <FloatingDoodle className="top-32 left-[5%] hidden md:block" delay={1.2} amplitude={10}>
-          <SketchLightbulb size={30} className="text-[hsl(45,80%,50%)] dark:text-[hsl(45,70%,60%)]" color="currentColor" />
-        </FloatingDoodle>
-        <FloatingDoodle className="top-48 right-[20%] hidden md:block" delay={0.8} amplitude={5}>
-          <SketchTarget size={26} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" color="currentColor" />
-        </FloatingDoodle>
 
         {/* Top header: name / roles / social / location */}
         <ContentWrap className="pt-6">
@@ -537,7 +526,7 @@ export default function Index() {
             <div className="flex flex-col gap-2">
               <div className="relative inline-block">
                 <h1 className="text-[26px] font-bold tracking-tight sm:text-[32px] leading-tight">
-                  <WiggleText>Aashi Thakkar</WiggleText>
+                  Aashi Thakkar
                 </h1>
                 
               </div>
@@ -617,10 +606,6 @@ export default function Index() {
       <ScrollSection>
       <ContentWrap className="py-24 scroll-mt-20">
         <section id="work" className="scroll-mt-20 relative">
-          {/* Floating doodle decorations */}
-          <FloatingDoodle className="-right-8 top-0 hidden md:block" delay={0.3} amplitude={8}>
-            <SketchBriefcase size={36} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" color="currentColor" />
-          </FloatingDoodle>
 
           <RevealText>
             <div className="relative inline-block">
@@ -645,10 +630,6 @@ export default function Index() {
               <TiltCard className="relative">
 
                 <img src={profilePhoto} alt="Aashi Thakkar" className="w-80 h-[28rem] rounded-2xl object-cover object-top" />
-                {/* Doodle corner decoration */}
-                <motion.div className="absolute -top-3 -right-3" animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-                  <SketchPin size={24} className="text-[hsl(0,70%,55%)] dark:text-[hsl(0,60%,65%)]" color="currentColor" />
-                </motion.div>
               </TiltCard>
             </div>
           </RevealText>
@@ -951,10 +932,6 @@ export default function Index() {
       <ScrollSection>
       <ContentWrap className="pt-8 pb-24 scroll-mt-20">
         <section id="references" className="relative">
-          {/* Floating doodle */}
-          <FloatingDoodle className="-right-4 top-20 hidden md:block" delay={1}>
-            <SketchSparkle size={24} className="text-[hsl(45,80%,50%)] dark:text-[hsl(45,70%,60%)]" color="currentColor" />
-          </FloatingDoodle>
           <ReferencesSection />
         </section>
       </ContentWrap>
@@ -964,10 +941,6 @@ export default function Index() {
       <ScrollSection>
       <ContentWrap className="py-24 pb-16 scroll-mt-20">
         <section id="about" className="scroll-mt-20 relative">
-          {/* Floating doodles */}
-          <FloatingDoodle className="right-0 top-0 hidden md:block" delay={0.7} amplitude={8}>
-            <SketchPalette size={36} className="text-[hsl(280,60%,55%)] dark:text-[hsl(280,50%,65%)]" color="currentColor" />
-          </FloatingDoodle>
           
           {/* Headline */}
           <RevealText>
@@ -1199,9 +1172,6 @@ export default function Index() {
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.div className="absolute -top-2 -right-2" animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                  <SketchHeart size={22} className="text-[hsl(340,70%,55%)] dark:text-[hsl(340,60%,65%)]" color="currentColor" />
-                </motion.div>
                 <p className="text-muted-foreground text-[15px] mb-2 italic">They're small snapshots of something bigger:</p>
                 <p className="text-[19px] leading-[1.6] font-semibold text-foreground">
                   My belief that the best teams and the best products are built when people genuinely enjoy working together ❤️✨
@@ -1218,16 +1188,12 @@ export default function Index() {
       <ScrollSection>
       <ContentWrap className="py-24 pb-32 scroll-mt-20">
         <section id="impossible-list" className="relative">
-          {/* Floating doodles */}
-          <FloatingDoodle className="right-0 -top-4 hidden md:block" delay={0.5} amplitude={10}>
-            <SketchRocket size={36} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" color="currentColor" />
-          </FloatingDoodle>
           
           {/* Header */}
           <RevealText>
             <div className="mb-4 relative inline-block">
               <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-                <WiggleText>Impossible List</WiggleText>
+                Impossible List
               </h2>
               
               <p className="mt-4 text-lg text-muted-foreground">a bucket list, except better</p>
