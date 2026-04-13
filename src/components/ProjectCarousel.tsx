@@ -75,7 +75,7 @@ function ProjectCard({
       <div
         className="relative flex flex-col md:flex-row gap-0 rounded-3xl overflow-hidden border transition-all duration-500 h-full"
         style={{
-          borderColor: hovered ? `${project.color}40` : `${project.color}15`,
+          borderColor: hovered ? `${project.color}60` : `${project.color}35`,
           background: `linear-gradient(135deg, hsl(var(--card)), ${project.color}06)`,
         }}
       >
@@ -134,7 +134,7 @@ function ProjectCard({
               {project.title}
             </motion.h3>
 
-            <p className="text-[13px] md:text-sm text-muted-foreground leading-relaxed mb-5 line-clamp-3">
+            <p className="text-[13px] md:text-sm text-muted-foreground leading-relaxed mb-5">
               {project.description}
             </p>
 
@@ -290,8 +290,8 @@ function CaseStudyModal({
           </div>
           <button
             onClick={onClose}
-            className="flex h-10 w-10 items-center justify-center rounded-full border bg-background/80 text-muted-foreground transition-colors hover:text-foreground"
-            style={{ borderColor: `${color}20` }}
+            className="flex h-10 w-10 items-center justify-center rounded-full border bg-background/80 text-foreground transition-colors hover:text-foreground hover:bg-background"
+            style={{ borderColor: `${color}30` }}
           >
             <X size={18} />
           </button>
