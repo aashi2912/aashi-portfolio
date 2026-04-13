@@ -321,16 +321,22 @@ function ProjectDrawer({
                 >
                   {project.tag}
                 </span>
-                <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
+                <span className="font-mono text-xs tracking-wider" style={{ color: project.cardBg ? "#777" : undefined }}>{project.year}</span>
               </div>
 
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 leading-tight relative z-[1] text-foreground">
+              <h2
+                className="text-3xl md:text-4xl font-bold tracking-tight mb-3 leading-tight relative z-[1]"
+                style={{ color: project.cardBg ? "#1a1a1a" : undefined }}
+              >
                 {project.title}
               </h2>
 
               {/* Hero tagline - different from card description */}
               {details?.heroTagline && (
-                <p className="text-muted-foreground text-base leading-relaxed max-w-lg relative z-[1] italic">
+                <p
+                  className="text-base leading-relaxed max-w-lg relative z-[1] italic"
+                  style={{ color: project.cardBg ? "#555" : undefined }}
+                >
                   {details.heroTagline}
                 </p>
               )}
