@@ -3,6 +3,7 @@ import { motion, useInView, AnimatePresence, useScroll, useTransform } from "fra
 import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link, ArrowDown } from "lucide-react";
 import { ReferencesSection } from "@/components/ReferencesSection";
 import { SquigglyUnderline, FloatingDoodle, WiggleText, AnimatedCounter, DoodleArrow, DoodleCircle } from "@/components/Doodles";
+import { SketchSparkle, SketchLightbulb, SketchTarget, SketchBriefcase, SketchPin, SketchRocket, SketchPalette, SketchHeart } from "@/components/SketchIcons";
 import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
@@ -43,7 +44,7 @@ galleryFormal, galleryBoostGroup, galleryAxe, galleryOutdoor, galleryBoostTrio,
 galleryClimbingGroup, galleryClimbing];
 
 
-const roles = ["Product Manager.", "Software Developer.", "Business Systems Analyst.", "Data Analyst.", "Lifelong Learner."];
+const roles = ["Product Manager.", "Software Developer.", "Vibe Coder.", "Business Systems Analyst.", "Data Analyst.", "Lifelong Learner."];
 
 const socialLinks = [
 { icon: Linkedin, href: "https://www.linkedin.com/in/aashithakkar29/", label: "LinkedIn" },
@@ -418,13 +419,13 @@ export default function Index() {
       <section id="home" className="scroll-mt-20 relative overflow-hidden">
         {/* Floating doodles in hero */}
         <FloatingDoodle className="top-16 right-[10%] hidden md:block" delay={0.5}>
-          <span className="text-2xl">✨</span>
+          <SketchSparkle size={32} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" color="currentColor" />
         </FloatingDoodle>
         <FloatingDoodle className="top-32 left-[5%] hidden md:block" delay={1.2} amplitude={10}>
-          <span className="text-xl">💡</span>
+          <SketchLightbulb size={30} className="text-[hsl(45,80%,50%)] dark:text-[hsl(45,70%,60%)]" color="currentColor" />
         </FloatingDoodle>
         <FloatingDoodle className="top-48 right-[20%] hidden md:block" delay={0.8} amplitude={5}>
-          <span className="text-lg">🎯</span>
+          <SketchTarget size={26} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" color="currentColor" />
         </FloatingDoodle>
 
         {/* Top header: name / roles / social / location */}
@@ -518,7 +519,7 @@ export default function Index() {
         <section id="work" className="scroll-mt-20 relative">
           {/* Floating doodle decorations */}
           <FloatingDoodle className="-right-8 top-0 hidden md:block" delay={0.3} amplitude={8}>
-            <span className="text-3xl">💼</span>
+            <SketchBriefcase size={36} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" color="currentColor" />
           </FloatingDoodle>
 
           <RevealText>
@@ -548,7 +549,9 @@ export default function Index() {
               >
                 <img src={profilePhoto} alt="Aashi Thakkar" className="w-80 h-[28rem] rounded-2xl object-cover object-top" />
                 {/* Doodle corner decoration */}
-                <motion.span className="absolute -top-3 -right-3 text-xl" animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2, repeat: Infinity }}>📌</motion.span>
+                <motion.div className="absolute -top-3 -right-3" animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2, repeat: Infinity }}>
+                  <SketchPin size={24} className="text-[hsl(0,70%,55%)] dark:text-[hsl(0,60%,65%)]" color="currentColor" />
+                </motion.div>
               </motion.div>
             </div>
           </RevealText>
@@ -853,7 +856,7 @@ export default function Index() {
         <section id="references" className="relative">
           {/* Floating doodle */}
           <FloatingDoodle className="-right-4 top-20 hidden md:block" delay={1}>
-            <span className="text-xl">💬</span>
+            <SketchSparkle size={24} className="text-[hsl(45,80%,50%)] dark:text-[hsl(45,70%,60%)]" color="currentColor" />
           </FloatingDoodle>
           <ReferencesSection />
         </section>
@@ -865,7 +868,7 @@ export default function Index() {
         <section id="about" className="scroll-mt-20 relative">
           {/* Floating doodles */}
           <FloatingDoodle className="right-0 top-0 hidden md:block" delay={0.7} amplitude={8}>
-            <span className="text-3xl">🎨</span>
+            <SketchPalette size={36} className="text-[hsl(280,60%,55%)] dark:text-[hsl(280,50%,65%)]" color="currentColor" />
           </FloatingDoodle>
           
           {/* Headline */}
@@ -1098,7 +1101,9 @@ export default function Index() {
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.span className="absolute -top-2 -right-2 text-lg" animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>💖</motion.span>
+                <motion.div className="absolute -top-2 -right-2" animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                  <SketchHeart size={22} className="text-[hsl(340,70%,55%)] dark:text-[hsl(340,60%,65%)]" color="currentColor" />
+                </motion.div>
                 <p className="text-muted-foreground text-[15px] mb-2 italic">They're small snapshots of something bigger:</p>
                 <p className="text-[19px] leading-[1.6] font-semibold text-foreground">
                   My belief that the best teams and the best products are built when people genuinely enjoy working together ❤️✨
@@ -1117,7 +1122,7 @@ export default function Index() {
         <section id="impossible-list" className="relative">
           {/* Floating doodles */}
           <FloatingDoodle className="right-0 -top-4 hidden md:block" delay={0.5} amplitude={10}>
-            <span className="text-3xl">🚀</span>
+            <SketchRocket size={36} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" color="currentColor" />
           </FloatingDoodle>
           
           {/* Header */}
