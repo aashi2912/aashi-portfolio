@@ -237,41 +237,7 @@ function StatCard({ value, label, color, delay = 0 }: { value: string; label: st
   );
 }
 
-  return (
-    <motion.div
-      className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-lg flex items-center justify-center p-4"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={onClose}
-    >
-      <motion.div
-        className="relative w-full max-w-3xl h-[85vh] bg-card rounded-2xl overflow-hidden border shadow-2xl"
-        style={{ borderColor: `${color}30` }}
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.9, opacity: 0 }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between px-6 py-4 border-b" style={{ borderColor: `${color}20`, backgroundColor: `${color}06` }}>
-          <span className="text-sm font-semibold text-foreground">Case Study PDF</span>
-          <button
-            onClick={onClose}
-            className="w-8 h-8 rounded-full flex items-center justify-center bg-background/60 border border-border/50 text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <X size={16} />
-          </button>
-        </div>
-        <iframe
-          src={pdfUrl}
-          className="w-full h-[calc(85vh-60px)]"
-          title="Case Study PDF"
-        />
-      </motion.div>
-    </motion.div>
-  );
-}
+
 
 /* ─── Case Study Drawer ─── */
 
