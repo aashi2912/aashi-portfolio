@@ -345,20 +345,28 @@ function StaggerItem({ children, className }: {children: React.ReactNode;classNa
 function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: number;}) {
   return (
     <>
-      <div className={`flex items-center gap-3 rounded-md border border-border/50 bg-muted/20 px-3 py-1.5 ${depth > 0 ? "ml-8" : ""}`}>
+      <motion.div
+        className={`flex items-center gap-3 rounded-md border border-border/50 bg-muted/20 px-3 py-1.5 group ${depth > 0 ? "ml-8" : ""}`}
+        whileHover={{ x: 3, backgroundColor: "hsl(var(--accent) / 0.5)" }}
+        transition={{ duration: 0.15 }}
+      >
         {/* Circle checkbox */}
-        <div className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-        item.done ?
-        "bg-emerald-500 border-emerald-500" :
-        "border-muted-foreground/40"}`
-        }>
+        <motion.div
+          className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+          item.done ?
+          "bg-emerald-500 border-emerald-500" :
+          "border-muted-foreground/40"}`}
+          whileHover={!item.done ? { scale: 1.2, borderColor: "hsl(200,50%,35%)" } : {}}
+        >
           {item.done &&
-          <Check className="w-3 h-3 text-white" strokeWidth={3} />
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 500 }}>
+            <Check className="w-3 h-3 text-white" strokeWidth={3} />
+          </motion.div>
           }
-        </div>
+        </motion.div>
         {/* Text */}
         <span className={`text-[15px] leading-relaxed flex-1 ${
-        item.done ? "text-muted-foreground" : "text-foreground"}`
+        item.done ? "text-muted-foreground line-through" : "text-foreground"}`
         }>
           {item.text}
         </span>
@@ -372,7 +380,7 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
         {item.date &&
         <span className="text-sm text-muted-foreground whitespace-nowrap">{item.date}</span>
         }
-      </div>
+      </motion.div>
       {item.sub?.map((subItem, i) =>
       <ImpossibleListItem key={i} item={subItem} depth={depth + 1} />
       )}
