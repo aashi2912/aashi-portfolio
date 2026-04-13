@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useInView, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link, ArrowDown } from "lucide-react";
 import { ReferencesSection } from "@/components/ReferencesSection";
-import { SquigglyUnderline, DoodleStar, FloatingDoodle, WiggleText, WavyDivider, AnimatedCounter, DoodleArrow, DoodleCircle } from "@/components/Doodles";
+import { SquigglyUnderline, FloatingDoodle, WiggleText, AnimatedCounter, DoodleArrow, DoodleCircle } from "@/components/Doodles";
 import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
@@ -417,13 +417,13 @@ export default function Index() {
       <section id="home" className="scroll-mt-20 relative overflow-hidden">
         {/* Floating doodles in hero */}
         <FloatingDoodle className="top-16 right-[10%] hidden md:block" delay={0.5}>
-          <DoodleStar size={24} color="hsl(45,90%,55%)" />
+          <span className="text-2xl">✨</span>
         </FloatingDoodle>
         <FloatingDoodle className="top-32 left-[5%] hidden md:block" delay={1.2} amplitude={10}>
-          <DoodleStar size={16} color="hsl(200,50%,60%)" />
+          <span className="text-xl">💡</span>
         </FloatingDoodle>
         <FloatingDoodle className="top-48 right-[20%] hidden md:block" delay={0.8} amplitude={5}>
-          <DoodleStar size={14} color="hsl(340,70%,55%)" />
+          <span className="text-lg">🎯</span>
         </FloatingDoodle>
 
         {/* Top header: name / roles / social / location */}
@@ -511,7 +511,6 @@ export default function Index() {
 
       </section>
 
-      <WavyDivider />
 
       {/* ── Work ── */}
       <ContentWrap className="py-24 scroll-mt-20">
@@ -533,7 +532,7 @@ export default function Index() {
           <RevealText delay={0.08}>
             <div className="mt-10 mb-8 grid grid-cols-3 gap-6 p-6 rounded-2xl border border-dashed border-border bg-muted/20">
               <AnimatedCounter value={4} suffix="+" label="Years Experience" delay={0} />
-              <AnimatedCounter value={5} suffix="" label="Companies" delay={0.15} />
+              <AnimatedCounter value={3} suffix="" label="Companies" delay={0.15} />
               <AnimatedCounter value={3} suffix="" label="Roles" delay={0.3} />
             </div>
           </RevealText>
@@ -548,7 +547,7 @@ export default function Index() {
               >
                 <img src={profilePhoto} alt="Aashi Thakkar" className="w-80 h-[28rem] rounded-2xl object-cover object-top" />
                 {/* Doodle corner decoration */}
-                <DoodleStar size={22} color="hsl(45,90%,55%)" className="absolute -top-3 -right-3" />
+                <motion.span className="absolute -top-3 -right-3 text-xl" animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2, repeat: Infinity }}>📌</motion.span>
               </motion.div>
             </div>
           </RevealText>
@@ -778,7 +777,6 @@ export default function Index() {
         </section>
       </ContentWrap>
 
-      <WavyDivider />
 
       {/* ── Projects ── */}
       <ContentWrap className="scroll-mt-20">
@@ -848,20 +846,18 @@ export default function Index() {
         </section>
       </ContentWrap>
 
-      <WavyDivider />
 
       {/* ── References ── */}
       <ContentWrap className="pt-8 pb-24 scroll-mt-20">
         <section id="references" className="relative">
           {/* Floating doodle */}
           <FloatingDoodle className="-right-4 top-20 hidden md:block" delay={1}>
-            <DoodleStar size={20} color="hsl(340,70%,55%)" />
+            <span className="text-xl">💬</span>
           </FloatingDoodle>
           <ReferencesSection />
         </section>
       </ContentWrap>
 
-      <WavyDivider />
 
       {/* ── About ── */}
       <ContentWrap className="py-24 pb-16 scroll-mt-20">
@@ -1101,7 +1097,7 @@ export default function Index() {
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <DoodleStar size={18} color="hsl(45,90%,55%)" className="absolute -top-2 -right-2" />
+                <motion.span className="absolute -top-2 -right-2 text-lg" animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>💖</motion.span>
                 <p className="text-muted-foreground text-[15px] mb-2 italic">They're small snapshots of something bigger:</p>
                 <p className="text-[19px] leading-[1.6] font-semibold text-foreground">
                   My belief that the best teams and the best products are built when people genuinely enjoy working together ❤️✨
@@ -1113,7 +1109,7 @@ export default function Index() {
         </section>
       </ContentWrap>
 
-      <WavyDivider />
+      
 
       {/* ── Impossible List ── */}
       <ContentWrap className="py-24 pb-32 scroll-mt-20">

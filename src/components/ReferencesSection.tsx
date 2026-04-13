@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, FileText, Mail, MessageCircle } from "lucide-react";
-import { SquigglyUnderline, DoodleStar, FloatingDoodle } from "@/components/Doodles";
+import { SquigglyUnderline, FloatingDoodle } from "@/components/Doodles";
 
 const references = [
   {
@@ -80,10 +80,10 @@ function TestimonialsBlock() {
     <div className="py-16 md:py-24 relative">
       {/* Floating doodles */}
       <FloatingDoodle className="-left-8 top-20 hidden md:block" delay={0.8} amplitude={8}>
-        <DoodleStar size={18} color="hsl(45,90%,55%)" />
+        <span className="text-xl">🗣️</span>
       </FloatingDoodle>
       <FloatingDoodle className="-right-4 top-40 hidden md:block" delay={1.5}>
-        <DoodleStar size={14} color="hsl(200,50%,60%)" />
+        <span className="text-lg">🤝</span>
       </FloatingDoodle>
 
       {/* Heading */}
