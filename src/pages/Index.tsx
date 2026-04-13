@@ -334,9 +334,10 @@ function StaggerItem({ children, className }: {children: React.ReactNode;classNa
     <motion.div
       className={className}
       variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] } }
-      }}>
+        hidden: { opacity: 0, y: 20, rotate: -1 },
+        visible: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] } }
+      }}
+      whileHover={{ rotate: [0, -1, 1, 0], transition: { duration: 0.4 } }}>
       
       {children}
     </motion.div>);
@@ -347,8 +348,8 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
     <>
       <motion.div
         className={`flex items-center gap-3 rounded-md border border-border/50 bg-muted/20 px-3 py-1.5 group ${depth > 0 ? "ml-8" : ""}`}
-        whileHover={{ x: 3, backgroundColor: "hsl(var(--accent) / 0.5)" }}
-        transition={{ duration: 0.15 }}
+        whileHover={{ x: 3, rotate: [0, -0.5, 0.5, 0], backgroundColor: "hsl(var(--accent) / 0.5)" }}
+        transition={{ duration: 0.25 }}
       >
         {/* Circle checkbox */}
         <motion.div
