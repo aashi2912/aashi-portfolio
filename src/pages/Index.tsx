@@ -1049,7 +1049,7 @@ export default function Index() {
             {/* Block 1 - The social side */}
             <RevealText delay={0.45}>
               <div className="flex gap-4 items-start">
-                <div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg">🎉</div>
+                <motion.div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg" animate={{ rotate: [0, -5, 5, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>🎉</motion.div>
                 <div>
                   <p className="text-[17px] leading-[1.8] text-foreground/90">
                     Outside meeting rooms, sprint boards, and roadmaps, you'll usually find me doing something a little more social - joining team events, exploring new activities, or organizing spontaneous outings with colleagues. Whether it's group adventures 🏔️, company events 🎊, or just moments of shared laughter 😄, these experiences matter to me.
@@ -1070,7 +1070,7 @@ export default function Index() {
             {/* Block 3 - Bringing people together */}
             <RevealText delay={0.55}>
               <div className="flex gap-4 items-start">
-                <div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg">🧩</div>
+                <motion.div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg" animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}>🧩</motion.div>
                 <div>
                   <p className="text-[17px] leading-[1.8] text-foreground/90">
                     As a Product Manager, I spend a lot of time bringing people together - engineers, designers, stakeholders, and users. The same curiosity and energy that pushes me to participate in team activities is what helps me build trust 🤝, understand different perspectives 🌍, and create environments where collaboration thrives 🌱.
@@ -1082,7 +1082,7 @@ export default function Index() {
             {/* Block 4 - The gallery moments */}
             <RevealText delay={0.6}>
               <div className="flex gap-4 items-start">
-                <div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg">📸</div>
+                <motion.div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg" animate={{ rotate: [0, -4, 4, 0] }} transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}>📸</motion.div>
                 <div>
                   <p className="text-[17px] leading-[1.8] text-foreground/90">
                     This gallery captures some of those moments - the conversations 💬, the adventures 🚀, the team bonding 🫂, and the fun along the way.
