@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link } from "lucide-react";
+import { motion, useInView, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link, ArrowDown } from "lucide-react";
 import { ReferencesSection } from "@/components/ReferencesSection";
-
+import { SquigglyUnderline, DoodleStar, FloatingDoodle, WiggleText, WavyDivider, AnimatedCounter, DoodleArrow, DoodleCircle } from "@/components/Doodles";
 import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
@@ -345,20 +345,28 @@ function StaggerItem({ children, className }: {children: React.ReactNode;classNa
 function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: number;}) {
   return (
     <>
-      <div className={`flex items-center gap-3 rounded-md border border-border/50 bg-muted/20 px-3 py-1.5 ${depth > 0 ? "ml-8" : ""}`}>
+      <motion.div
+        className={`flex items-center gap-3 rounded-md border border-border/50 bg-muted/20 px-3 py-1.5 group ${depth > 0 ? "ml-8" : ""}`}
+        whileHover={{ x: 3, backgroundColor: "hsl(var(--accent) / 0.5)" }}
+        transition={{ duration: 0.15 }}
+      >
         {/* Circle checkbox */}
-        <div className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-        item.done ?
-        "bg-emerald-500 border-emerald-500" :
-        "border-muted-foreground/40"}`
-        }>
+        <motion.div
+          className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+          item.done ?
+          "bg-emerald-500 border-emerald-500" :
+          "border-muted-foreground/40"}`}
+          whileHover={!item.done ? { scale: 1.2, borderColor: "hsl(200,50%,35%)" } : {}}
+        >
           {item.done &&
-          <Check className="w-3 h-3 text-white" strokeWidth={3} />
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 500 }}>
+            <Check className="w-3 h-3 text-white" strokeWidth={3} />
+          </motion.div>
           }
-        </div>
+        </motion.div>
         {/* Text */}
         <span className={`text-[15px] leading-relaxed flex-1 ${
-        item.done ? "text-muted-foreground" : "text-foreground"}`
+        item.done ? "text-muted-foreground line-through" : "text-foreground"}`
         }>
           {item.text}
         </span>
@@ -372,7 +380,7 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
         {item.date &&
         <span className="text-sm text-muted-foreground whitespace-nowrap">{item.date}</span>
         }
-      </div>
+      </motion.div>
       {item.sub?.map((subItem, i) =>
       <ImpossibleListItem key={i} item={subItem} depth={depth + 1} />
       )}
@@ -406,7 +414,17 @@ export default function Index() {
     <div>
 
       {/* ── Home ── */}
-      <section id="home" className="scroll-mt-20">
+      <section id="home" className="scroll-mt-20 relative overflow-hidden">
+        {/* Floating doodles in hero */}
+        <FloatingDoodle className="top-16 right-[10%] hidden md:block" delay={0.5}>
+          <DoodleStar size={24} color="hsl(45,90%,55%)" />
+        </FloatingDoodle>
+        <FloatingDoodle className="top-32 left-[5%] hidden md:block" delay={1.2} amplitude={10}>
+          <DoodleStar size={16} color="hsl(200,50%,60%)" />
+        </FloatingDoodle>
+        <FloatingDoodle className="top-48 right-[20%] hidden md:block" delay={0.8} amplitude={5}>
+          <DoodleStar size={14} color="hsl(340,70%,55%)" />
+        </FloatingDoodle>
 
         {/* Top header: name / roles / social / location */}
         <ContentWrap className="pt-6">
@@ -418,9 +436,12 @@ export default function Index() {
             
             {/* Left: name + roles + social */}
             <div className="flex flex-col gap-2">
-              <h1 className="text-[26px] font-bold tracking-tight sm:text-[32px] leading-tight">
-                Aashi Thakkar
-              </h1>
+              <div className="relative inline-block">
+                <h1 className="text-[26px] font-bold tracking-tight sm:text-[32px] leading-tight">
+                  <WiggleText>Aashi Thakkar</WiggleText>
+                </h1>
+                <SquigglyUnderline width={180} className="mt-1" />
+              </div>
               <div className="h-6 text-[16px] font-normal text-muted-foreground sm:text-[18px]">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -437,16 +458,18 @@ export default function Index() {
               </div>
               <div className="flex items-center gap-1">
                 {socialLinks.map(({ icon: Icon, href, label }) =>
-                <a
+                <motion.a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-md p-1.5 text-muted-foreground transition-all hover:text-foreground"
-                  aria-label={label}>
+                  aria-label={label}
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}>
                   
                     <Icon className="h-5 w-5" />
-                  </a>
+                  </motion.a>
                 )}
               </div>
             </div>
@@ -474,26 +497,59 @@ export default function Index() {
           <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
             I <span className="italic">bridge</span> the gap between<br />ambition and execution!
           </h2>
+
+          {/* Scroll indicator */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <span className="text-xs text-muted-foreground tracking-widest uppercase">scroll</span>
+            <ArrowDown className="w-4 h-4 text-muted-foreground" />
+          </motion.div>
         </motion.div>
-
-
 
       </section>
 
+      <WavyDivider />
+
       {/* ── Work ── */}
       <ContentWrap className="py-24 scroll-mt-20">
-        <section id="work" className="scroll-mt-20">
+        <section id="work" className="scroll-mt-20 relative">
+          {/* Floating doodle decorations */}
+          <FloatingDoodle className="-right-8 top-0 hidden md:block" delay={0.3} amplitude={8}>
+            <span className="text-3xl">💼</span>
+          </FloatingDoodle>
+
           <RevealText>
-            <h2 className="text-[28px] font-bold tracking-tight">Work</h2>
+            <div className="relative inline-block">
+              <h2 className="text-[28px] font-bold tracking-tight">Work</h2>
+              <SquigglyUnderline width={70} className="mt-1" />
+            </div>
             <p className="mt-1 text-[18px] text-muted-foreground">An overview of my career.</p>
+          </RevealText>
+
+          {/* Infographic Stats Row */}
+          <RevealText delay={0.08}>
+            <div className="mt-10 mb-8 grid grid-cols-3 gap-6 p-6 rounded-2xl border border-dashed border-border bg-muted/20">
+              <AnimatedCounter value={4} suffix="+" label="Years Experience" delay={0} />
+              <AnimatedCounter value={5} suffix="" label="Companies" delay={0.15} />
+              <AnimatedCounter value={3} suffix="" label="Roles" delay={0.3} />
+            </div>
           </RevealText>
 
           {/* Profile Card */}
           <RevealText delay={0.1}>
             <div className="mt-12 flex flex-col items-center text-center gap-4">
-              <img src={profilePhoto} alt="Aashi Thakkar" className="w-80 h-[28rem] rounded-2xl object-cover object-top" />
-
-
+              <motion.div
+                className="relative"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <img src={profilePhoto} alt="Aashi Thakkar" className="w-80 h-[28rem] rounded-2xl object-cover object-top" />
+                {/* Doodle corner decoration */}
+                <DoodleStar size={22} color="hsl(45,90%,55%)" className="absolute -top-3 -right-3" />
+              </motion.div>
             </div>
           </RevealText>
 
@@ -574,19 +630,33 @@ export default function Index() {
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
               <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
                 <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Experience</span>
+                <DoodleArrow direction="down" size={30} className="mt-2 ml-2 hidden sm:block" />
               </div>
               <div className="flex-1 divide-y divide-border/40">
                 {experiences.map((exp, i) =>
-                <div key={i} className="flex items-start gap-4 py-5">
-                    <img src={exp.logo} alt={exp.company} className="mt-1 h-10 w-10 shrink-0 rounded-lg object-contain" />
+                <motion.div
+                  key={i}
+                  className="flex items-start gap-4 py-5 group"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  whileHover={{ x: 4 }}
+                >
+                    <motion.img
+                      src={exp.logo}
+                      alt={exp.company}
+                      className="mt-1 h-10 w-10 shrink-0 rounded-lg object-contain"
+                      whileHover={{ rotate: 5, scale: 1.1 }}
+                    />
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                        <h4 className="text-[17px] font-semibold">{exp.role}</h4>
+                        <h4 className="text-[17px] font-semibold group-hover:text-[hsl(200,50%,35%)] dark:group-hover:text-[hsl(200,40%,75%)] transition-colors">{exp.role}</h4>
                         <span className="font-mono text-[13px] text-muted-foreground">{exp.period}</span>
                       </div>
                       <p className="text-[15px] text-muted-foreground">{exp.company}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 )}
               </div>
             </div>
@@ -602,15 +672,31 @@ export default function Index() {
                 <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Skills</span>
               </div>
               <div className="flex-1 space-y-8">
-                {skillCategories.map((cat) =>
-                <div key={cat.name}>
+                {skillCategories.map((cat, catIdx) =>
+                <motion.div
+                  key={cat.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: catIdx * 0.08 }}
+                >
                     <h4 className="mb-4 text-[22px] font-bold">{cat.name}</h4>
                     <div className="flex flex-wrap gap-2.5">
-                      {cat.items.map((skill) =>
-                    <span key={skill} className="rounded-full border border-[hsl(200,100%,40%,0.25)] bg-[hsl(200,100%,50%,0.1)] px-3 py-2 text-[14px] text-[hsl(200,50%,35%)] dark:border-[hsl(200,100%,50%,0.15)] dark:bg-[hsl(200,100%,50%,0.13)] dark:text-[hsl(200,40%,75%)]">{skill}</span>
+                      {cat.items.map((skill, skillIdx) =>
+                    <motion.span
+                      key={skill}
+                      className="rounded-full border border-[hsl(200,100%,40%,0.25)] bg-[hsl(200,100%,50%,0.1)] px-3 py-2 text-[14px] text-[hsl(200,50%,35%)] dark:border-[hsl(200,100%,50%,0.15)] dark:bg-[hsl(200,100%,50%,0.13)] dark:text-[hsl(200,40%,75%)] cursor-default"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: skillIdx * 0.02 + catIdx * 0.05 }}
+                      whileHover={{ scale: 1.1, y: -2 }}
+                    >
+                      {skill}
+                    </motion.span>
                     )}
                     </div>
-                  </div>
+                  </motion.div>
                 )}
               </div>
             </div>
@@ -642,12 +728,20 @@ export default function Index() {
           {/* Education Photos */}
           <RevealText delay={0.4}>
             <div className="mt-10 grid grid-cols-2 gap-4">
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl">
-                <img src={eduPhoto1} alt="At Assumption College" className="w-full h-full object-cover object-[center_85%]" />
-              </div>
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl">
-                <img src={eduPhoto2} alt="Graduation" className="w-full h-full object-cover object-[center_25%]" />
-              </div>
+              <motion.div
+                className="aspect-[4/3] overflow-hidden rounded-2xl"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <img src={eduPhoto1} alt="At Assumption College" className="w-full h-full object-cover object-[center_85%] transition-transform duration-500 hover:scale-110" />
+              </motion.div>
+              <motion.div
+                className="aspect-[4/3] overflow-hidden rounded-2xl"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <img src={eduPhoto2} alt="Graduation" className="w-full h-full object-cover object-[center_25%] transition-transform duration-500 hover:scale-110" />
+              </motion.div>
             </div>
           </RevealText>
 
@@ -657,18 +751,38 @@ export default function Index() {
             <div className="mt-16">
                 {/* Action buttons */}
                 <div className="flex flex-wrap gap-3 justify-center">
-                  <a href="/Aashi_Thakkar_Resume.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">Hire Me <FileText size={16} /></a>
-                  <a href="https://www.linkedin.com/in/aashithakkar29/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">Coffee Chat <Coffee size={16} /></a>
-                  <a href="https://topmate.io/aashi_thakkar" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent">1:1 Mentorship <Link size={16} /></a>
+                  {[
+                    { href: "/Aashi_Thakkar_Resume.pdf", label: "Hire Me", icon: FileText, target: "_blank" },
+                    { href: "https://www.linkedin.com/in/aashithakkar29/", label: "Coffee Chat", icon: Coffee, target: "_blank" },
+                    { href: "https://topmate.io/aashi_thakkar", label: "1:1 Mentorship", icon: Link, target: "_blank" },
+                  ].map((btn, i) => (
+                    <motion.a
+                      key={btn.label}
+                      href={btn.href}
+                      target={btn.target}
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-[15px] font-medium transition-colors hover:bg-accent animate-pulse-glow"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {btn.label} <btn.icon size={16} />
+                    </motion.a>
+                  ))}
                 </div>
             </div>
           </RevealText>
         </section>
       </ContentWrap>
 
+      <WavyDivider />
+
       {/* ── Projects ── */}
       <ContentWrap className="scroll-mt-20">
-        <section id="projects">
+        <section id="projects" className="relative">
           {/* Tagline */}
           <RevealText>
             <div className="mb-4">
@@ -710,15 +824,22 @@ export default function Index() {
             {projects.map((project, i) =>
             <StaggerItem key={i}>
                 <motion.div
-                className="group cursor-pointer rounded-lg border border-border p-5 transition-colors hover:bg-accent/50"
-                whileHover={{ x: 4 }}
+                className="group cursor-pointer rounded-lg border border-border p-5 transition-colors hover:bg-accent/50 relative overflow-hidden"
+                whileHover={{ x: 4, boxShadow: "0 8px 30px -12px hsl(200 50% 50% / 0.2)" }}
                 transition={{ duration: 0.2 }}>
                 
+                  {/* Sketch corner accent */}
+                  <div className="absolute top-0 right-0 w-12 h-12 border-b-2 border-l-2 border-dashed border-[hsl(200,50%,35%,0.15)] dark:border-[hsl(200,40%,75%,0.15)] rounded-bl-xl" />
                   <div className="flex items-center justify-between">
-                    <span className="rounded-full bg-accent px-2 py-0.5 text-xs text-muted-foreground">{project.tag}</span>
+                    <motion.span
+                      className="rounded-full bg-accent px-2 py-0.5 text-xs text-muted-foreground"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      {project.tag}
+                    </motion.span>
                     <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
                   </div>
-                  <h3 className="mt-3 text-lg font-semibold group-hover:underline">{project.title}</h3>
+                  <h3 className="mt-3 text-lg font-semibold group-hover:text-[hsl(200,50%,35%)] dark:group-hover:text-[hsl(200,40%,75%)] transition-colors">{project.title}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
                 </motion.div>
               </StaggerItem>
@@ -727,16 +848,29 @@ export default function Index() {
         </section>
       </ContentWrap>
 
+      <WavyDivider />
+
       {/* ── References ── */}
       <ContentWrap className="pt-8 pb-24 scroll-mt-20">
-        <section id="references">
+        <section id="references" className="relative">
+          {/* Floating doodle */}
+          <FloatingDoodle className="-right-4 top-20 hidden md:block" delay={1}>
+            <DoodleStar size={20} color="hsl(340,70%,55%)" />
+          </FloatingDoodle>
           <ReferencesSection />
         </section>
       </ContentWrap>
 
+      <WavyDivider />
+
       {/* ── About ── */}
       <ContentWrap className="py-24 pb-16 scroll-mt-20">
-        <section id="about" className="scroll-mt-20">
+        <section id="about" className="scroll-mt-20 relative">
+          {/* Floating doodles */}
+          <FloatingDoodle className="right-0 top-0 hidden md:block" delay={0.7} amplitude={8}>
+            <span className="text-3xl">🎨</span>
+          </FloatingDoodle>
+          
           {/* Headline */}
           <RevealText>
             <div className="mb-4">
@@ -962,26 +1096,41 @@ export default function Index() {
 
             {/* Block 5 - The belief - closing statement */}
             <RevealText delay={0.65}>
-              <div className="mt-4 rounded-xl border border-border bg-muted/30 p-6">
+              <motion.div
+                className="mt-4 rounded-xl border border-dashed border-border bg-muted/30 p-6 relative"
+                whileHover={{ scale: 1.01 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <DoodleStar size={18} color="hsl(45,90%,55%)" className="absolute -top-2 -right-2" />
                 <p className="text-muted-foreground text-[15px] mb-2 italic">They're small snapshots of something bigger:</p>
                 <p className="text-[19px] leading-[1.6] font-semibold text-foreground">
                   My belief that the best teams and the best products are built when people genuinely enjoy working together ❤️✨
                 </p>
-              </div>
+              </motion.div>
             </RevealText>
           </div>
           </div>
         </section>
       </ContentWrap>
 
+      <WavyDivider />
+
       {/* ── Impossible List ── */}
       <ContentWrap className="py-24 pb-32 scroll-mt-20">
-        <section id="impossible-list">
+        <section id="impossible-list" className="relative">
+          {/* Floating doodles */}
+          <FloatingDoodle className="right-0 -top-4 hidden md:block" delay={0.5} amplitude={10}>
+            <span className="text-3xl">🚀</span>
+          </FloatingDoodle>
+          
           {/* Header */}
           <RevealText>
-            <div className="mb-4">
-              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">Impossible List</h2>
-              <p className="mt-2 text-lg text-muted-foreground">a bucket list, except better</p>
+            <div className="mb-4 relative inline-block">
+              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+                <WiggleText>Impossible List</WiggleText>
+              </h2>
+              <SquigglyUnderline width={260} className="mt-2" color="hsl(200,50%,35%)" />
+              <p className="mt-4 text-lg text-muted-foreground">a bucket list, except better</p>
             </div>
           </RevealText>
 
