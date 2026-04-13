@@ -86,10 +86,8 @@ function ProjectCard({
         <motion.div
           className="relative w-full md:w-[55%] min-h-[280px] md:min-h-[400px] overflow-hidden flex items-center justify-center"
           style={{
-            backgroundColor: project.cardBg || undefined,
-            background: project.cardBg
-              ? project.cardBg
-              : `linear-gradient(135deg, ${project.color}22, ${project.color}10, ${project.color}05)`,
+            background: `linear-gradient(135deg, ${project.color}08, ${project.color}04)`,
+            backgroundColor: '#ffffff',
           }}
         >
           {project.image ? (
@@ -145,19 +143,22 @@ function ProjectCard({
 
             {project.details?.tools && (
               <div className="flex flex-wrap gap-2 mb-8">
-                {project.details.tools.slice(0, 4).map((t, i) => (
-                  <span
-                    key={i}
-                    className="rounded-full px-3 py-1 text-[11px] font-medium border"
-                    style={{
-                      borderColor: `${project.color}30`,
-                      backgroundColor: `${project.color}08`,
-                      color: project.color,
-                    }}
-                  >
-                    {t}
-                  </span>
-                ))}
+                {project.details.tools.slice(0, 5).map((t, i) => {
+                  const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl)\b/i.test(t);
+                  return (
+                    <span
+                      key={i}
+                      className={`rounded-full px-3 py-1 text-[11px] font-medium border ${isAI ? 'font-bold' : ''}`}
+                      style={{
+                        borderColor: isAI ? `${project.color}60` : `${project.color}30`,
+                        backgroundColor: isAI ? `${project.color}18` : `${project.color}08`,
+                        color: project.color,
+                      }}
+                    >
+                      {isAI ? `✦ ${t}` : t}
+                    </span>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -730,11 +731,14 @@ function ProjectDrawer({
                 {details.tools && details.tools.length > 0 && (
                   <SectionBlock label="Tools & Stack" color={c} delay={0.75}>
                     <div className="flex flex-wrap gap-2.5">
-                      {details.tools.map((t, i) => (
-                        <span key={i} className="rounded-full px-4 py-2 text-xs font-medium border" style={{ borderColor: `${c}25`, backgroundColor: `${c}10`, color: c }}>
-                          {t}
-                        </span>
-                      ))}
+                      {details.tools.map((t, i) => {
+                        const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl)\b/i.test(t);
+                        return (
+                          <span key={i} className={`rounded-full px-4 py-2 text-xs font-medium border ${isAI ? 'font-bold' : ''}`} style={{ borderColor: isAI ? `${c}45` : `${c}25`, backgroundColor: isAI ? `${c}18` : `${c}10`, color: c }}>
+                            {isAI ? `✦ ${t}` : t}
+                          </span>
+                        );
+                      })}
                     </div>
                   </SectionBlock>
                 )}

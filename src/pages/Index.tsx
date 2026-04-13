@@ -169,6 +169,7 @@ const projects: Project[] = [
   image: vibeRouteHero,
   caseStudyPdf: "/case-studies/vibe-route-case-study.pdf",
   caseStudyPages: Array.from({ length: 13 }, (_, i) => `/case-studies/vibe-route-pages/page-${i + 1}.jpg`),
+  prdPages: Array.from({ length: 5 }, (_, i) => `/case-studies/vibe-route-prd-pages/page-${i + 1}.jpg`),
   githubLink: "https://github.com/aashi2912/vibe-route",
   details: {
     heroTagline: "An AI Product Manager case study - from research to shipped product in 5 weeks.",
@@ -239,7 +240,7 @@ const projects: Project[] = [
     ],
     takeawayQuote: "The best AI project isn't the one with the most AI - it's the one where every AI component exists because the product is genuinely better with it.",
     takeawayTags: ["Research-driven thinking", "Honest about limitations", "AI applied where it adds value", "Bias-aware design", "End-to-end shipping", "Scope management"],
-    tools: ["React", "Google Maps API", "Google Places API", "Claude API", "DBSCAN Clustering", "Vercel", "TypeScript", "NLP"]
+    tools: ["React", "Google Maps API", "Google Places API", "Claude API (LLM)", "DBSCAN Clustering (ML)", "NLP Pipeline", "Vercel", "TypeScript"]
   }
 },
 {
@@ -250,7 +251,7 @@ const projects: Project[] = [
   year: "2026",
   color: "#E50914",
   secondaryColor: "#B81D24",
-  cardBg: "#141414",
+  cardBg: "#1a1a1a",
   icon: "🎬",
   image: netflixLogo,
   caseStudyPages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-pages/page-${i + 1}.jpg`),
@@ -309,7 +310,7 @@ const projects: Project[] = [
     ],
     takeawayQuote: "Netflix's algorithm is optimized to keep you watching. Blind Spot is optimized to help you grow.",
     takeawayTags: ["Research-driven product thinking", "AI applied where it matters", "Technical depth", "Full-stack shipping"],
-    tools: ["React", "TMDB API", "Claude API", "Cosine Similarity", "Herfindahl Index", "Vercel", "TypeScript"]
+    tools: ["React", "TMDB API", "Claude API (LLM)", "Cosine Similarity (ML)", "Herfindahl Index", "Content-Based Filtering", "Vercel", "TypeScript"]
   }
 },
 {
