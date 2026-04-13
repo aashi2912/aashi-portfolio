@@ -167,10 +167,9 @@ const projects: Project[] = [
   icon: "🗺️",
   image: vibeRouteHero,
   caseStudyPdf: "/case-studies/vibe-route-case-study.pdf",
+  githubLink: "https://github.com/aashi2912",
   details: {
-    role: "AI Product Manager - Solo (End-to-End)",
-    duration: "5 weeks",
-    team: "Solo project - research, design, engineering & shipping",
+    heroTagline: "An AI Product Manager case study - from research to shipped product in 5 weeks.",
     background: "A former Google Maps Senior UX Researcher explained why 'scenic' routing is hard: scoring beauty can bias toward affluent neighborhoods. Google distanced from the feature - but the gap still exists. Scenic driving and hiking trails are solved (Roadtrippers, AllTrails), but urban walking remains a huge gap. 6 peer-reviewed studies shaped every design decision.",
     challenge: "Walking navigation tools treat all routes as distance-minimization problems. A quiet residential path through a park and a noisy arterial road are equivalent if they take the same time. The real challenge: designing vibe-based routing without encoding socioeconomic bias - the exact constraint that keeps mainstream maps from shipping 'pleasantness'.",
     solution: "Built 4 purposeful AI components: (1) Waypoint Discovery - ML clustering to generate genuinely different routes when Google alternatives overlap >70%, (2) Natural Language parsing - converts 'quiet walk with coffee' into structured vibe preferences, (3) Route Narratives - LLM summaries constrained to verified POIs with anti-hallucination guardrails, (4) Vibe Scoring - density-based scoring with diminishing returns (log curve) to avoid score inflation. Designed around bias using objective signals (parks, POI density, road types) instead of subjective 'beauty', and user-defined vibes that shift agency to the walker.",
