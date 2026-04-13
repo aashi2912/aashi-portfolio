@@ -172,9 +172,62 @@ const projects: Project[] = [
   githubLink: "https://github.com/aashi2912/vibe-route",
   details: {
     heroTagline: "An AI Product Manager case study - from research to shipped product in 5 weeks.",
-    background: "A former Google Maps Senior UX Researcher explained why 'scenic' routing is hard: scoring beauty can bias toward affluent neighborhoods. Google distanced from the feature - but the gap still exists. Scenic driving and hiking trails are solved (Roadtrippers, AllTrails), but urban walking remains a huge gap. 6 peer-reviewed studies shaped every design decision.",
-    challenge: "Walking navigation tools treat all routes as distance-minimization problems. A quiet residential path through a park and a noisy arterial road are equivalent if they take the same time. The real challenge: designing vibe-based routing without encoding socioeconomic bias - the exact constraint that keeps mainstream maps from shipping 'pleasantness'.",
-    solution: "Built 4 purposeful AI components: (1) Waypoint Discovery - ML clustering to generate genuinely different routes when Google alternatives overlap >70%, (2) Natural Language parsing - converts 'quiet walk with coffee' into structured vibe preferences, (3) Route Narratives - LLM summaries constrained to verified POIs with anti-hallucination guardrails, (4) Vibe Scoring - density-based scoring with diminishing returns (log curve) to avoid score inflation. Designed around bias using objective signals (parks, POI density, road types) instead of subjective 'beauty', and user-defined vibes that shift agency to the walker.",
+    background: "A former Google Maps Senior UX Researcher explained why 'scenic' routing is hard: scoring beauty can bias toward affluent neighborhoods. Google distanced from the feature - but the gap still exists. Scenic driving and hiking trails are solved (Roadtrippers, AllTrails), but urban walking remains a huge gap.",
+    stats: [
+      { value: "4", label: "AI Components" },
+      { value: "6", label: "Research Studies" },
+      { value: "30+", label: "POIs per Route" },
+      { value: "5", label: "Weeks to Ship" },
+    ],
+    competitiveGap: [
+      { label: "Scenic Driving", status: "Solved", tools: "Roadtrippers, Scenic", solved: true },
+      { label: "Hiking & Trails", status: "Solved", tools: "AllTrails, Komoot", solved: true },
+      { label: "Urban Walking", status: "Huge Gap", tools: "Google Maps = speed only", solved: false },
+    ],
+    drawerSections: [
+      { label: "Research", title: "Every Decision Backed by Research", content: "6 peer-reviewed studies shaped the MVP.", layout: "list" as const, items: [
+        { num: "1", title: "Detour tolerance", desc: "Leisure walkers accept ~25% detours - cap at ~30%" },
+        { num: "2", title: "What people love", desc: "Parks, sky visibility, amenities - define vibe dimensions" },
+        { num: "3", title: "Facility detours", desc: "Walkers detour for attractive stops - waypoint injection" },
+        { num: "4", title: "Night safety gap", desc: "Different needs after dark - Night Walker persona" },
+        { num: "5", title: "Avoid poor lighting", desc: "People avoid dark routes - Well-Lit scoring (V2)" },
+        { num: "6", title: "Night attention", desc: "Hazard scanning changes - night-mode weights" },
+      ]},
+      { label: "How It Works", title: "How Vibe Route Works", layout: "steps" as const, items: [
+        { num: "1", title: "Enter Origin & Destination", desc: "User inputs start and end points on the map" },
+        { num: "2", title: "Select Vibes", desc: "Choose preferences like 'Green & Peaceful' or 'Coffee Stops' - or type naturally" },
+        { num: "3", title: "AI Discovers Waypoints", desc: "ML clustering generates genuinely different routes when Google alternatives overlap >70%" },
+        { num: "4", title: "Score Routes", desc: "Density-based vibe scoring with diminishing returns (log curve) to avoid inflation" },
+        { num: "5", title: "Generate Narratives", desc: "LLM summaries constrained to verified POIs with anti-hallucination guardrails" },
+        { num: "6", title: "Compare & Navigate", desc: "Side-by-side comparison with deep link to Google Maps for real navigation" },
+      ]},
+      { label: "AI Architecture", title: "4 AI Components - Each One Earns Its Place", layout: "grid" as const, items: [
+        { title: "Waypoint Discovery", desc: "ML clustering to create genuinely different route options" },
+        { title: "Natural Language", desc: "Parse 'quiet walk with coffee' into structured vibe preferences" },
+        { title: "Route Narratives", desc: "LLM summaries constrained to verified POIs (anti-hallucination)" },
+        { title: "Vibe Scoring", desc: "Density-based scoring with diminishing returns" },
+      ], rejections: ["Personalization (not enough user data yet)", "'Scenic' LLM scoring (high bias risk)", "AI soundtrack (feature creep)"] },
+      { label: "Bias Design", title: "Designing Around Bias", quote: "Bias isn't a reason not to build - it's a design constraint.", items: [
+        { title: "Objective signals", desc: "Use parks, POI density, road types - not subjective 'beauty'. Reduces value-judgment bias." },
+        { title: "User-defined vibe", desc: "'Green & peaceful' is a preference - not a neighborhood ranking. Shifts agency to the user." },
+        { title: "Audit for correlation", desc: "Planned: 50 routes across diverse Toronto neighborhoods. Correlate vibe scores with census data." },
+        { title: "Reward local discovery", desc: "Count cultural spots + independent shops as positive 'Local Character'. Rewards diversity, not just affluence." },
+      ]},
+      { label: "Decisions", title: "Decisions & Tradeoffs", content: "6 choices that shaped the MVP.", layout: "grid" as const, items: [
+        { title: "Overlap check", desc: "Alternates overlap - waypoint injection fallback" },
+        { title: "Scoring curve", desc: "Linear to diminishing returns (log) to avoid score inflation" },
+        { title: "Global-first MVP", desc: "No city datasets yet - ship everywhere using Maps APIs" },
+        { title: "Progressive loading", desc: "Routes, scores, narratives for faster perceived speed" },
+        { title: "Anti-hallucination", desc: "Constrained prompts + template fallback for reliability" },
+        { title: "Scope cut", desc: "Defer 'Well-Lit' to V2 due to data availability" },
+      ]},
+      { label: "Roadmap", title: "Future Roadmap", layout: "roadmap" as const, items: [
+        { version: "V2", title: "Street View Computer Vision", desc: "Green View Index via semantic segmentation - measure what a route actually looks like" },
+        { version: "V2", title: "Well-Lit Scoring", desc: "Use streetlight datasets to support the Night Walker persona" },
+        { version: "V2", title: "Bias Audit", desc: "Run 50 routes across diverse neighborhoods, correlate with census income data, publish results" },
+        { version: "V3", title: "Community Layer", desc: "User-submitted vibes + ratings. Big value - but comes with moderation & privacy risks." },
+      ]},
+    ],
     results: [
       "Shipped a live product in 5 weeks - not a concept deck (vibe-route.vercel.app)",
       "4 AI components - each one earns its place with a clear 'why'",
@@ -184,26 +237,78 @@ const projects: Project[] = [
       "~40% Places API cache hit rate for cost efficiency",
       "Total build + launch cost: $5-$22 (APIs + LLM during dev)"
     ],
+    takeawayQuote: "The best AI project isn't the one with the most AI - it's the one where every AI component exists because the product is genuinely better with it.",
+    takeawayTags: ["Research-driven thinking", "Honest about limitations", "AI applied where it adds value", "Bias-aware design", "End-to-end shipping", "Scope management"],
     tools: ["React", "Google Maps API", "Google Places API", "Claude API", "DBSCAN Clustering", "Vercel", "TypeScript", "NLP"]
   }
 },
 {
-  title: "Onboarding Flow Redesign",
-  description: "Redesigned the end-to-end onboarding experience, improving activation rate by 35%.",
-  tag: "UX",
-  link: "#",
-  year: "2024",
-  color: "hsl(280,50%,55%)",
-  icon: "✨",
+  title: "Blind Spot",
+  description: "80% of what you watch on Netflix was chosen by an algorithm. I built a tool that shows you what it's hiding - see your filter bubble, find blind spots, and bridge the gap with AI.",
+  tag: "AI Product",
+  link: "https://my-blind-spot.vercel.app/",
+  year: "2025",
+  color: "#E50914",
+  secondaryColor: "#B81D24",
+  cardBg: "#141414",
+  icon: "🎬",
+  image: blindSpotHero,
+  caseStudyPages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-pages/page-${i + 1}.jpg`),
+  githubLink: "https://github.com/aashi2912/blind-spot",
   details: {
-    role: "Product Manager",
-    duration: "2.5 months",
-    team: "8 engineers, 2 designers",
-    background: "New user activation was declining steadily. Users were dropping off during the onboarding flow without completing key setup steps.",
-    challenge: "The existing onboarding was a 12-step process with high cognitive load. Users didn't understand the value proposition before being asked to configure complex settings.",
-    solution: "Simplified to a 4-step progressive onboarding with contextual tooltips, reduced required fields, and added a 'quick start' path for power users.",
-    results: ["Improved activation rate by 35%", "Reduced onboarding drop-off by 50%", "Increased Day-7 retention by 22%"],
-    tools: ["Figma", "A/B Testing", "Amplitude", "React"]
+    heroTagline: "Netflix's algorithm is optimized to keep you watching. Blind Spot is optimized to help you grow.",
+    background: "301.6M Netflix subscribers worldwide. 80% of what you watch is chosen by the algorithm. A researcher created fake Netflix personas - by Day 3, each one was trapped in a filter bubble. The algorithm even changes poster artwork to match personas. Zero products optimize for showing you what you're missing.",
+    stats: [
+      { value: "301.6M", label: "Netflix Subscribers" },
+      { value: "80%", label: "Algorithm-Chosen" },
+      { value: "3", label: "AI Components" },
+      { value: "<8s", label: "Full Pipeline" },
+    ],
+    competitiveGap: [
+      { label: "Taste.io", status: "Same Direction", tools: "'Find more of what you like'", solved: true },
+      { label: "Letterboxd", status: "Social Only", tools: "No blind spot analysis", solved: true },
+      { label: "Blind Spot Analysis", status: "Huge Gap", tools: "Zero products show the bubble", solved: false },
+    ],
+    drawerSections: [
+      { label: "How It Works", title: "See Your Bubble. Find What's Missing. Bridge the Gap.", layout: "grid" as const, items: [
+        { title: "Your Bubble", desc: "Visual taste map: genre radar, decade timeline, language concentration" },
+        { title: "Blind Spots", desc: "Genres with zero representation, scored by opportunity (title count x avg rating)" },
+        { title: "Bridges", desc: "AI explains WHY: 'You loved X for quality Y. This film shares that quality in a new setting.'" },
+      ]},
+      { label: "AI Architecture", title: "3 AI Components - Each One Earns Its Place", layout: "grid" as const, items: [
+        { title: "Taste Profile Analyzer", desc: "Multi-dimensional vectors: genre distribution, keyword themes, and Herfindahl index for language diversity" },
+        { title: "Blind Spot Detector", desc: "Gap analysis vs. TMDB space. Weighted by opportunity: (Title count) x (Average rating)" },
+        { title: "Bridge Recommender", desc: "Cosine similarity + LLM Reasoning (Claude). Anti-hallucination: LLM receives only verified TMDB metadata" },
+      ], rejections: ["Collaborative filtering (no user base - honest)", "AI mood detection (unreliable)"] },
+      { label: "Decisions", title: "The Decisions Interviewers Actually Ask About", layout: "grid" as const, items: [
+        { title: "Content-based over Collaborative", desc: "Works with one user's data. Honest for a portfolio project with limited users." },
+        { title: "Cosine Similarity over Euclidean", desc: "Measures direction ('what KIND'), not just magnitude. Better for sparse movie vectors." },
+        { title: "LLM Reasoning, not Generation", desc: "Explaining WHY two things connect, not just describing them. Higher precision, lower hallucination." },
+        { title: "Herfindahl Index", desc: "Borrowed from economics to measure language diversity. A concrete, measurable metric." },
+      ]},
+      { label: "Research", title: "Every Decision Backed by Published Research", layout: "list" as const, items: [
+        { title: "Pajkovic (2022)", desc: "SAGE Journals: Personas locked in by Day 3" },
+        { title: "NYU Pyrorank (2023)", desc: "Diversity tuning with minimal accuracy loss" },
+        { title: "SERAL (2025)", desc: "ACM SIGKDD: LLMs for serendipity recommendations" },
+        { title: "Pariser (2011)", desc: "'The Filter Bubble' - the foundational text" },
+      ]},
+      { label: "Roadmap", title: "V2 Roadmap", layout: "roadmap" as const, items: [
+        { version: "V2", title: "Hybrid Filtering", desc: "Blend collaborative + content-based as user base grows" },
+        { version: "V2", title: "Progress Tracking", desc: "'Last month: 13 blind spots. Now: 9. You've explored Korean cinema.'" },
+        { version: "V2", title: "Bias Audit", desc: "Test if opportunity scores correlate with regional/cultural weighting" },
+        { version: "V3", title: "Multi-platform", desc: "YouTube watch history and Spotify listening bubble integration" },
+      ]},
+    ],
+    results: [
+      "Full pipeline time: <8 seconds from 'Analyze' to complete bubble + blind spot display",
+      "Bridge tap-through rate target: >30%",
+      "Bridge reasoning accuracy target: 80%+",
+      "Time to 'aha moment' target: <60 seconds",
+      "Blind spots explored per session target: 1+"
+    ],
+    takeawayQuote: "Netflix's algorithm is optimized to keep you watching. Blind Spot is optimized to help you grow.",
+    takeawayTags: ["Research-driven product thinking", "AI applied where it matters", "Technical depth", "Full-stack shipping"],
+    tools: ["React", "TMDB API", "Claude API", "Cosine Similarity", "Herfindahl Index", "Vercel", "TypeScript"]
   }
 },
 {
@@ -215,8 +320,6 @@ const projects: Project[] = [
   color: "hsl(340,60%,50%)",
   icon: "🎙️",
   details: {
-    role: "Designer & Developer",
-    duration: "2 weeks",
     overview: "A personal project to create a home for my podcast - featuring episode archives, show notes, and an integrated newsletter signup.",
     tools: ["React", "Next.js", "Tailwind CSS", "Notion API"]
   }
@@ -230,8 +333,6 @@ const projects: Project[] = [
   color: "hsl(35,80%,50%)",
   icon: "🧰",
   details: {
-    role: "Creator",
-    duration: "Ongoing",
     overview: "A comprehensive Notion template system covering the entire product lifecycle - from discovery and research to roadmapping, sprint planning, and retrospectives.",
     results: ["Used by 500+ product managers", "Featured in 3 PM newsletters", "4.8/5 average rating"],
     tools: ["Notion", "Figma"]
