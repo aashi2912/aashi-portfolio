@@ -3,6 +3,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link, ArrowDown } from "lucide-react";
 import { ReferencesSection } from "@/components/ReferencesSection";
 import { AnimatedCounter, WiggleText } from "@/components/Doodles";
+import { ProjectCarousel, type Project } from "@/components/ProjectCarousel";
 import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
@@ -152,34 +153,75 @@ const volunteering = [
 { role: "Mentor", org: "EducationUSA", period: "Aug 2015 - Present" }];
 
 
-const projects = [
+const projects: Project[] = [
 {
   title: "Product Analytics Dashboard",
   description: "Built an internal analytics tool that reduced reporting time by 60% for the PM team.",
   tag: "Product",
   link: "#",
-  year: "2025"
+  year: "2025",
+  color: "hsl(200,50%,45%)",
+  icon: "📊",
+  details: {
+    role: "Product Manager",
+    duration: "3 months",
+    team: "5 engineers, 1 designer",
+    background: "The PM team spent hours each week pulling data from multiple sources to create reports. There was no single source of truth for product metrics.",
+    challenge: "Fragmented data across 4+ tools made it nearly impossible to get a real-time view of product health. Reports were inconsistent and time-consuming.",
+    solution: "Designed and built a centralized dashboard that aggregates data from multiple sources, with automated alerts and customizable views for different stakeholders.",
+    results: ["Reduced reporting time by 60%", "Improved data accuracy across teams", "Adopted by 3 departments within first month"],
+    tools: ["Power BI", "SQL", "Python", "React"]
+  }
 },
 {
   title: "Onboarding Flow Redesign",
   description: "Redesigned the end-to-end onboarding experience, improving activation rate by 35%.",
   tag: "UX",
   link: "#",
-  year: "2024"
+  year: "2024",
+  color: "hsl(280,50%,55%)",
+  icon: "✨",
+  details: {
+    role: "Product Manager",
+    duration: "2.5 months",
+    team: "8 engineers, 2 designers",
+    background: "New user activation was declining steadily. Users were dropping off during the onboarding flow without completing key setup steps.",
+    challenge: "The existing onboarding was a 12-step process with high cognitive load. Users didn't understand the value proposition before being asked to configure complex settings.",
+    solution: "Simplified to a 4-step progressive onboarding with contextual tooltips, reduced required fields, and added a 'quick start' path for power users.",
+    results: ["Improved activation rate by 35%", "Reduced onboarding drop-off by 50%", "Increased Day-7 retention by 22%"],
+    tools: ["Figma", "A/B Testing", "Amplitude", "React"]
+  }
 },
 {
   title: "Podcast Website",
   description: "Designed and built a personal podcast website with episode archive and newsletter integration.",
   tag: "Side Project",
   link: "#",
-  year: "2024"
+  year: "2024",
+  color: "hsl(340,60%,50%)",
+  icon: "🎙️",
+  details: {
+    role: "Designer & Developer",
+    duration: "2 weeks",
+    overview: "A personal project to create a home for my podcast — featuring episode archives, show notes, and an integrated newsletter signup.",
+    tools: ["React", "Next.js", "Tailwind CSS", "Notion API"]
+  }
 },
 {
   title: "PM Toolkit",
   description: "A curated Notion template system used by 500+ product managers to run discovery and roadmaps.",
   tag: "Templates",
   link: "#",
-  year: "2023"
+  year: "2023",
+  color: "hsl(35,80%,50%)",
+  icon: "🧰",
+  details: {
+    role: "Creator",
+    duration: "Ongoing",
+    overview: "A comprehensive Notion template system covering the entire product lifecycle — from discovery and research to roadmapping, sprint planning, and retrospectives.",
+    results: ["Used by 500+ product managers", "Featured in 3 PM newsletters", "4.8/5 average rating"],
+    tools: ["Notion", "Figma"]
+  }
 }];
 
 
@@ -899,31 +941,10 @@ export default function Index() {
             </h3>
           </RevealText>
 
-          <StaggerContainer className="space-y-6">
-            {projects.map((project, i) =>
-            <StaggerItem key={i}>
-                <motion.div
-                className="group cursor-pointer rounded-lg border border-border p-5 transition-colors hover:bg-accent/50 relative overflow-hidden"
-                whileHover={{ x: 4, boxShadow: "0 8px 30px -12px hsl(200 50% 50% / 0.2)" }}
-                transition={{ duration: 0.2 }}>
-                
-                  {/* Sketch corner accent */}
-                  <div className="absolute top-0 right-0 w-12 h-12 border-b-2 border-l-2 border-dashed border-[hsl(200,50%,35%,0.15)] dark:border-[hsl(200,40%,75%,0.15)] rounded-bl-xl" />
-                  <div className="flex items-center justify-between">
-                    <motion.span
-                      className="rounded-full bg-accent px-2 py-0.5 text-xs text-muted-foreground"
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      {project.tag}
-                    </motion.span>
-                    <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
-                  </div>
-                  <h3 className="mt-3 text-lg font-semibold group-hover:text-[hsl(200,50%,35%)] dark:group-hover:text-[hsl(200,40%,75%)] transition-colors">{project.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
-                </motion.div>
-              </StaggerItem>
-            )}
-          </StaggerContainer>
+          {/* Carousel — breaks out of ContentWrap for full-width scroll */}
+          <div className="-mx-4 sm:-mx-6">
+            <ProjectCarousel projects={projects} />
+          </div>
         </section>
       </ContentWrap>
       </ScrollSection>
