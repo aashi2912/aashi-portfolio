@@ -664,15 +664,31 @@ export default function Index() {
                 <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Skills</span>
               </div>
               <div className="flex-1 space-y-8">
-                {skillCategories.map((cat) =>
-                <div key={cat.name}>
+                {skillCategories.map((cat, catIdx) =>
+                <motion.div
+                  key={cat.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: catIdx * 0.08 }}
+                >
                     <h4 className="mb-4 text-[22px] font-bold">{cat.name}</h4>
                     <div className="flex flex-wrap gap-2.5">
-                      {cat.items.map((skill) =>
-                    <span key={skill} className="rounded-full border border-[hsl(200,100%,40%,0.25)] bg-[hsl(200,100%,50%,0.1)] px-3 py-2 text-[14px] text-[hsl(200,50%,35%)] dark:border-[hsl(200,100%,50%,0.15)] dark:bg-[hsl(200,100%,50%,0.13)] dark:text-[hsl(200,40%,75%)]">{skill}</span>
+                      {cat.items.map((skill, skillIdx) =>
+                    <motion.span
+                      key={skill}
+                      className="rounded-full border border-[hsl(200,100%,40%,0.25)] bg-[hsl(200,100%,50%,0.1)] px-3 py-2 text-[14px] text-[hsl(200,50%,35%)] dark:border-[hsl(200,100%,50%,0.15)] dark:bg-[hsl(200,100%,50%,0.13)] dark:text-[hsl(200,40%,75%)] cursor-default"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: skillIdx * 0.02 + catIdx * 0.05 }}
+                      whileHover={{ scale: 1.1, y: -2 }}
+                    >
+                      {skill}
+                    </motion.span>
                     )}
                     </div>
-                  </div>
+                  </motion.div>
                 )}
               </div>
             </div>
