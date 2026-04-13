@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, FileText, Mail, MessageCircle } from "lucide-react";
-import { SquigglyUnderline, FloatingDoodle } from "@/components/Doodles";
-import { SketchSpeechBubble, SketchHandshake } from "@/components/SketchIcons";
+import { FloatingDoodle } from "@/components/Doodles";
+import { SketchSpeechBubble } from "@/components/SketchIcons";
 
 const references = [
   {
@@ -82,9 +82,6 @@ function TestimonialsBlock() {
       {/* Floating doodles */}
       <FloatingDoodle className="-left-8 top-20 hidden md:block" delay={0.8} amplitude={8}>
         <SketchSpeechBubble size={28} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" color="currentColor" />
-      </FloatingDoodle>
-      <FloatingDoodle className="-right-4 top-40 hidden md:block" delay={1.5}>
-        <SketchHandshake size={26} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" color="currentColor" />
       </FloatingDoodle>
 
       {/* Heading */}

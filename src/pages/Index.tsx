@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link, ArrowDown } from "lucide-react";
 import { ReferencesSection } from "@/components/ReferencesSection";
-import { AnimatedCounter } from "@/components/Doodles";
+import { AnimatedCounter, WiggleText } from "@/components/Doodles";
 import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
@@ -239,7 +239,7 @@ const impossibleCategories: ImpossibleCategory[] = [
   items: [
   { text: "Open a NGO", done: false },
   { text: "Own a lake house", done: false },
-  { text: "Study and settle abroad", done: false }]
+  { text: "Study and settle abroad", done: true }]
 },
 {
   name: "ADRENALINE",
@@ -526,7 +526,7 @@ export default function Index() {
             <div className="flex flex-col gap-2">
               <div className="relative inline-block">
                 <h1 className="text-[26px] font-bold tracking-tight sm:text-[32px] leading-tight">
-                  Aashi Thakkar
+                  <WiggleText>Aashi Thakkar</WiggleText>
                 </h1>
                 
               </div>
@@ -1193,7 +1193,7 @@ export default function Index() {
           <RevealText>
             <div className="mb-4 relative inline-block">
               <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-                Impossible List
+                <WiggleText>Impossible List</WiggleText>
               </h2>
               
               <p className="mt-4 text-lg text-muted-foreground">a bucket list, except better</p>
