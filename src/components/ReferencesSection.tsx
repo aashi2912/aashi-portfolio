@@ -75,7 +75,8 @@ function TestimonialsBlock() {
     });
   };
 
-  const active = references[activeIndex];
+  const safeIndex = activeIndex % references.length;
+  const active = references[safeIndex];
 
   return (
     <div className="py-16 md:py-24 relative">
