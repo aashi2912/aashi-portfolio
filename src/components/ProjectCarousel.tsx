@@ -237,8 +237,6 @@ function StatCard({ value, label, color, delay = 0 }: { value: string; label: st
   );
 }
 
-/* ─── PDF Viewer Modal (LinkedIn carousel style) ─── */
-function PdfViewer({ pdfUrl, onClose, color }: { pdfUrl: string; onClose: () => void; color: string }) {
   return (
     <motion.div
       className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-lg flex items-center justify-center p-4"
@@ -284,7 +282,7 @@ function ProjectDrawer({
   project: Project | null;
   onClose: () => void;
 }) {
-  const [showPdf, setShowPdf] = useState(false);
+  
 
   if (!project) return null;
   const details = project.details;
@@ -737,12 +735,6 @@ function ProjectDrawer({
             <div className="h-16" />
           </motion.div>
 
-          {/* PDF Viewer Modal */}
-          <AnimatePresence>
-            {showPdf && project.caseStudyPdf && (
-              <PdfViewer pdfUrl={project.caseStudyPdf} onClose={() => setShowPdf(false)} color={c} />
-            )}
-          </AnimatePresence>
         </>
       )}
     </AnimatePresence>
