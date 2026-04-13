@@ -8,25 +8,25 @@ const experiences = [
   {
     role: "Senior Product Manager",
     company: "Tech Corp",
-    period: "Nov 2024 — Present",
+    period: "Nov 2024 - Present",
     logo: null,
   },
   {
     role: "Product Manager, Design Systems",
     company: "Asana",
-    period: "Feb 2023 — Jan 2024",
+    period: "Feb 2023 - Jan 2024",
     logo: null,
   },
   {
     role: "Product Manager, Mobile",
     company: "Pluralsight",
-    period: "Sep 2019 — Feb 2023",
+    period: "Sep 2019 - Feb 2023",
     logo: null,
   },
   {
     role: "UX Research Intern",
     company: "Udemy",
-    period: "Jun 2018 — Aug 2018",
+    period: "Jun 2018 - Aug 2018",
     logo: null,
   },
 ];
@@ -82,7 +82,7 @@ const education = [
   {
     degree: "Bachelor of Arts, Computer Science",
     school: "University Name",
-    period: "Aug 2015 — May 2019",
+    period: "Aug 2015 - May 2019",
     note: null,
     logo: null,
   },
@@ -92,13 +92,13 @@ const contentCreation = [
   {
     title: "Podcast Host",
     platform: "@MyPodcast",
-    period: "Jan 2023 — Present",
+    period: "Jan 2023 - Present",
     link: "#",
   },
   {
     title: "Medium Author",
     platform: "Medium",
-    period: "Oct 2018 — Present",
+    period: "Oct 2018 - Present",
     link: "#",
   },
 ];
@@ -116,13 +116,13 @@ const volunteering = [
   {
     role: "Product Expert",
     org: "Organization Name",
-    period: "May 2020 — Present",
+    period: "May 2020 - Present",
     link: "#",
   },
   {
     role: "Mentor",
     org: "EducationUSA",
-    period: "Aug 2015 — Present",
+    period: "Aug 2015 - Present",
     link: null,
   },
 ];
@@ -196,7 +196,7 @@ export default function Work() {
         </RevealSection>
       </ContentWrap>
 
-      {/* Bio — Journey Style */}
+      {/* Bio - Journey Style */}
       <ContentWrap className="pb-16">
         <RevealSection delay={0.15}>
           <div className="flex flex-col sm:flex-row sm:gap-16">
@@ -208,7 +208,7 @@ export default function Work() {
                   {
                     emoji: "🎓",
                     label: "The Origin",
-                    text: "Started with Computer Science — thought I'd be writing code forever.",
+                    text: "Started with Computer Science - thought I'd be writing code forever.",
                   },
                   {
                     emoji: "🧠",
@@ -218,7 +218,7 @@ export default function Work() {
                   {
                     emoji: "🚀",
                     label: "The Pivot",
-                    text: "Went all-in on Product Management — building things people actually love.",
+                    text: "Went all-in on Product Management - building things people actually love.",
                   },
                   {
                     emoji: "📍",
