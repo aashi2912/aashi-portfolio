@@ -209,7 +209,7 @@ function PhilosophyBlock() {
         {/* Left: Philosophy Text */}
         <div>
           <motion.p
-            className="text-xl md:text-2xl font-bold text-muted-foreground mb-4"
+            className="text-xl md:text-2xl font-bold text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)] mb-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
