@@ -144,12 +144,14 @@ function ProjectCard({
                 {project.details.tools
                   .filter(t => {
                     // Only show AI/ML and product/data skills, not engineering skills
-                    const isEngineering = /\b(React|TypeScript|Vercel|Node\.?js|Next\.?js|Vue|Angular|Express|Django|Flask|Docker|Kubernetes|AWS|GCP|Azure|Tailwind|Bootstrap|jQuery)\b/i.test(t);
-                    return !isEngineering;
+                    const isEngineering = /\b(React|TypeScript|Vercel|Node\.?js|Next\.?js|Vue|Angular|Express|Django|Flask|Docker|Kubernetes|AWS|GCP|Azure|Tailwind|Bootstrap|jQuery|HTML|CSS|JavaScript|Python|Java|Go|Rust|Ruby|PHP)\b/i.test(t);
+                    const isProductSkill = /\b(RICE|Product Strategy|User Research|Market Analysis|Roadmapping|Prioritization|KPI|OKR|Metrics|Data Analysis|Product Discovery|User Interviews|Competitive Analysis|GTM|Go-to-Market|A/B Test|Experimentation|Funnel Analysis|Cohort Analysis|Persona|Journey Mapping|Wireframing|Prototyping|MVP|Agile|Scrum|Kanban|Stakeholder|Cross-functional|User Stories|PRD|Product Requirements|Roadmap|Feature|Release|Launch|Adoption|Retention|Churn|Conversion|Engagement|Growth|Monetization|Business Model|Pricing|Market Fit)\b/i.test(t);
+                    const isAISkill = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl|scikit|K-Means|Gen AI|Generative AI|Machine Learning|Deep Learning|Neural|GPT|Claude|LLaMA|Gemini|Hugging Face|Transformers|NLP|Natural Language|Computer Vision|CV|Predictive|Recommendation|Classification|Regression|Model|Training|Inference|Embeddings|Vector|Semantic|BERT|Sentiment|Analysis|OpenAI|Anthropic|Google AI)\b/i.test(t);
+                    return !isEngineering && (isProductSkill || isAISkill);
                   })
-                  .slice(0, 4)
+                  .slice(0, 5)
                   .map((t, i) => {
-                    const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl|scikit|K-Means)\b/i.test(t);
+                    const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl|scikit|K-Means|Gen AI|Generative AI|Machine Learning|Deep Learning|Neural|GPT|Claude|LLaMA|Gemini|Hugging Face|Transformers|NLP|Natural Language|Computer Vision|CV|Predictive|Recommendation|Classification|Regression|Model|Training|Inference|Embeddings|Vector|Semantic|BERT|Sentiment|Analysis|OpenAI|Anthropic|Google AI)\b/i.test(t);
                     return (
                       <span
                         key={i}
