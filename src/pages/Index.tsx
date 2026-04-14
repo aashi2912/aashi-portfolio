@@ -337,7 +337,7 @@ const projects: Project[] = [
       { value: "150K", label: "Rides Analyzed" },
       { value: "4", label: "Personas Discovered" },
       { value: "5.0%", label: "Target Conversion" },
-      { value: "+C$363K", label: "Projected ARR" },
+      { value: "+$363K", label: "Projected ARR" },
     ],
     competitiveGap: [
       { label: "Price Discounting", status: "Rejected", tools: "Destroys LTV permanently", solved: true },
@@ -379,7 +379,7 @@ const projects: Project[] = [
       "Live analytics dashboard with 5 interactive views deployed on Vercel",
       "4 data-derived personas via K-means clustering on 150K rides",
       "RICE-prioritized roadmap with 3-quarter execution plan",
-      "Projected +C$363K incremental ARR at 5.0% conversion target",
+      "Projected +$363K incremental ARR at 5.0% conversion target",
       "Python EDA notebook: 21 cells, 7 sections with pandas & scikit-learn",
       "1,091 lines of production-ready SQL (BigQuery, Snowflake, PostgreSQL compatible)",
     ],
