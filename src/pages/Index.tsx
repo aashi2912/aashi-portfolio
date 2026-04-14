@@ -705,7 +705,9 @@ function ContentWrap({ children, className = "" }: {children: React.ReactNode;cl
 
 export default function Index() {
   const [roleIndex, setRoleIndex] = useState(0);
-
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: -500, y: -500 });
+  const [heroParallax, setHeroParallax] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -714,8 +716,40 @@ export default function Index() {
     return () => clearInterval(interval);
   }, []);
 
+  // Scroll progress & parallax
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? scrollTop / docHeight : 0);
+      setHeroParallax(scrollTop * 0.3);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Cursor glow
+  useEffect(() => {
+    const handleMouse = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouse, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
+
   return (
-    <div>
+    <div className="relative">
+      {/* Scroll progress bar */}
+      <div
+        className="scroll-progress"
+        style={{ width: `${scrollProgress * 100}%` }}
+      />
+      
+      {/* Cursor glow */}
+      <div
+        className="cursor-glow hidden md:block"
+        style={{ left: mousePos.x, top: mousePos.y }}
+      />
 
       {/* ── Home ── */}
       <section id="home" className="scroll-mt-20 relative overflow-hidden">
@@ -787,10 +821,11 @@ export default function Index() {
           <img
             src={heroImage}
             alt="Hero illustration of a person jumping between cliffs"
-            className="w-full h-full object-cover" />
+            className="w-full h-full object-cover parallax-hero"
+            style={{ transform: `translateY(${heroParallax}px)` }} />
           
           <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
-            I <motion.span className="italic" initial={{ opacity: 0, scale: 1.3 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>bridge</motion.span> the gap between<br />
+            I <motion.span className="italic text-shimmer" initial={{ opacity: 0, scale: 1.3 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>bridge</motion.span> the gap between<br />
             <StaggerLetters text="ambition and execution!" delay={0.8} className="mt-1" />
           </h2>
 
@@ -823,7 +858,7 @@ export default function Index() {
 
           {/* Infographic Stats Row */}
           <RevealText delay={0.08}>
-            <div className="mt-10 mb-8 grid grid-cols-3 gap-6 p-6 rounded-2xl border border-[hsl(200,50%,80%)] dark:border-[hsl(200,40%,30%)] bg-[hsl(200,60%,92%)] dark:bg-[hsl(200,40%,18%)]">
+            <div className="mt-10 mb-8 grid grid-cols-3 gap-6 p-6 rounded-2xl border border-[hsl(200,50%,80%)] dark:border-[hsl(200,40%,30%)] bg-[hsl(200,60%,92%)] dark:bg-[hsl(200,40%,18%)] glow-border">
               <AnimatedCounter value={4} suffix="+" label="Years Experience" delay={0} />
               <AnimatedCounter value={3} suffix="" label="Companies" delay={0.15} />
               <AnimatedCounter value={3} suffix="" label="Roles" delay={0.3} />
@@ -1073,13 +1108,13 @@ export default function Index() {
               </h3>
               <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
                 that just...{" "}
-                <motion.span
-                  className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)] inline-block"
-                  initial={{ opacity: 0, scale: 1.3, y: 10 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 0.68, 0.36, 1] }}
-                >makes sense</motion.span>{" "}
+                  <motion.span
+                    className="italic text-shimmer inline-block"
+                    initial={{ opacity: 0, scale: 1.3, y: 10 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 0.68, 0.36, 1] }}
+                  >makes sense</motion.span>{" "}
                 <motion.span
                   className="inline-block"
                   initial={{ opacity: 0, scale: 0, rotate: -180 }}
@@ -1351,7 +1386,7 @@ export default function Index() {
             {/* Block 5 - The belief - closing statement */}
             <RevealText delay={0.65}>
               <motion.div
-                className="mt-4 rounded-xl border border-[hsl(200,50%,80%)] dark:border-[hsl(200,40%,30%)] bg-[hsl(200,60%,92%)] dark:bg-[hsl(200,40%,18%)] p-6 relative text-center"
+                className="mt-4 rounded-xl border border-[hsl(200,50%,80%)] dark:border-[hsl(200,40%,30%)] bg-[hsl(200,60%,92%)] dark:bg-[hsl(200,40%,18%)] p-6 relative text-center glow-border"
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
