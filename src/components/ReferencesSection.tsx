@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, FileText, Mail, MessageCircle } from "lucide-react";
-import { FloatingDoodle } from "@/components/Doodles";
-import { SketchSpeechBubble } from "@/components/SketchIcons";
 import jackEvansPhoto from "@/assets/jack-evans.jpeg";
 import gouthamKonthamPhoto from "@/assets/goutham-kontham.jpeg";
 import lindaBugaziyanosPhoto from "@/assets/linda-bugaziyanos.jpeg";
@@ -96,11 +94,6 @@ function TestimonialsBlock() {
 
   return (
     <div className="py-16 md:py-24 relative">
-      {/* Floating doodles */}
-      <FloatingDoodle className="-left-8 top-20 hidden md:block" delay={0.8} amplitude={8}>
-        <SketchSpeechBubble size={28} className="text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" color="currentColor" />
-      </FloatingDoodle>
-
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
