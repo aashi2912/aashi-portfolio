@@ -332,7 +332,7 @@ const projects: Project[] = [
   githubLink: "https://github.com/aashi2912/rideconvert",
   details: {
     heroTagline: "An end-to-end product strategy for converting casual bike-share riders into annual members.",
-    background: "The universal bike-share revenue challenge: 70-80% of rides come from casual pay-per-ride users, but annual members generate 3-5× more lifetime revenue. Industry-wide conversion rate sits at 2-4%. Casual riders don't convert because the product wasn't designed to make membership feel obviously worth it for their usage pattern. The value proposition assumes a commuter — most casual riders are not commuters.",
+    background: "The universal bike-share revenue challenge: 70-80% of rides come from casual pay-per-ride users, but annual members generate 3-5× more lifetime revenue. Industry-wide conversion rate sits at 2-4%. Casual riders don't convert because the product wasn't designed to make membership feel obviously worth it for their usage pattern. The value proposition assumes a commuter - most casual riders are not commuters.",
     stats: [
       { value: "150K", label: "Rides Analyzed" },
       { value: "4", label: "Personas Discovered" },
@@ -345,7 +345,7 @@ const projects: Project[] = [
       { label: "Behavioral Nudges", status: "Chosen Strategy", tools: "High impact, low effort, data-backed", solved: false },
     ],
     drawerSections: [
-      { label: "Personas", title: "Four Personas — Data-Derived, Not Assumed", content: "K-means clustering on 150K rides across duration, timing, day-of-week, bike type, and seasonality. Labels came after the clusters — not before.", layout: "grid" as const, items: [
+      { label: "Personas", title: "Four Personas - Data-Derived, Not Assumed", content: "K-means clustering on 150K rides across duration, timing, day-of-week, bike type, and seasonality. Labels came after the clusters - not before.", layout: "grid" as const, items: [
         { title: "Weekend Explorer (42%)", desc: "Leisure rides, weekends, parks & waterfronts. Pain: single passes feel expensive for spontaneous rides." },
         { title: "Reluctant Commuter (31%)", desc: "Rush-hour weekdays, near transit hubs. Pain: ROI uncertainty for C$105/yr membership." },
         { title: "Seasonal Visitor (18%)", desc: "Tourist clusters, summer only, landmarks. Pain: annual membership is the wrong product." },
@@ -356,15 +356,15 @@ const projects: Project[] = [
         { title: "Personalize Value Prop", desc: "Post-ride savings nudge + usage-triggered emails for frequent casuals only" },
         { title: "Reduce Friction", desc: "One-tap upgrade flow (6 steps → 2) + geo-targeted offers at top casual stations" },
       ]},
-      { label: "Prioritization", title: "RICE Prioritization — What We Build First", layout: "list" as const, items: [
+      { label: "Prioritization", title: "RICE Prioritization - What We Build First", layout: "list" as const, items: [
         { num: "92", title: "Post-ride savings nudge", desc: "Intercepts riders at peak motivation (peak-end rule). Minimum engineering, maximum behavioral impact." },
-        { num: "78", title: "Flexible membership tier", desc: "~C$65/yr for Weekend Explorers — the largest casual segment at 42% of rides." },
+        { num: "78", title: "Flexible membership tier", desc: "~C$65/yr for Weekend Explorers - the largest casual segment at 42% of rides." },
         { num: "74", title: "Break-even calculator", desc: "Shows riders exactly when membership pays for itself. Removes ROI uncertainty." },
         { num: "61", title: "Geo-targeted station offer", desc: "Surface offers at the 15 highest-traffic casual stations." },
         { num: "54", title: "One-tap upgrade flow", desc: "Reduce conversion friction from 6 steps to 2 steps." },
       ]},
       { label: "Data Insights", title: "What 150,000 Simulated Rides Revealed", layout: "grid" as const, items: [
-        { title: "Ride Duration", desc: "Casual rides are 2× longer — every day. Members avg 11 min (utility). Casuals avg 29 min (leisure)." },
+        { title: "Ride Duration", desc: "Casual rides are 2× longer - every day. Members avg 11 min (utility). Casuals avg 29 min (leisure)." },
         { title: "Hourly Pattern", desc: "Members: twin spikes at 8am & 5pm. Casuals: gradual build, peak 2-4pm. Strongest behavioral signal." },
         { title: "Weekly Pattern", desc: "Members peak Tue-Thu. Casuals dominate Sat-Sun. Consistent across all operators." },
         { title: "Seasonality", desc: "Toronto: 16× August vs January. Summer is the conversion campaign window with highest nudge ROI." },
