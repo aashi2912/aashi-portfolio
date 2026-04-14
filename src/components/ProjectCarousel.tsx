@@ -48,7 +48,7 @@ export type Project = {
   };
 };
 
-/* ─── Project Card ─── */
+/* ─── Project Card (Glassmorphic Overlay) ─── */
 
 function ProjectCard({
   project,
@@ -62,9 +62,20 @@ function ProjectCard({
 }) {
   const [hovered, setHovered] = useState(false);
 
+  const productSkills = ['RICE','KPI','OKR','PRD','Roadmap','User Research','Market Analysis','Product Strategy','Persona','Journey Map','Wireframe','Prototype','GTM','Go-to-Market','Prioritization','Data Analysis','A/B Test','Experiment','Discovery','Stakeholder','Agile','Scrum','Kanban','Funnel','Cohort','Retention','Churn','Conversion','Adoption','Engagement','Growth'];
+  const aiSkills = ['AI','ML','LLM','NLP','Clustering','K-Means','scikit','Cosine','Filtering','Herfindahl','Gen AI','Generative AI','Machine Learning','GPT','Claude','LLaMA','Gemini','Hugging Face','Transformers','BERT','OpenAI','Anthropic'];
+  const engSkills = ['React','TypeScript','Vercel','Node.js','Nodejs','Next.js','Nextjs','Vue','Angular','Express','Django','Flask','Docker','Kubernetes','AWS','GCP','Azure','Tailwind','Bootstrap','jQuery','HTML','CSS','JavaScript','Python','Java','Go','Rust'];
+
+  const filteredTools = project.details?.tools?.filter(t => {
+    const isEng = engSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
+    const isProduct = productSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
+    const isAI = aiSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
+    return !isEng && (isProduct || isAI);
+  }).slice(0, 5) || [];
+
   return (
     <motion.div
-      className="group cursor-pointer flex-shrink-0 w-[80vw] sm:w-[520px] md:w-[620px] lg:w-[700px] snap-center"
+      className="group cursor-pointer flex-shrink-0 w-[80vw] sm:w-[420px] md:w-[480px] lg:w-[520px] snap-center"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -74,111 +85,111 @@ function ProjectCard({
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className="relative flex flex-col md:flex-row gap-0 rounded-3xl overflow-hidden border transition-all duration-500 h-full"
+        className="relative rounded-3xl overflow-hidden h-[460px] md:h-[520px] border transition-all duration-500"
         style={{
-          borderColor: hovered ? `${project.color}60` : `${project.color}35`,
-          background: `linear-gradient(135deg, hsl(var(--card)), ${project.color}06)`,
+          borderColor: hovered ? `${project.color}70` : `${project.color}25`,
         }}
       >
-        {/* Visual hero side */}
+        {/* Full hero image background */}
         <motion.div
-          className="relative w-full md:w-[50%] min-h-[220px] md:min-h-[360px] overflow-hidden flex items-center justify-center"
-          style={{
-            background: `linear-gradient(135deg, ${project.color}08, ${project.color}04)`,
-            backgroundColor: '#ffffff',
-          }}
+          className="absolute inset-0"
+          animate={hovered ? { scale: 1.06 } : { scale: 1 }}
+          transition={{ duration: 0.7, ease: [0.22, 0.68, 0.36, 1] }}
         >
           {project.image ? (
-            <motion.img
+            <img
               src={project.image}
               alt={project.title}
               className="w-full h-full object-cover"
-              animate={hovered ? { scale: 1.08 } : { scale: 1 }}
-              transition={{ duration: 0.6, ease: [0.22, 0.68, 0.36, 1] }}
             />
           ) : (
-            <motion.div
+            <div
               className="w-full h-full flex items-center justify-center"
-              animate={hovered ? { scale: 1.05 } : { scale: 1 }}
-              transition={{ duration: 0.6 }}
+              style={{ background: `linear-gradient(135deg, ${project.cardBg || project.color}30, ${project.color}10)` }}
             >
-              <span className="text-[80px] md:text-[100px] select-none">
-                {project.icon || "🚀"}
-              </span>
-            </motion.div>
+              <span className="text-[100px] select-none">{project.icon || "🚀"}</span>
+            </div>
           )}
         </motion.div>
 
-        {/* Content side */}
-        <div className="relative w-full md:w-[50%] flex flex-col justify-between p-6 md:p-8">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <span
-                className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wider"
-                style={{
-                  backgroundColor: `${project.color}20`,
-                  color: project.color,
-                }}
-              >
-                {project.tag}
-              </span>
-              <span className="font-mono text-[10px] text-muted-foreground tracking-wider">
-                {project.year}
-              </span>
-            </div>
+        {/* Gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
+        {/* Live Product floating chip */}
+        {project.link && project.link !== "#" && (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-medium text-white/90 bg-white/15 backdrop-blur-md border border-white/20 hover:bg-white/25 transition-colors"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ExternalLink size={11} />
+            Live
+          </a>
+        )}
+
+        {/* Tag + year top-left */}
+        <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+          <span
+            className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wider backdrop-blur-md"
+            style={{
+              backgroundColor: `${project.color}30`,
+              color: '#fff',
+              border: `1px solid ${project.color}40`,
+            }}
+          >
+            {project.tag}
+          </span>
+          <span className="font-mono text-[10px] text-white/60 tracking-wider">
+            {project.year}
+          </span>
+        </div>
+
+        {/* Glassmorphic content overlay at bottom */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-6"
+          animate={hovered ? { y: 0 } : { y: 0 }}
+        >
+          <div className="rounded-2xl bg-white/10 dark:bg-white/[0.08] backdrop-blur-xl border border-white/20 dark:border-white/10 p-5 md:p-6 shadow-2xl">
             <motion.h3
-              className="text-xl md:text-2xl font-bold tracking-tight leading-tight mb-3 text-foreground"
-              animate={hovered ? { x: 4 } : { x: 0 }}
+              className="text-xl md:text-2xl font-bold tracking-tight leading-tight mb-2 text-white"
+              animate={hovered ? { x: 3 } : { x: 0 }}
               transition={{ duration: 0.3 }}
             >
               {project.title}
             </motion.h3>
 
-            <p className="text-[13px] md:text-sm text-muted-foreground leading-relaxed mb-5">
+            <p className="text-[13px] text-white/70 leading-relaxed mb-4 line-clamp-2">
               {project.description}
             </p>
 
-                {project.details?.tools && (
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {(() => {
-                      const productSkills = ['RICE','KPI','OKR','PRD','Roadmap','User Research','Market Analysis','Product Strategy','Persona','Journey Map','Wireframe','Prototype','GTM','Go-to-Market','Prioritization','Data Analysis','A/B Test','Experiment','Discovery','Stakeholder','Agile','Scrum','Kanban','Funnel','Cohort','Retention','Churn','Conversion','Adoption','Engagement','Growth'];
-                      const aiSkills = ['AI','ML','LLM','NLP','Clustering','K-Means','scikit','Cosine','Filtering','Herfindahl','Gen AI','Generative AI','Machine Learning','GPT','Claude','LLaMA','Gemini','Hugging Face','Transformers','BERT','OpenAI','Anthropic'];
-                      const engSkills = ['React','TypeScript','Vercel','Node.js','Nodejs','Next.js','Nextjs','Vue','Angular','Express','Django','Flask','Docker','Kubernetes','AWS','GCP','Azure','Tailwind','Bootstrap','jQuery','HTML','CSS','JavaScript','Python','Java','Go','Rust'];
-                      
-                      const filtered = project.details.tools.filter(t => {
-                        const isEng = engSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
-                        const isProduct = productSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
-                        const isAI = aiSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
-                        return !isEng && (isProduct || isAI);
-                      });
-                      
-                      return filtered.slice(0, 5).map((t, i) => {
-                        const isAI = aiSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
-                        return (
-                          <span
-                            key={i}
-                            className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border ${isAI ? 'font-bold' : ''}`}
-                            style={{
-                              borderColor: isAI ? `${project.color}60` : `${project.color}25`,
-                              backgroundColor: isAI ? `${project.color}18` : `${project.color}06`,
-                              color: project.color,
-                            }}
-                          >
-                            {isAI ? `✦ ${t}` : t}
-                          </span>
-                        );
-                      });
-                    })()}
-                  </div>
-                )}
-          </div>
+            {/* Skills */}
+            {filteredTools.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {filteredTools.map((t, i) => {
+                  const isAI = aiSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
+                  return (
+                    <span
+                      key={i}
+                      className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border backdrop-blur-sm ${isAI ? 'font-bold' : ''}`}
+                      style={{
+                        borderColor: isAI ? `${project.color}80` : 'rgba(255,255,255,0.2)',
+                        backgroundColor: isAI ? `${project.color}30` : 'rgba(255,255,255,0.08)',
+                        color: isAI ? '#fff' : 'rgba(255,255,255,0.8)',
+                      }}
+                    >
+                      {isAI ? `✦ ${t}` : t}
+                    </span>
+                  );
+                })}
+              </div>
+            )}
 
-          <div className="flex items-center gap-3">
+            {/* CTA */}
             <motion.div
-              className="flex items-center gap-2 text-sm font-semibold tracking-wide"
-              style={{ color: project.color }}
-              animate={hovered ? { x: 6 } : { x: 0 }}
+              className="flex items-center gap-2 text-sm font-semibold tracking-wide text-white"
+              animate={hovered ? { x: 4 } : { x: 0 }}
               transition={{ duration: 0.3 }}
             >
               Read case study
@@ -189,30 +200,17 @@ function ProjectCard({
                 <ArrowUpRight size={16} />
               </motion.span>
             </motion.div>
-            
-            {project.link && project.link !== "#" && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[11px] font-medium text-muted-foreground hover:text-foreground transition-colors"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <span className="w-1 h-1 rounded-full bg-muted-foreground mx-1" />
-                <ExternalLink size={12} />
-                Live Product
-              </a>
-            )}
           </div>
+        </motion.div>
 
-          <motion.div
-            className="absolute bottom-0 left-0 h-1 rounded-full"
-            style={{ backgroundColor: project.color }}
-            initial={{ width: "0%" }}
-            animate={hovered ? { width: "100%" } : { width: "40%" }}
-            transition={{ duration: 0.5, ease: [0.22, 0.68, 0.36, 1] }}
-          />
-        </div>
+        {/* Bottom accent bar */}
+        <motion.div
+          className="absolute bottom-0 left-0 h-1 z-20 rounded-full"
+          style={{ backgroundColor: project.color }}
+          initial={{ width: "0%" }}
+          animate={hovered ? { width: "100%" } : { width: "30%" }}
+          transition={{ duration: 0.5, ease: [0.22, 0.68, 0.36, 1] }}
+        />
       </div>
     </motion.div>
   );
