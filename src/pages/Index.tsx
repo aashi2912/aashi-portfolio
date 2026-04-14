@@ -1295,7 +1295,7 @@ export default function Index() {
           <div className="mt-12">
           {/* Product management is about people section - AFTER the gallery */}
           <RevealText delay={0.4}>
-            <div className="mb-10">
+            <div className="mb-10 text-center">
               <h4 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
                 Product management is about <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">people</span> before it's about <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">products.</span>
               </h4>
