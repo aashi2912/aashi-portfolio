@@ -25,7 +25,7 @@ import hobbyReading from "@/assets/hobby-reading.jpeg";
 import hobbyBadminton from "@/assets/hobby-badminton.jpeg";
 import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 import vibeRouteHero from "@/assets/vibe-route-hero.png";
-import netflixLogo from "@/assets/netflix-logo.png";
+import blindSpotHero from "@/assets/blind-spot-hero.jpg";
 import rideconvertHero from "@/assets/rideconvert-hero.png";
 
 import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
