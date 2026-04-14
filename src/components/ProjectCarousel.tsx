@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, ArrowUpRight, ArrowLeft, FileText, X, Github, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -814,6 +814,27 @@ function ProjectDrawer({
 export function ProjectCarousel({ projects }: { projects: Project[] }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    checkScroll();
+    el.addEventListener("scroll", checkScroll, { passive: true });
+    window.addEventListener("resize", checkScroll);
+    return () => {
+      el.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, [checkScroll]);
 
   const handleCardClick = (project: Project) => {
     setSelectedProject(project);
@@ -837,18 +858,22 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
   return (
     <div className="relative">
       {/* Navigation arrows */}
-      <button
-        onClick={() => scroll("left")}
-        className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-lg"
-      >
-        <ChevronLeft size={20} />
-      </button>
-      <button
-        onClick={() => scroll("right")}
-        className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-lg"
-      >
-        <ChevronRight size={20} />
-      </button>
+      {canScrollLeft && (
+        <button
+          onClick={() => scroll("left")}
+          className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-lg"
+        >
+          <ChevronLeft size={20} />
+        </button>
+      )}
+      {canScrollRight && (
+        <button
+          onClick={() => scroll("right")}
+          className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-lg"
+        >
+          <ChevronRight size={20} />
+        </button>
+      )}
 
       {/* Scrollable carousel */}
       <div
