@@ -1386,7 +1386,7 @@ export default function Index() {
             {/* Block 5 - The belief - closing statement */}
             <RevealText delay={0.65}>
               <motion.div
-                className="mt-4 rounded-xl border border-[hsl(200,50%,80%)] dark:border-[hsl(200,40%,30%)] bg-[hsl(200,60%,92%)] dark:bg-[hsl(200,40%,18%)] p-6 relative text-center"
+                className="mt-4 rounded-xl border border-[hsl(200,50%,80%)] dark:border-[hsl(200,40%,30%)] bg-[hsl(200,60%,92%)] dark:bg-[hsl(200,40%,18%)] p-6 relative text-center glow-border"
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
