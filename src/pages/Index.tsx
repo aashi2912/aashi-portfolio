@@ -821,7 +821,8 @@ export default function Index() {
           <img
             src={heroImage}
             alt="Hero illustration of a person jumping between cliffs"
-            className="w-full h-full object-cover" />
+            className="w-full h-full object-cover parallax-hero"
+            style={{ transform: `translateY(${heroParallax}px)` }} />
           
           <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
             I <motion.span className="italic" initial={{ opacity: 0, scale: 1.3 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>bridge</motion.span> the gap between<br />
