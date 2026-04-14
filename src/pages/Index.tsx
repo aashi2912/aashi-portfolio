@@ -1128,7 +1128,7 @@ export default function Index() {
           
           {/* Headline */}
           <RevealText>
-            <div className="mb-4">
+            <div className="mb-4 text-center">
               <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] whitespace-nowrap">
                 When I'm not obsessing over product strategy,
               </h2>
@@ -1138,7 +1138,7 @@ export default function Index() {
             </div>
           </RevealText>
           <RevealText delay={0.1}>
-            <p className="mb-14 text-[17px] text-muted-foreground whitespace-nowrap">
+            <p className="mb-14 text-[17px] text-muted-foreground text-center">
               Indulging in the many hobbies I try to juggle outside the 9-to-5. Here's a peek 👀
             </p>
           </RevealText>
