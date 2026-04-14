@@ -1114,7 +1114,7 @@ export default function Index() {
 
       {/* ── References ── */}
       <ScrollSection>
-      <ContentWrap className="pt-8 pb-24 scroll-mt-20">
+      <ContentWrap className="pt-8 pb-8 scroll-mt-20">
         <section id="references" className="relative">
           <ReferencesSection />
         </section>
@@ -1123,7 +1123,7 @@ export default function Index() {
 
       {/* ── About ── */}
       <ScrollSection>
-      <ContentWrap className="py-24 pb-16 scroll-mt-20">
+      <ContentWrap className="pt-8 pb-16 scroll-mt-20">
         <section id="about" className="scroll-mt-20 relative">
           
           {/* Headline */}
