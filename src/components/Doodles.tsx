@@ -176,24 +176,46 @@ export function WavyDivider({ className = "" }: { className?: string }) {
   );
 }
 
-// ─── Animated counter ───────────────────────────────────────────────────────
+// ─── Animated counter with counting-up effect ──────────────────────────────
+import { useEffect, useState, useRef } from "react";
+import { useInView } from "framer-motion";
+
 export function AnimatedCounter({ value, suffix = "", label, delay = 0 }: { value: number; suffix?: string; label: string; delay?: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+    const timeout = setTimeout(() => {
+      let start = 0;
+      const duration = 1200;
+      const startTime = performance.now();
+      const step = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.round(eased * value));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, delay * 1000);
+    return () => clearTimeout(timeout);
+  }, [isInView, value, delay]);
+
   return (
     <motion.div
+      ref={ref}
       className="text-center"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
     >
-      <motion.span
-        className="text-3xl md:text-4xl font-bold text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        {value}{suffix}
-      </motion.span>
+      <span className="text-3xl md:text-4xl font-bold text-shimmer">
+        {count}{suffix}
+      </span>
       <p className="text-sm text-muted-foreground mt-1">{label}</p>
     </motion.div>
   );
