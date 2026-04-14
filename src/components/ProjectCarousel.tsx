@@ -751,20 +751,17 @@ function ProjectDrawer({
                     {(() => {
                       const aiKeywords = ['AI','ML','LLM','NLP','Clustering','Cosine','Filtering','Herfindahl','scikit','K-Means','Claude','GPT'];
                       const pmKeywords = ['RICE','Product Strategy','User Research','A/B Test','Data Analysis','Roadmap','Stakeholder','OKR','PRD','Persona','Journey Map','Competitive Analysis','Sprint','Acceptance Criteria','User Story','Discovery','Prioritization'];
-                      const platformKeywords = ['Jira','Confluence','Figma','Miro','Notion','Slack','Linear','Amplitude','Mixpanel','Google Analytics','Hotjar'];
                       const engKeywords = ['React','TypeScript','Vercel','Python','pandas','SQL','Recharts','Node','Next','Google Maps','Google Places','TMDB','API'];
 
                       const categorize = (t: string) => {
                         if (aiKeywords.some(k => t.toLowerCase().includes(k.toLowerCase()))) return 'ai';
                         if (pmKeywords.some(k => t.toLowerCase().includes(k.toLowerCase()))) return 'pm';
-                        if (platformKeywords.some(k => t.toLowerCase().includes(k.toLowerCase()))) return 'platform';
                         return 'eng';
                       };
 
                       const groups = {
                         ai: { label: 'AI / ML', items: details.tools.filter(t => categorize(t) === 'ai') },
                         pm: { label: 'Product Management', items: details.tools.filter(t => categorize(t) === 'pm') },
-                        platform: { label: 'PM Tools', items: details.tools.filter(t => categorize(t) === 'platform') },
                         eng: { label: 'Engineering', items: details.tools.filter(t => categorize(t) === 'eng') },
                       };
 
