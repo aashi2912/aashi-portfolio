@@ -384,7 +384,7 @@ const projects: Project[] = [
       "1,091 lines of production-ready SQL (BigQuery, Snowflake, PostgreSQL compatible)",
     ],
     takeawayQuote: "Casual riders don't convert because the product wasn't designed for their usage pattern. Fix the value proposition, not the price.",
-    takeawayTags: ["Product Strategy", "Data Analysis", "User Research", "RICE Prioritization", "K-Means Clustering", "A/B Test Design"],
+    takeawayTags: ["Data-driven personas", "Strategic roadmap planning", "Quantitative insights", "Conversion-focused design"],
     tools: ["K-Means Clustering (ML)", "scikit-learn (ML)", "Python", "pandas", "SQL", "Recharts", "React", "TypeScript", "Vercel", "Jira", "Confluence", "Miro", "RICE Prioritization", "Product Strategy", "A/B Test Design", "Data Analysis", "User Research", "Roadmapping", "Stakeholder Management", "OKR Definition"]
   }
 }];
