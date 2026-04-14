@@ -745,19 +745,49 @@ function ProjectDrawer({
                   </motion.div>
                 )}
 
-                {/* Tools */}
+                {/* Tools & Stack - Categorized */}
                 {details.tools && details.tools.length > 0 && (
                   <SectionBlock label="Tools & Stack" color={c} delay={0.75}>
-                    <div className="flex flex-wrap gap-2.5">
-                      {details.tools.map((t, i) => {
-                        const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl)\b/i.test(t);
-                        return (
-                          <span key={i} className={`rounded-full px-4 py-2 text-xs font-medium border ${isAI ? 'font-bold' : ''}`} style={{ borderColor: isAI ? `${c}45` : `${c}25`, backgroundColor: isAI ? `${c}18` : `${c}10`, color: c }}>
-                            {isAI ? `✦ ${t}` : t}
-                          </span>
-                        );
-                      })}
-                    </div>
+                    {(() => {
+                      const aiKeywords = ['AI','ML','LLM','NLP','Clustering','Cosine','Filtering','Herfindahl','scikit','K-Means','Claude','GPT'];
+                      const pmKeywords = ['RICE','Product Strategy','User Research','A/B Test','Data Analysis','Roadmap','Stakeholder','OKR','PRD','Persona','Journey Map','Competitive Analysis','Sprint','Acceptance Criteria','User Story','Discovery','Prioritization'];
+                      const platformKeywords = ['Jira','Confluence','Figma','Miro','Notion','Slack','Linear','Amplitude','Mixpanel','Google Analytics','Hotjar'];
+                      const engKeywords = ['React','TypeScript','Vercel','Python','pandas','SQL','Recharts','Node','Next','Google Maps','Google Places','TMDB','API'];
+
+                      const categorize = (t: string) => {
+                        if (aiKeywords.some(k => t.toLowerCase().includes(k.toLowerCase()))) return 'ai';
+                        if (pmKeywords.some(k => t.toLowerCase().includes(k.toLowerCase()))) return 'pm';
+                        if (platformKeywords.some(k => t.toLowerCase().includes(k.toLowerCase()))) return 'platform';
+                        return 'eng';
+                      };
+
+                      const groups = {
+                        ai: { label: 'AI / ML', items: details.tools.filter(t => categorize(t) === 'ai') },
+                        pm: { label: 'Product Management', items: details.tools.filter(t => categorize(t) === 'pm') },
+                        platform: { label: 'PM Tools', items: details.tools.filter(t => categorize(t) === 'platform') },
+                        eng: { label: 'Engineering', items: details.tools.filter(t => categorize(t) === 'eng') },
+                      };
+
+                      return (
+                        <div className="space-y-5">
+                          {Object.entries(groups).filter(([, g]) => g.items.length > 0).map(([key, group]) => (
+                            <div key={key}>
+                              <p className="text-[11px] uppercase tracking-widest font-semibold mb-2.5" style={{ color: `${c}99` }}>{group.label}</p>
+                              <div className="flex flex-wrap gap-2">
+                                {group.items.map((t, i) => {
+                                  const isAI = key === 'ai';
+                                  return (
+                                    <span key={i} className={`rounded-full px-3.5 py-1.5 text-xs font-medium border ${isAI ? 'font-bold' : ''}`} style={{ borderColor: isAI ? `${c}45` : `${c}20`, backgroundColor: isAI ? `${c}15` : `${c}08`, color: c }}>
+                                      {isAI ? `✦ ${t}` : t}
+                                    </span>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    })()}
                   </SectionBlock>
                 )}
               </div>
