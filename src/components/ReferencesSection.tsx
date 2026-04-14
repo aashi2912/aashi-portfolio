@@ -93,7 +93,7 @@ function TestimonialsBlock() {
   const active = references[safeIndex];
 
   return (
-    <div className="py-16 md:py-24 relative">
+    <div className="py-10 md:py-14 relative">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -225,7 +225,7 @@ function TestimonialsBlock() {
 function PhilosophyBlock() {
   return (
     <motion.div
-      className="py-8 md:py-12"
+      className="py-4 md:py-6"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
