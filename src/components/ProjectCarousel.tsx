@@ -85,9 +85,9 @@ function ProjectCard({
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className="relative flex flex-col rounded-2xl overflow-hidden border transition-all duration-500 h-full"
+        className="relative flex flex-col rounded-2xl overflow-hidden border-[1.5px] transition-all duration-500 h-full"
         style={{
-          borderColor: hovered ? `${project.color}50` : `hsl(var(--border))`,
+          borderColor: hovered ? `${project.color}60` : `${project.color}30`,
           boxShadow: hovered ? `0 20px 60px -15px ${project.color}25` : 'none',
         }}
       >
