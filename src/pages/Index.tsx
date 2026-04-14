@@ -671,7 +671,7 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
           }
         </motion.div>
         {/* Text */}
-        <span className="text-[15px] leading-relaxed flex-1 text-foreground">
+        <span className={`text-[15px] leading-relaxed flex-1 ${item.done ? "text-muted-foreground" : "text-foreground"}`}>
           {item.text}
         </span>
         {/* Link */}
