@@ -328,6 +328,7 @@ const projects: Project[] = [
   icon: "🚲",
   image: rideconvertHero,
   caseStudyPdf: "/case-studies/rideconvert-case-study.pdf",
+  caseStudyPages: Array.from({ length: 10 }, (_, i) => `/case-studies/rideconvert-pages/page-${i + 1}.jpg`),
   prdPdf: "/case-studies/rideconvert-case-study.pdf",
   githubLink: "https://github.com/aashi2912/rideconvert",
   details: {
