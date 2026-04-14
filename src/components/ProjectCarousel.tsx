@@ -139,35 +139,39 @@ function ProjectCard({
               {project.description}
             </p>
 
-            {project.details?.tools && (
-              <div className="flex flex-wrap gap-1.5 mb-5">
-                {project.details.tools
-                  .filter(t => {
-                    // Only show AI/ML and product/data skills, not engineering skills
-                    const isEngineering = /\b(React|TypeScript|Vercel|Node\.?js|Next\.?js|Vue|Angular|Express|Django|Flask|Docker|Kubernetes|AWS|GCP|Azure|Tailwind|Bootstrap|jQuery|HTML|CSS|JavaScript|Python|Java|Go|Rust|Ruby|PHP)\b/i.test(t);
-                    const isProductSkill = /\b(RICE|Product Strategy|User Research|Market Analysis|Roadmapping|Prioritization|KPI|OKR|Metrics|Data Analysis|Product Discovery|User Interviews|Competitive Analysis|GTM|Go-to-Market|A/B Test|Experimentation|Funnel Analysis|Cohort Analysis|Persona|Journey Mapping|Wireframing|Prototyping|MVP|Agile|Scrum|Kanban|Stakeholder|Cross-functional|User Stories|PRD|Product Requirements|Roadmap|Feature|Release|Launch|Adoption|Retention|Churn|Conversion|Engagement|Growth|Monetization|Business Model|Pricing|Market Fit)\b/i.test(t);
-                    const isAISkill = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl|scikit|K-Means|Gen AI|Generative AI|Machine Learning|Deep Learning|Neural|GPT|Claude|LLaMA|Gemini|Hugging Face|Transformers|NLP|Natural Language|Computer Vision|CV|Predictive|Recommendation|Classification|Regression|Model|Training|Inference|Embeddings|Vector|Semantic|BERT|Sentiment|Analysis|OpenAI|Anthropic|Google AI)\b/i.test(t);
-                    return !isEngineering && (isProductSkill || isAISkill);
-                  })
-                  .slice(0, 5)
-                  .map((t, i) => {
-                    const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl|scikit|K-Means|Gen AI|Generative AI|Machine Learning|Deep Learning|Neural|GPT|Claude|LLaMA|Gemini|Hugging Face|Transformers|NLP|Natural Language|Computer Vision|CV|Predictive|Recommendation|Classification|Regression|Model|Training|Inference|Embeddings|Vector|Semantic|BERT|Sentiment|Analysis|OpenAI|Anthropic|Google AI)\b/i.test(t);
-                    return (
-                      <span
-                        key={i}
-                        className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border ${isAI ? 'font-bold' : ''}`}
-                        style={{
-                          borderColor: isAI ? `${project.color}60` : `${project.color}25`,
-                          backgroundColor: isAI ? `${project.color}18` : `${project.color}06`,
-                          color: project.color,
-                        }}
-                      >
-                        {isAI ? `✦ ${t}` : t}
-                      </span>
-                    );
-                  })}
-              </div>
-            )}
+                {project.details?.tools && (
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {(() => {
+                      const productSkills = ['RICE','KPI','OKR','PRD','Roadmap','User Research','Market Analysis','Product Strategy','Persona','Journey Map','Wireframe','Prototype','GTM','Go-to-Market','Prioritization','Data Analysis','A/B Test','Experiment','Discovery','Stakeholder','Agile','Scrum','Kanban','Funnel','Cohort','Retention','Churn','Conversion','Adoption','Engagement','Growth'];
+                      const aiSkills = ['AI','ML','LLM','NLP','Clustering','K-Means','scikit','Cosine','Filtering','Herfindahl','Gen AI','Generative AI','Machine Learning','GPT','Claude','LLaMA','Gemini','Hugging Face','Transformers','BERT','OpenAI','Anthropic'];
+                      const engSkills = ['React','TypeScript','Vercel','Node.js','Nodejs','Next.js','Nextjs','Vue','Angular','Express','Django','Flask','Docker','Kubernetes','AWS','GCP','Azure','Tailwind','Bootstrap','jQuery','HTML','CSS','JavaScript','Python','Java','Go','Rust'];
+                      
+                      const filtered = project.details.tools.filter(t => {
+                        const isEng = engSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
+                        const isProduct = productSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
+                        const isAI = aiSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
+                        return !isEng && (isProduct || isAI);
+                      });
+                      
+                      return filtered.slice(0, 5).map((t, i) => {
+                        const isAI = aiSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
+                        return (
+                          <span
+                            key={i}
+                            className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border ${isAI ? 'font-bold' : ''}`}
+                            style={{
+                              borderColor: isAI ? `${project.color}60` : `${project.color}25`,
+                              backgroundColor: isAI ? `${project.color}18` : `${project.color}06`,
+                              color: project.color,
+                            }}
+                          >
+                            {isAI ? `✦ ${t}` : t}
+                          </span>
+                        );
+                      });
+                    })()}
+                  </div>
+                )}
           </div>
 
           <div className="flex items-center gap-3">
