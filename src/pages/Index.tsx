@@ -844,7 +844,7 @@ export default function Index() {
 
           {/* Bio - Journey Timeline */}
           <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
-            <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+            <div className="mb-4 sm:mb-0 sm:w-28 shrink-0 sm:pt-2">
               <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Bio</span>
             </div>
             <div className="flex-1">
@@ -917,7 +917,7 @@ export default function Index() {
           {/* Experience */}
           <RevealText delay={0.2}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
-              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0 sm:pt-5">
                 <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Experience</span>
                 
               </div>
@@ -957,7 +957,7 @@ export default function Index() {
           {/* Skills */}
           <RevealText delay={0.3}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
-              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0 sm:pt-1">
                 <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Skills</span>
               </div>
               <div className="flex-1 space-y-8">
@@ -994,7 +994,7 @@ export default function Index() {
           {/* Education */}
           <RevealText delay={0.35}>
             <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
-              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0">
+              <div className="mb-4 sm:mb-0 sm:w-28 shrink-0 sm:pt-5">
                 <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Education</span>
               </div>
               <div className="flex-1 divide-y divide-border/40">
@@ -1447,8 +1447,8 @@ export default function Index() {
             <RevealText key={cat.name} delay={0.05 * catIndex}>
                 <div className={`flex flex-col md:flex-row gap-4 md:gap-12 py-10 ${catIndex < impossibleCategories.length - 1 ? "border-b border-border" : ""}`}>
                   {/* Category label */}
-                  <div className="md:w-40 shrink-0">
-                    <span className="text-xs font-semibold tracking-[0.15em] text-muted-foreground">
+                  <div className="md:w-40 shrink-0 md:pt-1">
+                    <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">
                       {cat.name}
                     </span>
                   </div>
