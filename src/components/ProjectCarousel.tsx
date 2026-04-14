@@ -48,7 +48,7 @@ export type Project = {
   };
 };
 
-/* ─── Project Card (Glassmorphic Overlay) ─── */
+/* ─── Project Card ─── */
 
 function ProjectCard({
   project,
@@ -85,82 +85,75 @@ function ProjectCard({
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className="relative rounded-3xl overflow-hidden h-[460px] md:h-[520px] border transition-all duration-500"
+        className="relative flex flex-col rounded-2xl overflow-hidden border transition-all duration-500 h-full"
         style={{
-          borderColor: hovered ? `${project.color}70` : `${project.color}25`,
+          borderColor: hovered ? `${project.color}50` : `hsl(var(--border))`,
+          boxShadow: hovered ? `0 20px 60px -15px ${project.color}25` : 'none',
         }}
       >
-        {/* Full hero image background */}
-        <motion.div
-          className="absolute inset-0"
-          animate={hovered ? { scale: 1.06 } : { scale: 1 }}
-          transition={{ duration: 0.7, ease: [0.22, 0.68, 0.36, 1] }}
-        >
-          {project.image ? (
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <div
-              className="w-full h-full flex items-center justify-center"
-              style={{ background: `linear-gradient(135deg, ${project.cardBg || project.color}30, ${project.color}10)` }}
+        {/* Hero image section */}
+        <div className="relative h-[240px] md:h-[280px] overflow-hidden" style={{ backgroundColor: project.cardBg || '#111' }}>
+          <motion.div
+            className="absolute inset-0"
+            animate={hovered ? { scale: 1.05 } : { scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.22, 0.68, 0.36, 1] }}
+          >
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center">
+                <span className="text-[80px] select-none">{project.icon || "🚀"}</span>
+              </div>
+            )}
+          </motion.div>
+
+          {/* Tag + year badge */}
+          <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+            <span
+              className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wider backdrop-blur-md"
+              style={{
+                backgroundColor: `${project.color}cc`,
+                color: '#fff',
+              }}
             >
-              <span className="text-[100px] select-none">{project.icon || "🚀"}</span>
-            </div>
+              {project.tag}
+            </span>
+            <span className="rounded-full px-2.5 py-1 text-[10px] font-mono tracking-wider backdrop-blur-md bg-black/40 text-white/80">
+              {project.year}
+            </span>
+          </div>
+
+          {/* Live Product chip */}
+          {project.link && project.link !== "#" && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-semibold text-white bg-black/50 backdrop-blur-md hover:bg-black/70 transition-colors"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <ExternalLink size={10} />
+              Live
+            </a>
           )}
-        </motion.div>
-
-        {/* Gradient overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-
-        {/* Live Product floating chip */}
-        {project.link && project.link !== "#" && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-medium text-white/90 bg-white/15 backdrop-blur-md border border-white/20 hover:bg-white/25 transition-colors"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <ExternalLink size={11} />
-            Live
-          </a>
-        )}
-
-        {/* Tag + year top-left */}
-        <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-          <span
-            className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wider backdrop-blur-md"
-            style={{
-              backgroundColor: `${project.color}30`,
-              color: '#fff',
-              border: `1px solid ${project.color}40`,
-            }}
-          >
-            {project.tag}
-          </span>
-          <span className="font-mono text-[10px] text-white/60 tracking-wider">
-            {project.year}
-          </span>
         </div>
 
-        {/* Glassmorphic content overlay at bottom */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-6"
-          animate={hovered ? { y: 0 } : { y: 0 }}
-        >
-          <div className="rounded-2xl bg-white/10 dark:bg-white/[0.08] backdrop-blur-xl border border-white/20 dark:border-white/10 p-5 md:p-6 shadow-2xl">
+        {/* Content section - solid card background */}
+        <div className="flex flex-col justify-between flex-1 p-5 md:p-6 bg-card">
+          <div>
             <motion.h3
-              className="text-xl md:text-2xl font-bold tracking-tight leading-tight mb-2 text-white"
+              className="text-lg md:text-xl font-bold tracking-tight leading-snug mb-2 text-foreground"
               animate={hovered ? { x: 3 } : { x: 0 }}
               transition={{ duration: 0.3 }}
             >
               {project.title}
             </motion.h3>
 
-            <p className="text-[13px] text-white/70 leading-relaxed mb-4 line-clamp-2">
+            <p className="text-[13px] text-muted-foreground leading-relaxed mb-4">
               {project.description}
             </p>
 
@@ -172,11 +165,11 @@ function ProjectCard({
                   return (
                     <span
                       key={i}
-                      className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border backdrop-blur-sm ${isAI ? 'font-bold' : ''}`}
+                      className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border ${isAI ? 'font-bold' : ''}`}
                       style={{
-                        borderColor: isAI ? `${project.color}80` : 'rgba(255,255,255,0.2)',
-                        backgroundColor: isAI ? `${project.color}30` : 'rgba(255,255,255,0.08)',
-                        color: isAI ? '#fff' : 'rgba(255,255,255,0.8)',
+                        borderColor: isAI ? `${project.color}60` : `hsl(var(--border))`,
+                        backgroundColor: isAI ? `${project.color}15` : 'transparent',
+                        color: isAI ? project.color : `hsl(var(--muted-foreground))`,
                       }}
                     >
                       {isAI ? `✦ ${t}` : t}
@@ -185,30 +178,31 @@ function ProjectCard({
                 })}
               </div>
             )}
+          </div>
 
-            {/* CTA */}
-            <motion.div
-              className="flex items-center gap-2 text-sm font-semibold tracking-wide text-white"
-              animate={hovered ? { x: 4 } : { x: 0 }}
+          {/* CTA row */}
+          <motion.div
+            className="flex items-center gap-2 text-sm font-semibold tracking-wide"
+            style={{ color: project.color }}
+            animate={hovered ? { x: 4 } : { x: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            Read case study
+            <motion.span
+              animate={hovered ? { x: 3, y: -3 } : { x: 0, y: 0 }}
               transition={{ duration: 0.3 }}
             >
-              Read case study
-              <motion.span
-                animate={hovered ? { x: 3, y: -3 } : { x: 0, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ArrowUpRight size={16} />
-              </motion.span>
-            </motion.div>
-          </div>
-        </motion.div>
+              <ArrowUpRight size={16} />
+            </motion.span>
+          </motion.div>
+        </div>
 
         {/* Bottom accent bar */}
         <motion.div
-          className="absolute bottom-0 left-0 h-1 z-20 rounded-full"
+          className="h-[3px]"
           style={{ backgroundColor: project.color }}
           initial={{ width: "0%" }}
-          animate={hovered ? { width: "100%" } : { width: "30%" }}
+          animate={hovered ? { width: "100%" } : { width: "35%" }}
           transition={{ duration: 0.5, ease: [0.22, 0.68, 0.36, 1] }}
         />
       </div>
