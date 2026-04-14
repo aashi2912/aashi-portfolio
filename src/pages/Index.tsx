@@ -825,7 +825,7 @@ export default function Index() {
 
           {/* Infographic Stats Row */}
           <RevealText delay={0.08}>
-            <div className="mt-10 mb-8 grid grid-cols-3 gap-6 p-6 rounded-2xl border border-dashed border-border bg-muted/20">
+            <div className="mt-10 mb-8 grid grid-cols-3 gap-6 p-6 rounded-2xl border border-[hsl(200,50%,80%)] dark:border-[hsl(200,40%,30%)] bg-[hsl(200,60%,92%)] dark:bg-[hsl(200,40%,18%)]">
               <AnimatedCounter value={4} suffix="+" label="Years Experience" delay={0} />
               <AnimatedCounter value={3} suffix="" label="Companies" delay={0.15} />
               <AnimatedCounter value={3} suffix="" label="Roles" delay={0.3} />
@@ -1353,7 +1353,7 @@ export default function Index() {
             {/* Block 5 - The belief - closing statement */}
             <RevealText delay={0.65}>
               <motion.div
-                className="mt-4 rounded-xl border border-dashed border-border bg-muted/30 p-6 relative"
+                className="mt-4 rounded-xl border border-[hsl(200,50%,80%)] dark:border-[hsl(200,40%,30%)] bg-[hsl(200,60%,92%)] dark:bg-[hsl(200,40%,18%)] p-6 relative text-center"
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
