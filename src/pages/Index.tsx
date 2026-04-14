@@ -652,7 +652,7 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
   return (
     <>
       <motion.div
-        className={`flex items-center gap-3 rounded-md border border-border bg-background px-3 py-1.5 group ${depth > 0 ? "ml-8" : ""}`}
+        className={`flex items-center gap-3 rounded-md border border-border px-3 py-1.5 group ${depth > 0 ? "ml-8" : ""} ${item.done ? "bg-muted/30" : "bg-background"}`}
         whileHover={{ x: 3, rotate: [0, -0.5, 0.5, 0], backgroundColor: "hsl(var(--accent) / 0.5)" }}
         transition={{ duration: 0.25 }}
       >
@@ -671,9 +671,7 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
           }
         </motion.div>
         {/* Text */}
-        <span className={`text-[15px] leading-relaxed flex-1 ${
-        item.done ? "text-muted-foreground/60" : "text-foreground"}`
-        }>
+        <span className="text-[15px] leading-relaxed flex-1 text-foreground">
           {item.text}
         </span>
         {/* Link */}
