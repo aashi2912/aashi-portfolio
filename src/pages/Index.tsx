@@ -658,21 +658,21 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
       >
         {/* Circle checkbox */}
         <motion.div
-          className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+           className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
           item.done ?
-          "bg-emerald-500 border-emerald-500" :
+          "bg-[hsl(200,50%,35%)] border-[hsl(200,50%,35%)] dark:bg-[hsl(200,40%,75%)] dark:border-[hsl(200,40%,75%)]" :
           "border-muted-foreground/40"}`}
           whileHover={!item.done ? { scale: 1.2, borderColor: "hsl(200,50%,35%)" } : {}}
         >
           {item.done &&
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 500 }}>
-            <Check className="w-3 h-3 text-white" strokeWidth={3} />
+            <Check className="w-3 h-3 text-white dark:text-[hsl(200,40%,15%)]" strokeWidth={3} />
           </motion.div>
           }
         </motion.div>
         {/* Text */}
         <span className={`text-[15px] leading-relaxed flex-1 ${
-        item.done ? "text-muted-foreground line-through" : "text-foreground"}`
+        item.done ? "text-muted-foreground/60" : "text-foreground"}`
         }>
           {item.text}
         </span>
