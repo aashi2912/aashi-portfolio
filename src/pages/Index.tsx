@@ -255,7 +255,7 @@ const projects: Project[] = [
   secondaryColor: "#B81D24",
   cardBg: "#1a1a1a",
   icon: "🎬",
-  image: netflixLogo,
+  image: blindSpotHero,
   caseStudyPages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-pages/page-${i + 1}.jpg`),
   prdPages: Array.from({ length: 5 }, (_, i) => `/case-studies/blind-spot-prd-pages/page-${i + 1}.jpg`),
   prdPdf: "/case-studies/blind-spot-prd.pdf",
