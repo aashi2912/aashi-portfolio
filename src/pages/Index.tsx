@@ -705,7 +705,9 @@ function ContentWrap({ children, className = "" }: {children: React.ReactNode;cl
 
 export default function Index() {
   const [roleIndex, setRoleIndex] = useState(0);
-
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: -500, y: -500 });
+  const [heroParallax, setHeroParallax] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -714,8 +716,40 @@ export default function Index() {
     return () => clearInterval(interval);
   }, []);
 
+  // Scroll progress & parallax
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? scrollTop / docHeight : 0);
+      setHeroParallax(scrollTop * 0.3);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Cursor glow
+  useEffect(() => {
+    const handleMouse = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouse, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
+
   return (
-    <div>
+    <div className="relative">
+      {/* Scroll progress bar */}
+      <div
+        className="scroll-progress"
+        style={{ width: `${scrollProgress * 100}%` }}
+      />
+      
+      {/* Cursor glow */}
+      <div
+        className="cursor-glow hidden md:block"
+        style={{ left: mousePos.x, top: mousePos.y }}
+      />
 
       {/* ── Home ── */}
       <section id="home" className="scroll-mt-20 relative overflow-hidden">
