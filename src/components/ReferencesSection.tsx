@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, FileText, Mail, MessageCircle } from "lucide-react";
-import { FloatingDoodle } from "@/components/Doodles";
-import { SketchSpeechBubble } from "@/components/SketchIcons";
 import jackEvansPhoto from "@/assets/jack-evans.jpeg";
 import gouthamKonthamPhoto from "@/assets/goutham-kontham.jpeg";
 import lindaBugaziyanosPhoto from "@/assets/linda-bugaziyanos.jpeg";
