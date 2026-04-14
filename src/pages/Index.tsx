@@ -652,7 +652,7 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
   return (
     <>
       <motion.div
-        className={`flex items-center gap-3 rounded-md border border-border px-3 py-1.5 group ${depth > 0 ? "ml-8" : ""} ${item.done ? "bg-muted/30" : "bg-background"}`}
+        className={`flex items-center gap-3 rounded-md border px-3 py-1.5 group ${depth > 0 ? "ml-8" : ""} ${item.done ? "bg-muted border-transparent" : "bg-background border-border"}`}
         whileHover={{ x: 3, rotate: [0, -0.5, 0.5, 0] }}
         transition={{ duration: 0.25 }}
       >
@@ -660,13 +660,13 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
         <motion.div
            className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
           item.done ?
-          "bg-[hsl(200,50%,35%)] border-[hsl(200,50%,35%)] dark:bg-[hsl(200,40%,75%)] dark:border-[hsl(200,40%,75%)]" :
+          "bg-primary border-primary text-primary-foreground" :
           "border-muted-foreground/40"}`}
-          whileHover={!item.done ? { scale: 1.2, borderColor: "hsl(200,50%,35%)" } : {}}
+          whileHover={!item.done ? { scale: 1.2, borderColor: "hsl(var(--primary))" } : {}}
         >
           {item.done &&
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 500 }}>
-            <Check className="w-3 h-3 text-white dark:text-[hsl(200,40%,15%)]" strokeWidth={3} />
+            <Check className="w-3 h-3" strokeWidth={3} />
           </motion.div>
           }
         </motion.div>
@@ -682,7 +682,7 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
         }
         {/* Date */}
         {item.date &&
-        <span className="text-sm text-muted-foreground whitespace-nowrap">{item.date}</span>
+        <span className={`text-sm whitespace-nowrap ${item.done ? "text-muted-foreground" : "text-muted-foreground"}`}>{item.date}</span>
         }
       </motion.div>
       {item.sub?.map((subItem, i) =>
