@@ -400,9 +400,9 @@ function ProjectDrawer({
               {/* Close & back */}
               <motion.button
                 onClick={onClose}
-                className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm border transition-colors z-10"
-                style={{ backgroundColor: isDarkBg ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.6)', borderColor: isDarkBg ? 'rgba(255,255,255,0.2)' : undefined, color: isDarkBg ? '#fff' : undefined }}
-                whileHover={{ scale: 1.1 }}
+                className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center border-2 transition-colors z-10"
+                style={{ backgroundColor: 'rgba(0,0,0,0.6)', borderColor: 'rgba(255,255,255,0.3)', color: '#fff' }}
+                whileHover={{ scale: 1.1, backgroundColor: 'rgba(0,0,0,0.8)' }}
                 whileTap={{ scale: 0.95 }}
               >
                 <X size={18} />
