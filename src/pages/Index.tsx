@@ -25,7 +25,7 @@ import hobbyReading from "@/assets/hobby-reading.jpeg";
 import hobbyBadminton from "@/assets/hobby-badminton.jpeg";
 import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 import vibeRouteHero from "@/assets/vibe-route-hero.png";
-import netflixLogo from "@/assets/netflix-logo.png";
+import blindSpotHero from "@/assets/blind-spot-hero.jpg";
 import rideconvertHero from "@/assets/rideconvert-hero.png";
 
 import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
@@ -255,7 +255,7 @@ const projects: Project[] = [
   secondaryColor: "#B81D24",
   cardBg: "#1a1a1a",
   icon: "🎬",
-  image: netflixLogo,
+  image: blindSpotHero,
   caseStudyPages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-pages/page-${i + 1}.jpg`),
   prdPages: Array.from({ length: 5 }, (_, i) => `/case-studies/blind-spot-prd-pages/page-${i + 1}.jpg`),
   prdPdf: "/case-studies/blind-spot-prd.pdf",
