@@ -653,7 +653,7 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
     <>
       <motion.div
         className={`flex items-center gap-3 rounded-md border border-border px-3 py-1.5 group ${depth > 0 ? "ml-8" : ""} ${item.done ? "bg-muted/30" : "bg-background"}`}
-        whileHover={{ x: 3, rotate: [0, -0.5, 0.5, 0], backgroundColor: "hsl(var(--accent) / 0.5)" }}
+        whileHover={{ x: 3, rotate: [0, -0.5, 0.5, 0] }}
         transition={{ duration: 0.25 }}
       >
         {/* Circle checkbox */}
@@ -825,7 +825,7 @@ export default function Index() {
             style={{ transform: `translateY(${heroParallax}px)` }} />
           
           <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
-            I <motion.span className="italic text-shimmer" initial={{ opacity: 0, scale: 1.3 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>bridge</motion.span> the gap between<br />
+            I <motion.span className="italic" initial={{ opacity: 0, scale: 1.3 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>bridge</motion.span> the gap between<br />
             <StaggerLetters text="ambition and execution!" delay={0.8} className="mt-1" />
           </h2>
 
