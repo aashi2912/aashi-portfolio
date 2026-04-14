@@ -1124,7 +1124,7 @@ export default function Index() {
 
       {/* ── About ── */}
       <ScrollSection>
-      <ContentWrap className="pt-8 pb-16 scroll-mt-20">
+      <ContentWrap className="pt-8 pb-4 scroll-mt-20">
         <section id="about" className="scroll-mt-20 relative">
           
           {/* Headline */}
@@ -1371,7 +1371,7 @@ export default function Index() {
 
       {/* ── Impossible List ── */}
       <ScrollSection>
-      <ContentWrap className="py-12 pb-32 scroll-mt-20">
+      <ContentWrap className="py-4 pb-32 scroll-mt-20">
         <section id="impossible-list" className="relative">
           
           {/* Header */}
