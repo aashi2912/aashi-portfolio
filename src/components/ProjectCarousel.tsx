@@ -75,7 +75,7 @@ function ProjectCard({
 
   return (
     <motion.div
-      className="group cursor-pointer flex-shrink-0 w-[75vw] sm:w-[360px] md:w-[400px] lg:w-[440px] snap-center"
+      className="group cursor-pointer flex-shrink-0 w-[70vw] sm:w-[320px] md:w-[360px] lg:w-[400px] snap-center"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -92,7 +92,7 @@ function ProjectCard({
         }}
       >
         {/* Hero image section */}
-        <div className="relative h-[200px] md:h-[230px] overflow-hidden" style={{ backgroundColor: project.cardBg || '#111' }}>
+        <div className="relative h-[170px] md:h-[200px] overflow-hidden" style={{ backgroundColor: project.cardBg || '#111' }}>
           <motion.div
             className="absolute inset-0"
             animate={hovered ? { scale: 1.05 } : { scale: 1 }}
