@@ -397,16 +397,7 @@ function ProjectDrawer({
                   : `linear-gradient(180deg, ${c}30, ${c}15, hsl(var(--card)))`,
               }}
             >
-              {/* Close & back */}
-              <motion.button
-                onClick={onClose}
-                className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center border-2 transition-colors z-10"
-                style={{ backgroundColor: 'rgba(0,0,0,0.6)', borderColor: 'rgba(255,255,255,0.3)', color: '#fff' }}
-                whileHover={{ scale: 1.1, backgroundColor: 'rgba(0,0,0,0.8)' }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <X size={18} />
-              </motion.button>
+              {/* Back button */}
               <motion.button
                 onClick={onClose}
                 className="absolute top-6 left-8 flex items-center gap-2 text-sm transition-colors"
@@ -458,16 +449,16 @@ function ProjectDrawer({
               )}
 
               {/* CTA buttons */}
-              <div className="flex flex-wrap gap-3 mt-6 relative z-[1]">
+              <div className="flex flex-wrap gap-2 mt-6 relative z-[1]">
                 {project.link && project.link !== "#" && (
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 hover:scale-105"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-all hover:opacity-90 hover:scale-105"
                     style={{ backgroundColor: c }}
                   >
-                    Try Live Product <ExternalLink size={14} />
+                    Live Product <ExternalLink size={12} />
                   </a>
                 )}
                 {project.githubLink && (
@@ -475,23 +466,23 @@ function ProjectDrawer({
                     href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all hover:scale-105"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border transition-all hover:scale-105"
                     style={{ borderColor: `${c}40`, color: c, backgroundColor: `${c}08` }}
                   >
-                    <Github size={14} /> GitHub
+                    <Github size={12} /> GitHub
                   </a>
                 )}
                 {project.caseStudyPages && project.caseStudyPages.length > 0 && (
                   <button
                     type="button"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all hover:scale-105"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border transition-all hover:scale-105"
                     style={{ borderColor: `${sc}40`, color: sc, backgroundColor: `${sc}08` }}
                     onClick={(e) => {
                       e.stopPropagation();
                       setShowCaseStudyModal(true);
                     }}
                   >
-                    <FileText size={14} /> View Full Case Study PDF
+                    <FileText size={12} /> Case Study PDF
                   </button>
                 )}
                 {project.prdPdf && (
@@ -499,11 +490,11 @@ function ProjectDrawer({
                     href={project.prdPdf}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all hover:scale-105"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border transition-all hover:scale-105"
                     style={{ borderColor: `${c}40`, color: c, backgroundColor: `${c}08` }}
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <FileText size={14} /> View PRD
+                    <FileText size={12} /> PRD
                   </a>
                 )}
               </div>
