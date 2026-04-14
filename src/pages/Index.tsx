@@ -858,7 +858,7 @@ export default function Index() {
 
           {/* Infographic Stats Row */}
           <RevealText delay={0.08}>
-            <div className="mt-10 mb-8 grid grid-cols-3 gap-6 p-6 rounded-2xl border border-[hsl(200,50%,80%)] dark:border-[hsl(200,40%,30%)] bg-[hsl(200,60%,92%)] dark:bg-[hsl(200,40%,18%)]">
+            <div className="mt-10 mb-8 grid grid-cols-3 gap-6 p-6 rounded-2xl border border-[hsl(200,50%,80%)] dark:border-[hsl(200,40%,30%)] bg-[hsl(200,60%,92%)] dark:bg-[hsl(200,40%,18%)] glow-border">
               <AnimatedCounter value={4} suffix="+" label="Years Experience" delay={0} />
               <AnimatedCounter value={3} suffix="" label="Companies" delay={0.15} />
               <AnimatedCounter value={3} suffix="" label="Roles" delay={0.3} />
