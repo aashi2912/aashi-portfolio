@@ -141,40 +141,63 @@ function ProjectCard({
 
             {project.details?.tools && (
               <div className="flex flex-wrap gap-1.5 mb-5">
-                {project.details.tools.slice(0, 4).map((t, i) => {
-                  const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl)\b/i.test(t);
-                  return (
-                    <span
-                      key={i}
-                      className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border ${isAI ? 'font-bold' : ''}`}
-                      style={{
-                        borderColor: isAI ? `${project.color}60` : `${project.color}25`,
-                        backgroundColor: isAI ? `${project.color}18` : `${project.color}06`,
-                        color: project.color,
-                      }}
-                    >
-                      {isAI ? `✦ ${t}` : t}
-                    </span>
-                  );
-                })}
+                {project.details.tools
+                  .filter(t => {
+                    // Only show AI/ML and product/data skills, not engineering skills
+                    const isEngineering = /\b(React|TypeScript|Vercel|Node\.?js|Next\.?js|Vue|Angular|Express|Django|Flask|Docker|Kubernetes|AWS|GCP|Azure|Tailwind|Bootstrap|jQuery)\b/i.test(t);
+                    return !isEngineering;
+                  })
+                  .slice(0, 4)
+                  .map((t, i) => {
+                    const isAI = /\b(AI|ML|LLM|NLP|Clustering|Cosine|Filtering|Herfindahl|scikit|K-Means)\b/i.test(t);
+                    return (
+                      <span
+                        key={i}
+                        className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border ${isAI ? 'font-bold' : ''}`}
+                        style={{
+                          borderColor: isAI ? `${project.color}60` : `${project.color}25`,
+                          backgroundColor: isAI ? `${project.color}18` : `${project.color}06`,
+                          color: project.color,
+                        }}
+                      >
+                        {isAI ? `✦ ${t}` : t}
+                      </span>
+                    );
+                  })}
               </div>
             )}
           </div>
 
-          <motion.div
-            className="flex items-center gap-2 text-sm font-semibold tracking-wide"
-            style={{ color: project.color }}
-            animate={hovered ? { x: 6 } : { x: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            Read case study
-            <motion.span
-              animate={hovered ? { x: 3, y: -3 } : { x: 0, y: 0 }}
+          <div className="flex items-center gap-3">
+            <motion.div
+              className="flex items-center gap-2 text-sm font-semibold tracking-wide"
+              style={{ color: project.color }}
+              animate={hovered ? { x: 6 } : { x: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <ArrowUpRight size={16} />
-            </motion.span>
-          </motion.div>
+              Read case study
+              <motion.span
+                animate={hovered ? { x: 3, y: -3 } : { x: 0, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ArrowUpRight size={16} />
+              </motion.span>
+            </motion.div>
+            
+            {project.link && project.link !== "#" && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-[11px] font-medium text-muted-foreground hover:text-foreground transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <span className="w-1 h-1 rounded-full bg-muted-foreground mx-1" />
+                <ExternalLink size={12} />
+                Live Product
+              </a>
+            )}
+          </div>
 
           <motion.div
             className="absolute bottom-0 left-0 h-1 rounded-full"
