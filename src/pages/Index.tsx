@@ -660,7 +660,7 @@ function ImpossibleListItem({ item, depth = 0 }: {item: ImpossibleItem;depth?: n
         <motion.div
            className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
           item.done ?
-          "bg-primary border-primary text-primary-foreground" :
+          "bg-[hsl(210,80%,55%)] border-[hsl(210,80%,55%)] text-white" :
           "border-muted-foreground/40"}`}
           whileHover={!item.done ? { scale: 1.2, borderColor: "hsl(var(--primary))" } : {}}
         >
