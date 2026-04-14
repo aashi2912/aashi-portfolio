@@ -167,9 +167,9 @@ function ProjectCard({
                       key={i}
                       className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border ${isAI ? 'font-bold' : ''}`}
                       style={{
-                        borderColor: isAI ? `${project.color}60` : `hsl(var(--border))`,
-                        backgroundColor: isAI ? `${project.color}15` : 'transparent',
-                        color: isAI ? project.color : `hsl(var(--muted-foreground))`,
+                        borderColor: `${project.color}50`,
+                        backgroundColor: `${project.color}12`,
+                        color: project.color,
                       }}
                     >
                       {isAI ? `✦ ${t}` : t}
