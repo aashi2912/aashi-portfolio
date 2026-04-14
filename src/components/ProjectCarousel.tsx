@@ -85,7 +85,7 @@ function ProjectCard({
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className="relative flex flex-col rounded-2xl overflow-hidden border-[1.5px] transition-all duration-500 h-full"
+        className="relative flex flex-col rounded-2xl overflow-hidden border-[3px] transition-all duration-500 h-full"
         style={{
           borderColor: hovered ? `${project.color}60` : `${project.color}30`,
           boxShadow: hovered ? `0 20px 60px -15px ${project.color}25` : 'none',
@@ -167,9 +167,9 @@ function ProjectCard({
                       key={i}
                       className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium border ${isAI ? 'font-bold' : ''}`}
                       style={{
-                        borderColor: isAI ? `${project.color}60` : `hsl(var(--border))`,
-                        backgroundColor: isAI ? `${project.color}15` : 'transparent',
-                        color: isAI ? project.color : `hsl(var(--muted-foreground))`,
+                        borderColor: `${project.color}50`,
+                        backgroundColor: `${project.color}12`,
+                        color: project.color,
                       }}
                     >
                       {isAI ? `✦ ${t}` : t}
