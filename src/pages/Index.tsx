@@ -242,7 +242,7 @@ const projects: Project[] = [
     ],
     takeawayQuote: "The best AI project isn't the one with the most AI - it's the one where every AI component exists because the product is genuinely better with it.",
     takeawayTags: ["Research-driven thinking", "Honest about limitations", "AI applied where it adds value", "Bias-aware design", "End-to-end shipping", "Scope management"],
-    tools: ["Claude API (LLM)", "DBSCAN Clustering (ML)", "NLP Pipeline", "Product Discovery", "User Research", "React", "Google Maps API", "Google Places API", "Vercel", "TypeScript"]
+    tools: ["Claude API (LLM)", "DBSCAN Clustering (ML)", "NLP Pipeline", "Google Maps API", "Google Places API", "React", "TypeScript", "Vercel", "Jira", "Confluence", "Figma", "Miro", "Product Discovery", "User Research", "User Story Mapping", "Acceptance Criteria", "Sprint Planning"]
   }
 },
 {
@@ -313,7 +313,7 @@ const projects: Project[] = [
     ],
     takeawayQuote: "Netflix's algorithm is optimized to keep you watching. Blind Spot is optimized to help you grow.",
     takeawayTags: ["Research-driven product thinking", "AI applied where it matters", "Technical depth", "Full-stack shipping"],
-    tools: ["Claude API (LLM)", "Cosine Similarity (ML)", "Content-Based Filtering", "Herfindahl Index", "User Research", "Competitive Analysis", "React", "TMDB API", "Vercel", "TypeScript"]
+    tools: ["Claude API (LLM)", "Cosine Similarity (ML)", "Content-Based Filtering", "Herfindahl Index", "TMDB API", "React", "TypeScript", "Vercel", "Jira", "Figma", "Miro", "User Research", "Competitive Analysis", "Persona Development", "User Journey Mapping", "PRD Writing"]
   }
 },
 {
@@ -385,7 +385,7 @@ const projects: Project[] = [
     ],
     takeawayQuote: "Casual riders don't convert because the product wasn't designed for their usage pattern. Fix the value proposition, not the price.",
     takeawayTags: ["Product Strategy", "Data Analysis", "User Research", "RICE Prioritization", "K-Means Clustering", "A/B Test Design"],
-    tools: ["K-Means Clustering (ML)", "scikit-learn (ML)", "RICE Prioritization", "Product Strategy", "A/B Test Design", "Data Analysis", "React", "Recharts", "Python", "pandas", "SQL", "Vercel", "TypeScript"]
+    tools: ["K-Means Clustering (ML)", "scikit-learn (ML)", "Python", "pandas", "SQL", "Recharts", "React", "TypeScript", "Vercel", "Jira", "Confluence", "Miro", "RICE Prioritization", "Product Strategy", "A/B Test Design", "Data Analysis", "User Research", "Roadmapping", "Stakeholder Management", "OKR Definition"]
   }
 }];
 
