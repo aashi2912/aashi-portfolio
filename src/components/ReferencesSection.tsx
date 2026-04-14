@@ -145,7 +145,7 @@ function TestimonialsBlock() {
             </motion.button>
           </div>
           
-          <div className="relative bg-muted/60 border border-border rounded-2xl rounded-tl-sm p-5 md:p-6">
+          <div className="relative bg-[hsl(200,50%,15%)]/15 dark:bg-[hsl(200,40%,25%)]/20 border border-[hsl(200,50%,35%)]/20 dark:border-[hsl(200,40%,50%)]/20 rounded-2xl rounded-tl-sm p-5 md:p-6">
             <p className="text-[15px] md:text-[17px] leading-[1.75] text-foreground/90">
               {active.text}
             </p>

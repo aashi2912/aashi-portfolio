@@ -329,7 +329,7 @@ const projects: Project[] = [
   image: rideconvertHero,
   caseStudyPdf: "/case-studies/rideconvert-case-study.pdf",
   caseStudyPages: Array.from({ length: 10 }, (_, i) => `/case-studies/rideconvert-pages/page-${i + 1}.jpg`),
-  prdPdf: "/case-studies/rideconvert-case-study.pdf",
+  prdPdf: "https://github.com/aashi2912/rideconvert/blob/main/docs/PRD.md",
   githubLink: "https://github.com/aashi2912/rideconvert",
   details: {
     heroTagline: "An end-to-end product strategy for converting casual bike-share riders into annual members.",
@@ -1062,7 +1062,7 @@ export default function Index() {
       </ScrollSection>
 
       <ScrollSection>
-      <ContentWrap className="scroll-mt-20 px-2 sm:px-3">
+      <ContentWrap className="scroll-mt-20 !px-0 sm:!px-0">
         <section id="projects" className="relative">
           {/* Tagline */}
           <RevealText>
