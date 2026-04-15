@@ -823,36 +823,17 @@ export default function Index() {
         </ContentWrap>
 
         {/* Hero image - true full-bleed, zero padding */}
-        <div
-          className="relative flex items-center justify-center overflow-hidden"
-          style={{ height: 'calc(100vh - 280px)' }}>
-          <svg aria-hidden="true" className="pointer-events-none absolute h-0 w-0">
-            <filter id="hero-dark-blue-filter" colorInterpolationFilters="sRGB">
-              <feColorMatrix
-                type="matrix"
-                values="
-                  -1 0 0 0 1
-                  0 -1 0 0 1
-                  0 0 -1 0 1
-                  0 0 0 1 0
-                "
-              />
-              <feColorMatrix
-                type="matrix"
-                values="
-                  0.56 0 0 0 0
-                  0 0.68 0 0 0
-                  0 0 0.92 0 0
-                  0 0 0 1 0
-                "
-              />
-            </filter>
-          </svg>
-
+        <motion.div
+          className="bg-background relative flex items-center justify-center overflow-hidden"
+          style={{ height: 'calc(100vh - 280px)' }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.4 }}>
+          
           <img
             src={heroImage}
             alt="Hero illustration of two cliffs with a bridge"
-            className="hero-image w-full h-full object-cover parallax-hero mix-blend-multiply dark:mix-blend-normal"
+            className="w-full h-full object-cover parallax-hero mix-blend-multiply dark:invert dark:mix-blend-screen dark:opacity-70"
             style={{ transform: `translateY(${heroParallax}px)` }} />
 
           {/* Scroll indicator */}
@@ -864,7 +845,7 @@ export default function Index() {
             <span className="text-xs text-muted-foreground tracking-widest uppercase">scroll</span>
             <ArrowDown className="w-4 h-4 text-muted-foreground" />
           </motion.div>
-        </div>
+        </motion.div>
 
       </section>
 

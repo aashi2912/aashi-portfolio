@@ -237,11 +237,3 @@
   will-change: transform;
   transition: transform 0.1s linear;
 }
-
-.hero-image {
-  filter: none;
-}
-
-.dark .hero-image {
-  filter: url('#hero-dark-blue-filter');
-}
