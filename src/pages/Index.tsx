@@ -833,7 +833,7 @@ export default function Index() {
           <img
             src={heroImage}
             alt="Hero illustration of two cliffs with a bridge"
-            className="w-full h-full object-cover parallax-hero mix-blend-multiply"
+            className="w-full h-full object-cover parallax-hero mix-blend-multiply dark:invert dark:mix-blend-screen dark:opacity-70"
             style={{ transform: `translateY(${heroParallax}px)` }} />
 
           {/* Scroll indicator */}
