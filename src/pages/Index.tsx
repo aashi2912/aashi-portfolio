@@ -842,7 +842,7 @@ export default function Index() {
             <span className="text-xs text-muted-foreground tracking-widest uppercase">scroll</span>
             <ArrowDown className="w-4 h-4 text-muted-foreground" />
           </motion.div>
-        </motion.div>
+        </div>
 
       </section>
 
