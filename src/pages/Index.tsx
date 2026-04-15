@@ -4,7 +4,7 @@ import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Lin
 import { ReferencesSection } from "@/components/ReferencesSection";
 import { AnimatedCounter, WiggleText } from "@/components/Doodles";
 import { ProjectCarousel, type Project } from "@/components/ProjectCarousel";
-import heroImage from "@/assets/hero-jump.png";
+import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
 import logoCognizant from "@/assets/logo-cognizant.png";
