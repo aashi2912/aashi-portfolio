@@ -812,7 +812,7 @@ export default function Index() {
 
         {/* Hero image - true full-bleed, zero padding */}
         <motion.div
-          className="bg-background relative flex items-center justify-center"
+          className="bg-background relative flex items-center justify-center overflow-hidden"
           style={{ height: 'calc(100vh - 160px)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -820,11 +820,11 @@ export default function Index() {
           
           <img
             src={heroImage}
-            alt="Hero illustration of two cliffs with a bridge"
-            className="w-full h-full object-cover parallax-hero"
+            alt="Hero illustration of a person jumping between cliffs"
+            className="w-full h-full object-cover parallax-hero dark:invert dark:contrast-90 dark:brightness-95"
             style={{ transform: `translateY(${heroParallax}px)` }} />
           
-          <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
+          <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4 text-foreground/80 dark:text-foreground/90">
             I <motion.span className="italic" initial={{ opacity: 0, scale: 1.3 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>bridge</motion.span> the gap between<br />
             <StaggerLetters text="ambition and execution!" delay={0.8} className="mt-1" />
           </h2>
