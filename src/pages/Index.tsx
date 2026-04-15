@@ -4,7 +4,7 @@ import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Lin
 import { ReferencesSection } from "@/components/ReferencesSection";
 import { AnimatedCounter, WiggleText } from "@/components/Doodles";
 import { ProjectCarousel, type Project } from "@/components/ProjectCarousel";
-import heroImage from "@/assets/hero-transparent.png";
+import heroImage from "@/assets/hero-jump.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
 import logoCognizant from "@/assets/logo-cognizant.png";
@@ -821,7 +821,7 @@ export default function Index() {
           <img
             src={heroImage}
             alt="Hero illustration of a person jumping between cliffs"
-            className="w-full h-full object-cover parallax-hero"
+            className="w-full h-full object-contain parallax-hero dark:invert dark:brightness-200"
             style={{ transform: `translateY(${heroParallax}px)` }} />
           
           <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
