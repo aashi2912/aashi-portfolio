@@ -813,7 +813,7 @@ export default function Index() {
         {/* Tagline above hero image */}
         <ContentWrap>
           <motion.h2
-            className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4 pt-8 sm:pt-12 md:pt-16 pb-0"
+            className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4 pt-8 sm:pt-12 md:pt-16 pb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}>
@@ -824,7 +824,7 @@ export default function Index() {
 
         {/* Hero image - true full-bleed, zero padding */}
         <motion.div
-          className="bg-background relative flex items-center justify-center -mt-8"
+          className="bg-background relative flex items-center justify-center overflow-hidden"
           style={{ height: 'calc(100vh - 280px)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
