@@ -826,11 +826,33 @@ export default function Index() {
         <div
           className="relative flex items-center justify-center overflow-hidden"
           style={{ height: 'calc(100vh - 280px)' }}>
-          
+          <svg aria-hidden="true" className="pointer-events-none absolute h-0 w-0">
+            <filter id="hero-dark-blue-filter" colorInterpolationFilters="sRGB">
+              <feColorMatrix
+                type="matrix"
+                values="
+                  -1 0 0 0 1
+                  0 -1 0 0 1
+                  0 0 -1 0 1
+                  0 0 0 1 0
+                "
+              />
+              <feColorMatrix
+                type="matrix"
+                values="
+                  0.56 0 0 0 0
+                  0 0.68 0 0 0
+                  0 0 0.92 0 0
+                  0 0 0 1 0
+                "
+              />
+            </filter>
+          </svg>
+
           <img
             src={heroImage}
             alt="Hero illustration of two cliffs with a bridge"
-            className="w-full h-full object-cover parallax-hero mix-blend-multiply dark:invert dark:mix-blend-screen dark:opacity-70 dark:sepia dark:hue-rotate-[210deg] dark:saturate-[1.2]"
+            className="hero-image w-full h-full object-cover parallax-hero mix-blend-multiply dark:mix-blend-normal"
             style={{ transform: `translateY(${heroParallax}px)` }} />
 
           {/* Scroll indicator */}
