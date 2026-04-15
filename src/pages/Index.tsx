@@ -821,7 +821,7 @@ export default function Index() {
           <img
             src={heroImage}
             alt="Hero illustration of two cliffs with a bridge"
-            className="w-full h-full object-cover parallax-hero mix-blend-multiply dark:mix-blend-screen dark:invert"
+            className="w-full h-full object-cover parallax-hero mix-blend-multiply"
             style={{ transform: `translateY(${heroParallax}px)` }} />
           
           <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
