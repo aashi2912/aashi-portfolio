@@ -823,12 +823,9 @@ export default function Index() {
         </ContentWrap>
 
         {/* Hero image - true full-bleed, zero padding */}
-        <motion.div
-          className="bg-background relative flex items-center justify-center overflow-hidden"
-          style={{ height: 'calc(100vh - 280px)' }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4 }}>
+        <div
+          className="relative flex items-center justify-center overflow-hidden"
+          style={{ height: 'calc(100vh - 280px)' }}>
           
           <img
             src={heroImage}
@@ -845,7 +842,7 @@ export default function Index() {
             <span className="text-xs text-muted-foreground tracking-widest uppercase">scroll</span>
             <ArrowDown className="w-4 h-4 text-muted-foreground" />
           </motion.div>
-        </motion.div>
+        </div>
 
       </section>
 
