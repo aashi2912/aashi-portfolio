@@ -835,7 +835,6 @@ export default function Index() {
             alt="Hero illustration of two cliffs with a bridge"
             className="w-full h-full object-cover parallax-hero mix-blend-multiply"
             style={{ transform: `translateY(${heroParallax}px)` }} />
-          </h2>
 
           {/* Scroll indicator */}
           <motion.div
