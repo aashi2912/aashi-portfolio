@@ -810,10 +810,22 @@ export default function Index() {
           </motion.div>
         </ContentWrap>
 
+        {/* Tagline above hero image */}
+        <ContentWrap>
+          <motion.h2
+            className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4 pt-8 sm:pt-12 md:pt-16 pb-0"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}>
+            I <motion.span className="italic" initial={{ opacity: 0, scale: 1.3 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>bridge</motion.span> the gap between<br />
+            <StaggerLetters text="ambition and execution!" delay={0.8} className="mt-1" />
+          </motion.h2>
+        </ContentWrap>
+
         {/* Hero image - true full-bleed, zero padding */}
         <motion.div
-          className="bg-background relative flex items-center justify-center"
-          style={{ height: 'calc(100vh - 160px)' }}
+          className="bg-background relative flex items-center justify-center -mt-8"
+          style={{ height: 'calc(100vh - 280px)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}>
@@ -823,10 +835,6 @@ export default function Index() {
             alt="Hero illustration of two cliffs with a bridge"
             className="w-full h-full object-cover parallax-hero mix-blend-multiply"
             style={{ transform: `translateY(${heroParallax}px)` }} />
-          
-          <h2 className="absolute top-8 sm:top-12 md:top-16 left-0 right-0 text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4">
-            I <motion.span className="italic" initial={{ opacity: 0, scale: 1.3 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>bridge</motion.span> the gap between<br />
-            <StaggerLetters text="ambition and execution!" delay={0.8} className="mt-1" />
           </h2>
 
           {/* Scroll indicator */}
