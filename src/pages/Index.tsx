@@ -740,10 +740,12 @@ export default function Index() {
   return (
     <div className="relative">
       {/* Scroll progress bar */}
-      <div
-        className="scroll-progress"
-        style={{ width: `${scrollProgress * 100}%` }}
-      />
+      {scrollProgress > 0 && (
+        <div
+          className="scroll-progress"
+          style={{ width: `${scrollProgress * 100}%` }}
+        />
+      )}
       
       {/* Cursor glow */}
       <div
