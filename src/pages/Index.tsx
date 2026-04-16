@@ -826,7 +826,7 @@ export default function Index() {
 
         {/* Hero image - true full-bleed, zero padding */}
         <motion.div
-          className="bg-background relative flex items-center justify-center overflow-hidden"
+          className="bg-background relative flex items-center justify-center overflow-hidden -mt-px"
           style={{ height: 'calc(100vh - 280px)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
