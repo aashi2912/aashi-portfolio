@@ -427,7 +427,7 @@ export default function Work() {
             <SectionLabel label="Contact" />
             <div className="flex-1 flex flex-wrap gap-3">
               <a
-                href="https://www.linkedin.com/in/aashithakkar29/"
+                href="/Aashi_Thakkar_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent"
