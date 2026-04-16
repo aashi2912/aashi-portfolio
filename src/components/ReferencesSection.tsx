@@ -331,7 +331,9 @@ function PhilosophyBlock() {
 
           {/* Resume */}
           <motion.a
-            href="#"
+            href="/Aashi_Thakkar_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 border-2 border-foreground/20 rounded-full px-6 py-2.5 hover:border-foreground/50 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
