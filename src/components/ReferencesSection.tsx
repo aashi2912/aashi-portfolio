@@ -6,6 +6,7 @@ import gouthamKonthamPhoto from "@/assets/goutham-kontham.jpeg";
 import lindaBugaziyanosPhoto from "@/assets/linda-bugaziyanos.jpeg";
 import josephWongPhoto from "@/assets/joseph-wong.jpeg";
 import binoManuelPhoto from "@/assets/bino-manuel.jpeg";
+import erikaWilliamsPhoto from "@/assets/erika-williams.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
 
 const references = [
@@ -64,6 +65,7 @@ const references = [
     role: "Product Designer",
     company: "RBC Capital Markets",
     initials: "EW",
+    photo: erikaWilliamsPhoto,
     color: "hsl(320,60%,50%)",
     companyLogo: logoRbc,
     text: "Aashi has a sharp eye for user experience and brings a design-informed perspective to every product decision. She bridges the gap between design intent and engineering execution, ensuring the final product feels as good as it looks.",
