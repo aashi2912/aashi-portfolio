@@ -6,6 +6,7 @@ import gouthamKonthamPhoto from "@/assets/goutham-kontham.jpeg";
 import lindaBugaziyanosPhoto from "@/assets/linda-bugaziyanos.jpeg";
 import josephWongPhoto from "@/assets/joseph-wong.jpeg";
 import binoManuelPhoto from "@/assets/bino-manuel.jpeg";
+import erikaWilliamsPhoto from "@/assets/erika-williams.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
 
 const references = [
