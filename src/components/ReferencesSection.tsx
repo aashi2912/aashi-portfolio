@@ -65,6 +65,7 @@ const references = [
     role: "Product Designer",
     company: "RBC Capital Markets",
     initials: "EW",
+    photo: erikaWilliamsPhoto,
     color: "hsl(320,60%,50%)",
     companyLogo: logoRbc,
     text: "Aashi has a sharp eye for user experience and brings a design-informed perspective to every product decision. She bridges the gap between design intent and engineering execution, ensuring the final product feels as good as it looks.",
