@@ -68,7 +68,7 @@ const references = [
     photo: erikaWilliamsPhoto,
     color: "hsl(320,60%,50%)",
     companyLogo: logoRbc,
-    text: "Aashi has a sharp eye for user experience and brings a design-informed perspective to every product decision. She bridges the gap between design intent and engineering execution, ensuring the final product feels as good as it looks.",
+    text: "Aashi is a thoughtful, collaborative product partner who consistently grounds decisions in user needs while balancing business goals and technical realities. She has a strong instinct for prioritization - knowing when to invest in high-impact, strategic bets versus lower-complexity quick wins - and weaves user experience into product strategy as a core input, not an afterthought. Curious, pragmatic, and user-centered, she helped our team move forward with clarity and confidence.",
   },
 ];
 
