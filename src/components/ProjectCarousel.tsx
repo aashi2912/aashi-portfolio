@@ -127,20 +127,22 @@ function ProjectCard({
             </span>
           </div>
 
-          {/* Live Product chip */}
-          {project.link && project.link !== "#" && (
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-semibold text-white bg-black/50 backdrop-blur-md hover:bg-black/70 transition-colors"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <ExternalLink size={10} />
-              Live
-            </a>
-          )}
         </div>
+
+        {/* Live Product CTA - bottom right corner, prominent */}
+        {project.link && project.link !== "#" && (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="absolute bottom-4 right-4 z-20 inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-[11px] font-bold text-white shadow-lg hover:scale-105 transition-transform"
+            style={{ backgroundColor: project.color, boxShadow: `0 6px 20px -4px ${project.color}80` }}
+          >
+            <ExternalLink size={12} />
+            Live Product
+          </a>
+        )}
 
         {/* Content section - solid card background */}
         <div className="flex flex-col justify-between flex-1 p-5 md:p-6 bg-card">
