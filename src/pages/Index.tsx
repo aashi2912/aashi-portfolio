@@ -27,6 +27,7 @@ import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 import vibeRouteHero from "@/assets/vibe-route-hero.png";
 import blindSpotHero from "@/assets/blind-spot-hero.png";
 import rideconvertHero from "@/assets/rideconvert-hero.png";
+import spotifyDjHero from "@/assets/spotify-dj-hero.jpg";
 
 import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
 import galleryLego from "@/assets/gallery-lego.jpeg";
