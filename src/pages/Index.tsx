@@ -27,7 +27,6 @@ import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 import vibeRouteHero from "@/assets/vibe-route-hero.png";
 import blindSpotHero from "@/assets/blind-spot-hero.png";
 import rideconvertHero from "@/assets/rideconvert-hero.png";
-import spotifyDjHero from "@/assets/spotify-dj-hero.jpg";
 
 import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
 import galleryLego from "@/assets/gallery-lego.jpeg";
@@ -388,88 +387,6 @@ const projects: Project[] = [
     takeawayQuote: "Casual riders don't convert because the product wasn't designed for their usage pattern. Fix the value proposition, not the price.",
     takeawayTags: ["Data-driven personas", "Strategic roadmap planning", "Quantitative insights", "Conversion-focused design"],
     tools: ["K-Means Clustering (ML)", "scikit-learn (ML)", "Python", "pandas", "SQL", "Recharts", "React", "TypeScript", "Vercel", "Jira", "Confluence", "Miro", "RICE Prioritization", "Product Strategy", "A/B Test Design", "Data Analysis", "User Research", "Roadmapping", "Stakeholder Management", "OKR Definition"]
-  }
-},
-{
-  title: "Spotify AI DJ — A Strategic Exercise",
-  description: "A senior product decision document on Spotify's AI DJ. Two users, same product: one wants to steer it, one wants to be left alone. The pick: evolve the thumbs into a richer signal layer and surface them when the model is least sure — without breaking what passive listeners love.",
-  tag: "Product Strategy",
-  link: "/case-studies/spotify-ai-dj-case-study.pdf",
-  year: "2026",
-  color: "#1DB954",
-  secondaryColor: "#B85C38",
-  cardBg: "#FAF6EE",
-  icon: "🎧",
-  image: spotifyDjHero,
-  caseStudyPdf: "/case-studies/spotify-ai-dj-case-study.pdf",
-  caseStudyPages: Array.from({ length: 8 }, (_, i) => `/case-studies/spotify-ai-dj-pages/page-${i + 1}.jpg`),
-  details: {
-    heroTagline: "Two users. Same product. One wants to steer it. One wants to be left alone — a two-quarter decision document.",
-    background: "Spotify shipped AI DJ in February 2023 — a friendly voice, a curated stream, a bet that listeners would trade input for ease. Nearly three years later, a Singapore Management University paper analyzed 1,400+ user comments and named three frictions: loss of agency, anthropomorphism gap, and repetition. This case study takes the first one and asks: if I owned AI DJ for the next two quarters, what would I ship — and what would I refuse to optimize for?",
-    stats: [
-      { value: "2", label: "Quarter Roadmap" },
-      { value: "3", label: "Options Considered" },
-      { value: "+50%", label: "Phase 1 → 2 Gate" },
-      { value: "4", label: "Named Risks" },
-    ],
-    competitiveGap: [
-      { label: "Pre-session prompts", status: "Shipped 2024", tools: "Text input before the session", solved: true },
-      { label: "Mid-session agency", status: "Huge Gap", tools: "No way to nudge mid-stream", solved: false },
-      { label: "Context-aware DJ", status: "Long-term", tools: "Requires ML infra not yet wired in", solved: true },
-    ],
-    drawerSections: [
-      { label: "Personas", title: "Two Users. Same Product.", content: "A problem is a specific user with a specific job hitting a specific wall — and someone whose current behaviour you can't break to fix it.", layout: "grid" as const, items: [
-        { title: "Maya, 26 — engaged-but-stuck", desc: "Marketing coordinator, Austin. Premium for 4 years. Tried AI DJ 3× in week one, stopped opening it by week four. 'I can downvote a song, but I can't tell it I want lo-fi today, not throwback hip-hop.'" },
-        { title: "Jordan, 34 — passive-and-happy", desc: "Design lead. Listens on his commute and nowhere else. Doesn't skip, doesn't re-prompt, doesn't have an opinion. NPS 9. He is the user Spotify built the feature for. Locked design constraint: don't break Jordan to fix Maya." },
-      ]},
-      { label: "Solution Space", title: "Three Options. One Cut.", content: "Three ways to give Maya agency without taking it from Jordan.", layout: "grid" as const, items: [
-        { title: "I. Mood Prompt at Session Start", desc: "Cuts. Already shipped in late 2024 — but front-loaded. Maya's friction is mid-session, not pre-session." },
-        { title: "II. Evolution of Thumbs + Confidence-Aware Surfacing — the pick", desc: "Long-press surfaces optional, non-blocking reason capture. Controls become more prominent when the model's confidence is low." },
-        { title: "III. Context-Aware AI DJ", desc: "Long-term. The right answer in a 4-quarter window — requires ML infrastructure not yet wired into AI DJ." },
-      ]},
-      { label: "Why Option II Wins", title: "Why Option II Wins on the Cut", layout: "list" as const, items: [
-        { num: "1", title: "Only option that ships in the window without breaking Jordan", desc: "Option I ships but breaks the passive default. Option III protects it but doesn't ship in time. II does both." },
-        { num: "2", title: "Builds on a surface users already understand", desc: "Thumbs are 2 years old — adding semantic richness deepens a learned gesture instead of teaching a new one." },
-        { num: "3", title: "Generates the training signal Spotify needs for Option III", desc: "Every 'more like this' with an optional reason becomes labeled training data for the contextual model in 2027." },
-      ]},
-      { label: "Phasing", title: "Phasing & The Gate", layout: "roadmap" as const, items: [
-        { version: "Q1", title: "Phase 1 — Evolve Thumbs", desc: "Long-press surfaces optional reason capture. Ship to alpha at 5% of AI DJ DAU. 8 weeks." },
-        { version: "Gate", title: "Gate 1 — +50% control engagement?", desc: "Mid-session control engagement +50% relative lift vs. baseline. A +20% lift would just mean 'users tolerated it.'" },
-        { version: "Q2", title: "Phase 2 — Confidence-Aware Surfacing", desc: "Controls visibility scales with inverse model confidence. Beta at 25%, conditional on Phase 1 outcomes. 8 weeks." },
-        { version: "Gate", title: "Gate 2 — Week-4 DAU lift directional?", desc: "Each gate is a kill decision in disguise. A feature that passes Alpha but stalls at Beta gets pulled, not iterated indefinitely." },
-        { version: "GA", title: "100% Rollout", desc: "Ship." },
-      ]},
-      { label: "Metrics", title: "What I Ship Against. What I Refuse.", quote: "When a measure becomes a target, it ceases to be a good measure. — Goodhart's Law", layout: "grid" as const, items: [
-        { title: "✓ Ship against — Mid-session control engagement", desc: "% of AI DJ sessions where the user interacts with any thumbs control after track 1. Target: +50% relative lift vs. baseline." },
-        { title: "✗ Refuse to optimize for — Likes per session", desc: "Easy to move, easy to game. Users start liking defensively — the signal stops meaning preference and starts meaning 'remember this.'" },
-        { title: "Guardrail — Time-to-music", desc: "≤ +100ms p95. Latency kills the passive default." },
-        { title: "Guardrail — 60-second skip rate", desc: "≤ +1pp. If skips spike, the new controls are interrupting, not helping." },
-        { title: "Guardrail — AI DJ NPS", desc: "≤ −2 points. Sentiment guardrail across both Maya- and Jordan-type users." },
-      ]},
-      { label: "Risks", title: "Four Ways I Might Be Wrong", content: "Every case study has a section like this. Most are box-checking. This one names the four risks and what we'd do to catch each.", layout: "grid" as const, items: [
-        { title: "I. The diagnosis is wrong", desc: "Maya's friction might be repetition, not agency. Detection: if users overwhelmingly tap 'heard already' in reason capture, the framing was wrong. Mitigation: pivot Phase 2 to confidence-aware re-ranking on the same substrate." },
-        { title: "II. Jordan churns silently (load-bearing)", desc: "If new controls feel noisy, Jordan stops opening AI DJ. He doesn't complain — he drifts. Detection: segmented week-4 DAU for non-engaged users. Mitigation: Phase 2 confidence-aware surfacing is the structural fix; pull and rework if degradation shows in alpha." },
-        { title: "III. Reason capture reads as surveillance", desc: "If long-press feels intrusive, engagement collapses. Detection: if >85% tap thumbs but skip the reason layer, the framing is the problem. Mitigation: copy, not mechanic — 'Help DJ learn what you like' lands; 'Tell us why' doesn't." },
-        { title: "IV. Confidence-aware UI feels arbitrary", desc: "If controls appear and disappear unpredictably, the surface reads as buggy, not intelligent. Detection: variance in control visibility per session — flickering more than 3× in 30 min. Mitigation: smoothing thresholds + ambient never-modal explainability affordance." },
-      ]},
-      { label: "Open Questions", title: "What Would Change the Call", content: "Senior product work is not knowing every answer. It is knowing which unknowns change the call — and being honest about them in writing.", layout: "list" as const, items: [
-        { num: "I", title: "What is the Jordan-to-Maya ratio in AI DJ DAU?", desc: "If Jordan-types are 80% and Maya-types are 15%, the design has to bias much harder toward the invisible default." },
-        { num: "II", title: "How sensitive is the recommendation model's confidence signal?", desc: "Phase 2 depends on confidence being well-calibrated. If it's noisy, the UI will flicker." },
-        { num: "III", title: "What is the actual cost of a 60-second skip?", desc: "Skip-rate guardrail assumes skips are bad. They might be how Maya is already steering." },
-        { num: "IV", title: "Do passive users want to stay passive — or have they given up?", desc: "Jordan might not be passive by preference. He might have just stopped trying to steer." },
-      ]},
-    ],
-    results: [
-      "Picked Option II of three: evolve thumbs + confidence-aware surfacing — the only option that ships in the window without breaking the passive default",
-      "Two-quarter conditional roadmap with explicit kill gates between phases (not auto-promotion)",
-      "Ship-against metric (mid-session control engagement, +50% lift) chosen specifically to resist Goodhart's Law on 'likes per session'",
-      "Three named guardrails: time-to-music ≤ +100ms p95, 60s skip rate ≤ +1pp, AI DJ NPS ≤ −2 pts",
-      "Four risks named with explicit detection signals and mitigations — including the load-bearing Jordan-churn risk",
-      "Four open questions documented up-front: the unknowns that would change the recommendation",
-    ],
-    takeawayQuote: "The point is not to be right about the answer. The point is to show the shape of how I would reason toward one.",
-    takeawayTags: ["Senior decision framing", "Foil-driven persona work", "Goodhart-resistant metrics", "Phased rollouts with kill gates", "Honest about unknowns", "Strategic exercise — no internal data"],
-    tools: ["Product Strategy", "Persona Development", "User Research", "Competitive Analysis", "PRD Writing", "Roadmapping", "RICE Prioritization", "A/B Test Design", "Stakeholder Management", "Goodhart's Law", "Recommendation Systems", "LLM", "Figma", "Miro"]
   }
 }];
 
