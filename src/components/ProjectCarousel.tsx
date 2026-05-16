@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, ArrowUpRight, ArrowLeft, FileText, X, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, ArrowUpRight, ArrowLeft, FileText, X, Github } from "lucide-react";
 
 export type DrawerSection = {
   label: string;
@@ -75,7 +75,7 @@ function ProjectCard({
 
   return (
     <motion.div
-      className="group cursor-pointer flex-shrink-0 w-[70vw] sm:w-[320px] md:w-[360px] lg:w-[400px] snap-center"
+      className="group cursor-pointer w-full h-full"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -806,28 +806,6 @@ function ProjectDrawer({
 
 export function ProjectCarousel({ projects }: { projects: Project[] }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const checkScroll = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 10);
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
-  }, []);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    checkScroll();
-    el.addEventListener("scroll", checkScroll, { passive: true });
-    window.addEventListener("resize", checkScroll);
-    return () => {
-      el.removeEventListener("scroll", checkScroll);
-      window.removeEventListener("resize", checkScroll);
-    };
-  }, [checkScroll]);
 
   const handleCardClick = (project: Project) => {
     setSelectedProject(project);
@@ -839,41 +817,10 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
     document.body.style.overflow = "";
   };
 
-  const scroll = (direction: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const scrollAmount = 440;
-    scrollRef.current.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <div className="relative">
-      {/* Navigation arrows */}
-      {canScrollLeft && (
-        <button
-          onClick={() => scroll("left")}
-          className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-lg"
-        >
-          <ChevronLeft size={20} />
-        </button>
-      )}
-      {canScrollRight && (
-        <button
-          onClick={() => scroll("right")}
-          className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-lg"
-        >
-          <ChevronRight size={20} />
-        </button>
-      )}
-
-      {/* Scrollable carousel */}
-      <div
-        ref={scrollRef}
-        className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-      >
+      {/* Responsive gallery grid - all projects visible at once */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
         {projects.map((project, i) => (
           <ProjectCard
             key={i}
