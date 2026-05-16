@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, ArrowUpRight, ArrowLeft, FileText, X, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, ArrowUpRight, ArrowLeft, FileText, X, Github } from "lucide-react";
 
 export type DrawerSection = {
   label: string;
