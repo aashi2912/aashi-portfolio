@@ -27,6 +27,7 @@ import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 import vibeRouteHero from "@/assets/vibe-route-hero.png";
 import blindSpotHero from "@/assets/blind-spot-hero.png";
 import rideconvertHero from "@/assets/rideconvert-hero.png";
+import spotifyAiDjHero from "@/assets/spotify-ai-dj-hero.jpg";
 
 import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
 import galleryLego from "@/assets/gallery-lego.jpeg";
@@ -387,6 +388,81 @@ const projects: Project[] = [
     takeawayQuote: "Casual riders don't convert because the product wasn't designed for their usage pattern. Fix the value proposition, not the price.",
     takeawayTags: ["Data-driven personas", "Strategic roadmap planning", "Quantitative insights", "Conversion-focused design"],
     tools: ["K-Means Clustering (ML)", "scikit-learn (ML)", "Python", "pandas", "SQL", "Recharts", "React", "TypeScript", "Vercel", "Jira", "Confluence", "Miro", "RICE Prioritization", "Product Strategy", "A/B Test Design", "Data Analysis", "User Research", "Roadmapping", "Stakeholder Management", "OKR Definition"]
+  }
+},
+{
+  title: "Spotify AI DJ",
+  description: "Spotify's AI DJ promised a curated stream and a friendly voice - but listeners felt they'd lost the steering wheel. A two-quarter decision document on how I'd give engaged users agency without breaking the passive experience the feature was built for.",
+  tag: "Product Strategy",
+  year: "2026",
+  color: "#1DB954",
+  secondaryColor: "#1ED760",
+  cardBg: "#191414",
+  icon: "🎧",
+  image: spotifyAiDjHero,
+  caseStudyPdf: "/case-studies/spotify-ai-dj-case-study.pdf",
+  caseStudyPages: Array.from({ length: 23 }, (_, i) => `/case-studies/spotify-ai-dj-pages/page-${i + 1}.jpg`),
+  details: {
+    heroTagline: "A two-quarter decision document - written without access to internal Spotify data. The point isn't being right about the answer; it's showing the shape of how I'd reason toward one.",
+    background: "Spotify shipped AI DJ in February 2023 on a bet: that listeners would trade input for ease. Three years later, a Singapore Management University paper analyzed 1,400+ user comments and named three frictions - loss of agency, anthropomorphism gap, and repetition. This study takes the first: users feel the algorithm decides everything. They can like or dislike, but cannot steer mid-session. The cost of inaction isn't a churned subscriber - it's a paid subscriber who quietly stopped trusting the most expensive AI surface on the platform.",
+    stats: [
+      { value: "1,400+", label: "Comments Analyzed" },
+      { value: "3", label: "Frictions Named" },
+      { value: "2", label: "Quarters Scoped" },
+      { value: "1", label: "The Cut" },
+    ],
+    competitiveGap: [
+      { label: "Mood prompt at session start", status: "Front-loaded", tools: "Shipped late 2024 - mid-session gap remains", solved: true },
+      { label: "Full in-session re-prompt", status: "Breaks Jordan", tools: "Forces passive listeners to have an opinion", solved: true },
+      { label: "Evolve thumbs + confidence-aware surfacing", status: "The Pick", tools: "Same gesture - visibility changes when model is least sure", solved: false },
+    ],
+    drawerSections: [
+      { label: "Problem Framing", title: "Two Users. Same Product. Opposite Needs.", content: "A problem is a specific user, with a specific job, hitting a specific wall - and someone who depends on the current behaviour not being broken to fix it.", layout: "grid" as const, items: [
+        { title: "Maya · The Protagonist", desc: "26, marketing coordinator, Austin. Premium for 4 years. Tried AI DJ three times in week one. Stopped opening it by week four. 'I can downvote a song, but I can't tell it I want lo-fi today, not throwback hip-hop.'" },
+        { title: "Jordan · The Foil", desc: "34, design lead, the morning commuter. Doesn't skip. Doesn't re-prompt. AI DJ is 'the background noise of my day.' He is the user the feature was built for - and the constraint Option II has to respect." },
+        { title: "Job To Be Done", desc: "When I open AI DJ in a specific mood, I want to nudge it without abandoning the surprise - so it stays mine without becoming work." },
+        { title: "Why Now", desc: "Late-2024 text prompts gave partial agency, but front-loaded. The mid-session gap is still wide open. Competitors are circling. The window to own this is probably two quarters." },
+      ]},
+      { label: "Solution Space", title: "Three Options. One Cut.", content: "Three ways to give Maya agency without taking it from Jordan. Each is a real product. Each has been thought about by someone at Spotify already.", layout: "grid" as const, items: [
+        { title: "I. Mood Prompt at Session Start", desc: "Front-loaded. Already partially shipped via text prompts. Doesn't solve the mid-session moment where Maya actually lives." },
+        { title: "II. Evolve Thumbs + Confidence-Aware Surfacing", desc: "The pick. Richer signal layer on the existing thumbs, made more prominent when the recommendation model's confidence is low. Controls show up exactly when the algorithm is least sure - so Jordan never sees them." },
+        { title: "III. In-Session Contextual Re-Steer", desc: "Big bet. Requires a contextual model that doesn't exist yet. We don't ship this in 2026 - but Option II generates the training signal that makes it cheap to ship in 2027." },
+      ], rejections: ["Modal re-prompts (breaks Jordan)", "Optimizing for skip rate (Goodhart trap - punishes Maya's only current signal)"] },
+      { label: "Phasing & Gate", title: "Conditional Roadmap", layout: "roadmap" as const, items: [
+        { version: "Q1", title: "Phase 1 - Evolve Thumbs (5% Alpha · 8 weeks)", desc: "Thumbs gain optional reason-capture. Half-sheet, never modal. Dismissable. The dislike logs whether or not the user engages." },
+        { version: "Gate", title: "+50% Control Engagement?", desc: "Conditional gate before Phase 2. If Phase 1 doesn't lift control engagement meaningfully, the diagnosis is wrong and we re-frame before spending more." },
+        { version: "Q2", title: "Phase 2 - Confidence-Aware Surfacing (25% Beta)", desc: "Same gesture as Phase 1 - only visibility changes. Controls surface when the recommendation model's confidence is low. Player stays calm for Jordan." },
+        { version: "2027", title: "Phase 3 - Contextual Re-Steer", desc: "Not in this roadmap. But Phase 1's reason-capture becomes the labeled training data that makes the contextual model cheap to build next year." },
+      ]},
+      { label: "Success Metrics", title: "What I Ship Against. What I Refuse.", layout: "list" as const, items: [
+        { num: "01", title: "Primary - Week-4 DAU among engaged listeners", desc: "The metric that tells me whether Maya came back. Direct read on whether agency translated to retained trust." },
+        { num: "02", title: "Secondary - Control engagement rate", desc: "Reason-capture taps per dislike. The leading indicator that Phase 1 is generating the training signal Phase 3 needs." },
+        { num: "03", title: "Refuse - Skip rate as a north star", desc: "Goodhart trap. Optimizing skip-rate down would punish Maya's only current signal and reward sessions where she gave up." },
+        { num: "04", title: "Guardrails", desc: "60-second skip ≤ +1pp. AI DJ NPS ≤ −2 points. Jordan's session length flat-to-up. If any guardrail trips, we roll back before scaling." },
+      ]},
+      { label: "Risks", title: "Four Ways I Might Be Wrong", content: "Every case study has a section like this. Most are box-checking. This one names the four ways I might be wrong, and what we'd do to catch each before it costs us.", layout: "grid" as const, items: [
+        { title: "I. The diagnosis is wrong", desc: "Maya's friction might be repetition, not agency. Detection: 'Heard already' chip tap-rate during Phase 1 alpha. Mitigation: if it dominates, pivot Phase 2 to a repetition fix." },
+        { title: "II. We break Jordan", desc: "Visible controls leak into passive sessions. Detection: Jordan-cohort session length + skip rate. Mitigation: confidence threshold tightens until passive sessions stay quiet." },
+        { title: "III. The UI flickers", desc: "Confidence-aware surfacing flips state too often and feels unstable. Detection: variance in control visibility per session - >3 flips in 30 minutes is broken. Mitigation: smoothing thresholds, state changes every N tracks." },
+        { title: "IV. We can't access model confidence", desc: "Phase 2 assumes the recommendation team exposes a per-track confidence signal. Detection: scoping conversation in week one. Mitigation: if it's more than a quarter of work, Phase 2 becomes a separate Q3-Q4 bet; Phase 1 still ships." },
+      ]},
+      { label: "Open Questions", title: "Four Unknowns That Would Change The Call", content: "Senior product work is not knowing every answer. It is knowing which unknowns change the call - and being honest about them in writing.", layout: "list" as const, items: [
+        { num: "I", title: "What is recommendation model confidence access?", desc: "If exposing per-track confidence is more than one quarter of work, Phase 2 splits into a separate Q3-Q4 bet." },
+        { num: "II", title: "What is Spotify's current Goodhart posture on skip rate?", desc: "If skip rate is already a north-star elsewhere in the org, my 'refuse to optimize for' position needs a stakeholder conversation before kickoff, not after." },
+        { num: "III", title: "What is the current usage pattern of existing thumbs?", desc: "Evolution-of-thumbs assumes thumbs are an established surface. If telemetry shows thumbs are essentially dead (<2% of sessions), we're putting new paint on a door no one walks through." },
+        { num: "IV", title: "Is there a passive-vs-engaged segmentation already?", desc: "Jordan and Maya are personas. If there's no real segmentation in the data warehouse, building one becomes a Q1 dependency - not a Q1 assumption." },
+      ]},
+    ],
+    results: [
+      "A two-quarter roadmap with an explicit conditional gate - not a deck of slogans",
+      "A pick written in one sentence: evolve thumbs + surface them when model confidence is low",
+      "A guardrail metric set that refuses skip-rate as a north star (the Goodhart cut)",
+      "A Phase 3 (2027) bet that Phase 1 pays for in training data, not in headcount",
+      "Honest about being a strategic exercise - Section VI lists the four unknowns that would change the call",
+    ],
+    takeawayQuote: "Evolve the existing thumbs into a richer signal layer, and surface them more prominently when the recommendation model's confidence is low - so the controls show up exactly when the algorithm is least sure.",
+    takeawayTags: ["Strategic reasoning", "Persona-led framing", "Goodhart-aware metrics", "Phased roadmaps with gates", "Honest about unknowns"],
+    tools: ["Product Strategy", "PRD", "Roadmap", "RICE Prioritization", "Persona Development", "User Journey Mapping", "Discovery", "Stakeholder Management", "A/B Test Design", "Competitive Analysis", "OKR Definition", "Sprint Planning"]
   }
 }];
 
