@@ -820,7 +820,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
   return (
     <div className="relative">
       {/* Auto-scrolling infinite marquee - all projects in one row */}
-      <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+      <div className="overflow-hidden">
         <div
           className="flex gap-5 animate-[scroll-left_40s_linear_infinite] hover:[animation-play-state:paused]"
           style={{ width: "max-content" }}
