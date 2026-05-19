@@ -462,7 +462,7 @@ const projects: Project[] = [
     ],
     takeawayQuote: "Evolve the existing thumbs into a richer signal layer, and surface them more prominently when the recommendation model's confidence is low - so the controls show up exactly when the algorithm is least sure.",
     takeawayTags: ["Strategic reasoning", "Persona-led framing", "Goodhart-aware metrics", "Phased roadmaps with gates", "Honest about unknowns"],
-    tools: ["Product Strategy", "PRD", "Roadmap", "RICE Prioritization", "Persona Development", "User Journey Mapping", "Discovery", "Stakeholder Management", "A/B Test Design", "Competitive Analysis", "OKR Definition", "Sprint Planning"]
+    tools: ["Product Strategy", "PRD", "Roadmap", "Persona Development", "User Journey Mapping", "Discovery", "Stakeholder Management", "A/B Test Design", "Competitive Analysis", "OKR Definition", "Sprint Planning"]
   }
 }];
 
