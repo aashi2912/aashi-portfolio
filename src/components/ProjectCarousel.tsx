@@ -75,7 +75,7 @@ function ProjectCard({
 
   return (
     <motion.div
-      className="group cursor-pointer w-full h-full"
+      className="group cursor-pointer w-[300px] sm:w-[340px] shrink-0"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -819,16 +819,21 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
 
   return (
     <div className="relative">
-      {/* Responsive gallery grid - all projects visible at once */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-        {projects.map((project, i) => (
-          <ProjectCard
-            key={i}
-            project={project}
-            index={i}
-            onClick={() => handleCardClick(project)}
-          />
-        ))}
+      {/* Auto-scrolling infinite marquee - all projects in one row */}
+      <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+        <div
+          className="flex gap-5 animate-[scroll-left_40s_linear_infinite] hover:[animation-play-state:paused]"
+          style={{ width: "max-content" }}
+        >
+          {[...projects, ...projects].map((project, i) => (
+            <ProjectCard
+              key={i}
+              project={project}
+              index={i}
+              onClick={() => handleCardClick(project)}
+            />
+          ))}
+        </div>
       </div>
 
       <AnimatePresence>
