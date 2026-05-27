@@ -502,7 +502,8 @@ const impossibleCategories: ImpossibleCategory[] = [
   { text: "Launch a product used by 1M+ people", done: false },
   { text: "Speak at a major conference", done: false },
   { text: "Mentor 10 People", done: false },
-  { text: "Work for Google", done: false }]
+  { text: "Work for Google", done: false },
+  { text: "Work for Notion", done: false }]
 
 },
 {
