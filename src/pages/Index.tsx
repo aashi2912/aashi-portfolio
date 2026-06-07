@@ -176,18 +176,18 @@ const projects: Project[] = [
   prdPdf: "/case-studies/vibe-route-prd.pdf",
   githubLink: "https://github.com/aashi2912/vibe-route",
   details: {
-    heroTagline: "An AI Product Manager case study - from research to shipped product in 5 weeks.",
-    background: "A former Google Maps Senior UX Researcher explained why 'scenic' routing is hard: scoring beauty can bias toward affluent neighborhoods. Google distanced from the feature - but the gap still exists. Scenic driving and hiking trails are solved (Roadtrippers, AllTrails), but urban walking remains a huge gap.",
+    heroTagline: "An AI product case study - from research to a shipped product on Vercel.",
+    background: "A former Google Maps Senior UX Researcher publicly explained why Google won't add scenic routing: scoring routes on 'niceness' would systematically bias toward affluent neighbourhoods. Google confirmed it's technically feasible - the barrier is design, not engineering. Urban walking is still routed only by speed.",
     stats: [
       { value: "4", label: "AI Components" },
       { value: "6", label: "Research Studies" },
-      { value: "30+", label: "POIs per Route" },
-      { value: "5", label: "Weeks to Ship" },
+      { value: "3", label: "Rejected Ideas" },
+      { value: "$5-22", label: "Total Build Cost" },
     ],
     competitiveGap: [
-      { label: "Scenic Driving", status: "Solved", tools: "Roadtrippers, Scenic", solved: true },
-      { label: "Hiking & Trails", status: "Solved", tools: "AllTrails, Komoot", solved: true },
-      { label: "Urban Walking", status: "Huge Gap", tools: "Google Maps = speed only", solved: false },
+      { label: "Driving (Google Maps)", status: "Speed-optimized", tools: "Fastest route by time", solved: false },
+      { label: "Hiking/Cycling apps", status: "Off-road only", tools: "Don't address urban walking", solved: false },
+      { label: "Vibe Route", status: "Fills the gap", tools: "Scores routes by greenery, coffee, local character", solved: true },
     ],
     drawerSections: [
       { label: "Research", title: "Every Decision Backed by Research", content: "6 peer-reviewed studies shaped the MVP.", layout: "list" as const, items: [
@@ -212,7 +212,7 @@ const projects: Project[] = [
         { title: "Route Narratives", desc: "LLM summaries constrained to verified POIs (anti-hallucination)" },
         { title: "Vibe Scoring", desc: "Density-based scoring with diminishing returns" },
       ], rejections: ["Personalization (not enough user data yet)", "'Scenic' LLM scoring (high bias risk)", "AI soundtrack (feature creep)"] },
-      { label: "Bias Design", title: "Designing Around Bias", quote: "Bias isn't a reason not to build - it's a design constraint.", items: [
+      { label: "Bias Design", title: "Designing Around Bias", quote: "Use objective signals - parks, POI density, road types - not subjective 'beauty' scoring.", items: [
         { title: "Objective signals", desc: "Use parks, POI density, road types - not subjective 'beauty'. Reduces value-judgment bias." },
         { title: "User-defined vibe", desc: "'Green & peaceful' is a preference - not a neighborhood ranking. Shifts agency to the user." },
         { title: "Audit for correlation", desc: "Planned: 50 routes across diverse Toronto neighborhoods. Correlate vibe scores with census data." },
@@ -230,21 +230,20 @@ const projects: Project[] = [
         { version: "V2", title: "Street View Computer Vision", desc: "Green View Index via semantic segmentation - measure what a route actually looks like" },
         { version: "V2", title: "Well-Lit Scoring", desc: "Use streetlight datasets to support the Night Walker persona" },
         { version: "V2", title: "Bias Audit", desc: "Run 50 routes across diverse neighborhoods, correlate with census income data, publish results" },
-        { version: "V3", title: "Community Layer", desc: "User-submitted vibes + ratings. Big value - but comes with moderation & privacy risks." },
+        { version: "V2", title: "Community Layer", desc: "User-submitted vibes + ratings. Big value - but comes with moderation & privacy risks." },
       ]},
     ],
     results: [
-      "Shipped a live product in 5 weeks - not a concept deck (vibe-route.vercel.app)",
+      "Shipped a live product on Vercel (vibe-route.vercel.app) - not a concept deck",
       "4 AI components - each one earns its place with a clear 'why'",
-      "0 hallucinated locations across 20 narrative audits",
-      "Waypoint injection triggered in >40% of routes, proving Google alternatives are too similar",
-      "Log scoring separates routes effectively (0.8-4.2 range vs all hitting 5.0 with linear)",
-      "~40% Places API cache hit rate for cost efficiency",
+      "3 AI ideas explicitly rejected (personalization, scenic LLM scoring, AI soundtrack) with documented reasons",
+      "6 peer-reviewed studies cited as design rationale",
+      "Anti-hallucination: LLM narratives constrained to POIs confirmed by Places API, with template fallback",
       "Total build + launch cost: $5-$22 (APIs + LLM during dev)"
     ],
-    takeawayQuote: "The best AI project isn't the one with the most AI - it's the one where every AI component exists because the product is genuinely better with it.",
-    takeawayTags: ["Research-driven thinking", "Honest about limitations", "AI applied where it adds value", "Bias-aware design", "End-to-end shipping", "Scope management"],
-    tools: ["Claude API (LLM)", "DBSCAN Clustering (ML)", "NLP Pipeline", "Google Maps API", "Google Places API", "React", "TypeScript", "Vercel", "Jira", "Confluence", "Figma", "Miro", "Product Discovery", "User Research", "User Story Mapping", "Acceptance Criteria", "Sprint Planning"]
+    takeawayQuote: "AI applied where it adds value - and explicitly rejected where it doesn't (personalization, scenic LLM scoring, AI soundtrack).",
+    takeawayTags: ["Research-driven thinking", "Bias-aware design", "AI applied where it adds value", "Honest rejections", "End-to-end shipping"],
+    tools: ["Claude Haiku (LLM)", "DBSCAN Clustering (ML)", "Google Maps API", "Google Places API", "Google Routes API", "React", "Vite", "Tailwind CSS", "Vercel"]
   }
 },
 {
@@ -269,7 +268,7 @@ const projects: Project[] = [
       { value: "301.6M", label: "Netflix Subscribers" },
       { value: "80%", label: "Algorithm-Chosen" },
       { value: "3", label: "AI Components" },
-      { value: "<8s", label: "Full Pipeline" },
+      { value: "3", label: "User Personas" },
     ],
     competitiveGap: [
       { label: "Taste.io", status: "Same Direction", tools: "'Find more of what you like'", solved: true },
@@ -307,20 +306,20 @@ const projects: Project[] = [
       ]},
     ],
     results: [
-      "Full pipeline time: <8 seconds from 'Analyze' to complete bubble + blind spot display",
-      "Bridge tap-through rate target: >30%",
-      "Bridge reasoning accuracy target: 80%+",
-      "Time to 'aha moment' target: <60 seconds",
-      "Blind spots explored per session target: 1+"
+      "Live product deployed on Vercel (my-blind-spot.vercel.app)",
+      "3 AI components shipped: Taste Profile Analyzer, Blind Spot Detector, Bridge Recommender",
+      "Anti-hallucination: LLM receives only verified TMDB metadata; NO_BRIDGE response skips candidates without genuine connections",
+      "Herfindahl index borrowed from economics for a concrete, measurable diversity metric",
+      "4 published research studies cited as design rationale (Pajkovic 2022, NYU Pyrorank 2023, SERAL 2025, Pariser 2011)"
     ],
     takeawayQuote: "Netflix's algorithm is optimized to keep you watching. Blind Spot is optimized to help you grow.",
-    takeawayTags: ["Research-driven product thinking", "AI applied where it matters", "Technical depth", "Full-stack shipping"],
-    tools: ["Claude API (LLM)", "Cosine Similarity (ML)", "Content-Based Filtering", "Herfindahl Index", "TMDB API", "React", "TypeScript", "Vercel", "Jira", "Figma", "Miro", "User Research", "Competitive Analysis", "Persona Development", "User Journey Mapping", "PRD Writing"]
+    takeawayTags: ["Research-driven product thinking", "AI applied where it matters", "Anti-hallucination by design", "Full-stack shipping"],
+    tools: ["Claude Haiku (LLM)", "Cosine Similarity (ML)", "Content-Based Filtering", "Herfindahl Index", "TMDB API", "React", "Vite", "Tailwind CSS", "Vercel", "Competitive Analysis", "Persona Development", "PRD Writing"]
   }
 },
 {
   title: "RideConvert",
-  description: "70-80% of bike-share rides come from casual users, but annual members generate 3-5× more lifetime revenue. I built an end-to-end product strategy to convert casual riders into members - validated through data analysis of 150K rides, K-means clustering for persona discovery, and a live analytics dashboard.",
+  description: "Casual pay-per-ride users make up the majority of bike-share rides, but annual members generate 3-5× more lifetime revenue. I built an end-to-end product strategy to convert casual riders into members - validated through data analysis of 150K rides, K-means clustering for persona discovery, and a live analytics dashboard.",
   tag: "Product Strategy",
   link: "https://rideconvert.vercel.app/",
   year: "2026",
@@ -335,12 +334,12 @@ const projects: Project[] = [
   githubLink: "https://github.com/aashi2912/rideconvert",
   details: {
     heroTagline: "An end-to-end product strategy for converting casual bike-share riders into annual members.",
-    background: "The universal bike-share revenue challenge: 70-80% of rides come from casual pay-per-ride users, but annual members generate 3-5× more lifetime revenue. Industry-wide conversion rate sits at 2-4%. Casual riders don't convert because the product wasn't designed to make membership feel obviously worth it for their usage pattern. The value proposition assumes a commuter - most casual riders are not commuters.",
+    background: "The bike-share revenue challenge: casual pay-per-ride users make up the majority of rides, but annual members generate 3-5× more lifetime revenue. Industry-wide conversion rate sits at 2-4%. Casual riders don't convert because the product wasn't designed to make membership feel obviously worth it for their usage pattern. The value proposition assumes a commuter - most casual riders are not commuters.",
     stats: [
       { value: "150K", label: "Rides Analyzed" },
       { value: "4", label: "Personas Discovered" },
       { value: "5.0%", label: "Target Conversion" },
-      { value: "+$363K", label: "Projected ARR" },
+      { value: "+C$363K", label: "Projected ARR" },
     ],
     competitiveGap: [
       { label: "Price Discounting", status: "Rejected", tools: "Destroys LTV permanently", solved: true },
@@ -373,22 +372,22 @@ const projects: Project[] = [
         { title: "Seasonality", desc: "Toronto: 16× August vs January. Summer is the conversion campaign window with highest nudge ROI." },
       ]},
       { label: "Roadmap", title: "3-Quarter Execution Plan", layout: "roadmap" as const, items: [
-        { version: "Q1", title: "Quick Wins", desc: "Post-ride savings nudge, break-even calculator, funnel instrumentation. Target: ≥20% lift in A/B test." },
-        { version: "Q2", title: "Personalize", desc: "Usage-triggered emails, geo-targeted offers at top 15 stations, CTA copy A/B testing. Target: 4.0%+ conversion." },
+        { version: "Q1", title: "Quick Wins", desc: "Post-ride savings nudge, break-even calculator, funnel instrumentation. Target: ≥25% lift at 95% confidence." },
+        { version: "Q2", title: "Personalize", desc: "Usage-triggered emails, geo-targeted offers at top 15 stations, CTA copy A/B testing. Target: ≥4% attach rate among eligible casuals." },
         { version: "Q3", title: "New Tier", desc: "Flexible membership SKU (~C$65/yr), one-tap upgrade flow, corporate partnerships. Target: 5.0% overall conversion." },
       ]},
     ],
     results: [
-      "Live analytics dashboard with 5 interactive views deployed on Vercel",
+      "Live analytics dashboard with interactive views deployed on Vercel",
       "4 data-derived personas via K-means clustering on 150K rides",
       "RICE-prioritized roadmap with 3-quarter execution plan",
-      "Projected +$363K incremental ARR at 5.0% conversion target",
-      "Python EDA notebook: 21 cells, 7 sections with pandas & scikit-learn",
-      "1,091 lines of production-ready SQL (BigQuery, Snowflake, PostgreSQL compatible)",
+      "Projected +C$363K incremental ARR at 5.0% conversion target",
+      "Python EDA notebook with pandas & scikit-learn (clustering, funnel, A/B power analysis)",
+      "SQL queries for funnel and cohort analysis",
     ],
     takeawayQuote: "Casual riders don't convert because the product wasn't designed for their usage pattern. Fix the value proposition, not the price.",
     takeawayTags: ["Data-driven personas", "Strategic roadmap planning", "Quantitative insights", "Conversion-focused design"],
-    tools: ["K-Means Clustering (ML)", "scikit-learn (ML)", "Python", "pandas", "SQL", "Recharts", "React", "TypeScript", "Vercel", "Jira", "Confluence", "Miro", "RICE Prioritization", "Product Strategy", "A/B Test Design", "Data Analysis", "User Research", "Roadmapping", "Stakeholder Management", "OKR Definition"]
+    tools: ["K-Means Clustering (ML)", "scikit-learn", "Python", "pandas", "SQL", "Recharts", "React", "Vercel", "RICE Prioritization", "Product Strategy", "A/B Test Design", "Data Analysis", "Roadmapping"]
   }
 },
 {
@@ -412,7 +411,7 @@ const projects: Project[] = [
     stats: [
       { value: "91%", label: "Sign Without Reading" },
       { value: "5", label: "Contract Types" },
-      { value: "15s", label: "Time to Insight" },
+      { value: "15-25s", label: "Time to Insight" },
       { value: "0", label: "Accounts Required" },
     ],
     competitiveGap: [
@@ -463,7 +462,7 @@ const projects: Project[] = [
     ],
     takeawayQuote: "The most dangerous clause is the one that isn't there. Fine Print is the only consumer tool that tells you what should be in your contract and isn't.",
     takeawayTags: ["Consumer AI", "Plain-language explanation", "Gap detection", "Deterministic scoring", "Honest about uncertainty", "Ethics-first positioning"],
-    tools: ["LLM Prompt Engineering", "Gen AI Product Strategy", "AI Reliability & Trust", "Consumer AI Discovery", "Gap Detection PRD", "Claude API", "Deterministic Scoring", "Product Strategy", "User Research", "Persona Development", "Competitive Analysis", "Prioritization", "React", "TypeScript", "Vercel"]
+    tools: ["Claude Sonnet (LLM)", "Deterministic Client-Side Scoring", "Quote Verification", "Self-Consistency Checking", "Persona Development", "PRD Writing", "Reliability Engineering", "Ethics-First Design", "React", "Vite", "Tailwind CSS", "Vercel"]
   }
 },
 {
@@ -480,16 +479,16 @@ const projects: Project[] = [
   caseStudyPages: Array.from({ length: 23 }, (_, i) => `/case-studies/spotify-ai-dj-pages/page-${i + 1}.jpg`),
   details: {
     heroTagline: "A two-quarter decision document - written without access to internal Spotify data. The point isn't being right about the answer; it's showing the shape of how I'd reason toward one.",
-    background: "Spotify shipped AI DJ in February 2023 on a bet: that listeners would trade input for ease. Three years later, a Singapore Management University paper analyzed 1,400+ user comments and named three frictions - loss of agency, anthropomorphism gap, and repetition. This study takes the first: users feel the algorithm decides everything. They can like or dislike, but cannot steer mid-session. The cost of inaction isn't a churned subscriber - it's a paid subscriber who quietly stopped trusting the most expensive AI surface on the platform.",
+    background: "Spotify shipped AI DJ in February 2023 (Spotify Newsroom, Feb 22 2023) on a bet: that listeners would trade input for ease. The feature gives users a curated stream with commentary - but only thumbs up/down as controls, with no way to steer mid-session. This case study reasons about the agency gap: users who feel the algorithm decides everything and want to nudge it mid-session without abandoning the surprise. The cost of inaction isn't a churned subscriber - it's a paid subscriber who quietly stopped trusting the most expensive AI surface on the platform.",
     stats: [
-      { value: "1,400+", label: "Comments Analyzed" },
-      { value: "3", label: "Frictions Named" },
+      { value: "Feb 2023", label: "AI DJ Launched" },
+      { value: "May 2025", label: "Voice Requests Shipped" },
       { value: "2", label: "Quarters Scoped" },
       { value: "1", label: "The Cut" },
     ],
     competitiveGap: [
-      { label: "Mood prompt at session start", status: "Front-loaded", tools: "Shipped late 2024 - mid-session gap remains", solved: true },
-      { label: "Full in-session re-prompt", status: "Breaks Jordan", tools: "Forces passive listeners to have an opinion", solved: true },
+      { label: "AI Playlist (Sept 2024)", status: "Front-loaded", tools: "Separate text-prompt builder - not in-session DJ steering", solved: true },
+      { label: "DJ Voice Requests (May 2025)", status: "Breaks Jordan", tools: "Real-time voice re-steer - forces passive listeners to have an opinion", solved: true },
       { label: "Evolve thumbs + confidence-aware surfacing", status: "The Pick", tools: "Same gesture - visibility changes when model is least sure", solved: false },
     ],
     drawerSections: [
