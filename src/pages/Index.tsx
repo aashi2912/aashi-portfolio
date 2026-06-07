@@ -243,7 +243,7 @@ const projects: Project[] = [
     ],
     takeawayQuote: "AI applied where it adds value - and explicitly rejected where it doesn't (personalization, scenic LLM scoring, AI soundtrack).",
     takeawayTags: ["Research-driven thinking", "Bias-aware design", "AI applied where it adds value", "Honest rejections", "End-to-end shipping"],
-    tools: ["Claude Haiku (LLM)", "DBSCAN Clustering (ML)", "Google Maps API", "Google Places API", "Google Routes API", "React", "Vite", "Tailwind CSS", "Vercel"]
+    tools: ["Claude Haiku (LLM)", "DBSCAN Clustering (ML)", "Google Maps API", "Google Places API", "Google Routes API", "React", "Vite", "Tailwind CSS", "Vercel", "Research Synthesis", "Persona Development", "Bias Audit Design", "Anti-Hallucination Design", "Decision Tradeoffs", "Roadmapping"]
   }
 },
 {
@@ -537,7 +537,7 @@ const projects: Project[] = [
     ],
     takeawayQuote: "Evolve the existing thumbs into a richer signal layer, and surface them more prominently when the recommendation model's confidence is low - so the controls show up exactly when the algorithm is least sure.",
     takeawayTags: ["Strategic reasoning", "Persona-led framing", "Goodhart-aware metrics", "Phased roadmaps with gates", "Honest about unknowns"],
-    tools: ["Product Strategy", "PRD", "Roadmap", "Persona Development", "User Journey Mapping", "Discovery", "Stakeholder Management", "A/B Test Design", "Competitive Analysis", "OKR Definition", "Sprint Planning"]
+    tools: ["Decision Document", "Persona Framing (Maya/Jordan)", "Conditional Roadmapping", "Phased Rollout (Alpha/Beta)", "Guardrail Metric Design", "Goodhart-Aware Metrics", "Competitive Analysis", "Risk & Open Questions", "Strategic Tradeoffs"]
   }
 }];
 
