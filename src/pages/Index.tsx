@@ -463,7 +463,7 @@ const projects: Project[] = [
     ],
     takeawayQuote: "The most dangerous clause is the one that isn't there. Fine Print is the only consumer tool that tells you what should be in your contract and isn't.",
     takeawayTags: ["Consumer AI", "Plain-language explanation", "Gap detection", "Deterministic scoring", "Honest about uncertainty", "Ethics-first positioning"],
-    tools: ["Product Strategy", "PRD", "User Research", "Persona Development", "Competitive Analysis", "Discovery", "Prioritization", "AI", "LLM", "Claude", "React", "TypeScript", "Vercel"]
+    tools: ["LLM Prompt Engineering", "Gen AI Product Strategy", "AI Reliability & Trust", "Consumer AI Discovery", "Gap Detection PRD", "Claude API", "Deterministic Scoring", "Product Strategy", "User Research", "Persona Development", "Competitive Analysis", "Prioritization", "React", "TypeScript", "Vercel"]
   }
 },
 {
