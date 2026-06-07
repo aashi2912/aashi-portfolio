@@ -28,6 +28,7 @@ import vibeRouteHero from "@/assets/vibe-route-hero.png";
 import blindSpotHero from "@/assets/blind-spot-hero.png";
 import rideconvertHero from "@/assets/rideconvert-hero.png";
 import spotifyAiDjHero from "@/assets/spotify-ai-dj-hero.jpg";
+import finePrintHero from "@/assets/fine-print-hero.jpg";
 
 import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
 import galleryLego from "@/assets/gallery-lego.jpeg";
@@ -463,6 +464,81 @@ const projects: Project[] = [
     takeawayQuote: "Evolve the existing thumbs into a richer signal layer, and surface them more prominently when the recommendation model's confidence is low - so the controls show up exactly when the algorithm is least sure.",
     takeawayTags: ["Strategic reasoning", "Persona-led framing", "Goodhart-aware metrics", "Phased roadmaps with gates", "Honest about unknowns"],
     tools: ["Product Strategy", "PRD", "Roadmap", "Persona Development", "User Journey Mapping", "Discovery", "Stakeholder Management", "A/B Test Design", "Competitive Analysis", "OKR Definition", "Sprint Planning"]
+  }
+},
+{
+  title: "Fine Print",
+  description: "A consumer AI tool that reads any contract clause by clause, scores each for risk in plain language, and flags the standard protections that are missing - because what isn't there is often the biggest risk.",
+  tag: "AI Product",
+  year: "2026",
+  link: "https://fine-print-aashi.vercel.app/",
+  githubLink: "https://github.com/aashi2912/fine-print",
+  color: "#E11D48",
+  secondaryColor: "#F43F5E",
+  cardBg: "#1A0F12",
+  icon: "📄",
+  image: finePrintHero,
+  caseStudyPdf: "/case-studies/fine-print-case-study.pdf",
+  caseStudyPages: Array.from({ length: 10 }, (_, i) => `/case-studies/fine-print-pages/page-${i + 1}.jpg`),
+  prdPdf: "/case-studies/fine-print-prd.pdf",
+  details: {
+    heroTagline: "The people most exposed by a contract are the ones least equipped to read it. Fine Print is a consumer triage tool that closes the gap between a $349/hr lawyer and clicking 'I agree.'",
+    background: "Contracts are written for lawyers, not the people bound by them. 91% of people accept terms without reading, and one nonprofit review found 40% of leases contained questionable clauses. At $349/hr, a lawyer isn't realistic for a routine lease or freelance gig. The highest-leverage build wasn't another clause reader - it was a tool that also names what should be in your contract and isn't, because absent protections are the risks people least expect and most regret.",
+    stats: [
+      { value: "91%", label: "Sign Without Reading" },
+      { value: "5", label: "Contract Types" },
+      { value: "15s", label: "Time to Insight" },
+      { value: "0", label: "Accounts Required" },
+    ],
+    competitiveGap: [
+      { label: "Enterprise contract review", status: "Built for lawyers", tools: "Priced and designed for legal teams - inaccessible to consumers", solved: true },
+      { label: "Generic AI chatbots", status: "No gap detection", tools: "Will summarize a clause but won't tell you what protection is missing", solved: true },
+      { label: "Fine Print", status: "Triage for consumers", tools: "Clause-by-clause risk + missing-protection detection in plain language", solved: false },
+    ],
+    drawerSections: [
+      { label: "Who It's For", title: "Three Users, One Asymmetry", layout: "grid" as const, items: [
+        { title: "First-time renter", desc: "Signing a lease they don't fully understand, under time pressure. Highest stakes, lowest leverage." },
+        { title: "Side-hustle freelancer", desc: "Handed a one-sided client agreement with no realistic option to hire counsel for a $2,000 gig." },
+        { title: "Terms accepter", desc: "Clicks through ToS and wants to know - after the fact - what they actually agreed to." },
+      ]},
+      { label: "Key Decisions", title: "Four Tradeoffs, Made on Purpose", content: "Every decision had a real cost. The point isn't picking the 'best' option - it's being honest about the tradeoff you made and why.", layout: "list" as const, items: [
+        { num: "01", title: "One foundation-model call, not a trained pipeline", desc: "A custom NER pipeline needs thousands of labeled contracts and months of work. A well-prompted foundation model reaches usable accuracy with zero training data. Tradeoff: accuracy is unmeasured - so I disclose it instead of hiding it." },
+        { num: "02", title: "Read and analyze uploads in one call", desc: "For PDFs and photos, the model reads and returns structured analysis in a single call instead of extract-then-analyze. Roughly halved response time. Cost: I can't verify quotes against source text for uploads - flagged in the UI." },
+        { num: "03", title: "Deterministic scoring, client-side", desc: "The 0-100 health score is a fixed formula on the client, never the model. A trust tool cannot show a score that drifts run to run. Same clauses always produce the same score." },
+        { num: "04", title: "Self-consistency as opt-in, not default", desc: "Deep-check mode runs the analysis twice and flags disagreements. Opt-in because it doubles cost and latency - forcing it on a one-page lease would be the wrong tradeoff. Knowing where to stop (no third pass) was part of the design." },
+      ]},
+      { label: "Features", title: "What Ships", layout: "list" as const, items: [
+        { num: "01", title: "Three input paths", desc: "Paste text, upload a PDF, or photograph multiple pages and analyze them as one document." },
+        { num: "02", title: "Clause analysis", desc: "Every clause extracted, categorized, risk-scored (safe / unusual / risky), and explained in plain language." },
+        { num: "03", title: "Gap detection", desc: "Missing standard protections flagged as critical or recommended. The differentiator - no other consumer tool does this." },
+        { num: "04", title: "Health score & verdict", desc: "A single deterministic number and a one-line read on the contract overall." },
+        { num: "05", title: "Reliability signals", desc: "Unverified quotes, uncertain clauses, partial coverage, and confidence levels all surfaced to the user." },
+      ]},
+      { label: "Reliability", title: "First-class, Not a Polish Step", content: "The product asks people to rely on it - so reliability had to be a requirement, not a finishing touch. The system verifies quotes against source, detects truncated coverage, refuses non-contracts, offers self-consistency checking, scores deterministically, retries transient failures, and signals confidence everywhere." },
+      { label: "Ethics", title: "Legal Information, Not Legal Advice", content: "Every screen states Fine Print provides legal information, not legal advice. A hard constraint set at the start, grounded in the FTC's action against DoNotPay. Governed positioning, copy, and the decision to surface uncertainty everywhere rather than project authority I can't back with a validated accuracy rate.", rejections: ["Jurisdiction-specific legal analysis", "Lawyer substitute positioning", "Enterprise legal-team feature set"] },
+      { label: "Success Metrics", title: "What I Ship Against", layout: "list" as const, items: [
+        { num: "01", title: "A non-lawyer identifies the riskiest clause in under one minute", desc: "Direct read on whether plain-language explanation actually translates." },
+        { num: "02", title: "Gap detection surfaces ≥1 missing protection on most real-world contracts", desc: "The differentiator only matters if it fires reliably on what users actually upload." },
+        { num: "03", title: "Quote verification catches fabricated quotes before reaching the user", desc: "On pasted-text analyses where verification is possible. Honest about the upload gap." },
+        { num: "04", title: "Deep-check disagreement stays a signal, not noise", desc: "If two runs disagree on too much, the signal stops being meaningful." },
+      ]},
+      { label: "Limitations", title: "What Doesn't Ship Yet", layout: "list" as const, items: [
+        { num: "I", title: "No jurisdiction awareness", desc: "The single most valuable next step. A clause that's standard in California may be risky in New York." },
+        { num: "II", title: "Accuracy is unmeasured", desc: "A lawyer-reviewed benchmark dataset would let me quantify and improve it. Honesty in the UI is the current stand-in." },
+        { num: "III", title: "Five contract types today", desc: "Lease, NDA, employment, freelance, terms of service. Architecture extends - prioritization is the work." },
+        { num: "IV", title: "Quote verification doesn't cover uploads", desc: "OCR-then-verify is a possible path. Flagged in the UI today." },
+      ]},
+    ],
+    results: [
+      "Shipped end-to-end consumer AI product, live at fine-print-aashi.vercel.app with no auth and no storage",
+      "A clear differentiator (gap detection of missing protections) that no other consumer tool offers",
+      "Deterministic, client-side scoring so a trust tool never contradicts itself between runs",
+      "Reliability treated as a requirement: quote verification, deep-check, confidence signals, retries",
+      "Ethical positioning held on the right side of the FTC DoNotPay line - legal information, not legal advice",
+    ],
+    takeawayQuote: "The most dangerous clause is the one that isn't there. Fine Print is the only consumer tool that tells you what should be in your contract and isn't.",
+    takeawayTags: ["Consumer AI", "Plain-language explanation", "Gap detection", "Deterministic scoring", "Honest about uncertainty", "Ethics-first positioning"],
+    tools: ["Product Strategy", "PRD", "User Research", "Persona Development", "Competitive Analysis", "Discovery", "Prioritization", "AI", "LLM", "Claude", "React", "TypeScript", "Vercel"]
   }
 }];
 
