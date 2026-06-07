@@ -416,9 +416,9 @@ const projects: Project[] = [
       { value: "0", label: "Accounts Required" },
     ],
     competitiveGap: [
-      { label: "Enterprise contract review", status: "Built for lawyers", tools: "Priced and designed for legal teams - inaccessible to consumers", solved: true },
-      { label: "Generic AI chatbots", status: "No gap detection", tools: "Will summarize a clause but won't tell you what protection is missing", solved: true },
-      { label: "Fine Print", status: "Triage for consumers", tools: "Clause-by-clause risk + missing-protection detection in plain language", solved: false },
+      { label: "Enterprise contract review", status: "Built for lawyers", tools: "Priced and designed for legal teams - inaccessible to consumers", solved: false },
+      { label: "Generic AI chatbots", status: "No gap detection", tools: "Will summarize a clause but won't tell you what protection is missing", solved: false },
+      { label: "Fine Print", status: "Triage for consumers", tools: "Clause-by-clause risk + missing-protection detection in plain language", solved: true },
     ],
     drawerSections: [
       { label: "Who It's For", title: "Three Users, One Asymmetry", layout: "grid" as const, items: [
