@@ -49,7 +49,7 @@ galleryFormal, galleryBoostGroup, galleryAxe, galleryOutdoor, galleryBoostTrio,
 galleryClimbingGroup, galleryClimbing];
 
 
-const roles = ["Product Manager.", "Software Developer.", "Vibe Coder.", "Lifelong Learner."];
+const roles = ["AI Product & Strategy Leader.", "Software Developer.", "Vibe Coder.", "Lifelong Learner."];
 
 const socialLinks = [
 { icon: Linkedin, href: "https://www.linkedin.com/in/aashithakkar29/", label: "LinkedIn" },
@@ -67,7 +67,7 @@ const updates = [
 
 const experiences = [
 {
-  role: "Product Manager",
+  role: "AI Product & Strategy Leader",
   company: "RBC Capital Markets",
   period: "Jan 2025 - Present",
   logo: logoRbc
@@ -1526,7 +1526,7 @@ export default function Index() {
                 <motion.div className="shrink-0 mt-1 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-lg" animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}>🧩</motion.div>
                 <div>
                   <p className="text-[17px] leading-[1.8] text-foreground/90">
-                    As a Product Manager, I spend a lot of time bringing people together - engineers, designers, stakeholders, and users. The same curiosity and energy that pushes me to participate in team activities is what helps me build trust 🤝, understand different perspectives 🌍, and create environments where collaboration thrives 🌱.
+                    As an AI Product & Strategy Leader, I spend a lot of time bringing people together - engineers, designers, stakeholders, and users. The same curiosity and energy that pushes me to participate in team activities is what helps me build trust 🤝, understand different perspectives 🌍, and create environments where collaboration thrives 🌱.
                   </p>
                 </div>
               </div>
