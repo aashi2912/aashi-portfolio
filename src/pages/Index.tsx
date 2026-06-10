@@ -49,7 +49,7 @@ galleryFormal, galleryBoostGroup, galleryAxe, galleryOutdoor, galleryBoostTrio,
 galleryClimbingGroup, galleryClimbing];
 
 
-const roles = ["Product Manager.", "Software Developer.", "Vibe Coder.", "Lifelong Learner."];
+const roles = ["AI Product & Strategy Leader.", "Software Developer.", "Vibe Coder.", "Lifelong Learner."];
 
 const socialLinks = [
 { icon: Linkedin, href: "https://www.linkedin.com/in/aashithakkar29/", label: "LinkedIn" },
