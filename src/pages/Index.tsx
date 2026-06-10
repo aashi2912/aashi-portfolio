@@ -67,7 +67,7 @@ const updates = [
 
 const experiences = [
 {
-  role: "AI Product & Strategy Leader",
+  role: "AI Product & Strategy",
   company: "RBC Capital Markets",
   period: "Jan 2025 - Present",
   logo: logoRbc
