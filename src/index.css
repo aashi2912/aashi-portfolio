@@ -198,6 +198,15 @@
   background: linear-gradient(90deg, hsl(200, 40%, 75%), hsl(220, 50%, 80%), hsl(200, 60%, 70%));
 }
 
+/* Hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Cursor glow */
 .cursor-glow {
   position: fixed;
