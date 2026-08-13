@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, ArrowUpRight, ArrowLeft, FileText, X, Github } from "lucide-react";
+import { ExternalLink, ArrowUpRight, ArrowLeft, ArrowRight, FileText, X, Github } from "lucide-react";
 
 export type DrawerSection = {
   label: string;
@@ -806,6 +806,13 @@ function ProjectDrawer({
 
 export function ProjectCarousel({ projects }: { projects: Project[] }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isPausedRef = useRef(isPaused);
+  const selectedRef = useRef(selectedProject);
+
+  useEffect(() => { isPausedRef.current = isPaused; }, [isPaused]);
+  useEffect(() => { selectedRef.current = selectedProject; }, [selectedProject]);
 
   const handleCardClick = (project: Project) => {
     setSelectedProject(project);
@@ -817,19 +824,73 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
     document.body.style.overflow = "";
   };
 
+  const scrollBy = (direction: number) => {
+    const container = containerRef.current;
+    if (!container) return;
+    const cardWidth = window.innerWidth < 640 ? 300 : 340;
+    const gap = 20;
+    const originalWidth = container.scrollWidth / 2;
+    container.scrollLeft += direction * (cardWidth + gap);
+    if (container.scrollLeft >= originalWidth) container.scrollLeft -= originalWidth;
+    if (container.scrollLeft < 0) container.scrollLeft += originalWidth;
+  };
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    let rafId: number;
+    let lastTime = performance.now();
+    const speed = 60; // px per second
+
+    const step = (now: number) => {
+      const dt = (now - lastTime) / 1000;
+      lastTime = now;
+      if (!isPausedRef.current && !selectedRef.current) {
+        const originalWidth = container.scrollWidth / 2;
+        container.scrollLeft += speed * dt;
+        if (container.scrollLeft >= originalWidth) {
+          container.scrollLeft -= originalWidth;
+        }
+      }
+      rafId = requestAnimationFrame(step);
+    };
+
+    rafId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
   return (
-    <div className="relative">
-      {/* Auto-scrolling infinite marquee - all projects in one row */}
-      <div className="overflow-hidden">
-        <div
-          className="flex gap-5 animate-[scroll-left_40s_linear_infinite] hover:[animation-play-state:paused]"
-          style={{ width: "max-content" }}
-        >
+    <div className="relative group/carousel">
+      <button
+        type="button"
+        aria-label="Scroll projects left"
+        onClick={() => scrollBy(-1)}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full border bg-background/90 text-foreground shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:bg-background opacity-0 group-hover/carousel:opacity-100 focus:opacity-100"
+      >
+        <ArrowLeft size={18} />
+      </button>
+      <button
+        type="button"
+        aria-label="Scroll projects right"
+        onClick={() => scrollBy(1)}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full border bg-background/90 text-foreground shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:bg-background opacity-0 group-hover/carousel:opacity-100 focus:opacity-100"
+      >
+        <ArrowRight size={18} />
+      </button>
+
+      {/* Auto-scrolling infinite track */}
+      <div
+        ref={containerRef}
+        className="overflow-x-auto scrollbar-hide"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div className="flex gap-5" style={{ width: "max-content" }}>
           {[...projects, ...projects].map((project, i) => (
             <ProjectCard
               key={i}
               project={project}
-              index={i}
+              index={i % projects.length}
               onClick={() => handleCardClick(project)}
             />
           ))}
