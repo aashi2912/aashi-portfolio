@@ -881,7 +881,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
       {/* Auto-scrolling infinite track */}
       <div
         ref={containerRef}
-        className="overflow-x-auto scrollbar-hide"
+        className="overflow-x-auto scrollbar-hide px-10 sm:px-14"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
