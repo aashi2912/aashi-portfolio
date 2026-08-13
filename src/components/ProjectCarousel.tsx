@@ -865,17 +865,17 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
         type="button"
         aria-label="Scroll projects left"
         onClick={() => scrollBy(-1)}
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full border bg-background/90 text-foreground shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:bg-background opacity-0 group-hover/carousel:opacity-100 focus:opacity-100"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border bg-background/90 text-foreground shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:bg-background"
       >
-        <ArrowLeft size={18} />
+        <ArrowLeft size={16} className="sm:w-[18px] sm:h-[18px]" />
       </button>
       <button
         type="button"
         aria-label="Scroll projects right"
         onClick={() => scrollBy(1)}
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full border bg-background/90 text-foreground shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:bg-background opacity-0 group-hover/carousel:opacity-100 focus:opacity-100"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border bg-background/90 text-foreground shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:bg-background"
       >
-        <ArrowRight size={18} />
+        <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
       </button>
 
       {/* Auto-scrolling infinite track */}
