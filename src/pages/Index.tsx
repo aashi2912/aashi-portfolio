@@ -556,7 +556,7 @@ type ImpossibleCategory = {
   items: ImpossibleItem[];
 };
 
-const impossibleCategories: ImpossibleCategory[] = [
+export const impossibleCategories: ImpossibleCategory[] = [
 {
   name: "FITNESS",
   items: [
@@ -621,6 +621,7 @@ const impossibleCategories: ImpossibleCategory[] = [
 {
   name: "TRAVEL",
   items: [
+  { text: "Solo travel to Europe in my 20s", done: true },
   { text: "See the Northern Lights", done: false },
   { text: "Travel to all 7 continents", done: false },
   { text: "Road trip across the US", done: false }]

@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Layout } from "@/components/Layout";
+import { portfolioSections } from "@/lib/portfolio-sections";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -20,6 +21,10 @@ const App = () => (
           <Routes>
             <Route element={<Layout />}>
               <Route path="/" element={<Index />} />
+              <Route path="/home" element={<Index />} />
+              {portfolioSections.map(({ path }) => (
+                <Route key={path} path={path} element={<Index />} />
+              ))}
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
