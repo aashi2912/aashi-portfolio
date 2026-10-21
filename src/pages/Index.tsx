@@ -566,11 +566,13 @@ export const impossibleCategories: ImpossibleCategory[] = [
     { text: "Train like an athlete", done: false },
     { text: "Learn rock-climbing", done: false },
     { text: "Learn to ski", done: false },
-    { text: "Learn to skate and snowboard", done: false },
-    { text: "Learn martial arts", done: false },
+    { text: "Learn to snowboard", done: false },
+    { text: "Learn to skate", done: false },
+    { text: "Learn to swim", done: true },
     { text: "Learn to surf", done: false },
+    { text: "Learn badminton", done: true },
+    { text: "Learn martial arts", done: false },
     { text: "Learn Kick Boxing and Muay Thai", done: false },
-    { text: "Learn badminton and swimming", done: true },
   ],
 },
 {
@@ -578,10 +580,10 @@ export const impossibleCategories: ImpossibleCategory[] = [
   items: [
   { text: "Get promoted to Senior PM", done: true },
   { text: "Launch a product used by 1M+ people", done: false },
-  { text: "Speak at a major conference", done: false },
-  { text: "Mentor 10 People", done: false },
   { text: "Work for Google", done: false },
-  { text: "Work for Notion", done: false }]
+  { text: "Work for Notion", done: false },
+  { text: "Speak at a major conference", done: false },
+  { text: "Mentor 10 People", done: false }]
 
 },
 {
@@ -592,42 +594,44 @@ export const impossibleCategories: ImpossibleCategory[] = [
   { text: "Make full-time living online", done: false },
   { text: "Learn to play the piano", done: false },
   { text: "Learn to play the guitar", done: false },
-  { text: "Learn Pottery", done: true },
   { text: "Learn Kathak", done: true },
   { text: "Learn Salsa", done: false },
-  { text: "Learn embroidery, knitting and crochet", done: false }]
+  { text: "Learn Pottery", done: true },
+  { text: "Learn embroidery", done: false },
+  { text: "Learn knitting", done: false },
+  { text: "Learn crochet", done: false }]
 },
 {
   name: "PERSONAL",
   items: [
-  { text: "Open a NGO", done: false },
+  { text: "Study and settle abroad", done: true },
   { text: "Own a lake house", done: false },
-  { text: "Study and settle abroad", done: true }]
+  { text: "Open a NGO", done: false }]
 },
 {
   name: "ADRENALINE",
   items: [
   { text: "Learn to ride motorcycle", done: false },
-  { text: "Own a boat", done: false },
+  { text: "Hike (and survive) the most dangerous trail in the US", done: false },
   { text: "Become a licensed pilot", done: false },
   { text: "Go skydiving", done: false },
   { text: "Go parasailing", done: false },
+  { text: "Go bungee jumping", done: false },
+  { text: "Go windsurfing", done: false },
   { text: "Go scuba diving", done: false, sub: [
     { text: "Get my PADI Open Water License (18m / 60ft)", done: false },
     { text: "Get my PADI Advanced Open Water License (30m / 100ft)", done: false },
     { text: "Get my PADI Deep Diver Specialty (40m / 130ft)", done: false },
   ]},
-  { text: "Go windsurfing", done: false },
-  { text: "Go bungee jumping", done: false },
-  { text: "Hike (and survive) the most dangerous trail in the US", done: false }]
+  { text: "Own a boat", done: false }]
 },
 {
   name: "TRAVEL",
   items: [
   { text: "Solo travel to Europe in my 20s", done: true },
+  { text: "Road trip across the US", done: false },
   { text: "See the Northern Lights", done: false },
-  { text: "Travel to all 7 continents", done: false },
-  { text: "Road trip across the US", done: false }]
+  { text: "Travel to all 7 continents", done: false }]
 },
 {
   name: "READING",
