@@ -566,6 +566,9 @@ export const impossibleCategories: ImpossibleCategory[] = [
     { text: "Train like an athlete", done: false },
     { text: "Learn rock-climbing", done: false },
     { text: "Learn to ski", done: false },
+    { text: "Learn to skate and snowboard", done: false },
+    { text: "Learn martial arts", done: false },
+    { text: "Learn to surf", done: false },
     { text: "Learn Kick Boxing and Muay Thai", done: false },
     { text: "Learn badminton and swimming", done: true },
   ],
@@ -573,7 +576,7 @@ export const impossibleCategories: ImpossibleCategory[] = [
 {
   name: "PROFESSIONAL",
   items: [
-  { text: "Get promoted to Senior PM", done: false },
+  { text: "Get promoted to Senior PM", done: true },
   { text: "Launch a product used by 1M+ people", done: false },
   { text: "Speak at a major conference", done: false },
   { text: "Mentor 10 People", done: false },
@@ -584,7 +587,7 @@ export const impossibleCategories: ImpossibleCategory[] = [
 {
   name: "CREATIVE",
   items: [
-  { text: "Start a business", done: false },
+  { text: "Start a business", done: true },
   { text: "Write and publish a book", done: false },
   { text: "Make full-time living online", done: false },
   { text: "Learn to play the piano", done: false },
@@ -592,7 +595,7 @@ export const impossibleCategories: ImpossibleCategory[] = [
   { text: "Learn Pottery", done: true },
   { text: "Learn Kathak", done: true },
   { text: "Learn Salsa", done: false },
-  { text: "Learn Knitting/Crochet", done: false }]
+  { text: "Learn embroidery, knitting and crochet", done: false }]
 },
 {
   name: "PERSONAL",
