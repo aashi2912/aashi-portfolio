@@ -1,23 +1,13 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Home, Briefcase, FolderOpen, User, Quote, ListChecks, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { Button } from "@/components/ui/button";
+import { portfolioSections } from "@/lib/portfolio-sections";
 import { cn } from "@/lib/utils";
 
-const navItems = [
-  { label: "Home", id: "home", icon: Home, num: "1" },
-  { label: "Work", id: "work", icon: Briefcase, num: "2" },
-  { label: "Projects", id: "projects", icon: FolderOpen, num: "3" },
-  { label: "References", id: "references", icon: Quote, num: "4" },
-  { label: "About", id: "about", icon: User, num: "5" },
-  { label: "Impossible List", id: "impossible-list", icon: ListChecks, num: "6" },
-];
-
-function scrollToSection(id: string) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth" });
-  }
-}
+const sectionIcons = { home: Home, work: Briefcase, projects: FolderOpen, references: Quote, about: User, "impossible-list": ListChecks };
+const navItems = portfolioSections.map((section) => ({ ...section, icon: sectionIcons[section.id] }));
 
 export function Navbar() {
   const [active, setActive] = useState("home");
@@ -59,8 +49,10 @@ export function Navbar() {
             const isActive = active === item.id;
             return (
               <div key={item.id} className="relative">
-                <button
-                  onClick={() => scrollToSection(item.id)}
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="icon"
                   onMouseEnter={() => setTooltip(item.id)}
                   onMouseLeave={() => setTooltip(null)}
                   aria-label={item.label}
@@ -69,8 +61,10 @@ export function Navbar() {
                     isActive ? "opacity-100" : "opacity-30 hover:opacity-70"
                   )}
                 >
-                  <Icon className="h-5 w-5" />
-                </button>
+                  <Link to={item.path} aria-current={isActive ? "location" : undefined}>
+                    <Icon className="h-5 w-5" />
+                  </Link>
+                </Button>
 
                 {/* Tooltip */}
                 {tooltip === item.id && (
@@ -91,13 +85,16 @@ export function Navbar() {
 
       {/* ── Mobile: top bar ── */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3 bg-background/90 backdrop-blur-sm border-b border-border/20">
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="p-1 text-foreground"
+          className="h-7 w-7 p-1 text-foreground"
           aria-label="Menu"
+          aria-expanded={mobileOpen}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        </Button>
         <ThemeToggle />
       </div>
 
@@ -107,21 +104,22 @@ export function Navbar() {
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
-              <button
+              <Button
+                asChild
+                variant="ghost"
                 key={item.id}
-                onClick={() => {
-                  scrollToSection(item.id);
-                  setMobileOpen(false);
-                }}
+                onClick={() => setMobileOpen(false)}
                 className={cn(
-                  "flex w-full items-center gap-3 px-6 py-3.5 text-sm border-b border-border/20 last:border-0 transition-opacity",
+                  "flex h-auto w-full items-center gap-3 rounded-none px-6 py-3.5 text-sm border-b border-border/20 last:border-0 transition-opacity",
                   active === item.id ? "opacity-100 font-medium" : "opacity-40"
                 )}
               >
-                <Icon className="h-4 w-4" />
-                <span className="flex-1 text-left">{item.label}</span>
-                <span className="font-mono text-xs text-muted-foreground">{item.num}</span>
-              </button>
+                <Link to={item.path} aria-current={active === item.id ? "location" : undefined}>
+                  <Icon className="h-4 w-4" />
+                  <span className="flex-1 text-left">{item.label}</span>
+                  <span className="font-mono text-xs text-muted-foreground">{item.num}</span>
+                </Link>
+              </Button>
             );
           })}
         </div>
