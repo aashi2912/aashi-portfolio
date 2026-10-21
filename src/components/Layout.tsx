@@ -10,7 +10,17 @@ export function Layout() {
     const section = getSectionForPath(pathname);
     if (!section) return;
     const frame = requestAnimationFrame(() => {
-      document.getElementById(section.id)?.scrollIntoView({ behavior: "instant", block: "start" });
+      const target = document.getElementById(section.id);
+      if (!target) return;
+      // Use layout offsets rather than animated bounding boxes.
+      let top = 0;
+      let element: HTMLElement | null = target;
+      while (element) {
+        top += element.offsetTop;
+        const parent = element.offsetParent;
+        element = parent instanceof HTMLElement ? parent : null;
+      }
+      window.scrollTo({ top: Math.max(0, top - 80), behavior: "instant" });
     });
     return () => cancelAnimationFrame(frame);
   }, [pathname, key]);
