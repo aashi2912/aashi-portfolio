@@ -161,6 +161,7 @@ const volunteering = [
 
 const projects: Project[] = [
 {
+  slug: "vibe-route",
   title: "Vibe Route",
   description: "Google Maps tells you the fastest route. I built a tool that tells you the best one - an AI-powered walking route comparison that scores routes by how they feel, not just how fast they are.",
   tag: "AI Product",
@@ -253,6 +254,7 @@ const projects: Project[] = [
   }
 },
 {
+  slug: "blind-spot",
   title: "Blind Spot",
   description: "80% of what you watch on Netflix comes from its recommendations. Blind Spot shows you the bubble you're in - and gives you one reasoned, evaluated way out.",
   tag: "AI Product",
@@ -342,6 +344,7 @@ const projects: Project[] = [
   }
 },
 {
+  slug: "rideconvert",
   title: "RideConvert",
   description: "Casual pay-per-ride users make up the majority of bike-share rides, but annual members generate 3-5× more lifetime revenue. I built an end-to-end product strategy to convert casual riders into members - validated through data analysis of 150K rides, K-means clustering for persona discovery, and a live analytics dashboard.",
   tag: "Product Analytics",
@@ -420,6 +423,7 @@ const projects: Project[] = [
   }
 },
 {
+  slug: "fine-print",
   title: "Fine Print",
   description: "A consumer AI tool that reads any contract clause by clause, scores each for risk in plain language, and flags the standard protections that are missing - because what isn't there is often the biggest risk.",
   tag: "AI LegalTech",
@@ -500,6 +504,7 @@ const projects: Project[] = [
   }
 },
 {
+  slug: "spotify-ai-dj",
   title: "Spotify AI DJ",
   description: "Spotify's AI DJ promised a curated stream and a friendly voice - but listeners felt they'd lost the steering wheel. A two-quarter decision document on how I'd give engaged users agency without breaking the passive experience the feature was built for.",
   tag: "Product Strategy",
