@@ -26,6 +26,7 @@ import hobbyBadminton from "@/assets/hobby-badminton.jpeg";
 import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 import vibeRouteHero from "@/assets/vibe-route-hero.png";
 import blindSpotHero from "@/assets/blind-spot-hero.png";
+import blindSpotDemo from "@/assets/blind-spot-demo.mp4.asset.json";
 import rideconvertHero from "@/assets/rideconvert-hero.png";
 import spotifyAiDjHero from "@/assets/spotify-ai-dj-hero.jpg";
 import finePrintHero from "@/assets/fine-print-hero.jpg";
@@ -248,7 +249,7 @@ const projects: Project[] = [
 },
 {
   title: "Blind Spot",
-  description: "80% of what you watch on Netflix was chosen by an algorithm. I built a tool that shows you what it's hiding - see your filter bubble, find blind spots, and bridge the gap with AI.",
+  description: "80% of what you watch on Netflix comes from its recommendations. Blind Spot shows you the bubble you're in - and gives you one reasoned, evaluated way out.",
   tag: "AI Product",
   link: "https://my-blind-spot.vercel.app/",
   year: "2026",
@@ -258,63 +259,76 @@ const projects: Project[] = [
   icon: "🎬",
   image: blindSpotHero,
   caseStudyPages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-pages/page-${i + 1}.jpg`),
+  caseStudyV2Pdf: "/case-studies/blind-spot-v2-case-study.pdf",
+  caseStudyV2Pages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-v2-pages/page-${i + 1}.jpg`),
   prdPages: Array.from({ length: 5 }, (_, i) => `/case-studies/blind-spot-prd-pages/page-${i + 1}.jpg`),
   prdPdf: "/case-studies/blind-spot-prd.pdf",
   githubLink: "https://github.com/aashi2912/blind-spot",
+  metricsLink: "https://my-blind-spot.vercel.app/metrics",
+  demoVideo: blindSpotDemo.url,
   details: {
-    heroTagline: "Netflix's algorithm is optimized to keep you watching. Blind Spot is optimized to help you grow.",
-    background: "301.6M Netflix subscribers worldwide. 80% of what you watch is chosen by the algorithm. A researcher created fake Netflix personas - by Day 3, each one was trapped in a filter bubble. The algorithm even changes poster artwork to match personas. Zero products optimize for showing you what you're missing.",
+    heroTagline: "Netflix is optimized to keep you watching. Blind Spot is optimized to help you grow.",
+    background: "325M+ Netflix subscribers worldwide (Q4 2025). 80% of what members watch comes from Netflix's recommendations - and even the thumbnail artwork is personalized to your profile. A $20B content budget is surfaced entirely through the algorithm. Every recommender optimizes for engagement, which means optimizing for familiarity. Zero products optimize for showing you what you're missing.",
     stats: [
-      { value: "301.6M", label: "Netflix Subscribers" },
+      { value: "325M+", label: "Netflix Subscribers" },
       { value: "80%", label: "Algorithm-Chosen" },
-      { value: "3", label: "AI Components" },
-      { value: "3", label: "User Personas" },
+      { value: "4.88/5", label: "Bridge Groundedness" },
+      { value: "0%", label: "Hallucination Rate" },
     ],
     competitiveGap: [
-      { label: "Taste.io", status: "Same Direction", tools: "'Find more of what you like'", solved: true },
+      { label: "Taste.io", status: "Same Direction", tools: "'More of what you like'", solved: true },
       { label: "Letterboxd", status: "Social Only", tools: "No blind spot analysis", solved: true },
+      { label: "Diversity Research", status: "Academic Only", tools: "A paper, not a product", solved: true },
       { label: "Blind Spot Analysis", status: "Huge Gap", tools: "Zero products show the bubble", solved: false },
     ],
     drawerSections: [
-      { label: "How It Works", title: "See Your Bubble. Find What's Missing. Bridge the Gap.", layout: "grid" as const, items: [
-        { title: "Your Bubble", desc: "Visual taste map: genre radar, decade timeline, language concentration" },
-        { title: "Blind Spots", desc: "Genres with zero representation, scored by opportunity (title count x avg rating)" },
-        { title: "Bridges", desc: "AI explains WHY: 'You loved X for quality Y. This film shares that quality in a new setting.'" },
+      { label: "The Core Loop", title: "Import - Reveal - Confront - Bridge - Act", layout: "grid" as const, items: [
+        { title: "Import", desc: "One-file Netflix export, parsed entirely in the browser - nothing is uploaded. Search is the fallback; a one-click sample gives zero-effort trial." },
+        { title: "Reveal", desc: "Bubble Score (0-100) with a plain breakdown of why, plus genre, decade, language, and theme breakdowns and an LLM taste summary." },
+        { title: "Confront", desc: "The genres you avoid, ranked by what's actually worth your time." },
+        { title: "Bridge", desc: "An LLM reasons why a film from a genre you skip fits what you already love - with save / not-for-me." },
+        { title: "Act", desc: "Watchlist plus a shareable result card - the growth loop." },
       ]},
-      { label: "AI Architecture", title: "3 AI Components - Each One Earns Its Place", layout: "grid" as const, items: [
-        { title: "Taste Profile Analyzer", desc: "Multi-dimensional vectors: genre distribution, keyword themes, and Herfindahl index for language diversity" },
-        { title: "Blind Spot Detector", desc: "Gap analysis vs. TMDB space. Weighted by opportunity: (Title count) x (Average rating)" },
-        { title: "Bridge Recommender", desc: "Cosine similarity + LLM Reasoning (Claude). Anti-hallucination: LLM receives only verified TMDB metadata" },
-      ], rejections: ["Collaborative filtering (no user base - honest)", "AI mood detection (unreliable)"] },
-      { label: "Decisions", title: "The Decisions Interviewers Actually Ask About", layout: "grid" as const, items: [
-        { title: "Content-based over Collaborative", desc: "Works with one user's data. Honest for a portfolio project with limited users." },
-        { title: "Cosine Similarity over Euclidean", desc: "Measures direction ('what KIND'), not just magnitude. Better for sparse movie vectors." },
-        { title: "LLM Reasoning, not Generation", desc: "Explaining WHY two things connect, not just describing them. Higher precision, lower hallucination." },
-        { title: "Herfindahl Index", desc: "Borrowed from economics to measure language diversity. A concrete, measurable metric." },
+      { label: "The AI, Scoped Honestly", title: "Knowing Which Part Is AI - and Defending It - Is the Point", layout: "grid" as const, items: [
+        { title: "LLM Features", desc: "Bridge reasoning (the core generative surface) and the one-line taste summary. Both run server-side with deterministic fallbacks." },
+        { title: "Classical ML / Stats", desc: "Content-based filtering (genre & keyword vectors), cosine-similarity ranking, Herfindahl concentration, the Bubble Score." },
+      ], rejections: ["Collaborative filtering (no user base yet - honest)", "AI mood detection (unreliable, unmeasurable)"] },
+      { label: "Eval Harness", title: "I Evaluated My Own AI Feature", layout: "grid" as const, items: [
+        { title: "Groundedness: 4.67 - 4.88", desc: "21-case golden set, LLM-as-judge, naive prompt (v1) vs production (v2)." },
+        { title: "Relevance: 4.43 - 4.94", desc: "Two prompt variants measured against the same golden set - a change measured, not asserted." },
+        { title: "Hallucination: 5% - 0%", desc: "The initial judge flagged legitimate thematic interpretation as hallucination - a false 88% rate. Corrected the judge, redefined the metric around groundedness." },
+        { title: "Refuse Accuracy: 0% - 100%", desc: "The eval caught a real production bug: refusals leaked to users as half-hearted bridges because of an exact-match check. Fixed by matching on startsWith." },
       ]},
-      { label: "Research", title: "Every Decision Backed by Published Research", layout: "list" as const, items: [
-        { title: "Pajkovic (2022)", desc: "SAGE Journals: Personas locked in by Day 3" },
-        { title: "NYU Pyrorank (2023)", desc: "Diversity tuning with minimal accuracy loss" },
-        { title: "SERAL (2025)", desc: "ACM SIGKDD: LLMs for serendipity recommendations" },
-        { title: "Pariser (2011)", desc: "'The Filter Bubble' - the foundational text" },
+      { label: "Decision Log", title: "A Product Is Its Decisions, Not Its Features", layout: "grid" as const, items: [
+        { title: "Upload, Not 'Connect'", desc: "Netflix has no public API. User-exported CSV parsed client-side - legitimate, private, nothing leaves the browser." },
+        { title: "CSV Import Is the Hero", desc: "Typing titles one-by-one is the biggest funnel drop-off; the one-file import is the largest conversion lever." },
+        { title: "One Bubble Score", desc: "0.35 genre-concentration + 0.20 breadth + 0.25 language + 0.20 decade, with a visible breakdown. Explainable beats black box." },
+        { title: "Keys Server-Side", desc: "TMDB & LLM calls proxy through serverless functions with a path whitelist - a browser-shipped key is an exposed key." },
+        { title: "Auth Never Gates", desc: "Account offered only after the aha moment, to persist a watchlist. A login at the door is the top-of-funnel killer." },
+        { title: "Own Palette, Not Netflix Red", desc: "The product is about leaving the bubble; wearing Netflix's colors implies affiliation." },
       ]},
-      { label: "Roadmap", title: "V2 Roadmap", layout: "roadmap" as const, items: [
-        { version: "V2", title: "Hybrid Filtering", desc: "Blend collaborative + content-based as user base grows" },
-        { version: "V2", title: "Progress Tracking", desc: "'Last month: 13 blind spots. Now: 9. You've explored Korean cinema.'" },
-        { version: "V2", title: "Bias Audit", desc: "Test if opportunity scores correlate with regional/cultural weighting" },
-        { version: "V3", title: "Multi-platform", desc: "YouTube watch history and Spotify listening bubble integration" },
+      { label: "Research", title: "Grounded in Published Research", layout: "list" as const, items: [
+        { title: "Pariser (2011)", desc: "'The Filter Bubble' - named the problem" },
+        { title: "Pajkovic (2022)", desc: "Convergence / SAGE - probing Netflix's recommender logics" },
+        { title: "Systematic Review (2023)", desc: "'Filter bubbles: fact or fallacy' - the effect is documented and contested; transparency holds either way" },
+      ]},
+      { label: "What's Next", title: "What I'd Build Next", layout: "roadmap" as const, items: [
+        { version: "Next", title: "Personalize the Bridges", desc: "Weight candidates harder on the user's own theme vector - and measure the lift with the existing eval." },
+        { version: "Next", title: "Eval in CI", desc: "Run the golden set on every prompt change; grow it into a real regression suite." },
+        { version: "Next", title: "Optional Accounts", desc: "Cross-device watchlist - offered after the aha moment, never gating the funnel." },
+        { version: "Later", title: "Multi-platform", desc: "The same bubble analysis for Spotify listening and Prime history." },
       ]},
     ],
     results: [
-      "Live product deployed on Vercel (my-blind-spot.vercel.app)",
-      "3 AI components shipped: Taste Profile Analyzer, Blind Spot Detector, Bridge Recommender",
-      "Anti-hallucination: LLM receives only verified TMDB metadata; NO_BRIDGE response skips candidates without genuine connections",
-      "Herfindahl index borrowed from economics for a concrete, measurable diversity metric",
-      "4 published research studies cited as design rationale (Pajkovic 2022, NYU Pyrorank 2023, SERAL 2025, Pariser 2011)"
+      "Live product deployed on Vercel with a real-time metrics dashboard (my-blind-spot.vercel.app/metrics)",
+      "Eval harness: 21-case golden set + LLM-as-judge scoring groundedness, relevance, and specificity",
+      "The eval caught a real production bug - refusals leaking to users as half-hearted bridges (refuse-accuracy 0% to 100%)",
+      "Hallucination rate 5% to 0%; groundedness 4.67 to 4.88; relevance 4.43 to 4.94 (naive v1 to production v2)",
+      "Instrumented with PostHog before launch: activation funnel, share rate, and day-3 retention read from data, not assumed"
     ],
-    takeawayQuote: "Netflix's algorithm is optimized to keep you watching. Blind Spot is optimized to help you grow.",
-    takeawayTags: ["Research-driven product thinking", "AI applied where it matters", "Anti-hallucination by design", "Full-stack shipping"],
-    tools: ["Claude Haiku (LLM)", "Cosine Similarity (ML)", "Content-Based Filtering", "Herfindahl Index", "TMDB API", "React", "Vite", "Tailwind CSS", "Vercel", "Competitive Analysis", "Persona Development", "PRD Writing"]
+    takeawayQuote: "Netflix is optimized to keep you watching. Blind Spot is optimized to help you grow.",
+    takeawayTags: ["Research-driven product thinking", "AI applied where it matters - and measured", "Evaluated, not trusted", "Full-stack shipping"],
+    tools: ["Claude (LLM)", "LLM-as-Judge Evals", "Golden Set Design", "Cosine Similarity (ML)", "Content-Based Filtering", "Herfindahl Index", "TMDB API", "PostHog Analytics", "React", "Vite", "Tailwind CSS", "Vercel Serverless", "PRD Writing", "Decision Logging"]
   }
 },
 {

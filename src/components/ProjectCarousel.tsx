@@ -29,6 +29,10 @@ export type Project = {
   prdPages?: string[];
   prdPdf?: string;
   githubLink?: string;
+  caseStudyV2Pdf?: string;
+  caseStudyV2Pages?: string[];
+  metricsLink?: string;
+  demoVideo?: string;
   details?: {
     background?: string;
     role?: string;
@@ -359,7 +363,7 @@ function ProjectDrawer({
   project: Project | null;
   onClose: () => void;
 }) {
-  const [showCaseStudyModal, setShowCaseStudyModal] = useState(false);
+  const [caseStudyModalPages, setCaseStudyModalPages] = useState<string[] | null>(null);
   
 
   if (!project) return null;
@@ -481,11 +485,36 @@ function ProjectDrawer({
                     style={{ borderColor: `${sc}40`, color: sc, backgroundColor: `${sc}08` }}
                     onClick={(e) => {
                       e.stopPropagation();
-                      setShowCaseStudyModal(true);
+                      setCaseStudyModalPages(project.caseStudyPages ?? null);
                     }}
                   >
-                    <FileText size={12} /> Case Study PDF
+                    <FileText size={12} /> {project.caseStudyV2Pages ? "Case Study V1" : "Case Study PDF"}
                   </button>
+                )}
+                {project.caseStudyV2Pages && project.caseStudyV2Pages.length > 0 && (
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border transition-all hover:scale-105"
+                    style={{ borderColor: `${sc}40`, color: sc, backgroundColor: `${sc}08` }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCaseStudyModalPages(project.caseStudyV2Pages ?? null);
+                    }}
+                  >
+                    <FileText size={12} /> Case Study V2
+                  </button>
+                )}
+                {project.metricsLink && (
+                  <a
+                    href={project.metricsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border transition-all hover:scale-105"
+                    style={{ borderColor: `${c}40`, color: c, backgroundColor: `${c}08` }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <ExternalLink size={12} /> Live Metrics
+                  </a>
                 )}
                 {project.prdPdf && (
                   <a
@@ -521,6 +550,18 @@ function ProjectDrawer({
                       <StatCard key={i} value={stat.value} label={stat.label} color={i % 2 === 0 ? c : sc} delay={0.12 + i * 0.04} />
                     ))}
                   </motion.div>
+                )}
+
+                {/* Product demo video */}
+                {project.demoVideo && (
+                  <SectionBlock label="Product Demo" color={c} delay={0.15}>
+                    <video
+                      src={project.demoVideo}
+                      controls
+                      preload="metadata"
+                      className="w-full rounded-xl border border-border/40"
+                    />
+                  </SectionBlock>
                 )}
 
                 {/* Background / Problem */}
@@ -788,13 +829,13 @@ function ProjectDrawer({
           </motion.div>
 
           <AnimatePresence>
-            {showCaseStudyModal && project.caseStudyPages && project.caseStudyPages.length > 0 && (
+            {caseStudyModalPages && caseStudyModalPages.length > 0 && (
               <CaseStudyModal
                 title={project.title}
-                pages={project.caseStudyPages}
+                pages={caseStudyModalPages}
                 color={c}
                 secondaryColor={sc}
-                onClose={() => setShowCaseStudyModal(false)}
+                onClose={() => setCaseStudyModalPages(null)}
               />
             )}
           </AnimatePresence>
