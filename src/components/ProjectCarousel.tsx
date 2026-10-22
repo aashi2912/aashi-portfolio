@@ -159,10 +159,10 @@ function ProjectCard({
             </p>
 
             {/* Skills */}
-            {filteredTools.length > 0 && (
+            {cardSkills.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mb-4">
-                {filteredTools.map((t, i) => {
-                  const isAI = aiSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
+                {cardSkills.map((t, i) => {
+                  const isAI = aiSet.has(t);
                   return (
                     <span
                       key={i}
