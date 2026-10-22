@@ -334,7 +334,7 @@ const projects: Project[] = [
 {
   title: "RideConvert",
   description: "Casual pay-per-ride users make up the majority of bike-share rides, but annual members generate 3-5× more lifetime revenue. I built an end-to-end product strategy to convert casual riders into members - validated through data analysis of 150K rides, K-means clustering for persona discovery, and a live analytics dashboard.",
-  tag: "Product Strategy",
+  tag: "Product Analytics",
   link: "https://rideconvert.vercel.app/",
   year: "2026",
   color: "#00C9A7",
@@ -407,7 +407,7 @@ const projects: Project[] = [
 {
   title: "Fine Print",
   description: "A consumer AI tool that reads any contract clause by clause, scores each for risk in plain language, and flags the standard protections that are missing - because what isn't there is often the biggest risk.",
-  tag: "AI Product",
+  tag: "AI LegalTech",
   year: "2026",
   link: "https://fine-print-aashi.vercel.app/",
   githubLink: "https://github.com/aashi2912/fine-print",
