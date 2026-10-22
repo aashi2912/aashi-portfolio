@@ -536,7 +536,7 @@ const projects: Project[] = [
         { title: "I. Mood Prompt at Session Start", desc: "Front-loaded. Already partially shipped via text prompts. Doesn't solve the mid-session moment where Maya actually lives." },
         { title: "II. Evolve Thumbs + Confidence-Aware Surfacing", desc: "The pick. Richer signal layer on the existing thumbs, made more prominent when the recommendation model's confidence is low. Controls show up exactly when the algorithm is least sure - so Jordan never sees them." },
         { title: "III. In-Session Contextual Re-Steer", desc: "Big bet. Requires a contextual model that doesn't exist yet. We don't ship this in 2026 - but Option II generates the training signal that makes it cheap to ship in 2027." },
-      ], rejections: ["Modal re-prompts (breaks Jordan)", "Optimizing for skip rate (Goodhart trap - punishes Maya's only current signal)"] },
+      ], rejections: ["Modal re-prompts (breaks Jordan)", "Optimizing for likes per session (Goodhart trap - rewards empty taps, not real agency)"] },
       { label: "Phasing & Gate", title: "Conditional Roadmap", layout: "roadmap" as const, items: [
         { version: "Q1", title: "Phase 1 - Evolve Thumbs (5% Alpha · 8 weeks)", desc: "Thumbs gain optional reason-capture. Half-sheet, never modal. Dismissable. The dislike logs whether or not the user engages." },
         { version: "Gate", title: "+50% Control Engagement?", desc: "Conditional gate before Phase 2. If Phase 1 doesn't lift control engagement meaningfully, the diagnosis is wrong and we re-frame before spending more." },
@@ -545,9 +545,9 @@ const projects: Project[] = [
       ]},
       { label: "Success Metrics", title: "What I Ship Against. What I Refuse.", layout: "list" as const, items: [
         { num: "01", title: "Primary - Week-4 DAU among engaged listeners", desc: "The metric that tells me whether Maya came back. Direct read on whether agency translated to retained trust." },
-        { num: "02", title: "Secondary - Control engagement rate", desc: "Reason-capture taps per dislike. The leading indicator that Phase 1 is generating the training signal Phase 3 needs." },
-        { num: "03", title: "Refuse - Skip rate as a north star", desc: "Goodhart trap. Optimizing skip-rate down would punish Maya's only current signal and reward sessions where she gave up." },
-        { num: "04", title: "Guardrails", desc: "60-second skip ≤ +1pp. AI DJ NPS ≤ −2 points. Jordan's session length flat-to-up. If any guardrail trips, we roll back before scaling." },
+        { num: "02", title: "Secondary - Sessions with thumbs interaction after the first track", desc: "The leading indicator that Phase 1 is generating the training signal Phase 3 needs." },
+        { num: "03", title: "Refuse - Likes per session as a north star", desc: "Goodhart trap. Optimizing likes up rewards empty taps and prompted engagement - not real agency." },
+        { num: "04", title: "Guardrails", desc: "p95 time-to-music ≤ +100ms. 60-second skip ≤ +1pp. AI DJ NPS ≤ −2 points. If any guardrail trips, we roll back before scaling." },
       ]},
       { label: "Risks", title: "Four Ways I Might Be Wrong", content: "Every case study has a section like this. Most are box-checking. This one names the four ways I might be wrong, and what we'd do to catch each before it costs us.", layout: "grid" as const, items: [
         { title: "I. The diagnosis is wrong", desc: "Maya's friction might be repetition, not agency. Detection: 'Heard already' chip tap-rate during Phase 1 alpha. Mitigation: if it dominates, pivot Phase 2 to a repetition fix." },
@@ -557,7 +557,7 @@ const projects: Project[] = [
       ]},
       { label: "Open Questions", title: "Four Unknowns That Would Change The Call", content: "Senior product work is not knowing every answer. It is knowing which unknowns change the call - and being honest about them in writing.", layout: "list" as const, items: [
         { num: "I", title: "What is recommendation model confidence access?", desc: "If exposing per-track confidence is more than one quarter of work, Phase 2 splits into a separate Q3-Q4 bet." },
-        { num: "II", title: "What is Spotify's current Goodhart posture on skip rate?", desc: "If skip rate is already a north-star elsewhere in the org, my 'refuse to optimize for' position needs a stakeholder conversation before kickoff, not after." },
+        { num: "II", title: "What is Spotify's current Goodhart posture on likes per session?", desc: "If likes per session is already a north-star elsewhere in the org, my 'refuse to optimize for' position needs a stakeholder conversation before kickoff, not after." },
         { num: "III", title: "What is the current usage pattern of existing thumbs?", desc: "Evolution-of-thumbs assumes thumbs are an established surface. If telemetry shows thumbs are essentially dead (<2% of sessions), we're putting new paint on a door no one walks through." },
         { num: "IV", title: "Is there a passive-vs-engaged segmentation already?", desc: "Jordan and Maya are personas. If there's no real segmentation in the data warehouse, building one becomes a Q1 dependency - not a Q1 assumption." },
       ]},
@@ -565,7 +565,7 @@ const projects: Project[] = [
     results: [
       "A two-quarter roadmap with an explicit conditional gate - not a deck of slogans",
       "A pick written in one sentence: evolve thumbs + surface them when model confidence is low",
-      "A guardrail metric set that refuses skip-rate as a north star (the Goodhart cut)",
+      "A guardrail metric set that refuses likes-per-session as a north star (the Goodhart cut)",
       "A Phase 3 (2027) bet that Phase 1 pays for in training data, not in headcount",
       "Honest about being a strategic exercise - Section VI lists the four unknowns that would change the call",
     ],
