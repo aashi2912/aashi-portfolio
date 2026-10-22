@@ -849,6 +849,7 @@ function ProjectDrawer({
                 pages={caseStudyModalPages}
                 color={c}
                 secondaryColor={sc}
+                pdfLink={caseStudyModalPages === project.caseStudyPages ? project.caseStudyPdf : undefined}
                 onClose={() => setCaseStudyModalPages(null)}
               />
             )}
