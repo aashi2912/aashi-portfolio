@@ -260,7 +260,6 @@ const projects: Project[] = [
   image: blindSpotHero,
   caseStudyPdf: "/case-studies/blind-spot-v2-case-study.pdf",
   caseStudyPages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-v2-pages/page-${i + 1}.jpg`),
-  caseStudyV2Pdf: "/case-studies/blind-spot-case-study.pdf",
   caseStudyV2Pages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-pages/page-${i + 1}.jpg`),
   prdPages: Array.from({ length: 5 }, (_, i) => `/case-studies/blind-spot-prd-pages/page-${i + 1}.jpg`),
   prdPdf: "/case-studies/blind-spot-prd.pdf",
