@@ -552,6 +552,18 @@ function ProjectDrawer({
                   </motion.div>
                 )}
 
+                {/* Product demo video */}
+                {project.demoVideo && (
+                  <SectionBlock label="Product Demo" color={c} delay={0.15}>
+                    <video
+                      src={project.demoVideo}
+                      controls
+                      preload="metadata"
+                      className="w-full rounded-xl border border-border/40"
+                    />
+                  </SectionBlock>
+                )}
+
                 {/* Background / Problem */}
                 {details.background && (
                   <SectionBlock label="The Problem" color={c} delay={0.2}>
