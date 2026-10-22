@@ -68,7 +68,11 @@ function ProjectCard({
 }) {
   const [hovered, setHovered] = useState(false);
 
-  const aiSet = new Set(project.details?.stack?.ai ?? []);
+  const aiEntries = (project.details?.stack?.ai ?? []).map(a => a.replace(/\(.*\)/, "").trim().toLowerCase());
+  const isAiSkill = (t: string) => {
+    const base = t.replace(/\(.*\)/, "").trim().toLowerCase();
+    return aiEntries.some(a => a === base || a.includes(base) || base.includes(a));
+  };
   const cardSkills = project.cardSkills
     ?? [...(project.details?.stack?.ai ?? []), ...(project.details?.stack?.pm ?? [])].slice(0, 5);
 
