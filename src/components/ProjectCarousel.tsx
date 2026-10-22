@@ -278,12 +278,14 @@ function CaseStudyModal({
   pages,
   color,
   secondaryColor,
+  pdfLink,
   onClose,
 }: {
   title: string;
   pages: string[];
   color: string;
   secondaryColor?: string;
+  pdfLink?: string;
   onClose: () => void;
 }) {
   return (
@@ -316,6 +318,18 @@ function CaseStudyModal({
             </p>
             <h3 className="text-lg font-semibold text-foreground md:text-xl">{title}</h3>
           </div>
+          {pdfLink && (
+            <a
+              href={pdfLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold border transition-all hover:scale-105 shrink-0"
+              style={{ borderColor: `${color}40`, color, backgroundColor: `${color}08` }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <FileText size={12} /> PDF
+            </a>
+          )}
           <button
             onClick={onClose}
             className="flex h-10 w-10 items-center justify-center rounded-full border bg-background/80 text-foreground transition-colors hover:text-foreground hover:bg-background"
