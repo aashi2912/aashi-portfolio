@@ -481,14 +481,14 @@ function ProjectDrawer({
                 {project.caseStudyPages && project.caseStudyPages.length > 0 && (
                   <button
                     type="button"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border transition-all hover:scale-105"
-                    style={{ borderColor: `${sc}40`, color: sc, backgroundColor: `${sc}08` }}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-all hover:opacity-90 hover:scale-105"
+                    style={{ backgroundColor: sc }}
                     onClick={(e) => {
                       e.stopPropagation();
                       setCaseStudyModalPages(project.caseStudyPages ?? null);
                     }}
                   >
-                    <FileText size={12} /> {project.caseStudyV2Pages ? "Case Study V1" : "Case Study PDF"}
+                    <FileText size={12} /> Case Study
                   </button>
                 )}
                 {project.caseStudyV2Pages && project.caseStudyV2Pages.length > 0 && (
@@ -501,7 +501,7 @@ function ProjectDrawer({
                       setCaseStudyModalPages(project.caseStudyV2Pages ?? null);
                     }}
                   >
-                    <FileText size={12} /> Case Study V2
+                    <FileText size={12} /> View V1 Case Study
                   </button>
                 )}
                 {project.metricsLink && (
