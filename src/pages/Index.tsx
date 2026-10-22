@@ -272,7 +272,9 @@ const projects: Project[] = [
   prdPdf: "/case-studies/blind-spot-prd.pdf",
   githubLink: "https://github.com/aashi2912/blind-spot",
   metricsLink: "https://my-blind-spot.vercel.app/metrics",
-  demoVideo: blindSpotDemo.url,
+  // Absolute URL so the video also loads on the Vercel-hosted custom domain
+  // (the relative /__l5e asset path only resolves on Lovable hosting).
+  demoVideo: `https://aashi-portfolio.lovable.app${blindSpotDemo.url}`,
   cardSkills: ["Claude Haiku (LLM)", "LLM-as-Judge Evals", "Content-Based Filtering", "Golden Set Design", "Decision Logging"],
   details: {
     heroTagline: "Netflix is optimized to keep you watching. Blind Spot is optimized to help you grow.",
