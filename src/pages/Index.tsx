@@ -244,7 +244,12 @@ const projects: Project[] = [
     ],
     takeawayQuote: "AI applied where it adds value - and explicitly rejected where it doesn't (personalization, scenic LLM scoring, AI soundtrack).",
     takeawayTags: ["Research-driven thinking", "Bias-aware design", "AI applied where it adds value", "Honest rejections", "End-to-end shipping"],
-    tools: ["Claude Haiku (LLM)", "DBSCAN Clustering (ML)", "Google Maps API", "Google Places API", "Google Routes API", "React", "Vite", "Tailwind CSS", "Vercel", "Research Synthesis", "Persona Development", "Bias Audit Design", "Anti-Hallucination Design", "Decision Tradeoffs", "Roadmapping"]
+    cardSkills: ["Claude Haiku (LLM)", "POI-Grounded Narratives", "Spatial Clustering", "Bias-Aware Design", "Research Synthesis"],
+    stack: {
+      ai: ["Claude Haiku 4.5 (Anthropic API)", "Natural-Language Vibe Parsing", "POI-Grounded Route Narratives", "DBSCAN-Inspired Spatial Clustering", "Deterministic Vibe Scoring"],
+      pm: ["PRD & Feature Specs", "Secondary Research Synthesis (6 Studies)", "Persona Development", "Competitive Gap Analysis", "MVP Scoping & Feature Rejection", "Bias & Responsible-AI Framework", "Staged Roadmapping"],
+      eng: ["React 18", "Vite", "Tailwind CSS", "Vercel Serverless", "Google Maps JS API", "Google Routes API", "Google Places API (New)"]
+    }
   }
 },
 {
@@ -328,7 +333,12 @@ const projects: Project[] = [
     ],
     takeawayQuote: "Netflix is optimized to keep you watching. Blind Spot is optimized to help you grow.",
     takeawayTags: ["Research-driven product thinking", "AI applied where it matters - and measured", "Evaluated, not trusted", "Full-stack shipping"],
-    tools: ["Claude (LLM)", "LLM-as-Judge Evals", "Golden Set Design", "Cosine Similarity (ML)", "Content-Based Filtering", "Herfindahl Index", "TMDB API", "PostHog Analytics", "React", "Vite", "Tailwind CSS", "Vercel Serverless", "PRD Writing", "Decision Logging"]
+    cardSkills: ["Claude Haiku (LLM)", "LLM-as-Judge Evals", "Content-Based Filtering", "Golden Set Design", "Decision Logging"],
+    stack: {
+      ai: ["Claude Haiku 4.5 (Anthropic API)", "Content-Based Filtering", "Cosine Similarity Ranking", "Herfindahl Concentration Index", "Grounded Prompt Engineering", "LLM-as-Judge Evals (21-Case Golden Set)"],
+      pm: ["PRD", "Decision Log", "Eval Harness & Golden Set Design", "AI Guardrail Metrics", "Success Metric Design", "Funnel Instrumentation & Public Metrics Dashboard"],
+      eng: ["React 18", "Vite", "Tailwind CSS", "Recharts", "Vercel Serverless", "TMDB API", "PostHog + HogQL"]
+    }
   }
 },
 {
@@ -401,7 +411,12 @@ const projects: Project[] = [
     ],
     takeawayQuote: "Casual riders don't convert because the product wasn't designed for their usage pattern. Fix the value proposition, not the price.",
     takeawayTags: ["Data-driven personas", "Strategic roadmap planning", "Quantitative insights", "Conversion-focused design"],
-    tools: ["K-Means Clustering (ML)", "scikit-learn", "Python", "pandas", "SQL", "Recharts", "React", "Vercel", "RICE Prioritization", "Product Strategy", "A/B Test Design", "Data Analysis", "Roadmapping"]
+    cardSkills: ["K-Means Clustering", "SQL Funnel Analysis", "RICE Prioritization", "Experiment Design", "Opportunity Sizing"],
+    stack: {
+      ai: ["K-Means Clustering (scikit-learn)", "StandardScaler Normalization", "PCA Visualization", "Synthetic Data Generation", "Power & Sample-Size Analysis"],
+      pm: ["Strategy Brief", "RICE Prioritization", "Opportunity Sizing (ARR Projection)", "Three-Quarter Roadmap", "PRD & User Stories", "Decision Log", "Metrics Framework (North Star + Guardrails)", "Experiment Design"],
+      eng: ["Python (pandas, NumPy, SciPy)", "Jupyter Notebooks", "SQL (Funnel, Cohort, Segmentation)", "React 18 + Recharts Dashboard", "Vite", "Vercel"]
+    }
   }
 },
 {
@@ -476,7 +491,12 @@ const projects: Project[] = [
     ],
     takeawayQuote: "The most dangerous clause is the one that isn't there. Fine Print is the only consumer tool that tells you what should be in your contract and isn't.",
     takeawayTags: ["Consumer AI", "Plain-language explanation", "Gap detection", "Deterministic scoring", "Honest about uncertainty", "Ethics-first positioning"],
-    tools: ["Claude Sonnet (LLM)", "Deterministic Client-Side Scoring", "Quote Verification", "Self-Consistency Checking", "Persona Development", "PRD Writing", "Reliability Engineering", "Ethics-First Design", "React", "Vite", "Tailwind CSS", "Vercel"]
+    cardSkills: ["Claude Sonnet 4.5", "LLM Prompt Engineering", "Self-Consistency Checking", "Quote Verification", "PRD & MVP Scoping"],
+    stack: {
+      ai: ["Claude Sonnet 4.5 (Anthropic API)", "LLM Prompt Engineering (Structured JSON)", "Multimodal PDF/Image Analysis", "Two-Pass Self-Consistency Checking", "Heuristic Quote Verification", "Non-Contract Refusal Guardrails"],
+      pm: ["PRD & MVP Scoping", "Persona Segmentation", "Goals & Non-Goals", "Differentiation (Missing Protections)", "Tradeoff Analysis", "Success Metric Definition", "Responsible-AI Positioning"],
+      eng: ["React 18", "Vite", "Tailwind CSS", "Vercel Serverless Functions", "Deterministic Client-Side Health Scoring"]
+    }
   }
 },
 {
@@ -551,7 +571,10 @@ const projects: Project[] = [
     ],
     takeawayQuote: "Evolve the existing thumbs into a richer signal layer, and surface them more prominently when the recommendation model's confidence is low - so the controls show up exactly when the algorithm is least sure.",
     takeawayTags: ["Strategic reasoning", "Persona-led framing", "Goodhart-aware metrics", "Phased roadmaps with gates", "Honest about unknowns"],
-    tools: ["Decision Document", "Persona Framing (Maya/Jordan)", "Conditional Roadmapping", "Phased Rollout (Alpha/Beta)", "Guardrail Metric Design", "Goodhart-Aware Metrics", "Competitive Analysis", "Risk & Open Questions", "Strategic Tradeoffs"]
+    cardSkills: ["Decision Document", "Goodhart-Aware Metrics", "Guardrail Design", "Conditional Roadmapping", "Persona & JTBD Framing"],
+    stack: {
+      pm: ["Decision Document", "Persona & JTBD Framing (Maya/Jordan)", "Option Evaluation & Tradeoffs", "Conditional Roadmapping (Alpha/Beta Gates)", "Guardrail Metric Design", "Goodhart-Aware Metrics", "Competitive Analysis", "Risk & Open Questions"]
+    }
   }
 }];
 
