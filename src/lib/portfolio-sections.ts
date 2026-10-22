@@ -10,5 +10,7 @@ export const portfolioSections = [
 export function getSectionForPath(pathname: string) {
   const path = pathname.replace(/\/+$/, "") || "/";
   if (path === "/" || path === "/home") return portfolioSections[0];
-  return portfolioSections.find((section) => section.path === path);
+  return portfolioSections.find(
+    (section) => section.path === path || path.startsWith(section.path + "/")
+  );
 }
