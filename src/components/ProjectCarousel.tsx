@@ -33,6 +33,7 @@ export type Project = {
   caseStudyV2Pages?: string[];
   metricsLink?: string;
   demoVideo?: string;
+  cardSkills?: string[];
   details?: {
     background?: string;
     role?: string;
@@ -43,6 +44,7 @@ export type Project = {
     solution?: string;
     results?: string[];
     tools?: string[];
+    stack?: { ai?: string[]; pm?: string[]; eng?: string[] };
     heroTagline?: string;
     stats?: { value: string; label: string }[];
     drawerSections?: DrawerSection[];
@@ -66,16 +68,13 @@ function ProjectCard({
 }) {
   const [hovered, setHovered] = useState(false);
 
-  const productSkills = ['RICE','KPI','OKR','PRD','Roadmap','User Research','Market Analysis','Product Strategy','Persona','Journey Map','Wireframe','Prototype','GTM','Go-to-Market','Prioritization','Data Analysis','A/B Test','Experiment','Discovery','Stakeholder','Agile','Scrum','Kanban','Funnel','Cohort','Retention','Churn','Conversion','Adoption','Engagement','Growth'];
-  const aiSkills = ['AI','ML','LLM','NLP','Clustering','K-Means','scikit','Cosine','Filtering','Herfindahl','Gen AI','Generative AI','Machine Learning','GPT','Claude','LLaMA','Gemini','Hugging Face','Transformers','BERT','OpenAI','Anthropic'];
-  const engSkills = ['React','TypeScript','Vercel','Node.js','Nodejs','Next.js','Nextjs','Vue','Angular','Express','Django','Flask','Docker','Kubernetes','AWS','GCP','Azure','Tailwind','Bootstrap','jQuery','HTML','CSS','JavaScript','Python','Java','Go','Rust'];
-
-  const filteredTools = project.details?.tools?.filter(t => {
-    const isEng = engSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
-    const isProduct = productSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
-    const isAI = aiSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
-    return !isEng && (isProduct || isAI);
-  }).slice(0, 5) || [];
+  const aiEntries = (project.details?.stack?.ai ?? []).map(a => a.replace(/\(.*\)/, "").trim().toLowerCase());
+  const isAiSkill = (t: string) => {
+    const base = t.replace(/\(.*\)/, "").trim().toLowerCase();
+    return aiEntries.some(a => a === base || a.includes(base) || base.includes(a));
+  };
+  const cardSkills = project.cardSkills
+    ?? [...(project.details?.stack?.ai ?? []), ...(project.details?.stack?.pm ?? [])].slice(0, 5);
 
   return (
     <motion.div
@@ -164,10 +163,10 @@ function ProjectCard({
             </p>
 
             {/* Skills */}
-            {filteredTools.length > 0 && (
+            {cardSkills.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mb-4">
-                {filteredTools.map((t, i) => {
-                  const isAI = aiSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
+                {cardSkills.map((t, i) => {
+                  const isAI = isAiSkill(t);
                   return (
                     <span
                       key={i}
@@ -794,24 +793,20 @@ function ProjectDrawer({
                 )}
 
                 {/* Tools & Stack - Categorized */}
-                {details.tools && details.tools.length > 0 && (
+                {((details.stack && (details.stack.ai?.length || details.stack.pm?.length || details.stack.eng?.length)) || (details.tools && details.tools.length > 0)) && (
                   <SectionBlock label="Tools & Stack" color={c} delay={0.75}>
                     {(() => {
-                      const aiKeywords = ['AI','ML','LLM','NLP','Clustering','Cosine','Filtering','Herfindahl','scikit','K-Means','Claude','GPT'];
-                      const pmKeywords = ['RICE','Product Strategy','User Research','A/B Test','Data Analysis','Roadmap','Stakeholder','OKR','PRD','Persona','Journey Map','Competitive Analysis','Sprint','Acceptance Criteria','User Story','Discovery','Prioritization'];
-                      const engKeywords = ['React','TypeScript','Vercel','Python','pandas','SQL','Recharts','Node','Next','Google Maps','Google Places','TMDB','API'];
-
-                      const categorize = (t: string) => {
-                        if (aiKeywords.some(k => t.toLowerCase().includes(k.toLowerCase()))) return 'ai';
-                        if (pmKeywords.some(k => t.toLowerCase().includes(k.toLowerCase()))) return 'pm';
-                        return 'eng';
-                      };
-
-                      const groups = {
-                        ai: { label: 'AI / ML', items: details.tools.filter(t => categorize(t) === 'ai') },
-                        pm: { label: 'Product Management', items: details.tools.filter(t => categorize(t) === 'pm') },
-                        eng: { label: 'Engineering', items: details.tools.filter(t => categorize(t) === 'eng') },
-                      };
+                      const groups = details.stack
+                        ? {
+                            ai: { label: 'AI / ML', items: details.stack.ai ?? [] },
+                            pm: { label: 'Product & Strategy', items: details.stack.pm ?? [] },
+                            eng: { label: 'Engineering', items: details.stack.eng ?? [] },
+                          }
+                        : {
+                            ai: { label: 'AI / ML', items: [] as string[] },
+                            pm: { label: 'Product & Strategy', items: [] as string[] },
+                            eng: { label: 'Engineering', items: details.tools ?? [] },
+                          };
 
                       return (
                         <div className="space-y-5">
