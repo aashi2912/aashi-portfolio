@@ -176,6 +176,7 @@ const projects: Project[] = [
   prdPages: Array.from({ length: 5 }, (_, i) => `/case-studies/vibe-route-prd-pages/page-${i + 1}.jpg`),
   prdPdf: "/case-studies/vibe-route-prd.pdf",
   githubLink: "https://github.com/aashi2912/vibe-route",
+  cardSkills: ["Claude Haiku (LLM)", "POI-Grounded Narratives", "Spatial Clustering", "Bias-Aware Design", "Research Synthesis"],
   details: {
     heroTagline: "An AI product case study - from research to a shipped product on Vercel.",
     background: "A former Google Maps Senior UX Researcher publicly explained why Google won't add scenic routing: scoring routes on 'niceness' would systematically bias toward affluent neighbourhoods. Google confirmed it's technically feasible - the barrier is design, not engineering. Urban walking is still routed only by speed.",
@@ -244,7 +245,6 @@ const projects: Project[] = [
     ],
     takeawayQuote: "AI applied where it adds value - and explicitly rejected where it doesn't (personalization, scenic LLM scoring, AI soundtrack).",
     takeawayTags: ["Research-driven thinking", "Bias-aware design", "AI applied where it adds value", "Honest rejections", "End-to-end shipping"],
-    cardSkills: ["Claude Haiku (LLM)", "POI-Grounded Narratives", "Spatial Clustering", "Bias-Aware Design", "Research Synthesis"],
     stack: {
       ai: ["Claude Haiku 4.5 (Anthropic API)", "Natural-Language Vibe Parsing", "POI-Grounded Route Narratives", "DBSCAN-Inspired Spatial Clustering", "Deterministic Vibe Scoring"],
       pm: ["PRD & Feature Specs", "Secondary Research Synthesis (6 Studies)", "Persona Development", "Competitive Gap Analysis", "MVP Scoping & Feature Rejection", "Bias & Responsible-AI Framework", "Staged Roadmapping"],
@@ -271,6 +271,7 @@ const projects: Project[] = [
   githubLink: "https://github.com/aashi2912/blind-spot",
   metricsLink: "https://my-blind-spot.vercel.app/metrics",
   demoVideo: blindSpotDemo.url,
+  cardSkills: ["Claude Haiku (LLM)", "LLM-as-Judge Evals", "Content-Based Filtering", "Golden Set Design", "Decision Logging"],
   details: {
     heroTagline: "Netflix is optimized to keep you watching. Blind Spot is optimized to help you grow.",
     background: "325M+ Netflix subscribers worldwide (Q4 2025). 80% of what members watch comes from Netflix's recommendations - and even the thumbnail artwork is personalized to your profile. A $20B content budget is surfaced entirely through the algorithm. Every recommender optimizes for engagement, which means optimizing for familiarity. Zero products optimize for showing you what you're missing.",
@@ -333,7 +334,6 @@ const projects: Project[] = [
     ],
     takeawayQuote: "Netflix is optimized to keep you watching. Blind Spot is optimized to help you grow.",
     takeawayTags: ["Research-driven product thinking", "AI applied where it matters - and measured", "Evaluated, not trusted", "Full-stack shipping"],
-    cardSkills: ["Claude Haiku (LLM)", "LLM-as-Judge Evals", "Content-Based Filtering", "Golden Set Design", "Decision Logging"],
     stack: {
       ai: ["Claude Haiku 4.5 (Anthropic API)", "Content-Based Filtering", "Cosine Similarity Ranking", "Herfindahl Concentration Index", "Grounded Prompt Engineering", "LLM-as-Judge Evals (21-Case Golden Set)"],
       pm: ["PRD", "Decision Log", "Eval Harness & Golden Set Design", "AI Guardrail Metrics", "Success Metric Design", "Funnel Instrumentation & Public Metrics Dashboard"],
@@ -356,6 +356,7 @@ const projects: Project[] = [
   caseStudyPages: Array.from({ length: 10 }, (_, i) => `/case-studies/rideconvert-pages/page-${i + 1}.jpg`),
   prdPdf: "https://github.com/aashi2912/rideconvert/blob/main/docs/PRD.md",
   githubLink: "https://github.com/aashi2912/rideconvert",
+  cardSkills: ["K-Means Clustering", "SQL Funnel Analysis", "RICE Prioritization", "Experiment Design", "Opportunity Sizing"],
   details: {
     heroTagline: "An end-to-end product strategy for converting casual bike-share riders into annual members.",
     background: "The bike-share revenue challenge: casual pay-per-ride users make up the majority of rides, but annual members generate 3-5× more lifetime revenue. Industry-wide conversion rate sits at 2-4%. Casual riders don't convert because the product wasn't designed to make membership feel obviously worth it for their usage pattern. The value proposition assumes a commuter - most casual riders are not commuters.",
@@ -411,7 +412,6 @@ const projects: Project[] = [
     ],
     takeawayQuote: "Casual riders don't convert because the product wasn't designed for their usage pattern. Fix the value proposition, not the price.",
     takeawayTags: ["Data-driven personas", "Strategic roadmap planning", "Quantitative insights", "Conversion-focused design"],
-    cardSkills: ["K-Means Clustering", "SQL Funnel Analysis", "RICE Prioritization", "Experiment Design", "Opportunity Sizing"],
     stack: {
       ai: ["K-Means Clustering (scikit-learn)", "StandardScaler Normalization", "PCA Visualization", "Synthetic Data Generation", "Power & Sample-Size Analysis"],
       pm: ["Strategy Brief", "RICE Prioritization", "Opportunity Sizing (ARR Projection)", "Three-Quarter Roadmap", "PRD & User Stories", "Decision Log", "Metrics Framework (North Star + Guardrails)", "Experiment Design"],
@@ -434,6 +434,7 @@ const projects: Project[] = [
   caseStudyPdf: "/case-studies/fine-print-case-study.pdf",
   caseStudyPages: Array.from({ length: 10 }, (_, i) => `/case-studies/fine-print-pages/page-${i + 1}.jpg`),
   prdPdf: "/case-studies/fine-print-prd.pdf",
+  cardSkills: ["Claude Sonnet 4.5", "LLM Prompt Engineering", "Self-Consistency Checking", "Quote Verification", "PRD & MVP Scoping"],
   details: {
     heroTagline: "The people most exposed by a contract are the ones least equipped to read it. Fine Print is a consumer triage tool that closes the gap between a $349/hr lawyer and clicking 'I agree.'",
     background: "Contracts are written for lawyers, not the people bound by them. 91% of people accept terms without reading, and one nonprofit review found 40% of leases contained questionable clauses. At $349/hr, a lawyer isn't realistic for a routine lease or freelance gig. The highest-leverage build wasn't another clause reader - it was a tool that also names what should be in your contract and isn't, because absent protections are the risks people least expect and most regret.",
@@ -491,7 +492,6 @@ const projects: Project[] = [
     ],
     takeawayQuote: "The most dangerous clause is the one that isn't there. Fine Print is the only consumer tool that tells you what should be in your contract and isn't.",
     takeawayTags: ["Consumer AI", "Plain-language explanation", "Gap detection", "Deterministic scoring", "Honest about uncertainty", "Ethics-first positioning"],
-    cardSkills: ["Claude Sonnet 4.5", "LLM Prompt Engineering", "Self-Consistency Checking", "Quote Verification", "PRD & MVP Scoping"],
     stack: {
       ai: ["Claude Sonnet 4.5 (Anthropic API)", "LLM Prompt Engineering (Structured JSON)", "Multimodal PDF/Image Analysis", "Two-Pass Self-Consistency Checking", "Heuristic Quote Verification", "Non-Contract Refusal Guardrails"],
       pm: ["PRD & MVP Scoping", "Persona Segmentation", "Goals & Non-Goals", "Differentiation (Missing Protections)", "Tradeoff Analysis", "Success Metric Definition", "Responsible-AI Positioning"],
@@ -511,6 +511,7 @@ const projects: Project[] = [
   image: spotifyAiDjHero,
   caseStudyPdf: "/case-studies/spotify-ai-dj-case-study.pdf",
   caseStudyPages: Array.from({ length: 23 }, (_, i) => `/case-studies/spotify-ai-dj-pages/page-${i + 1}.jpg`),
+  cardSkills: ["Decision Document", "Goodhart-Aware Metrics", "Guardrail Design", "Conditional Roadmapping", "Persona & JTBD Framing"],
   details: {
     heroTagline: "A two-quarter decision document - written without access to internal Spotify data. The point isn't being right about the answer; it's showing the shape of how I'd reason toward one.",
     background: "Spotify shipped AI DJ in February 2023 (Spotify Newsroom, Feb 22 2023) on a bet: that listeners would trade input for ease. The feature gives users a curated stream with commentary - but only thumbs up/down as controls, with no way to steer mid-session. This case study reasons about the agency gap: users who feel the algorithm decides everything and want to nudge it mid-session without abandoning the surprise. The cost of inaction isn't a churned subscriber - it's a paid subscriber who quietly stopped trusting the most expensive AI surface on the platform.",
@@ -571,7 +572,6 @@ const projects: Project[] = [
     ],
     takeawayQuote: "Evolve the existing thumbs into a richer signal layer, and surface them more prominently when the recommendation model's confidence is low - so the controls show up exactly when the algorithm is least sure.",
     takeawayTags: ["Strategic reasoning", "Persona-led framing", "Goodhart-aware metrics", "Phased roadmaps with gates", "Honest about unknowns"],
-    cardSkills: ["Decision Document", "Goodhart-Aware Metrics", "Guardrail Design", "Conditional Roadmapping", "Persona & JTBD Framing"],
     stack: {
       pm: ["Decision Document", "Persona & JTBD Framing (Maya/Jordan)", "Option Evaluation & Tradeoffs", "Conditional Roadmapping (Alpha/Beta Gates)", "Guardrail Metric Design", "Goodhart-Aware Metrics", "Competitive Analysis", "Risk & Open Questions"]
     }
