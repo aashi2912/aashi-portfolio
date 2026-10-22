@@ -25,6 +25,7 @@ const App = () => (
               {portfolioSections.map(({ path }) => (
                 <Route key={path} path={path} element={<Index />} />
               ))}
+              <Route path="/projects/:projectSlug" element={<Index />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

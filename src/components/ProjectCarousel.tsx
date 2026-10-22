@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, ArrowUpRight, ArrowLeft, ArrowRight, FileText, X, Github } from "lucide-react";
 
@@ -14,6 +15,7 @@ export type DrawerSection = {
 };
 
 export type Project = {
+  slug?: string;
   title: string;
   description: string;
   tag: string;
@@ -856,7 +858,9 @@ function ProjectDrawer({
 }
 
 export function ProjectCarousel({ projects }: { projects: Project[] }) {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const { projectSlug } = useParams<{ projectSlug?: string }>();
+  const navigate = useNavigate();
+  const selectedProject = projects.find((p) => p.slug && p.slug === projectSlug) ?? null;
   const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isPausedRef = useRef(isPaused);
@@ -865,14 +869,25 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
   useEffect(() => { isPausedRef.current = isPaused; }, [isPaused]);
   useEffect(() => { selectedRef.current = selectedProject; }, [selectedProject]);
 
+  // Lock body scroll while a project drawer is open
+  useEffect(() => {
+    document.body.style.overflow = selectedProject ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [selectedProject]);
+
+  // Unknown project slug -> fall back to the projects section
+  useEffect(() => {
+    if (projectSlug && !selectedProject) {
+      navigate("/projects", { replace: true });
+    }
+  }, [projectSlug, selectedProject, navigate]);
+
   const handleCardClick = (project: Project) => {
-    setSelectedProject(project);
-    document.body.style.overflow = "hidden";
+    navigate(project.slug ? `/projects/${project.slug}` : "/projects");
   };
 
   const handleClose = () => {
-    setSelectedProject(null);
-    document.body.style.overflow = "";
+    navigate("/projects");
   };
 
   const scrollBy = (direction: number) => {

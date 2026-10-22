@@ -19,6 +19,12 @@ describe("shareable portfolio sections", () => {
     expect(getSectionForPath("/work/")?.id).toBe("work");
     expect(getSectionForPath("/unknown")).toBeUndefined();
   });
+
+  it("maps shareable project links to the projects section", () => {
+    expect(getSectionForPath("/projects/blind-spot")?.id).toBe("projects");
+    expect(getSectionForPath("/projects/vibe-route")?.id).toBe("projects");
+    expect(getSectionForPath("/projects/fine-print")?.id).toBe("projects");
+  });
 });
 
 it("marks solo travel to Europe in my 20s as completed in Travel", () => {
