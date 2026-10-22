@@ -33,6 +33,7 @@ export type Project = {
   caseStudyV2Pages?: string[];
   metricsLink?: string;
   demoVideo?: string;
+  cardSkills?: string[];
   details?: {
     background?: string;
     role?: string;
@@ -43,6 +44,7 @@ export type Project = {
     solution?: string;
     results?: string[];
     tools?: string[];
+    stack?: { ai?: string[]; pm?: string[]; eng?: string[] };
     heroTagline?: string;
     stats?: { value: string; label: string }[];
     drawerSections?: DrawerSection[];
