@@ -166,7 +166,7 @@ function ProjectCard({
             {cardSkills.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mb-4">
                 {cardSkills.map((t, i) => {
-                  const isAI = aiSet.has(t);
+                  const isAI = isAiSkill(t);
                   return (
                     <span
                       key={i}
