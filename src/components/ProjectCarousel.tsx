@@ -29,6 +29,10 @@ export type Project = {
   prdPages?: string[];
   prdPdf?: string;
   githubLink?: string;
+  caseStudyV2Pdf?: string;
+  caseStudyV2Pages?: string[];
+  metricsLink?: string;
+  demoVideo?: string;
   details?: {
     background?: string;
     role?: string;
@@ -359,7 +363,7 @@ function ProjectDrawer({
   project: Project | null;
   onClose: () => void;
 }) {
-  const [showCaseStudyModal, setShowCaseStudyModal] = useState(false);
+  const [caseStudyModalPages, setCaseStudyModalPages] = useState<string[] | null>(null);
   
 
   if (!project) return null;
