@@ -68,16 +68,9 @@ function ProjectCard({
 }) {
   const [hovered, setHovered] = useState(false);
 
-  const productSkills = ['RICE','KPI','OKR','PRD','Roadmap','User Research','Market Analysis','Product Strategy','Persona','Journey Map','Wireframe','Prototype','GTM','Go-to-Market','Prioritization','Data Analysis','A/B Test','Experiment','Discovery','Stakeholder','Agile','Scrum','Kanban','Funnel','Cohort','Retention','Churn','Conversion','Adoption','Engagement','Growth'];
-  const aiSkills = ['AI','ML','LLM','NLP','Clustering','K-Means','scikit','Cosine','Filtering','Herfindahl','Gen AI','Generative AI','Machine Learning','GPT','Claude','LLaMA','Gemini','Hugging Face','Transformers','BERT','OpenAI','Anthropic'];
-  const engSkills = ['React','TypeScript','Vercel','Node.js','Nodejs','Next.js','Nextjs','Vue','Angular','Express','Django','Flask','Docker','Kubernetes','AWS','GCP','Azure','Tailwind','Bootstrap','jQuery','HTML','CSS','JavaScript','Python','Java','Go','Rust'];
-
-  const filteredTools = project.details?.tools?.filter(t => {
-    const isEng = engSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
-    const isProduct = productSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
-    const isAI = aiSkills.some(s => t.toLowerCase().includes(s.toLowerCase()));
-    return !isEng && (isProduct || isAI);
-  }).slice(0, 5) || [];
+  const aiSet = new Set(project.details?.stack?.ai ?? []);
+  const cardSkills = project.cardSkills
+    ?? [...(project.details?.stack?.ai ?? []), ...(project.details?.stack?.pm ?? [])].slice(0, 5);
 
   return (
     <motion.div
