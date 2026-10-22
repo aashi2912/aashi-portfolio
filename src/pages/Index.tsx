@@ -25,7 +25,7 @@ import hobbyReading from "@/assets/hobby-reading.jpeg";
 import hobbyBadminton from "@/assets/hobby-badminton.jpeg";
 import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 import vibeRouteHero from "@/assets/vibe-route-hero.png";
-import blindSpotHero from "@/assets/blind-spot-hero.png";
+import blindSpotHero from "@/assets/blind-spot-hero-v2.jpg";
 import blindSpotDemo from "@/assets/blind-spot-demo.mp4.asset.json";
 import rideconvertHero from "@/assets/rideconvert-hero.png";
 import spotifyAiDjHero from "@/assets/spotify-ai-dj-hero.jpg";
@@ -253,14 +253,14 @@ const projects: Project[] = [
   tag: "AI Product",
   link: "https://my-blind-spot.vercel.app/",
   year: "2026",
-  color: "#E50914",
-  secondaryColor: "#B81D24",
-  cardBg: "#1a1a1a",
+  color: "#6366F1",
+  secondaryColor: "#8B5CF6",
+  cardBg: "#0e0e1a",
   icon: "🎬",
   image: blindSpotHero,
-  caseStudyPages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-pages/page-${i + 1}.jpg`),
-  caseStudyV2Pdf: "/case-studies/blind-spot-v2-case-study.pdf",
-  caseStudyV2Pages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-v2-pages/page-${i + 1}.jpg`),
+  caseStudyPdf: "/case-studies/blind-spot-v2-case-study.pdf",
+  caseStudyPages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-v2-pages/page-${i + 1}.jpg`),
+  caseStudyV2Pages: Array.from({ length: 12 }, (_, i) => `/case-studies/blind-spot-pages/page-${i + 1}.jpg`),
   prdPages: Array.from({ length: 5 }, (_, i) => `/case-studies/blind-spot-prd-pages/page-${i + 1}.jpg`),
   prdPdf: "/case-studies/blind-spot-prd.pdf",
   githubLink: "https://github.com/aashi2912/blind-spot",

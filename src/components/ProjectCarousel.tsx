@@ -278,12 +278,14 @@ function CaseStudyModal({
   pages,
   color,
   secondaryColor,
+  pdfLink,
   onClose,
 }: {
   title: string;
   pages: string[];
   color: string;
   secondaryColor?: string;
+  pdfLink?: string;
   onClose: () => void;
 }) {
   return (
@@ -316,6 +318,18 @@ function CaseStudyModal({
             </p>
             <h3 className="text-lg font-semibold text-foreground md:text-xl">{title}</h3>
           </div>
+          {pdfLink && (
+            <a
+              href={pdfLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold border transition-all hover:scale-105 shrink-0"
+              style={{ borderColor: `${color}40`, color, backgroundColor: `${color}08` }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <FileText size={12} /> PDF
+            </a>
+          )}
           <button
             onClick={onClose}
             className="flex h-10 w-10 items-center justify-center rounded-full border bg-background/80 text-foreground transition-colors hover:text-foreground hover:bg-background"
@@ -481,14 +495,14 @@ function ProjectDrawer({
                 {project.caseStudyPages && project.caseStudyPages.length > 0 && (
                   <button
                     type="button"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border transition-all hover:scale-105"
-                    style={{ borderColor: `${sc}40`, color: sc, backgroundColor: `${sc}08` }}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-all hover:opacity-90 hover:scale-105"
+                    style={{ backgroundColor: sc }}
                     onClick={(e) => {
                       e.stopPropagation();
                       setCaseStudyModalPages(project.caseStudyPages ?? null);
                     }}
                   >
-                    <FileText size={12} /> {project.caseStudyV2Pages ? "Case Study V1" : "Case Study PDF"}
+                    <FileText size={12} /> Case Study
                   </button>
                 )}
                 {project.caseStudyV2Pages && project.caseStudyV2Pages.length > 0 && (
@@ -501,7 +515,7 @@ function ProjectDrawer({
                       setCaseStudyModalPages(project.caseStudyV2Pages ?? null);
                     }}
                   >
-                    <FileText size={12} /> Case Study V2
+                    <FileText size={12} /> View V1 Case Study
                   </button>
                 )}
                 {project.metricsLink && (
@@ -835,6 +849,7 @@ function ProjectDrawer({
                 pages={caseStudyModalPages}
                 color={c}
                 secondaryColor={sc}
+                pdfLink={caseStudyModalPages === project.caseStudyPages ? project.caseStudyPdf : undefined}
                 onClose={() => setCaseStudyModalPages(null)}
               />
             )}
