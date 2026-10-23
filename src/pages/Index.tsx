@@ -626,6 +626,7 @@ export const impossibleCategories: ImpossibleCategory[] = [
   { text: "Launch a product used by 1M+ people", done: false },
   { text: "Work for Google", done: false },
   { text: "Work for Notion", done: false },
+  { text: "Make it to Forbes 30 under 30", done: false },
   { text: "Speak at a major conference", done: false },
   { text: "Mentor 10 People", done: false }]
 
@@ -649,6 +650,7 @@ export const impossibleCategories: ImpossibleCategory[] = [
   name: "PERSONAL",
   items: [
   { text: "Study and settle abroad", done: true },
+  { text: "Live and work in San Francisco", done: false },
   { text: "Own a lake house", done: false },
   { text: "Open a NGO", done: false }]
 },
