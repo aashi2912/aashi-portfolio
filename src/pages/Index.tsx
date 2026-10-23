@@ -623,6 +623,7 @@ export const impossibleCategories: ImpossibleCategory[] = [
   name: "PROFESSIONAL",
   items: [
   { text: "Get promoted to Senior PM", done: true },
+  { text: "Become a CEO", done: false },
   { text: "Launch a product used by 1M+ people", done: false },
   { text: "Work for Google", done: false },
   { text: "Work for Notion", done: false },
@@ -652,6 +653,7 @@ export const impossibleCategories: ImpossibleCategory[] = [
   { text: "Study and settle abroad", done: true },
   { text: "Live and work in San Francisco", done: false },
   { text: "Own a lake house", done: false },
+  { text: "Own a boat", done: false },
   { text: "Open a NGO", done: false }]
 },
 {
@@ -660,6 +662,7 @@ export const impossibleCategories: ImpossibleCategory[] = [
   { text: "Learn to ride motorcycle", done: false },
   { text: "Hike (and survive) the most dangerous trail in the US", done: false },
   { text: "Become a licensed pilot", done: false },
+  { text: "Fly a plane", done: false },
   { text: "Go skydiving", done: false },
   { text: "Go parasailing", done: false },
   { text: "Go bungee jumping", done: false },
@@ -669,7 +672,7 @@ export const impossibleCategories: ImpossibleCategory[] = [
     { text: "Get my PADI Advanced Open Water License (30m / 100ft)", done: false },
     { text: "Get my PADI Deep Diver Specialty (40m / 130ft)", done: false },
   ]},
-  { text: "Own a boat", done: false }]
+  ]
 },
 {
   name: "TRAVEL",
