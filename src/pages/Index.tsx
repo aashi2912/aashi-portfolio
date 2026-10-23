@@ -616,7 +616,7 @@ export const impossibleCategories: ImpossibleCategory[] = [
     { text: "Learn to surf", done: false },
     { text: "Learn badminton", done: true },
     { text: "Learn martial arts", done: false },
-    { text: "Learn Kick Boxing and Muay Thai", done: false },
+    { text: "Learn kick boxing and Muay Thai", done: false },
   ],
 },
 {
@@ -629,7 +629,7 @@ export const impossibleCategories: ImpossibleCategory[] = [
   { text: "Work for Notion", done: false },
   { text: "Make it to Forbes 30 under 30", done: false },
   { text: "Speak at a major conference", done: false },
-  { text: "Mentor 10 People", done: false }]
+  { text: "Mentor 10 people", done: false }]
 
 },
 {
@@ -641,8 +641,8 @@ export const impossibleCategories: ImpossibleCategory[] = [
   { text: "Learn to play the piano", done: false },
   { text: "Learn to play the guitar", done: false },
   { text: "Learn Kathak", done: true },
-  { text: "Learn Salsa", done: false },
-  { text: "Learn Pottery", done: true },
+  { text: "Learn salsa", done: false },
+  { text: "Learn pottery", done: true },
   { text: "Learn embroidery", done: false },
   { text: "Learn knitting", done: false },
   { text: "Learn crochet", done: false }]
@@ -654,12 +654,12 @@ export const impossibleCategories: ImpossibleCategory[] = [
   { text: "Live and work in San Francisco", done: false },
   { text: "Own a lake house", done: false },
   { text: "Own a boat", done: false },
-  { text: "Open a NGO", done: false }]
+  { text: "Open an NGO", done: false }]
 },
 {
   name: "ADRENALINE",
   items: [
-  { text: "Learn to ride motorcycle", done: false },
+  { text: "Learn to ride a motorcycle", done: false },
   { text: "Hike (and survive) the most dangerous trail in the US", done: false },
   { text: "Become a licensed pilot", done: false },
   { text: "Fly a plane", done: false },
