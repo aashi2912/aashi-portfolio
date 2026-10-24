@@ -625,7 +625,6 @@ export const impossibleCategories: ImpossibleCategory[] = [
 },
 {
   name: "CREATIVE",
-  description: "The things I want to build and leave behind.",
   items: [
   { text: "Start a business", done: true },
   { text: "Write and publish a book", done: false },
