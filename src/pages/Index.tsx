@@ -625,7 +625,6 @@ export const impossibleCategories: ImpossibleCategory[] = [
 },
 {
   name: "CREATIVE",
-  description: "The things I want to build and leave behind.",
   items: [
   { text: "Start a business", done: true },
   { text: "Write and publish a book", done: false },
@@ -633,7 +632,6 @@ export const impossibleCategories: ImpossibleCategory[] = [
 },
 {
   name: "HOBBIES",
-  description: "Things I want to try and experience once in a lifetime - the goal is learning them, not mastering them.",
   items: [
   { text: "Learn to play the piano", done: false },
   { text: "Learn to play the guitar", done: false },
