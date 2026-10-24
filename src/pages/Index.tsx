@@ -607,17 +607,8 @@ export const impossibleCategories: ImpossibleCategory[] = [
     { text: "Run a marathon", done: false },
     { text: "Complete a triathlon", done: false },
     { text: "Hold a 5-minute plank", done: false },
-    { text: "Train like an athlete", done: false },
-    { text: "Learn rock-climbing", done: false },
-    { text: "Learn to ski", done: false },
-    { text: "Learn to snowboard", done: false },
-    { text: "Learn to skate", done: false },
-    { text: "Learn to swim", done: true },
-    { text: "Learn to surf", done: false },
-    { text: "Learn badminton", done: true },
-    { text: "Learn martial arts", done: false },
-    { text: "Learn kick boxing and Muay Thai", done: false },
-  ],
+    { text: "Train like an athlete", done: false }]
+
 },
 {
   name: "PROFESSIONAL",
@@ -634,10 +625,16 @@ export const impossibleCategories: ImpossibleCategory[] = [
 },
 {
   name: "CREATIVE",
+  description: "The things I want to build and leave behind.",
   items: [
   { text: "Start a business", done: true },
   { text: "Write and publish a book", done: false },
-  { text: "Make full-time living online", done: false },
+  { text: "Make full-time living online", done: false }]
+},
+{
+  name: "HOBBIES",
+  description: "Things I want to try and experience once in a lifetime - the goal is learning them, not mastering them.",
+  items: [
   { text: "Learn to play the piano", done: false },
   { text: "Learn to play the guitar", done: false },
   { text: "Learn Kathak", done: true },
@@ -645,7 +642,17 @@ export const impossibleCategories: ImpossibleCategory[] = [
   { text: "Learn pottery", done: true },
   { text: "Learn embroidery", done: false },
   { text: "Learn knitting", done: false },
-  { text: "Learn crochet", done: false }]
+  { text: "Learn crochet", done: false },
+  { text: "Learn to ski", done: false },
+  { text: "Learn to snowboard", done: false },
+  { text: "Learn to skate", done: false },
+  { text: "Learn to swim", done: true },
+  { text: "Learn to surf", done: false },
+  { text: "Learn badminton", done: true },
+  { text: "Learn martial arts", done: false },
+  { text: "Learn kick boxing and Muay Thai", done: false },
+  { text: "Learn rock-climbing", done: false },
+  { text: "Learn to ride a motorcycle", done: false }]
 },
 {
   name: "PERSONAL",
@@ -659,7 +666,6 @@ export const impossibleCategories: ImpossibleCategory[] = [
 {
   name: "ADRENALINE",
   items: [
-  { text: "Learn to ride a motorcycle", done: false },
   { text: "Hike (and survive) the most dangerous trail in the US", done: false },
   { text: "Become a licensed pilot", done: false },
   { text: "Fly a plane", done: false },
