@@ -1702,16 +1702,10 @@ export default function Index() {
           <div className="space-y-0">
             {impossibleCategories.map((cat, catIndex) =>
             <RevealText key={cat.name} delay={0.05 * catIndex}>
-                <div className={`flex flex-col md:flex-row gap-4 md:gap-12 py-10 ${catIndex < impossibleCategories.length - 1 ? "border-b border-border" : ""}`}>
-                  {/* Category label */}
-                  <div className="md:w-40 shrink-0 md:pt-1">
-                    <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">
-                      {cat.name}
-                    </span>
-                  </div>
-
+                <div className={`py-10 ${catIndex < impossibleCategories.length - 1 ? "border-b border-border" : ""}`}>
                   {/* Items */}
-                  <div className="flex-1">
+                  <div>
+
                     {cat.description &&
                   <p className="text-[15px] leading-relaxed text-foreground/90 mb-4">{cat.description}</p>
                   }
