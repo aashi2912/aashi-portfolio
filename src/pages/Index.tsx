@@ -290,7 +290,6 @@ export const vibeRouteV2: Project = {
   prdPages: undefined,
   demoVideo: `https://aashi-portfolio.lovable.app${vibeRouteV2Demo.url}`,
   demoVideoWebm: `https://aashi-portfolio.lovable.app${vibeRouteV2DemoWebm.url}`,
-  metricsLink: "https://vibe-route.vercel.app/metrics",
   cardSkills: ["Structured Intent Extraction", "POI-Grounded Generation", "Golden-Set Evaluation", "Waypoint Discovery", "Product Auditing"],
   details: {
     heroTagline: "From research to a shipped, evaluated walking product - two LLM features, two deterministic engines, and explicit limits.",
@@ -392,7 +391,6 @@ vibeRouteV2,
   prdPages: Array.from({ length: 5 }, (_, i) => `/case-studies/blind-spot-prd-pages/page-${i + 1}.jpg`),
   prdPdf: "/case-studies/blind-spot-prd.pdf",
   githubLink: "https://github.com/aashi2912/blind-spot",
-  metricsLink: "https://my-blind-spot.vercel.app/metrics",
   // Absolute URL so the video also loads on the Vercel-hosted custom domain
   // (the relative /__l5e asset path only resolves on Lovable hosting).
   demoVideo: `https://aashi-portfolio.lovable.app${blindSpotDemo.url}`,
