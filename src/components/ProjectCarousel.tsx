@@ -36,6 +36,7 @@ export type Project = {
   caseStudyV2Pages?: string[];
   metricsLink?: string;
   demoVideo?: string;
+  demoVideoWebm?: string;
   cardSkills?: string[];
   previousVersion?: Project;
   versionLabel?: string;
@@ -594,13 +595,15 @@ function ProjectDrawer({
                 {project.demoVideo && (
                   <SectionBlock label="Product Demo" color={c} delay={0.15}>
                     <video
-                      src={project.demoVideo}
                       controls
                       preload="metadata"
                       playsInline
                       aria-label={`${project.title} product demo`}
                       className="w-full max-h-[70vh] object-contain rounded-xl border border-border/40 bg-muted"
-                    />
+                    >
+                      {project.demoVideoWebm && <source src={project.demoVideoWebm} type="video/webm" />}
+                      <source src={project.demoVideo} type="video/mp4" />
+                    </video>
                   </SectionBlock>
                 )}
 

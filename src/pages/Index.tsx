@@ -27,6 +27,7 @@ import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 import vibeRouteHero from "@/assets/vibe-route-hero.png";
 import vibeRouteV2Pdf from "@/assets/vibe-route-v2-case-study.pdf.asset.json";
 import vibeRouteV2Demo from "@/assets/vibe-route-v2-demo.mp4.asset.json";
+import vibeRouteV2DemoWebm from "@/assets/vibe-route-v2-demo.webm.asset.json";
 import vibeRouteV2Page1 from "@/assets/vibe-route-v2-page-1.jpg.asset.json";
 import vibeRouteV2Page2 from "@/assets/vibe-route-v2-page-2.jpg.asset.json";
 import vibeRouteV2Page3 from "@/assets/vibe-route-v2-page-3.jpg.asset.json";
@@ -288,6 +289,7 @@ export const vibeRouteV2: Project = {
   prdPdf: "https://github.com/aashi2912/vibe-route/blob/main/docs/PRD.md",
   prdPages: undefined,
   demoVideo: `https://aashi-portfolio.lovable.app${vibeRouteV2Demo.url}`,
+  demoVideoWebm: `https://aashi-portfolio.lovable.app${vibeRouteV2DemoWebm.url}`,
   metricsLink: "https://vibe-route.vercel.app/metrics",
   cardSkills: ["Structured Intent Extraction", "POI-Grounded Generation", "Golden-Set Evaluation", "Waypoint Discovery", "Product Auditing"],
   details: {
