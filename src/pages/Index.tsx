@@ -25,6 +25,22 @@ import hobbyReading from "@/assets/hobby-reading.jpeg";
 import hobbyBadminton from "@/assets/hobby-badminton.jpeg";
 import impossibleListHero from "@/assets/impossible-list-hero.jpg";
 import vibeRouteHero from "@/assets/vibe-route-hero.png";
+import vibeRouteV2Pdf from "@/assets/vibe-route-v2-case-study.pdf.asset.json";
+import vibeRouteV2Demo from "@/assets/vibe-route-v2-demo.mp4.asset.json";
+import vibeRouteV2Page1 from "@/assets/vibe-route-v2-page-1.jpg.asset.json";
+import vibeRouteV2Page2 from "@/assets/vibe-route-v2-page-2.jpg.asset.json";
+import vibeRouteV2Page3 from "@/assets/vibe-route-v2-page-3.jpg.asset.json";
+import vibeRouteV2Page4 from "@/assets/vibe-route-v2-page-4.jpg.asset.json";
+import vibeRouteV2Page5 from "@/assets/vibe-route-v2-page-5.jpg.asset.json";
+import vibeRouteV2Page6 from "@/assets/vibe-route-v2-page-6.jpg.asset.json";
+import vibeRouteV2Page7 from "@/assets/vibe-route-v2-page-7.jpg.asset.json";
+import vibeRouteV2Page8 from "@/assets/vibe-route-v2-page-8.jpg.asset.json";
+import vibeRouteV2Page9 from "@/assets/vibe-route-v2-page-9.jpg.asset.json";
+import vibeRouteV2Page10 from "@/assets/vibe-route-v2-page-10.jpg.asset.json";
+import vibeRouteV2Page11 from "@/assets/vibe-route-v2-page-11.jpg.asset.json";
+import vibeRouteV2Page12 from "@/assets/vibe-route-v2-page-12.jpg.asset.json";
+import vibeRouteV2Page13 from "@/assets/vibe-route-v2-page-13.jpg.asset.json";
+
 import blindSpotHero from "@/assets/blind-spot-hero-v2.jpg";
 import blindSpotDemo from "@/assets/blind-spot-demo.mp4.asset.json";
 import rideconvertHero from "@/assets/rideconvert-hero.png";
@@ -168,8 +184,7 @@ const volunteering = [
 { role: "Mentor", org: "EducationUSA", period: "Aug 2015 - Present" }];
 
 
-const projects: Project[] = [
-{
+const vibeRouteV1: Project = {
   slug: "vibe-route",
   title: "Vibe Route",
   description: "Google Maps tells you the fastest route. I built a tool that tells you the best one - an AI-powered walking route comparison that scores routes by how they feel, not just how fast they are.",
@@ -261,7 +276,102 @@ const projects: Project[] = [
       eng: ["React 18", "Vite", "Tailwind CSS", "Vercel Serverless", "Google Maps JS API", "Google Routes API", "Google Places API (New)"]
     }
   }
-},
+};
+
+export const vibeRouteV2: Project = {
+  ...vibeRouteV1,
+  versionLabel: "V2",
+  previousVersion: { ...vibeRouteV1, versionLabel: "V1" },
+  description: "Compare walking routes by how they feel, not just how fast they are. V2 brings two evaluated Claude features, deterministic route scoring, waypoint discovery, and a public metrics dashboard to a shipped walking product.",
+  caseStudyPdf: `https://aashi-portfolio.lovable.app${vibeRouteV2Pdf.url}`,
+  caseStudyPages: [vibeRouteV2Page1, vibeRouteV2Page2, vibeRouteV2Page3, vibeRouteV2Page4, vibeRouteV2Page5, vibeRouteV2Page6, vibeRouteV2Page7, vibeRouteV2Page8, vibeRouteV2Page9, vibeRouteV2Page10, vibeRouteV2Page11, vibeRouteV2Page12, vibeRouteV2Page13].map((asset) => `https://aashi-portfolio.lovable.app${asset.url}`),
+  prdPdf: "https://github.com/aashi2912/vibe-route/blob/main/docs/PRD.md",
+  prdPages: undefined,
+  demoVideo: `https://aashi-portfolio.lovable.app${vibeRouteV2Demo.url}`,
+  metricsLink: "https://vibe-route.vercel.app/metrics",
+  cardSkills: ["Structured Intent Extraction", "POI-Grounded Generation", "Golden-Set Evaluation", "Waypoint Discovery", "Product Auditing"],
+  details: {
+    heroTagline: "From research to a shipped, evaluated walking product - two LLM features, two deterministic engines, and explicit limits.",
+    background: "Fastest is not always the walk you want. Vibe Route compares real walking alternatives using greenery, coffee stops, local character, and a Well-Lit proxy. Rather than ask an LLM to judge a neighbourhood's beauty, it lets walkers define their preferences and uses measurable place and route signals. These inputs reduce subjective judgment; they do not establish that the recommendations are unbiased or that a route is safe.",
+    stats: [
+      { value: "2 + 2", label: "LLM + Deterministic" },
+      { value: "1.00", label: "F1 / 15 Parse Cases" },
+      { value: "0 / 5", label: "Detected POI Inventions" },
+      { value: "11", label: "Scorer Checks Passed" },
+    ],
+    competitiveGap: [
+      { label: "Scenic Driving", status: "Served", tools: "Roadtrippers addresses scenic driving", solved: true },
+      { label: "Hiking & Trails", status: "Served", tools: "AllTrails and Komoot focus on outdoor routes", solved: true },
+      { label: "Urban Walking", status: "The opportunity", tools: "Compare city walks by user-defined preferences", solved: false },
+    ],
+    drawerSections: [
+      { label: "V2 Core Loop", title: "Intent - Discover - Score - Compare - Walk", layout: "steps", items: [
+        { num: "1", title: "Set the walk", desc: "Places Autocomplete, current location, or a sample walk. Choose up to three vibes or describe the walk in natural language." },
+        { num: "2", title: "Find alternatives", desc: "Google walking routes plus a street-overlap check. Nearby-place proximity grouping proposes waypoint detours when the first alternatives are too similar." },
+        { num: "3", title: "Score preferences", desc: "Deterministic POI-density scoring with diminishing returns and route-instruction heuristics. Rank by the average of the selected vibe scores." },
+        { num: "4", title: "Explain & compare", desc: "Claude writes descriptions from verified Places inputs; templates are the fallback. Compare map paths, scores, and nearby places." },
+        { num: "5", title: "Walk or share", desc: "Preview route steps or hand off to Google Maps. Sharing preserves the search inputs, not an exact saved route. The preview is not live GPS navigation." },
+      ]},
+      { label: "Architecture", title: "Two LLM Features, Two Deterministic Engines", layout: "grid", items: [
+        { title: "LLM: Intent extraction", desc: "Claude Haiku 4.5 turns natural-language input into structured vibe preferences, with validation and fallback behavior." },
+        { title: "LLM: Grounded narratives", desc: "Descriptions are prompted with verified nearby places. Grounding is prompt-constrained, not enforced by a runtime fact checker." },
+        { title: "Deterministic: Waypoints", desc: "Corridor sampling, seed-radius proximity grouping, and diversity ranking generate waypoint candidates. This is not a trained model or full DBSCAN." },
+        { title: "Deterministic: Scoring", desc: "Exponential saturation keeps POI density from inflating scores indefinitely. Scores are independently calculated; ranking is relative to the alternatives." },
+      ], rejections: ["Personalization: insufficient user data", "LLM scenic scoring: subjective judgment and bias risk", "AI soundtrack: outside the core walking loop"] },
+      { label: "AI Evaluation", title: "Measured on a Small, Committed Golden Set", content: "The repository reports a production-endpoint evaluation on October 22, 2026. These are sample results, not population-wide accuracy or a guarantee of hallucination-free output.", layout: "grid", items: [
+        { title: "Intent: 15 cases", desc: "Reported 100% exact match and mean multi-label F1 of 1.000. The internal F1 acceptance threshold is 0.85." },
+        { title: "Narratives: 5 cases", desc: "No invented POIs detected across five narrative cases, including empty-POI input. The groundedness acceptance threshold is 0.90." },
+        { title: "Evaluator debugging", desc: "An earlier grader misclassified street names as invented places. The grader was corrected; an optional same-model LLM judge provides an additional check." },
+        { title: "Limits of the harness", desc: "The detector can accept empty output and broadly exempts street-name suffixes. Passing the small set is evidence to build on, not proof that every description is factual." },
+      ]},
+      { label: "Product Audit", title: "Test the Core Promise, Not Just the Happy Path", content: "A documented eight-pair audit covered dense city centres, suburbs, international cities, a small town, and distance edge cases.", layout: "grid", items: [
+        { title: "Differentiation is still the hard part", desc: "The audit found near-identical scores in Paris and Tokyo and a Toronto local-character spread of only 0.4. A route existing is not evidence of a meaningfully better choice." },
+        { title: "What changed", desc: "The current implementation lowers the overlap trigger to 50%, adds best-for badges, validates degenerate inputs, and includes geolocation, sharing, and analytics." },
+        { title: "What is not yet demonstrated", desc: "No published rerun establishes that the changes resolved score collapse. POI sampling and proximity matching still limit route-specific signal quality." },
+        { title: "Evidence, not adoption claims", desc: "The live dashboard is available, but traffic is too small to support retention, growth, or product-market-fit claims." },
+      ]},
+      { label: "Research & Scope", title: "Research Informs the Choices - It Does Not Validate the Product", content: "The supplied case study describes six secondary research studies; this is research synthesis, not six user studies conducted for Vibe Route.", layout: "list", items: [
+        { title: "Detour tolerance", desc: "The case study cites leisure-walking detour research. The code filters waypoint candidates geometrically; it does not guarantee a 30% cap on the final walking distance." },
+        { title: "Attractive surroundings & stops", desc: "Parks, amenities, and destination stops inform the preference dimensions and waypoint discovery." },
+        { title: "Night Walker", desc: "After-dark needs inform night-mode weights and Well-Lit scoring, which is shipped as a proxy rather than deferred." },
+      ]},
+      { label: "Trust & Tradeoffs", title: "Make the Limits Visible", layout: "grid", items: [
+        { title: "Well-Lit is not a safety rating", desc: "POI types and road instructions approximate bright-and-busy conditions. No measured streetlight or current opening-hours data is used." },
+        { title: "Preference, not neighbourhood ranking", desc: "User-defined vibes and place signals avoid subjective beauty judgments. A census-income correlation audit is planned, not completed." },
+        { title: "Separate the keys", desc: "Google REST and Anthropic requests run through server-side endpoints; a separate Maps browser key serves the client. Deployment restrictions are not independently verified here." },
+        { title: "Global APIs, not global validation", desc: "Avoiding city-specific datasets broadens coverage. It does not prove consistent route quality everywhere, as the international audit shows." },
+      ]},
+      { label: "Measurement", title: "Instrumented, Without Inventing Traction", layout: "list", items: [
+        { title: "Public metrics dashboard", desc: "PostHog events and HogQL expose searches, generated routes, route picks, shares, and a return-visit indicator." },
+        { title: "Know what the numbers mean", desc: "Activation and selection divide event counts by visitors, not unique converted users. The displayed Day-3 indicator is a return after at least three days, not standard cohort retention." },
+        { title: "Separate usage from evaluation", desc: "Usage is queried from analytics. The eval strip summarizes committed results; it is not a live model evaluation run." },
+      ]},
+      { label: "Roadmap", title: "Proposed Next - Not Shipped", layout: "roadmap", items: [
+        { version: "V3", title: "Street View Computer Vision", desc: "Proposed semantic segmentation for a Green View Index. No implemented computer-vision model is claimed." },
+        { version: "V3", title: "Actual Lighting Data", desc: "Replace the current proxy with streetlight datasets where available." },
+        { version: "V3", title: "Published Bias Audit", desc: "Plan: 50 routes across diverse neighbourhoods, correlated with census income, with public findings." },
+        { version: "V4", title: "Community Layer", desc: "User-submitted vibes and ratings, conditional on moderation and privacy design." },
+      ]},
+    ],
+    results: [
+      "Live walking-route comparison with day/night mode, onboarding, route-step previews, and Google Maps handoff.",
+      "Reported October 22 evaluation: 15 parsing cases, F1 1.000; five narrative cases, no detected invented POIs.",
+      "Deterministic scorer: 11 assertions passed. These are unit checks, not validation of walker preferences.",
+      "Published product audit exposed score differentiation limits; a post-fix rerun remains outstanding.",
+      "Public PostHog-backed metrics dashboard; no unsupported adoption or growth claims.",
+    ],
+    takeawayQuote: "The best AI project isn't the one with the most AI - it's the one where every component exists because the product is genuinely better with it, and you can explain why.",
+    takeawayTags: ["Scoped AI", "Measured quality", "Self-critical product audit", "Trust-first tradeoffs"],
+    stack: {
+      ai: ["Claude Haiku 4.5 (Anthropic API)", "Structured Intent Extraction", "POI-Grounded Generation", "Golden-Set Evaluation (15 + 5 Cases)", "Groundedness-Grader Debugging", "Optional LLM-as-Judge"],
+      pm: ["PRD & V2 Addendum", "Decision & Tradeoff Log", "Secondary Research Synthesis", "MVP Scoping & Feature Rejection", "Eight-Pair Product Audit", "Proxy-Risk Communication", "Funnel Metric Design"],
+      eng: ["JavaScript / JSX", "React 18.3", "Vite 6", "Tailwind CSS 3.4", "Google Maps JS / Routes / Places APIs", "Waypoint Proximity Grouping", "Deterministic Vibe Scoring", "Vercel Serverless API Proxies", "PostHog + HogQL", "Node.js Eval Harness & Scorer Tests"],
+    },
+  },
+};
+
+const projects: Project[] = [
+vibeRouteV2,
 {
   slug: "blind-spot",
   title: "Blind Spot",
