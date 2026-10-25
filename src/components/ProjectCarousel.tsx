@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, ArrowUpRight, ArrowLeft, ArrowRight, FileText, X, Github } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export type DrawerSection = {
   label: string;
@@ -36,6 +37,8 @@ export type Project = {
   metricsLink?: string;
   demoVideo?: string;
   cardSkills?: string[];
+  previousVersion?: Project;
+  versionLabel?: string;
   details?: {
     background?: string;
     role?: string;
@@ -372,14 +375,21 @@ function CaseStudyModal({
 /* ─── Case Study Drawer ─── */
 
 function ProjectDrawer({
-  project,
+  project: currentProject,
   onClose,
 }: {
   project: Project | null;
   onClose: () => void;
 }) {
   const [caseStudyModalPages, setCaseStudyModalPages] = useState<string[] | null>(null);
-  
+  const [showPreviousVersion, setShowPreviousVersion] = useState(false);
+  useEffect(() => {
+    setShowPreviousVersion(false);
+    setCaseStudyModalPages(null);
+  }, [currentProject?.slug]);
+  const project = showPreviousVersion && currentProject?.previousVersion
+    ? currentProject.previousVersion
+    : currentProject;
 
   if (!project) return null;
   const details = project.details;
@@ -450,6 +460,7 @@ function ProjectDrawer({
                   {project.tag}
                 </span>
                 <span className="font-mono text-xs tracking-wider" style={{ color: heroMutedColor }}>{project.year}</span>
+                {project.versionLabel && <span className="text-xs font-semibold text-muted-foreground">{project.versionLabel}</span>}
               </div>
 
               <h2
@@ -471,6 +482,18 @@ function ProjectDrawer({
 
               {/* CTA buttons */}
               <div className="flex flex-wrap gap-2 mt-6 relative z-[1]">
+                {currentProject?.previousVersion && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      setCaseStudyModalPages(null);
+                      setShowPreviousVersion((previous) => !previous);
+                    }}
+                  >
+                    <FileText size={12} /> {showPreviousVersion ? "Back to V2" : "Explore V1 & original materials"}
+                  </Button>
+                )}
                 {project.link && project.link !== "#" && (
                   <a
                     href={project.link}
@@ -574,7 +597,9 @@ function ProjectDrawer({
                       src={project.demoVideo}
                       controls
                       preload="metadata"
-                      className="w-full rounded-xl border border-border/40"
+                      playsInline
+                      aria-label={`${project.title} product demo`}
+                      className="w-full max-h-[70vh] object-contain rounded-xl border border-border/40 bg-muted"
                     />
                   </SectionBlock>
                 )}
