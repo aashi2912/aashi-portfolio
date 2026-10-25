@@ -19,6 +19,5 @@ describe("Vibe Route version preservation", () => {
     for (const page of vibeRouteV2.caseStudyPages ?? []) {
       expect(new URL(page).origin).toBe("https://aashi-portfolio.lovable.app");
     }
-    expect(vibeRouteV2.metricsLink).toBe("https://vibe-route.vercel.app/metrics");
   });
 });

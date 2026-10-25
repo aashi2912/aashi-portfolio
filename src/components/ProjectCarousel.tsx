@@ -34,7 +34,6 @@ export type Project = {
   githubLink?: string;
   caseStudyV2Pdf?: string;
   caseStudyV2Pages?: string[];
-  metricsLink?: string;
   demoVideo?: string;
   demoVideoWebm?: string;
   cardSkills?: string[];
@@ -543,18 +542,6 @@ function ProjectDrawer({
                   >
                     <FileText size={12} /> View V1 Case Study
                   </button>
-                )}
-                {project.metricsLink && (
-                  <a
-                    href={project.metricsLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border transition-all hover:scale-105"
-                    style={{ borderColor: `${c}40`, color: c, backgroundColor: `${c}08` }}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <ExternalLink size={12} /> Live Metrics
-                  </a>
                 )}
                 {project.prdPdf && (
                   <a
