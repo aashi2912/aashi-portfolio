@@ -484,16 +484,17 @@ function ProjectDrawer({
               {/* CTA buttons */}
               <div className="flex flex-wrap gap-2 mt-6 relative z-[1]">
                 {currentProject?.previousVersion && (
-                  <Button
-                    variant="outline"
-                    size="sm"
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border transition-all hover:scale-105"
+                    style={{ borderColor: `${sc}40`, color: sc, backgroundColor: `${sc}08` }}
                     onClick={() => {
                       setCaseStudyModalPages(null);
                       setShowPreviousVersion((previous) => !previous);
                     }}
                   >
-                    <FileText size={12} /> {showPreviousVersion ? "Back to V2" : "Explore V1 & original materials"}
-                  </Button>
+                    <FileText size={12} /> {showPreviousVersion ? "Back to V2" : "View V1 Case Study"}
+                  </button>
                 )}
                 {project.link && project.link !== "#" && (
                   <a
