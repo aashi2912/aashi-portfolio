@@ -768,7 +768,9 @@ export const impossibleCategories: ImpossibleCategory[] = [
   { text: "Learn badminton", done: true },
   { text: "Learn martial arts", done: false },
   { text: "Learn kick boxing and Muay Thai", done: false },
+  { text: "Learn shooting", done: false },
   { text: "Learn rock-climbing", done: false },
+  { text: "Learn horse riding", done: false },
   { text: "Learn to ride a motorcycle", done: false }]
 },
 {
