@@ -776,6 +776,8 @@ export const impossibleCategories: ImpossibleCategory[] = [
   items: [
   { text: "Study and settle abroad", done: true },
   { text: "Live and work in San Francisco", done: false },
+  { text: "Become a millionaire", done: false },
+  { text: "Become a billionaire", done: false },
   { text: "Own a lake house", done: false },
   { text: "Own a boat", done: false },
   { text: "Open an NGO", done: false }]
