@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link, ArrowDown } from "lucide-react";
 import { ReferencesSection } from "@/components/ReferencesSection";
+import { AtAGlanceSection } from "@/components/AtAGlanceSection";
 import { AnimatedCounter, WiggleText } from "@/components/Doodles";
 import { ProjectCarousel, type Project } from "@/components/ProjectCarousel";
 import heroImage from "@/assets/hero-transparent.png";
@@ -1187,6 +1188,15 @@ export default function Index() {
 
       </section>
 
+
+      {/* ── At a glance ── */}
+      <ScrollSection>
+      <ContentWrap className="pt-16 pb-4">
+        <section id="summary" className="relative">
+          <AtAGlanceSection />
+        </section>
+      </ContentWrap>
+      </ScrollSection>
 
       {/* ── Work ── */}
       <ScrollSection>
