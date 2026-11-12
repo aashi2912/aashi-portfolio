@@ -32,11 +32,7 @@ export function AtAGlanceSection() {
       <h2 className="text-[28px] font-bold tracking-tight">At a glance</h2>
       <div className="mt-6 max-w-2xl mx-auto space-y-4 text-[18px] leading-relaxed text-muted-foreground">
         <p>
-          I started on the engineering side of the bridge - writing code, wiring data, asking why things break. Somewhere
-          along the way I got more curious about <span className="text-foreground font-medium">who</span> the code was for.
-        </p>
-        <p>
-          Today I walk that bridge every day at RBC Capital Markets, owning the strategy and roadmap for AidenResearch -
+          Engineer-first product and AI strategist who ships. Today I walk that bridge every day at RBC Capital Markets, owning the strategy and roadmap for AidenResearch -
           a team of AI agents that help research analysts get to the insight faster, so they can spend their time on the
           thinking only humans can do.
         </p>
