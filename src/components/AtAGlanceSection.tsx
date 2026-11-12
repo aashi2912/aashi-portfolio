@@ -35,7 +35,7 @@ const decisions: Decision[] = [
     num: "02",
     title: "Set a 99% accuracy bar for client-facing AI",
     body: "Built the evaluation and guardrails analysts and clients could trust in a regulated bank.",
-    context: "RBC · AidenResearch",
+    context: "RBC Capital Markets",
   },
   {
     num: "03",
@@ -167,32 +167,28 @@ export function AtAGlanceSection() {
         {decisions.map((d, idx) => {
           const card = (
             <div className="relative flex h-full flex-col p-5">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">
-                  {d.num}
-                </span>
-                {d.project && (
-                  <span
-                    className="ml-auto font-mono text-[11px] uppercase tracking-[0.18em]"
-                    style={{ color: d.project.color }}
-                  >
-                    {d.project.emoji} {d.project.name}
-                  </span>
-                )}
+              <div className="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">
+                {d.num}
               </div>
               <div className="mt-1.5 text-[16px] font-semibold leading-snug">{d.title}</div>
-              <div className="mt-1 text-[14px] leading-relaxed text-muted-foreground">{d.body}</div>
+              <div className="mt-1 mb-4 text-[14px] leading-relaxed text-muted-foreground">
+                {d.body}
+              </div>
 
-              <div className="mt-4 flex flex-wrap items-center gap-2 pt-3 border-t border-border/60">
-                {d.project ? (
+              <div className="mt-auto flex min-h-[26px] flex-wrap items-center gap-2 border-t border-border/60 pt-3">
+                <span
+                  className={`mr-auto inline-flex h-[27px] items-center gap-1 font-mono text-[11px] uppercase tracking-[0.18em] ${
+                    d.project ? "" : "text-muted-foreground"
+                  }`}
+                  style={d.project ? { color: d.project.color } : undefined}
+                >
+                  {d.context}
+                  {d.project && (
+                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  )}
+                </span>
+                {d.project && (
                   <>
-                    <span
-                      className="mr-auto inline-flex items-center gap-1 text-[12px] font-medium transition-all duration-300 group-hover:gap-2"
-                      style={{ color: d.project.color }}
-                    >
-                      Open the project
-                      <ArrowUpRight className="h-3.5 w-3.5" />
-                    </span>
                     <LinkPill
                       href={d.project.live}
                       label="Live"
@@ -206,10 +202,6 @@ export function AtAGlanceSection() {
                       color={d.project.color}
                     />
                   </>
-                ) : (
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                    {d.context}
-                  </span>
                 )}
               </div>
             </div>
