@@ -5,3 +5,5 @@
 - [x] Add shareable section paths and route-aware navigation without splitting the scrolling portfolio.
 - [x] Add solo travel to Europe in my 20s as a completed travel goal.
 - [x] Test direct links, navigation, history, and completed goal.
+- [x] Add creative blueprint-inspired styling to the At a glance section while preserving identical card structure.
+- [x] Replace the shared resume PDF and verify every resume link serves the uploaded document.
