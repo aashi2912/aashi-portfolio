@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { Home, Briefcase, FolderOpen, User, Quote, ListChecks, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "@/components/ui/button";
@@ -62,18 +63,35 @@ export function Navbar() {
                   )}
                 >
                   <Link to={item.path} aria-current={isActive ? "location" : undefined}>
-                    <Icon className="h-5 w-5" />
+                    <span className="relative flex h-10 w-10 items-center justify-center">
+                      {isActive && (
+                        <motion.span
+                          layoutId="active-section"
+                          className="absolute inset-0 rounded-lg bg-accent"
+                          transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                        />
+                      )}
+                      <Icon className="relative h-5 w-5" />
+                    </span>
                   </Link>
                 </Button>
 
                 {/* Tooltip */}
-                {tooltip === item.id && (
-                  <div className="pointer-events-none absolute left-[52px] top-1/2 -translate-y-1/2 z-50 whitespace-nowrap rounded-md bg-foreground px-2.5 py-1 text-xs font-medium text-background shadow-lg">
-                    {item.label}
-                    <span className="ml-1.5 font-mono opacity-50">{item.num}</span>
-                    <div className="absolute -left-[4px] top-1/2 -translate-y-1/2 border-y-[4px] border-r-[4px] border-y-transparent border-r-foreground" />
-                  </div>
-                )}
+                <AnimatePresence>
+                  {tooltip === item.id && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -8, scale: 0.96 }}
+                      animate={{ opacity: 1, x: 0, scale: 1 }}
+                      exit={{ opacity: 0, x: -5, scale: 0.98 }}
+                      transition={{ duration: 0.16 }}
+                      className="pointer-events-none absolute left-[52px] top-1/2 z-50 -translate-y-1/2 whitespace-nowrap rounded-md bg-foreground px-2.5 py-1 text-xs font-medium text-background shadow-lg"
+                    >
+                      {item.label}
+                      <span className="ml-1.5 font-mono opacity-50">{item.num}</span>
+                      <div className="absolute -left-[4px] top-1/2 -translate-y-1/2 border-y-[4px] border-r-[4px] border-y-transparent border-r-foreground" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}
@@ -99,8 +117,15 @@ export function Navbar() {
       </div>
 
       {/* ── Mobile: slide-down menu ── */}
+      <AnimatePresence>
       {mobileOpen && (
-        <div className="md:hidden fixed top-[49px] left-0 right-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border/20">
+        <motion.div
+          initial={{ opacity: 0, y: -16, clipPath: "inset(0 0 100% 0)" }}
+          animate={{ opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" }}
+          exit={{ opacity: 0, y: -10, clipPath: "inset(0 0 100% 0)" }}
+          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          className="md:hidden fixed top-[49px] left-0 right-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border/20"
+        >
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -122,8 +147,9 @@ export function Navbar() {
               </Button>
             );
           })}
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </>
   );
 }

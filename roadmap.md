@@ -7,3 +7,6 @@
 - [x] Test direct links, navigation, history, and completed goal.
 - [x] Add creative blueprint-inspired styling to the At a glance section while preserving identical card structure.
 - [x] Replace the shared resume PDF and verify every resume link serves the uploaded document.
+- [x] Translate Uber's cinematic motion language into the portfolio hero while preserving the existing identity and content.
+- [x] Add coordinated section and navigation motion with accessible, reduced-motion behavior.
+- [x] Verify the animated homepage, chapter controls, direct section links, and both color themes.

@@ -1,11 +1,12 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link, ArrowDown } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { Check, ExternalLink, FileText, Coffee, Link } from "lucide-react";
 import { ReferencesSection } from "@/components/ReferencesSection";
 import { AtAGlanceSection } from "@/components/AtAGlanceSection";
+import { CinematicHero } from "@/components/CinematicHero";
+import { MotionSection } from "@/components/MotionSection";
 import { AnimatedCounter, WiggleText } from "@/components/Doodles";
 import { ProjectCarousel, type Project } from "@/components/ProjectCarousel";
-import heroImage from "@/assets/hero-transparent.png";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 import logoRbc from "@/assets/logo-rbc.svg";
 import logoCognizant from "@/assets/logo-cognizant.png";
@@ -66,23 +67,6 @@ const galleryImages = [
 gallerySpeaking, galleryLego, galleryDinner, galleryFarm, galleryBoostSmall,
 galleryFormal, galleryBoostGroup, galleryAxe, galleryOutdoor, galleryBoostTrio,
 galleryClimbingGroup, galleryClimbing];
-
-
-const roles = ["Product Manager.", "Software Developer.", "Vibe Coder.", "Lifelong Learner."];
-
-const SubstackIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinejoin="round" strokeLinecap="round" className={className} aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-    <g transform="translate(1.68 1.68) scale(0.86)">
-      <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z" />
-    </g>
-  </svg>
-);
-
-const socialLinks = [
-{ icon: Linkedin, href: "https://www.linkedin.com/in/aashithakkar29/", label: "LinkedIn" },
-{ icon: Github, href: "https://github.com/aashi2912", label: "GitHub" },
-{ icon: Instagram, href: "https://www.instagram.com/aashi_2912/", label: "Instagram" },
-{ icon: SubstackIcon, href: "https://substack.com/@aashithakkar", label: "Substack" }];
 
 
 const updates = [
@@ -822,52 +806,6 @@ export const impossibleCategories: ImpossibleCategory[] = [
 
 // ─── Utilities ───────────────────────────────────────────────────────────────
 
-function ScrambleText({ text }: {text: string;}) {
-  const [displayed, setDisplayed] = useState("");
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  useEffect(() => {
-    let iteration = 0;
-    const interval = setInterval(() => {
-      setDisplayed(
-        text.split("").map((char, i) => {
-          if (i < iteration) return char;
-          if (char === " ") return " ";
-          return chars[Math.floor(Math.random() * chars.length)];
-        }).join("")
-      );
-      iteration += 1 / 2;
-      if (iteration > text.length) clearInterval(interval);
-    }, 30);
-    return () => clearInterval(interval);
-  }, [text]);
-  return <span className="font-mono text-sm text-muted-foreground">{displayed}</span>;
-}
-
-// ─── Letter-by-letter stagger text (inspired by Dev Ashish's bold type) ──────
-function StaggerLetters({ text, className = "", delay = 0 }: { text: string; className?: string; delay?: number }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  return (
-    <motion.span ref={ref} className={`inline-block ${className}`}>
-      {text.split("").map((char, i) => (
-        <motion.span
-          key={i}
-          className="inline-block"
-          initial={{ opacity: 0, y: 40, rotateX: -90 }}
-          animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-          transition={{
-            duration: 0.5,
-            delay: delay + i * 0.03,
-            ease: [0.22, 0.68, 0.36, 1],
-          }}
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
-    </motion.span>
-  );
-}
-
 // ─── Magnetic hover effect (inspired by interactive elements) ────────────────
 function MagneticWrap({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -923,21 +861,9 @@ function TiltCard({ children, className = "" }: { children: React.ReactNode; cla
   );
 }
 
-// ─── Section wrapper with scale-in on scroll ────────────────────────────────
+// ─── Section wrapper with a cinematic mask and line reveal ──────────────────
 function ScrollSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30, scale: 0.97 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+  return <MotionSection className={className}>{children}</MotionSection>;
 }
 
 function RevealText({ children, delay = 0 }: {children: React.ReactNode;delay?: number;}) {
@@ -1041,25 +967,15 @@ function ContentWrap({ children, className = "" }: {children: React.ReactNode;cl
 // ─── Main page ────────────────────────────────────────────────────────────────
 
 export default function Index() {
-  const [roleIndex, setRoleIndex] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mousePos, setMousePos] = useState({ x: -500, y: -500 });
-  const [heroParallax, setHeroParallax] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRoleIndex((i) => (i + 1) % roles.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Scroll progress & parallax
+  // Scroll progress
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(docHeight > 0 ? scrollTop / docHeight : 0);
-      setHeroParallax(scrollTop * 0.3);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -1075,7 +991,7 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative overflow-x-clip">
       {/* Scroll progress bar */}
       {scrollProgress > 0 && (
         <div
@@ -1092,100 +1008,7 @@ export default function Index() {
 
       {/* ── Home ── */}
       <section id="home" className="scroll-mt-20 relative overflow-hidden">
-
-        {/* Top header: name / roles / social / location */}
-        <ContentWrap className="pt-6">
-          <motion.div
-            className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}>
-            
-            {/* Left: name + roles + social */}
-            <div className="flex flex-col gap-2">
-              <div className="relative inline-block">
-                <h1 className="text-[26px] font-bold tracking-tight sm:text-[32px] leading-tight">
-                  <WiggleText>Aashi Thakkar</WiggleText>
-                </h1>
-                
-              </div>
-              <div className="h-6 text-[16px] font-normal text-muted-foreground sm:text-[18px]">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={roleIndex}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.22 }}
-                    className="block">
-                    
-                    {roles[roleIndex]}
-                  </motion.span>
-                </AnimatePresence>
-              </div>
-              <div className="flex items-center gap-1">
-                {socialLinks.map(({ icon: Icon, href, label }) =>
-                <MagneticWrap key={label} className="inline-block">
-                  <motion.a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-md p-1.5 text-muted-foreground transition-all hover:text-foreground inline-block"
-                    aria-label={label}
-                    whileHover={{ scale: 1.3, rotate: 8 }}
-                    whileTap={{ scale: 0.9 }}>
-                    
-                      <Icon className="h-5 w-5" />
-                    </motion.a>
-                </MagneticWrap>
-                )}
-              </div>
-            </div>
-
-            {/* Right: location */}
-            <div className="self-start">
-              <ScrambleText text="TORONTO, ONTARIO" />
-            </div>
-          </motion.div>
-        </ContentWrap>
-
-        {/* Tagline above hero image */}
-        <ContentWrap>
-          <motion.h2
-            className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center px-4 pt-8 sm:pt-12 md:pt-16 pb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}>
-            I <motion.span className="italic" initial={{ opacity: 0, scale: 1.3 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>bridge</motion.span> the gap between<br />
-            <StaggerLetters text="ambition and execution!" delay={0.8} className="mt-1" />
-          </motion.h2>
-        </ContentWrap>
-
-        {/* Hero image - true full-bleed, zero padding */}
-        <motion.div
-          className="bg-background relative flex items-center justify-center overflow-hidden -mt-px"
-          style={{ height: 'calc(100vh - 280px)' }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4 }}>
-          
-          <img
-            src={heroImage}
-            alt="Hero illustration of two cliffs with a bridge"
-            className="w-full h-full object-cover parallax-hero mix-blend-multiply dark:brightness-150"
-            style={{ transform: `translateY(${heroParallax}px)` }} />
-
-          {/* Scroll indicator */}
-          <motion.div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <span className="text-xs text-muted-foreground tracking-widest uppercase">scroll</span>
-            <ArrowDown className="w-4 h-4 text-muted-foreground" />
-          </motion.div>
-        </motion.div>
-
+        <CinematicHero />
       </section>
 
 
