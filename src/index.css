@@ -248,18 +248,16 @@
 }
 
 /* Cinematic, editorial motion system */
-.cinematic-hero {
+.section-atmosphere {
   background:
-    radial-gradient(circle at 88% 18%, hsl(200 70% 60% / 0.10), transparent 28%),
-    radial-gradient(circle at 10% 82%, hsl(215 70% 60% / 0.07), transparent 30%),
-    hsl(var(--background));
+    radial-gradient(ellipse at 12% 20%, hsl(200 70% 60% / 0.055), transparent 34%),
+    radial-gradient(ellipse at 88% 52%, hsl(215 70% 60% / 0.045), transparent 32%);
 }
 
-.dark .cinematic-hero {
+.dark .section-atmosphere {
   background:
-    radial-gradient(circle at 88% 18%, hsl(200 70% 60% / 0.10), transparent 28%),
-    radial-gradient(circle at 10% 82%, hsl(215 70% 60% / 0.08), transparent 30%),
-    hsl(var(--background));
+    radial-gradient(ellipse at 12% 20%, hsl(200 70% 60% / 0.065), transparent 34%),
+    radial-gradient(ellipse at 88% 52%, hsl(215 70% 60% / 0.055), transparent 32%);
 }
 
 .cinematic-grid {
