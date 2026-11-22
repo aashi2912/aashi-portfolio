@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Link, ArrowDown } from "lucide-react";
 import { ReferencesSection } from "@/components/ReferencesSection";
 import { AtAGlanceSection } from "@/components/AtAGlanceSection";
@@ -929,14 +929,15 @@ function ScrollSection({ children, className = "" }: { children: React.ReactNode
 
 function RevealText({ children, delay = 0 }: {children: React.ReactNode;delay?: number;}) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const reduceMotion = useReducedMotion();
+  const isInView = useInView(ref, { once: true, margin: "-70px" });
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay, ease: [0.25, 0.4, 0.25, 1] }}>
-      
+      initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 64, scale: 0.985, filter: "blur(7px)", clipPath: "inset(0 0 32% 0)" }}
+      animate={isInView || reduceMotion ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", clipPath: "inset(0 0 0% 0)" } : {}}
+      transition={{ duration: reduceMotion ? 0 : 0.85, delay: reduceMotion ? 0 : delay, ease: [0.22, 1, 0.36, 1] }}>
+
       {children}
     </motion.div>);
 

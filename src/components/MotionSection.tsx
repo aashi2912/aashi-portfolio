@@ -35,13 +35,26 @@ export function MotionSection({ children, className = "" }: { children: React.Re
         </motion.div>
       )}
 
+      {!reduceMotion && (
+        <motion.div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 z-30 h-[100svh] bg-background"
+          initial={{ y: "0%" }}
+          whileInView={{ y: "-102%" }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 1.05, ease: [0.76, 0, 0.24, 1] }}
+        >
+          <div className="absolute inset-x-0 bottom-0 h-px bg-[hsl(200,55%,58%)] dark:bg-[hsl(200,45%,68%)]" />
+        </motion.div>
+      )}
+
       <motion.div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-0 h-px w-full max-w-4xl -translate-x-1/2 origin-center bg-gradient-to-r from-transparent via-[hsl(200,55%,58%)] to-transparent dark:via-[hsl(200,45%,68%)]"
         initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 0.45 }}
+        whileInView={{ scaleX: 1, opacity: 0.55 }}
         viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 1.1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1.1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
       />
 
       <motion.div style={{ y: reduceMotion ? 0 : contentY }}>
