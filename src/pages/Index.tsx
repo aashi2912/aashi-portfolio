@@ -4,6 +4,7 @@ import { Linkedin, Github, Instagram, Check, ExternalLink, FileText, Coffee, Lin
 import { ReferencesSection } from "@/components/ReferencesSection";
 import { AtAGlanceSection } from "@/components/AtAGlanceSection";
 import { MotionSection } from "@/components/MotionSection";
+import { PinnedStory, ScrubWords, ZoomFrame, ExpandingImage, RisingPanel, Drift, ScrollGallery } from "@/components/ScrollScenes";
 import { AnimatedCounter, WiggleText } from "@/components/Doodles";
 import { ProjectCarousel, type Project } from "@/components/ProjectCarousel";
 import heroImage from "@/assets/hero-transparent.png";
@@ -1205,24 +1206,13 @@ export default function Index() {
             </div>
           </RevealText>
 
-          {/* Profile Card */}
-          <RevealText delay={0.1}>
-            <div className="mt-12 flex flex-col items-center text-center gap-4">
-              <TiltCard className="relative">
-
-                <img src={profilePhoto} alt="Aashi Thakkar" className="w-80 h-[28rem] rounded-2xl object-cover object-top" />
-              </TiltCard>
-            </div>
-          </RevealText>
-
-          {/* Bio - Journey Timeline */}
-          <div className="mt-16 flex flex-col sm:flex-row sm:gap-16">
-            <div className="mb-4 sm:mb-0 sm:w-28 shrink-0 sm:pt-2">
-              <span className="text-[15px] font-mono tracking-[0.2em] text-muted-foreground uppercase">Bio</span>
-            </div>
-            <div className="flex-1">
-              <div className="relative pl-8 border-l-2 border-border/60 space-y-8">
-                {[
+          {/* Bio - pinned story: photo stays while each chapter takes the stage */}
+          <div className="mt-16">
+            <PinnedStory
+              eyebrow="Bio"
+              image={profilePhoto}
+              imageAlt="Aashi Thakkar"
+              steps={[
                   {
                     emoji: "👨‍💻",
                     label: "The Developer Days",
@@ -1253,38 +1243,19 @@ export default function Index() {
                     label: "Core Belief",
                     text: "The best products aren't just technically solid - they're built around real human needs. That shapes every decision I make.",
                   },
-                ].map((step, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-30px" }}
-                    transition={{ duration: 0.5, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
-                    className="relative group"
-                  >
-                    <div className="absolute -left-[calc(2rem+5px)] top-1 h-3 w-3 rounded-full bg-primary ring-4 ring-background transition-transform group-hover:scale-125" />
-                    <div className="flex items-start gap-3">
-                      <span className="text-xl mt-[-2px]">{step.emoji}</span>
-                      <div>
-                        <span className="text-xs font-mono tracking-wider text-primary uppercase">{step.label}</span>
-                        <p className="text-[15px] text-foreground/80 mt-0.5 leading-relaxed">{step.text}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+              ]}
+            />
               <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.7 }}
-                className="mt-8 pl-8 text-[15px] text-muted-foreground"
+                className="mt-6 text-center text-[15px] text-muted-foreground"
               >
                 Into AI 🤖, data products 📊, or product strategy? <span className="text-foreground font-medium">Let's connect 🤝</span>
                 {" · "}
                 <a href="#about" onClick={(e) => {e.preventDefault();document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });}} className="text-primary underline underline-offset-4 hover:opacity-80 transition-opacity font-medium">See my life outside work ↓</a>
               </motion.p>
-            </div>
           </div>
 
           {/* Experience */}
@@ -1390,12 +1361,8 @@ export default function Index() {
           {/* Education Photos */}
           <RevealText delay={0.4}>
             <div className="mt-10 grid grid-cols-2 gap-4">
-              <TiltCard className="aspect-[4/3] overflow-hidden rounded-2xl">
-                <img src={eduPhoto1} alt="At Assumption College" className="w-full h-full object-cover object-[center_85%] transition-transform duration-500 hover:scale-110" />
-              </TiltCard>
-              <TiltCard className="aspect-[4/3] overflow-hidden rounded-2xl">
-                <img src={eduPhoto2} alt="Graduation" className="w-full h-full object-cover object-[center_25%] transition-transform duration-500 hover:scale-110" />
-              </TiltCard>
+              <ZoomFrame src={eduPhoto1} alt="At Assumption College" className="aspect-[4/3] rounded-2xl" imgClassName="object-[center_85%]" />
+              <ZoomFrame src={eduPhoto2} alt="Graduation" className="aspect-[4/3] rounded-2xl" imgClassName="object-[center_25%]" />
             </div>
           </RevealText>
 
@@ -1435,17 +1402,14 @@ export default function Index() {
       </ScrollSection>
 
       <ScrollSection>
+      <div className="px-3 sm:px-6">
+      <RisingPanel className="mx-auto max-w-6xl py-16 sm:py-20">
       <ContentWrap className="scroll-mt-20 !px-0 sm:!px-0">
         <section id="projects" className="relative">
           {/* Tagline */}
           <RevealText>
             <div className="mb-4 text-center">
-              <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
-                I blend my engineering roots with
-              </h2>
-              <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
-                product strategy and thinking to build products
-              </h3>
+              <ScrubWords className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]" parts={[{ text: "I blend my engineering roots with" }, { text: "product strategy and thinking to build products", className: "text-muted-foreground" }]} />
               <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
                 that just...{" "}
                   <motion.span
@@ -1484,6 +1448,8 @@ export default function Index() {
           <ProjectCarousel projects={projects} />
         </section>
       </ContentWrap>
+      </RisingPanel>
+      </div>
       </ScrollSection>
 
       {/* ── References ── */}
@@ -1503,12 +1469,7 @@ export default function Index() {
           {/* Headline */}
           <RevealText>
             <div className="mb-4 text-center">
-              <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] whitespace-nowrap">
-                When I'm not obsessing over product strategy,
-              </h2>
-              <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground whitespace-nowrap">
-                I'm probably doing <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">all of this.</span>
-              </h3>
+              <ScrubWords className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]" parts={[{ text: "When I'm not obsessing over product strategy," }, { text: "I'm probably doing", className: "text-muted-foreground" }, { text: "all of this.", className: "italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" }]} />
             </div>
           </RevealText>
           <RevealText delay={0.1}>
@@ -1530,14 +1491,13 @@ export default function Index() {
             { emoji: "🏊‍♀️", title: "Swimming", caption: "My kind of meditation", rotate: "5deg", top: "660px", left: "35%", width: "195px", delay: 0.66, pin: "hsl(190,70%,45%)", image: hobbySwimming, imagePos: "center 75%" },
             { emoji: "🏸", title: "Badminton", caption: "Smashing my way through weekends", rotate: "-3deg", top: "560px", left: "67%", width: "200px", delay: 0.74, pin: "hsl(45,90%,55%)", image: hobbyBadminton }].
             map((hobby, i) =>
-            <motion.div
+            <Drift
               key={i}
               className="absolute"
               style={{ top: hobby.top, left: hobby.left, width: hobby.width, maxWidth: "32%" }}
-              initial={{ opacity: 0, y: 60, rotate: 0, scale: 0.85 }}
-              whileInView={{ opacity: 1, y: 0, rotate: hobby.rotate, scale: 1 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.7, delay: hobby.delay, ease: [0.22, 0.68, 0.36, 1] }}>
+              speed={[60, 130, 90][i % 3]}
+              rotateFrom={parseFloat(hobby.rotate) * -3}
+              rotateTo={parseFloat(hobby.rotate)}>
               
                 {(() => {
                 const cardContent =
@@ -1577,7 +1537,7 @@ export default function Index() {
                 <a href={(hobby as any).link} target="_blank" rel="noopener noreferrer" className="block no-underline">{cardContent}</a> :
                 cardContent;
               })()}
-              </motion.div>
+              </Drift>
             )}
 
           </div>
@@ -1635,12 +1595,7 @@ export default function Index() {
 
           <RevealText delay={0.25}>
             <div className="mt-14 text-center">
-              <h2 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]">
-                Jack of all trades, master of none?
-              </h2>
-              <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
-                But oftentimes better than <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">a master of one.</span>
-              </h3>
+              <ScrubWords className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15]" parts={[{ text: "Jack of all trades, master of none?" }, { text: "But oftentimes better than", className: "text-muted-foreground" }, { text: "a master of one.", className: "italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" }]} />
             </div>
           </RevealText>
 
@@ -1654,25 +1609,13 @@ export default function Index() {
           </RevealText>
 
           {/* Auto-scrolling gallery - Now right after the header */}
-          <RevealText delay={0.35}>
-            <div className="relative overflow-hidden rounded-2xl py-6 mt-6">
-              <div className="flex gap-4 animate-[scroll-left_35s_linear_infinite] hover:[animation-play-state:paused]" style={{ width: "max-content" }}>
-                {[...galleryImages, ...galleryImages].map((img, i) =>
-                <div key={i} className="h-48 w-72 shrink-0 overflow-hidden rounded-xl">
-                    <img src={img} alt="Team activity" className="h-full w-full object-cover transition-transform duration-500 hover:scale-110" />
-                  </div>
-                )}
-              </div>
-            </div>
-          </RevealText>
+          <ScrollGallery images={galleryImages} alt="Team activity" />
 
           <div className="mt-12">
           {/* Product management is about people section - AFTER the gallery */}
           <RevealText delay={0.4}>
             <div className="mb-10 text-center">
-              <h4 className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground">
-                Product management is about <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">people</span> before it's about <span className="italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]">products.</span>
-              </h4>
+              <ScrubWords as="h4" className="text-2xl font-bold tracking-tight md:text-[36px] md:leading-[1.15] text-muted-foreground" parts={[{ text: "Product management is about" }, { text: "people", className: "italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" }, { text: "before it's about" }, { text: "products.", className: "italic text-[hsl(200,50%,35%)] dark:text-[hsl(200,40%,75%)]" }]} />
             </div>
           </RevealText>
 
@@ -1759,16 +1702,12 @@ export default function Index() {
           </RevealText>
 
           {/* Hero image */}
-          <RevealText delay={0.1}>
-            <div className="w-full aspect-[2/1] rounded-xl overflow-hidden my-10">
-              <img src={impossibleListHero} alt="Impossible List hero" className="w-full h-full object-cover" />
-            </div>
-          </RevealText>
+          <ExpandingImage src={impossibleListHero} alt="Impossible List hero" />
 
           {/* Explanation - visual storytelling */}
           <div className="mb-16 max-w-3xl">
             <RevealText delay={0.15}>
-              <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">Impossible what?</h3>
+              <ScrubWords as="h3" className="text-2xl md:text-3xl font-bold tracking-tight mb-8" parts={[{ text: "Impossible what?" }]} />
             </RevealText>
 
             <div className="space-y-8">

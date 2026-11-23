@@ -10,3 +10,5 @@
 - [x] Translate Uber's cinematic motion language into the portfolio hero while preserving the existing identity and content.
 - [x] Add coordinated section and navigation motion with accessible, reduced-motion behavior.
 - [x] Verify the animated homepage, chapter controls, direct section links, and both color themes.
+- [x] Scroll-driven Uber/Wispr Flow-style motion across sections (pinned scenes, zooming photos, scrubbed reveals)
+- [x] Study Wispr Flow website reveal animations
