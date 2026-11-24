@@ -44,11 +44,6 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        story: {
-          bubble: "hsl(var(--story-bubble))",
-          ink: "hsl(var(--story-ink))",
-          line: "hsl(var(--story-line))",
-        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",

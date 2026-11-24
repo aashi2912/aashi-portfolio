@@ -28,10 +28,6 @@
     --accent: 0 0% 94%;
     --accent-foreground: 0 0% 8%;
 
-    --story-bubble: 200 60% 92%;
-    --story-ink: 200 40% 18%;
-    --story-line: 200 45% 48%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
@@ -72,10 +68,6 @@
 
     --accent: 0 0% 14%;
     --accent-foreground: 0 0% 93%;
-
-    --story-bubble: 200 40% 18%;
-    --story-ink: 200 60% 92%;
-    --story-line: 200 50% 70%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 93%;
