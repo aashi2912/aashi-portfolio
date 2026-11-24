@@ -1261,7 +1261,7 @@ export default function Index() {
                   {
                     emoji: "🏦",
                     label: "Now",
-                    text: "Leading Alternative Data, Gen AI & Research Tech products at RBC Capital Markets. Sitting at the intersection of tech × business.",
+                    text: "Leading AI product strategy at RBC Capital Markets, while building consumer products after hours. Same question everywhere: how can technology fit more naturally into someone's life?",
                   },
                   {
                     emoji: "❤️",
@@ -1295,7 +1295,7 @@ export default function Index() {
                 transition={{ delay: 0.7 }}
                 className="mt-8 pl-8 text-[15px] text-muted-foreground"
               >
-                Into AI 🤖, data products 📊, or product strategy? <span className="text-foreground font-medium">Let's connect 🤝</span>
+                Into consumer products 🧩, AI 🤖, or product strategy? <span className="text-foreground font-medium">Let's connect 🤝</span>
                 {" · "}
                 <a href="#about" onClick={(e) => {e.preventDefault();document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });}} className="text-primary underline underline-offset-4 hover:opacity-80 transition-opacity font-medium">See my life outside work ↓</a>
               </motion.p>
