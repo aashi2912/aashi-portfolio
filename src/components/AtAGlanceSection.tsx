@@ -78,7 +78,7 @@ export function AtAGlanceSection() {
         </motion.div>
 
         <motion.p {...fade(0.38)} className="mt-5 text-[14px] leading-relaxed text-muted-foreground">
-          Along the way, my work has been featured in{" "}
+          Along the way, the Aiden team I am part of was featured in{" "}
           <a
             href="https://www.nvidia.com/en-us/case-studies/rbc-capital-markets/"
             target="_blank"
