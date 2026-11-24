@@ -68,7 +68,7 @@ galleryFormal, galleryBoostGroup, galleryAxe, galleryOutdoor, galleryBoostTrio,
 galleryClimbingGroup, galleryClimbing];
 
 
-const roles = ["Product Manager.", "Product, Strategy & AI Leader.", "Vibe Coder.", "Lifelong Learner."];
+const roles = ["Product, Strategy & AI Leader.", "Vibe Coder.", "Lifelong Learner."];
 
 const SubstackIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinejoin="round" strokeLinecap="round" className={className} aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
