@@ -7,7 +7,7 @@ const impact = [
   { value: "7", label: "GenAI research agents shipped to production" },
   { value: "10x", label: "Document processing scale" },
   { value: "60%", label: "Faster earnings-note turnaround" },
-  { value: "8,000", label: "Users on the Aiden platform" },
+  { value: "8,000+", label: "Users on the AidenResearch platform" },
 ];
 
 type Decision = {
