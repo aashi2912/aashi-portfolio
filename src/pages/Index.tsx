@@ -764,7 +764,7 @@ vibeRouteV2,
     ],
     takeawayQuote: "Disclosure is not the same as trust - and a fair share is not the same as a fair wage.",
     stack: {
-      ai: ["Claude Haiku 4.5 (Hosted Default)", "Anthropic Messages API", "Structured Trip Parsing", "Placeholder-Constrained Generation", "Deterministic Validation & Template Fallback", "Baseline-Controlled Evaluation"],
+      ai: ["Claude Haiku 4.5 (Anthropic API)", "Structured Trip Parsing", "Placeholder-Constrained Generation", "Deterministic Validation & Template Fallback", "Baseline-Controlled Evaluation"],
       pm: ["Problem Reframing & Competitive Research", "PRD & Decision Log", "Evidence-Led Prioritization", "2×2 Marketplace Experiment Design", "Scenario Modeling", "Marketplace Metrics & Guardrails", "Conditional Rollout Planning"],
       eng: ["JavaScript / HTML / CSS", "Node.js 22", "Vercel Serverless", "Python", "DuckDB SQL", "NumPy", "Parquet-to-JSON Analysis", "Browser localStorage"],
     },
