@@ -24,6 +24,7 @@ describe("shareable portfolio sections", () => {
     expect(getSectionForPath("/projects/blind-spot")?.id).toBe("projects");
     expect(getSectionForPath("/projects/vibe-route")?.id).toBe("projects");
     expect(getSectionForPath("/projects/fine-print")?.id).toBe("projects");
+    expect(getSectionForPath("/projects/fair-fare")?.id).toBe("projects");
   });
 });
 

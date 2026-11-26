@@ -48,6 +48,8 @@ import blindSpotDemo from "@/assets/blind-spot-demo.mp4.asset.json";
 import rideconvertHero from "@/assets/rideconvert-hero.png";
 import spotifyAiDjHero from "@/assets/spotify-ai-dj-hero.jpg";
 import finePrintHero from "@/assets/fine-print-hero.jpg";
+import fairFareHero from "@/assets/fair-fare-hero.jpg.asset.json";
+import fairFareFilm from "@/assets/fair-fare-film.mp4.asset.json";
 
 import gallerySpeaking from "@/assets/gallery-speaking.jpeg";
 import galleryLego from "@/assets/gallery-lego.jpeg";

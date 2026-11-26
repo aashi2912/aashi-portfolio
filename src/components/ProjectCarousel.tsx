@@ -28,6 +28,7 @@ export type Project = {
   icon?: string;
   image?: string;
   caseStudyPdf?: string;
+  caseStudyLink?: string;
   caseStudyPages?: string[];
   prdPages?: string[];
   prdPdf?: string;
@@ -36,6 +37,7 @@ export type Project = {
   caseStudyV2Pages?: string[];
   demoVideo?: string;
   demoVideoWebm?: string;
+  demoVideoLabel?: string;
   cardSkills?: string[];
   previousVersion?: Project;
   versionLabel?: string;
@@ -530,6 +532,17 @@ function ProjectDrawer({
                     <FileText size={12} /> Case Study
                   </button>
                 )}
+                {project.caseStudyLink && (
+                  <a
+                    href={project.caseStudyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-all hover:opacity-90 hover:scale-105"
+                    style={{ backgroundColor: sc }}
+                  >
+                    <FileText size={12} /> Case Study <ExternalLink size={11} />
+                  </a>
+                )}
                 {project.caseStudyV2Pages && project.caseStudyV2Pages.length > 0 && (
                   <button
                     type="button"
@@ -581,7 +594,7 @@ function ProjectDrawer({
 
                 {/* Product demo video */}
                 {project.demoVideo && (
-                  <SectionBlock label="Product Demo" color={c} delay={0.15}>
+                  <SectionBlock label={project.demoVideoLabel ?? "Product Demo"} color={c} delay={0.15}>
                     <video
                       controls
                       preload="metadata"
