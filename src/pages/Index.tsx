@@ -705,6 +705,70 @@ vibeRouteV2,
       pm: ["Decision Document", "Persona & JTBD Framing (Maya/Jordan)", "Option Evaluation & Tradeoffs", "Conditional Roadmapping (Alpha/Beta Gates)", "Guardrail Metric Design", "Goodhart-Aware Metrics", "Competitive Analysis", "Risk & Open Questions"]
     }
   }
+},
+{
+  slug: "fair-fare",
+  title: "Fair Fare",
+  description: "Drivers kept asking me what I paid. I built a grounded AI earnings assistant and monthly-cap simulator to ask a better question: do drivers need an explanation, earnings protection, or both?",
+  tag: "AI & Marketplace Strategy",
+  year: "2026",
+  color: "#2F80ED",
+  secondaryColor: "#167968",
+  icon: "🚕",
+  image: `https://aashi-portfolio.lovable.app${fairFareHero.url}`,
+  link: "https://fair-fare-aashi.vercel.app/why.html",
+  githubLink: "https://github.com/aashi2912/fair-fare",
+  caseStudyLink: "https://fair-fare-aashi.vercel.app/",
+  prdPdf: "https://github.com/aashi2912/fair-fare/blob/main/docs/PRD.md",
+  demoVideo: `https://aashi-portfolio.lovable.app${fairFareFilm.url}`,
+  demoVideoLabel: "The Fair Fare Film",
+  cardSkills: ["Grounded AI Generation", "Evaluation Design", "Marketplace Experiment Design", "Scenario Modeling", "Evidence-Led Prioritization"],
+  details: {
+    heroTagline: "An explanation, a promise, or both? Build the prototypes. Let the experiment decide.",
+    background: "Multiple drivers asked what I paid for my ride. That sparked an independent product-strategy exercise, not an Uber-affiliated launch. Existing receipts and weekly statements already disclose fees, so 'Uber hides its cut' was the wrong starting point. The opportunity is resolving a driver's doubt about one trip, in the moment - while recognizing that clearer explanations alone do not improve pay.",
+    stats: [
+      { value: "40", label: "Synthetic Assistant Trips" },
+      { value: "95%", label: "All Checks Passed" },
+      { value: "15.1M", label: "NYC Trips in Cap Simulation" },
+      { value: "2 × 2", label: "Proposed Pilot Design" },
+    ],
+    drawerSections: [
+      { label: "The Product Question", title: "Disclosure Is Not the Same as Trust", layout: "grid", items: [
+        { title: "An explanation", desc: "A working AI assistant explains a synthetic trip's rider payment, driver earnings, and platform fee. It acknowledges missing information instead of inventing a reason." },
+        { title: "A promise", desc: "A working monthly-cap simulator explores the cost of earnings protection under different driver-work-pattern assumptions. A policy hypothesis, not a shipped guarantee." },
+        { title: "Or both?", desc: "A proposed four-group pilot separates explanation from protection so the experiment can determine what actually helps drivers." },
+      ]},
+      { label: "The AI Design", title: "Let the Model Write Words, Not Money", layout: "steps", items: [
+        { title: "Start with a known ledger", desc: "The server retrieves a synthetic trip by ID. The browser cannot submit arbitrary ledger amounts; there is no live Uber-account integration." },
+        { title: "Constrain the explanation", desc: "Claude writes prose with named amount placeholders. Deterministic calculations fill in the amounts instead of letting the model author them." },
+        { title: "Catch rendering violations", desc: "Detected rendering violations trigger a fixed-template fallback. This is a targeted safeguard, not a guarantee that every answer is correct." },
+      ]},
+      { label: "Evaluation", title: "Compare Designs Before Trusting One", layout: "grid", items: [
+        { title: "Three designs, one synthetic set", desc: "Across 40 synthetic trips, all applicable checks passed for 58% of fixed-template answers, 85% when AI wrote numbers, and 95% with placeholders (38/40)." },
+        { title: "Improvement, with a boundary", desc: "Prompt v1 scored 60%; explicit v2 rules reached 95% on the small synthetic set. These are deterministic string/regex checks, not held-out validation or human-reviewed accuracy." },
+        { title: "A weakness still visible", desc: "Missing-data handling passed 75% of applicable cases. One detected rendering violation was replaced with a template before display. Real-driver usability testing remains next." },
+      ]},
+      { label: "Marketplace Economics", title: "Model the Promise Before Making It", content: "The cap simulation uses 15,116,497 September 2026 NYC Uber trips to construct synthetic 160-trip driver-months. At a 35% cap, the documented scenarios estimate top-ups for 0-4.6% of synthetic driver-months, costing up to approximately 0.7% of simulated NYC platform fees. Public data has no driver IDs: these are scenario estimates, not actual driver payouts. Platform share is a base-fare residual proxy, not Uber's reported service-fee accounting.", rejections: ["Treating NYC pay-floor economics as universal", "Equating a lower percentage share with a better hourly wage", "Claiming simulated costs are measured policy outcomes"] },
+      { label: "Product Decisions", title: "The Ideas I Cut Matter Too", layout: "list", items: [
+        { title: "Dropped the weekly earnings meter", desc: "Uber already provides weekly statements. Another meter would duplicate an existing disclosure rather than resolve the in-the-moment question." },
+        { title: "Proposed an existing channel", desc: "Building on Uber Assistant would put explanations where drivers already work and where ledger access exists. This is a proposal, not an implemented integration." },
+        { title: "Demoted rider comparison", desc: "The historical NYC rider explorer is a supporting prototype. Which app a rider opens first is a different problem from whether a driver trusts their earnings." },
+        { title: "Did not declare the cap the answer", desc: "A plausible simulation does not establish fair wages or improved trust. Explanation and protection need to be tested separately." },
+      ]},
+      { label: "Supporting Prototype", title: "A Rider Explorer, Not Live Fare Prediction", content: "Natural-language trip parsing powers comparisons of historical NYC fares and the frequency of pickups exceeding ten minutes. Manual controls, saved trips, and route-to-borough fallbacks keep the explorer usable. Saved parser evaluations compare Claude with a keyword baseline on a 40-case golden set and a 30-case held-out stress set. Estimates are historical, not current quotes; completed-trip waits exclude abandoned requests." },
+      { label: "Proposed Pilot", title: "Let Driver Outcomes Make the Call", layout: "roadmap", items: [
+        { version: "Design", title: "Four groups, randomized by driver", desc: "Explanation only, monthly cap only, both, or neither. A proposed 12-week pilot in two or three markets, including one without a pay floor." },
+        { version: "Measure", title: "Earnings and behavior before rhetoric", desc: "Track driver dollars/hour, online hours, and 90-day churn; assess perceived fairness and support contacts alongside them." },
+        { version: "Guardrails", title: "Protect both sides of the marketplace", desc: "Monitor top-up cost, fee rates, rider prices, and waits. Rollout depends on which treatment adds value - no trust, earnings, or retention lift has been demonstrated yet." },
+      ]},
+    ],
+    takeawayQuote: "Disclosure is not the same as trust - and a fair share is not the same as a fair wage.",
+    stack: {
+      ai: ["Claude Haiku 4.5 (Hosted Default)", "Anthropic Messages API", "Structured Trip Parsing", "Placeholder-Constrained Generation", "Deterministic Validation & Template Fallback", "Baseline-Controlled Evaluation"],
+      pm: ["Problem Reframing & Competitive Research", "PRD & Decision Log", "Evidence-Led Prioritization", "2×2 Marketplace Experiment Design", "Scenario Modeling", "Marketplace Metrics & Guardrails", "Conditional Rollout Planning"],
+      eng: ["JavaScript / HTML / CSS", "Node.js 22", "Vercel Serverless", "Python", "DuckDB SQL", "NumPy", "Parquet-to-JSON Analysis", "Browser localStorage"],
+    },
+  },
 }];
 
 

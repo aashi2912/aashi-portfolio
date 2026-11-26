@@ -4,4 +4,5 @@
 - Project skills are explicit per-project data in src/pages/Index.tsx: `cardSkills` (card tiles) and `details.stack` ({ ai, pm, eng }) for the drawer's Tools & Stack groups. Never keyword-infer categories from tool names, and only list skills verified against the project's GitHub repo, live app, or case study PDFs.
 - Preserve full original project data in `previousVersion` when introducing a new primary version; the same drawer toggles versions without changing the shareable project path, so original narrative and materials remain together.
 - New project media uses imported asset pointers with absolute Lovable-hosted URLs so the same PDFs, images, and video also resolve on external hosting.
+- Project drawers accept an external `caseStudyLink` and optional `demoVideoLabel` so HTML case studies and narrative films use the same project presentation without pretending they are PDFs or demos.
 - Scroll-linked effects live in src/components/ScrollScenes.tsx (framer-motion useScroll) and each has a reduced-motion fallback; reuse them instead of adding one-off whileInView reveals, so motion stays tied to the reader's scroll.

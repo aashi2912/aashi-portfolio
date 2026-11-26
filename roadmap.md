@@ -12,3 +12,6 @@
 - [x] Verify the animated homepage, chapter controls, direct section links, and both color themes.
 - [x] Scroll-driven Uber/Wispr Flow-style motion across sections (pinned scenes, zooming photos, scrubbed reveals)
 - [x] Study Wispr Flow website reveal animations
+- [x] Audit Fair Fare’s source documents, implementation, skills, and evaluations.
+- [x] Add Fair Fare with its uploaded film, case study, and shareable project link.
+- [x] Verify Fair Fare’s drawer, media, links, and light/dark presentation.
